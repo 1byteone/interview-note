@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8858
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/order_db?useSSL=false
+    username: root
+    password: 123456
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+    elasticsearch:
+      uris: http://127.0.0.1:9200
+  rocketmq:
+    name-server: 127.0.0.1:9876
+    producer:
+      group: order-producer-group
+
+server:
+  port: 8080
