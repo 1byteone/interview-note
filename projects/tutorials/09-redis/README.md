@@ -94,4 +94,4 @@ Boolean acquired = redisTemplate.opsForValue()
 
 ---
 
-> 下一篇：[第10篇：MySQL 数据库设计与优化](../10-mysql/README.md)
+> 下一篇：[第10篇：MySQL 数据库设计与优化](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/10-mysql/README.md)

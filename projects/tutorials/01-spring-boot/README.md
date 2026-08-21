@@ -128,4 +128,4 @@ spring:
 
 ---
 
-> 下一篇：[第2篇：Spring Cloud 微服务架构设计](02-microservice-arch/README.md)
+> 下一篇：[第2篇：Spring Cloud 微服务架构设计](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/02-microservice-arch/README.md)

@@ -98,4 +98,4 @@
 
 ---
 
-> 下一篇：[第3篇：Nacos 服务注册与配置中心](../03-nacos/README.md)
+> 下一篇：[第3篇：Nacos 服务注册与配置中心](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/03-nacos/README.md)

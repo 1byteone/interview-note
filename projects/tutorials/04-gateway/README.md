@@ -97,4 +97,4 @@ filters:
 
 ---
 
-> 下一篇：[第5篇：OpenFeign 远程调用与负载均衡](../05-openfeign/README.md)
+> 下一篇：[第5篇：OpenFeign 远程调用与负载均衡](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/05-openfeign/README.md)

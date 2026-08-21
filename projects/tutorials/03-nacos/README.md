@@ -120,4 +120,4 @@ LoadBalancer 负载均衡选择一个实例
 
 ---
 
-> 下一篇：[第4篇：Spring Cloud Gateway 网关](04-gateway/README.md)
+> 下一篇：[第4篇：Spring Cloud Gateway 网关](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/04-gateway/README.md)

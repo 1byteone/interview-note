@@ -89,4 +89,4 @@ volumes:
 
 ---
 
-> 下一篇：[第13篇：Hybrid RAG 检索增强生成](../13-hybrid-rag/README.md)
+> 下一篇：[第13篇：Hybrid RAG 检索增强生成](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/13-hybrid-rag/README.md)

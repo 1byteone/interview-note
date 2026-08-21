@@ -96,4 +96,4 @@ public RequestInterceptor tokenInterceptor() {
 
 ---
 
-> 下一篇：[第6篇：Sentinel 流量控制与熔断降级](../06-sentinel/README.md)
+> 下一篇：[第6篇：Sentinel 流量控制与熔断降级](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/06-sentinel/README.md)

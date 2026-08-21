@@ -87,4 +87,4 @@ public void createOrder(OrderDTO order) {
 
 ---
 
-> 下一篇：[第8篇：RocketMQ 消息队列与事务消息](../08-rocketmq/README.md)
+> 下一篇：[第8篇：RocketMQ 消息队列与事务消息](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/08-rocketmq/README.md)

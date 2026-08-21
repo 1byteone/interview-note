@@ -103,4 +103,4 @@ def _run_tool_audited(name: str, args: Any) -> Dict[str, Any]:
 
 ---
 
-> 下一篇：[第15篇：Neo4j 知识图谱与 GraphRAG](../15-neo4j-graph/README.md)
+> 下一篇：[第15篇：Neo4j 知识图谱与 GraphRAG](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/15-neo4j-graph/README.md)

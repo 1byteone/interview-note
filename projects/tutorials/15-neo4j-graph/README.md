@@ -105,4 +105,4 @@ RRF 融合 → Reranker 精排 → LLM 生成
 
 ---
 
-> 下一篇：[第16篇：SSE 流式响应与前端对接](../16-sse-streaming/README.md)
+> 下一篇：[第16篇：SSE 流式响应与前端对接](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/16-sse-streaming/README.md)

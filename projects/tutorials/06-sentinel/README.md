@@ -92,4 +92,4 @@ filters:
 
 ---
 
-> 下一篇：[第7篇：Seata 分布式事务](../07-seata/README.md)
+> 下一篇：[第7篇：Seata 分布式事务](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/07-seata/README.md)

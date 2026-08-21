@@ -124,4 +124,4 @@ rag_embedding_mode: str = "bge_m3"
 
 ---
 
-> 下一篇：[第14篇：LangGraph Agent 智能体编排](../14-langgraph-agent/README.md)
+> 下一篇：[第14篇：LangGraph Agent 智能体编排](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/14-langgraph-agent/README.md)

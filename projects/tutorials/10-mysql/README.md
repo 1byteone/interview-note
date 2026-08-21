@@ -76,4 +76,4 @@ CREATE TABLE `order_info` (
 
 ---
 
-> 下一篇：[第11篇：Elasticsearch 全文搜索](../11-elasticsearch/README.md)
+> 下一篇：[第11篇：Elasticsearch 全文搜索](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/11-elasticsearch/README.md)

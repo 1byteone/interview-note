@@ -105,4 +105,4 @@ if (!Boolean.TRUE.equals(acquired)) {
 
 ---
 
-> 下一篇：[第9篇：Redis 缓存与分布式锁](../09-redis/README.md)
+> 下一篇：[第9篇：Redis 缓存与分布式锁](https://github.com/1byteone/interview-note/blob/master/projects/tutorials/09-redis/README.md)
