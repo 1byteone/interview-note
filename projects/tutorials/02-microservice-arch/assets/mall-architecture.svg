@@ -3,7 +3,7 @@
     <title id="ms01-title">mall-micro-cloud 微服务架构图</title>
     <desc id="ms01-desc">展示从用户端经 Nginx 和 Gateway 网关到 11 个微服务，再到底层中间件集群的完整架构，以及 Nacos 作为注册中心协调服务发现。</desc>
 
-    <defs><style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap');</style>
+    <defs><style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500;700&amp;display=swap');</style>
       <marker id="ms01-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
         <polygon points="0 0, 8 3, 0 6" fill="#4f5d75"/>
       </marker>
@@ -16,23 +16,23 @@
     <!-- 接入层区域 -->
     <rect x="16" y="40" width="848" height="96" rx="8" fill="rgba(45,49,66,0.02)" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/>
     <rect x="20" y="44" width="48" height="12" rx="2" fill="#f5f5f5"/>
-    <text x="44" y="53" fill="rgba(45,49,66,0.40)" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">接入层</text>
+    <text x="44" y="53" fill="rgba(45,49,66,0.40)" font-size="7" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle" letter-spacing="0.08em">接入层</text>
 
     <!-- 服务层区域 -->
     <rect x="16" y="152" width="848" height="272" rx="8" fill="rgba(45,49,66,0.02)" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/>
     <rect x="20" y="156" width="48" height="12" rx="2" fill="#f5f5f5"/>
-    <text x="44" y="165" fill="rgba(45,49,66,0.40)" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">服务层</text>
+    <text x="44" y="165" fill="rgba(45,49,66,0.40)" font-size="7" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle" letter-spacing="0.08em">服务层</text>
 
     <!-- 中间件区域 -->
     <rect x="16" y="440" width="848" height="152" rx="8" fill="rgba(45,49,66,0.02)" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/>
     <rect x="20" y="444" width="48" height="12" rx="2" fill="#f5f5f5"/>
-    <text x="44" y="453" fill="rgba(45,49,66,0.40)" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">中间件</text>
+    <text x="44" y="453" fill="rgba(45,49,66,0.40)" font-size="7" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle" letter-spacing="0.08em">中间件</text>
 
     <!-- 箭头：用户 → Nginx -->
     <path d="M 440,16 V 52" fill="none" stroke="#2e5aa8" stroke-width="1.2" marker-end="url(#ms01-arrow-link)"/>
     <!-- Nginx → Gateway -->
     <path d="M 440,100 V 124" fill="none" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#ms01-arrow)"/>
-    <text x="448" y="114" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace">负载均衡</text>
+    <text x="448" y="114" fill="#7a8399" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace">负载均衡</text>
 
     <!-- Gateway → 服务层（扇出 4 条） -->
     <path d="M 440,188 H 440" fill="none" stroke="#4f5d75" stroke-width="1.2"/>
@@ -43,28 +43,28 @@
 
     <!-- 用户服务 -->
     <rect x="28" y="212" width="144" height="48" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
-    <text x="100" y="236" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">用户服务</text>
-    <text x="100" y="252" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">mall-user-service</text>
+    <text x="100" y="236" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">用户服务</text>
+    <text x="100" y="252" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">mall-user-service</text>
 
     <!-- 商品服务 -->
     <rect x="196" y="212" width="144" height="48" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
-    <text x="268" y="236" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">商品服务</text>
-    <text x="268" y="252" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">mall-product-service</text>
+    <text x="268" y="236" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">商品服务</text>
+    <text x="268" y="252" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">mall-product-service</text>
 
     <!-- 订单服务（焦点） -->
     <rect x="364" y="212" width="152" height="48" rx="6" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1.2"/>
-    <text x="440" y="236" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">订单服务</text>
-    <text x="440" y="252" fill="#eb6c36" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">mall-order-service</text>
+    <text x="440" y="236" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">订单服务</text>
+    <text x="440" y="252" fill="#eb6c36" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">mall-order-service</text>
 
     <!-- 秒杀服务 -->
     <rect x="540" y="212" width="144" height="48" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
-    <text x="612" y="236" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">秒杀服务</text>
-    <text x="612" y="252" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">mall-seckill-service</text>
+    <text x="612" y="236" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">秒杀服务</text>
+    <text x="612" y="252" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">mall-seckill-service</text>
 
     <!-- 搜索服务 -->
     <rect x="708" y="212" width="144" height="48" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
-    <text x="780" y="236" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">搜索服务</text>
-    <text x="780" y="252" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">mall-es-service</text>
+    <text x="780" y="236" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">搜索服务</text>
+    <text x="780" y="252" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">mall-es-service</text>
 
     <!-- 第二行：Gateway → 下4个服务 -->
     <path d="M 440,188 V 276" fill="none" stroke="#4f5d75" stroke-width="1.2"/>
@@ -76,38 +76,38 @@
 
     <!-- 购物车 -->
     <rect x="28" y="284" width="144" height="48" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
-    <text x="100" y="308" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">购物车服务</text>
-    <text x="100" y="324" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">mall-cart-service</text>
+    <text x="100" y="308" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">购物车服务</text>
+    <text x="100" y="324" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">mall-cart-service</text>
 
     <!-- 支付服务 -->
     <rect x="196" y="284" width="144" height="48" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
-    <text x="268" y="308" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">支付服务</text>
-    <text x="268" y="324" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">mall-pay-service</text>
+    <text x="268" y="308" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">支付服务</text>
+    <text x="268" y="324" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">mall-pay-service</text>
 
     <!-- 定时任务 -->
     <rect x="540" y="284" width="144" height="48" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
-    <text x="612" y="308" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">定时任务</text>
-    <text x="612" y="324" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">mall-scheduler-service</text>
+    <text x="612" y="308" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">定时任务</text>
+    <text x="612" y="324" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">mall-scheduler-service</text>
 
     <!-- 消费服务 -->
     <rect x="708" y="284" width="144" height="48" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
-    <text x="780" y="308" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">消费服务</text>
-    <text x="780" y="324" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">mall-consumer-service</text>
+    <text x="780" y="308" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">消费服务</text>
+    <text x="780" y="324" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">mall-consumer-service</text>
 
     <!-- 第三行 -->
     <path d="M 440,276 V 348" fill="none" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#ms01-arrow)"/>
     <!-- 3 个底层服务 -->
     <rect x="196" y="356" width="144" height="48" rx="6" fill="rgba(45,49,66,0.03)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
-    <text x="268" y="380" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">OSS 服务</text>
-    <text x="268" y="396" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">mall-oss-service</text>
+    <text x="268" y="380" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">OSS 服务</text>
+    <text x="268" y="396" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">mall-oss-service</text>
 
     <rect x="364" y="356" width="152" height="48" rx="6" fill="rgba(45,49,66,0.03)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
-    <text x="440" y="380" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">测试服务</text>
-    <text x="440" y="396" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">mall-test-service</text>
+    <text x="440" y="380" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">测试服务</text>
+    <text x="440" y="396" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">mall-test-service</text>
 
     <rect x="540" y="356" width="144" height="48" rx="6" fill="rgba(45,49,66,0.03)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
-    <text x="612" y="380" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">练习服务</text>
-    <text x="612" y="396" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">mall-exercise-service</text>
+    <text x="612" y="380" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">练习服务</text>
+    <text x="612" y="396" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">mall-exercise-service</text>
 
     <!-- 箭头：服务层 → 中间件 -->
     <path d="M 100,332 V 456" fill="none" stroke="#4f5d75" stroke-width="1" marker-end="url(#ms01-arrow)"/>
@@ -116,60 +116,60 @@
     <path d="M 612,332 V 456" fill="none" stroke="#4f5d75" stroke-width="1" marker-end="url(#ms01-arrow)"/>
     <path d="M 780,332 V 456" fill="none" stroke="#4f5d75" stroke-width="1" marker-end="url(#ms01-arrow)"/>
 
-    <text x="108" y="404" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace">Feign 调用</text>
+    <text x="108" y="404" fill="#7a8399" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace">Feign 调用</text>
 
     <!-- 中间件节点 -->
     <rect x="28" y="456" width="128" height="48" rx="6" fill="rgba(45,49,66,0.05)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
-    <text x="92" y="480" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">MySQL 主从</text>
-    <text x="92" y="496" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">Druid 连接池</text>
+    <text x="92" y="480" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">MySQL 主从</text>
+    <text x="92" y="496" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">Druid 连接池</text>
 
     <rect x="172" y="456" width="128" height="48" rx="6" fill="rgba(45,49,66,0.05)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
-    <text x="236" y="480" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Redis 集群</text>
-    <text x="236" y="496" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">Redisson</text>
+    <text x="236" y="480" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">Redis 集群</text>
+    <text x="236" y="496" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">Redisson</text>
 
     <rect x="316" y="456" width="128" height="48" rx="6" fill="rgba(45,49,66,0.05)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
-    <text x="380" y="480" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Elasticsearch</text>
-    <text x="380" y="496" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">商品搜索</text>
+    <text x="380" y="480" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">Elasticsearch</text>
+    <text x="380" y="496" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">商品搜索</text>
 
     <rect x="460" y="456" width="128" height="48" rx="6" fill="rgba(45,49,66,0.05)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
-    <text x="524" y="480" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">RocketMQ</text>
-    <text x="524" y="496" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">异步削峰</text>
+    <text x="524" y="480" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">RocketMQ</text>
+    <text x="524" y="496" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">异步削峰</text>
 
     <rect x="604" y="456" width="128" height="48" rx="6" fill="rgba(45,49,66,0.05)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
-    <text x="668" y="480" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">MongoDB</text>
-    <text x="668" y="496" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">购物车</text>
+    <text x="668" y="480" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">MongoDB</text>
+    <text x="668" y="496" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">购物车</text>
 
     <rect x="748" y="456" width="128" height="48" rx="6" fill="rgba(45,49,66,0.05)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
-    <text x="812" y="480" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Nacos + Sentinel</text>
-    <text x="812" y="496" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">注册/配置/限流</text>
+    <text x="812" y="480" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">Nacos + Sentinel</text>
+    <text x="812" y="496" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">注册/配置/限流</text>
 
     <!-- 底部：Nacos 协调线 -->
     <path d="M 440,100 C 440,408 812,408 812,448" fill="none" stroke="#2e5aa8" stroke-width="0.8" stroke-dasharray="4,3" marker-end="url(#ms01-arrow-link)"/>
-    <text x="700" y="432" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace">服务注册/发现</text>
+    <text x="700" y="432" fill="#7a8399" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace">服务注册/发现</text>
 
     <!-- 节点：Nginx -->
     <rect x="364" y="56" width="152" height="44" rx="6" fill="#f5f5f5" stroke="#2e5aa8" stroke-width="1"/>
-    <text x="440" y="80" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Nginx 负载均衡</text>
-    <text x="440" y="95" fill="#2e5aa8" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">动静分离 · 反向代理</text>
+    <text x="440" y="80" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">Nginx 负载均衡</text>
+    <text x="440" y="95" fill="#2e5aa8" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">动静分离 · 反向代理</text>
 
     <!-- 节点：Gateway -->
     <rect x="364" y="124" width="152" height="48" rx="6" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1.2"/>
-    <text x="440" y="148" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Spring Cloud Gateway</text>
-    <text x="440" y="164" fill="#eb6c36" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle">路由 · 鉴权 · 限流</text>
+    <text x="440" y="148" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">Spring Cloud Gateway</text>
+    <text x="440" y="164" fill="#eb6c36" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" text-anchor="middle">路由 · 鉴权 · 限流</text>
 
     <!-- 用户入口 -->
     <rect x="364" y="4" width="152" height="28" rx="4" fill="rgba(45,49,66,0.03)" stroke="rgba(45,49,66,0.3)" stroke-width="1" stroke-dasharray="4,3"/>
-    <text x="440" y="22" fill="#2d3142" font-size="11" font-weight="500" font-family="'Geist', sans-serif" text-anchor="middle">用户端（Web / 小程序）</text>
+    <text x="440" y="22" fill="#2d3142" font-size="11" font-weight="500" font-family="'Geist','Noto Sans SC',sans-serif" text-anchor="middle">用户端（Web / 小程序）</text>
 
     <!-- 图例 -->
     <line x1="32" y1="616" x2="848" y2="616" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/>
-    <text x="32" y="632" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LEGEND</text>
+    <text x="32" y="632" fill="#4f5d75" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace" letter-spacing="0.14em">LEGEND</text>
     <line x1="96" y1="628" x2="128" y2="628" stroke="#eb6c36" stroke-width="1.2"/>
-    <text x="136" y="632" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace">焦点服务</text>
+    <text x="136" y="632" fill="#7a8399" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace">焦点服务</text>
     <line x1="216" y1="628" x2="248" y2="628" stroke="#2e5aa8" stroke-width="1.2"/>
-    <text x="256" y="632" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace">外部/网络</text>
+    <text x="256" y="632" fill="#7a8399" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace">外部/网络</text>
     <line x1="328" y1="628" x2="360" y2="628" stroke="#4f5d75" stroke-width="1.2"/>
-    <text x="368" y="632" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace">服务/中间件</text>
+    <text x="368" y="632" fill="#7a8399" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace">服务/中间件</text>
     <line x1="440" y1="628" x2="472" y2="628" stroke="#4f5d75" stroke-width="1.2" stroke-dasharray="4,3"/>
-    <text x="480" y="632" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace">注册/控制</text>
+    <text x="480" y="632" fill="#7a8399" font-size="8" font-family="'Geist Mono','Noto Sans SC',monospace">注册/控制</text>
   </svg>
