@@ -49,7 +49,9 @@
 
 ## 2. 一句话项目定位
 
-**`[源码已确认]`** 这是一个以 FastAPI 对外提供接口、以 MySQL `sku_info` 为商品数据源、以 Redis `RedisVectorStore` 为向量存储、通过 OpenAI-compatible Embedding/Chat 模型和 LangChain Agent 完成语义商品推荐与条件提取的 AI 搜索服务；**`[待验证]`** 它与传统商品分页搜索及网关/Java 微服务的完整映射需要整合工程联调才能确认。
+**`[源码已确认]`** 这是一个以 FastAPI 对外提供接口、以 MySQL `sku_info` 为商品数据源、以 Redis `RedisVectorStore` 为向量存储、通过 OpenAI-compatible Embedding/Chat 模型和 LangChain Agent 完成语义商品推荐与条件提取的 AI 搜索服务（S1-S6；路径见 1.3）。
+
+**`[待验证]`** 在已审查文件范围内未发现它与传统商品分页搜索及网关/Java 微服务的完整映射证据；该映射需要整合工程联调确认。
 
 ## 3. 业务目标与用户价值
 
@@ -57,7 +59,9 @@
 
 - **`[Word描述]`** 面向电商场景，把口语化商品诉求转换成检索条件并返回结构化推荐，降低用户必须输入精确关键词的门槛。Word 以“5000 元以下、续航强的华为手机”作为自然语言查询示例。
 - **`[源码已确认]`** 当前 Python 服务的条件 Schema 只有 `keyword`、`min_price`、`max_price`；推荐结果包含 `summary`、`product_list`、`reason`。证据：S4、S8。
-- **`[Word描述]`** 文档将品牌、产品特性、会话追问和业务数据闭环列为目标，但当前条件提取代码没有品牌、库存、上下架或性能字段，因此这些能力不能直接标记为已实现。
+- **`[Word描述]`** 文档将品牌、产品特性、会话追问和业务数据闭环列为目标（Word 第 9.1 节）。
+
+**`[源码已确认]`** 当前 `SearchCondition` 未声明品牌、库存、上下架或性能字段（S4）。
 
 ### 3.2 用户价值与业务价值
 
@@ -101,7 +105,9 @@ frontend/ai_search.html
 
 ### 4.3 不应误写成当前架构的内容
 
-- **`[源码已确认]`** 本 Python 模块实际使用 Redis 向量库；未发现 Elasticsearch 客户端、ES DSL 或 Rerank 调用。前端保留的传统 `/search/product/page` 只能证明它依赖一个外部/既有商品搜索接口，不能证明本模块内部实现了 ES。
+- **`[源码已确认]`** 本 Python 模块实际使用 Redis 向量库（S3）。
+
+**`[待验证]`** 在已审查文件范围内未发现 Elasticsearch 客户端、ES DSL 或 Rerank 调用（S3）。
 - **`[Word描述]`** SpringCloud、OpenFeign、Gateway、Nacos 和 Java 适配服务出现在 Word 第 9.2 节，是整合方案叙述；在本次指定源码范围内没有 Java 源码证据。
 - **`[架构规划]`** Redis checkpoint、多实例会话、库存工具、类目过滤、混合检索和 Rerank 可作为后续设计，不应写成当前已有能力。
 
@@ -120,9 +126,13 @@ frontend/ai_search.html
 | `tests/test_vector_sync_service.py` | 纯函数、批处理和日志测试；基础设施全部 Mock | `[源码已确认]` S10 |
 | `tests/test_search_service.py` | 异步手工调用示例；当前内容无 pytest 测试函数和断言 | `[源码已确认]` S11 |
 | `frontend/ai_search.html` | Vue 3 页面、模式切换、AI 并行请求和推荐渲染 | `[源码已确认]` S9 |
-| `docs/`、`logs/` | Word 目录说明中提及，但本次源码清单未作为实现证据 | `[Word描述]` / `[待验证]` |
+| `docs/`、`logs/` | Word 目录说明中提及 | `[Word描述]`（Word 第 9.1 节目录） |
 
-**边界说明：** Word 的目录规范称 `utils` 存放通用函数，但给出的当前源码清单没有可核验的 `utils` 实现；因此不能据此声称存在该层。
+在已审查文件范围内未发现 `docs/`、`logs/` 目录承担 Python 模块实现职责。该目录是否存在及其实际职责属于 `[待验证]`。
+
+**`[Word描述]`** Word 的目录规范称 `utils` 存放通用函数（Word 第 9.1 节目录）。
+
+**`[待验证]`** 在已审查文件范围内未发现可核验的 `utils` 实现，因此不能据此声称存在该层。
 
 ## 6. 技术栈与真实使用边界
 
@@ -137,8 +147,9 @@ frontend/ai_search.html
 | Embedding Provider | `siliconflow`、`openrouter` 两个枚举分支，当前默认枚举为 SiliconFlow | `[源码已确认]` S7；实际运行值取环境配置 |
 | LLM Provider | `aliyun`、`agnes` 两个枚举分支，当前默认枚举为 Aliyun | `[源码已确认]` S7；实际运行值取环境配置 |
 | LangChain/LangGraph Agent | `create_agent`、工具装饰器、`InMemorySaver` | `[源码已确认]` S2；依赖版本只代表声明，不代表兼容性已验证 |
-| Elasticsearch | 前端传统分页接口及 Word 整合描述提到，但 Python 模块没有 ES 客户端/DSL | `[待验证]` 对外部商品服务；`[源码已确认]` 本模块未使用 ES |
-| Rerank、消息队列 | 本次源码中未发现 | `[待验证]` / `[架构规划]`，不能宣称已实现 |
+| Elasticsearch | 前端传统分页接口及 Word 整合描述提到 | `[待验证]` 在已审查文件范围内未发现外部商品服务的实际检索实现（S9；Word 第 9.2 节） |
+| Rerank | 当前 Python 模块检索链路未调用 Rerank | `[源码已确认]` 在已审查文件范围内未发现 Rerank 调用（S2、S3） |
+| 消息队列 | 当前 Python 模块同步链路直接执行 | `[架构规划]` 消息队列异步化是后续方案，不是当前能力（第 16 节） |
 
 ### 6.1 配置与敏感信息边界
 
@@ -165,9 +176,11 @@ frontend/ai_search.html
 
 ### 7.3 同步边界和风险
 
-- **`[源码已确认]`** `/sync` 每次调用都会从 `deleted=0` 的 SKU 全量扫描，没有按更新时间增量条件、删除向量、任务断点、分布式锁或重试队列（S1、S5）。
-- **`[待验证]`** 同一个 SKU 的旧分片在商品内容改变后是否会留下，取决于向量库写入和清理策略；当前代码没有主动删除旧 ID，不能宣称知识库与 MySQL 永久一致。
-- **`[源码已确认]`** `add_documents()` 调用没有在服务代码中包裹逐批异常恢复；中途异常时已写入批次和未写入批次的恢复行为没有定义。
+- **`[源码已确认]`** `/sync` 每次调用都会从 `deleted=0` 的 SKU 全量扫描（S1、S5）。
+
+**`[源码已确认]`** 在已审查文件范围内未发现按更新时间增量、删除向量、任务断点、分布式锁或重试队列实现（S1、S5）。
+- **`[待验证]`** 在已审查文件范围内未发现主动删除旧 ID 的代码；同一 SKU 的旧分片是否会留下，仍需验证向量库写入和清理策略，不能据此宣称知识库与 MySQL 永久一致。
+- **`[源码已确认]`** 在已审查文件范围内未发现 `add_documents()` 外层逐批异常恢复实现；中途异常时已写入批次和未写入批次的恢复行为需要验证（S1）。
 - **`[Word描述]`** 文档把“数据闭环”和“调用同步接口更新知识库”作为业务产出，但这不能覆盖上述删除、并发和失败恢复缺口。
 
 ## 8. AI 搜索与推荐链路
@@ -188,14 +201,16 @@ frontend/ai_search.html
 
 **`[源码已确认]`** `vector_search_tool(query)` 调用 `self.vector_store.similarity_search(query, k=10)`，把每个文档的 `page_content` 与 metadata 拼成文本交给 Agent。Agent 返回 `structured_response`，由 `ProductRecommendResponse` 校验 `summary`、商品列表和推荐理由。
 
-**`[源码已确认]`** 当前检索没有价格、品牌、库存、上下架、类目等 metadata 硬过滤；`k=10` 也不是 Word 中的“top5”。前端只是把返回商品列表显示前 5 项（S9:604-610），不能把前端截断等同于后端只召回 5 项。
+**`[源码已确认]`** 在已审查文件范围内未发现价格、品牌、库存、上下架或类目 metadata 硬过滤；后端调用 `similarity_search(query, k=10)`，前端只是把返回商品列表显示前 5 项（S2:24-36、S9:604-610），不能把前端截断等同于后端只召回 5 项。
 
-**`[源码已确认]`** Prompt 要求只使用工具上下文中的商品信息、没有匹配时返回空列表，并禁止额外 Markdown；这是模型行为约束，不是数据库白名单或业务授权校验。
+**`[源码已确认]`** Prompt 要求只使用工具上下文中的商品信息、无匹配时返回空列表，并禁止额外 Markdown（S8）。
+
+**`[源码已确认]`** 在已审查文件范围内未发现该 Prompt 替代数据库白名单或业务授权校验的实现（S2、S4）。
 
 ### 8.3 推荐结果的可信边界
 
 - **`[源码已确认]`** `ProductRecommendResponse` 只做字段和类型结构校验；`GoodsInfo` 要求 ID、SPU ID、名称、价格和图片类型正确（S4:7-14、30-35）。
-- **`[源码已确认]`** 没有商品 ID 白名单、MySQL 二次回查、上下架校验、库存校验或价格实时校验；模型若从检索文本中组合出一个形式上合规但业务上不存在的 ID，当前代码没有二次拦截。
+- **`[源码已确认]`** 在已审查文件范围内未发现商品 ID 白名单、MySQL 二次回查、上下架校验、库存校验或价格实时校验；当前代码没有二次拦截（S2、S4）。
 - **`[待验证]`** 真实模型是否始终调用工具、是否遵守空结果约束、是否会超时或返回解析错误，需要集成测试和线上观测确认。
 
 ## 9. 查询条件提取链路
@@ -210,7 +225,8 @@ frontend/ai_search.html
 ### 9.2 文档与实现的边界
 
 - **`[Word描述]`** 文档把品牌、产品特性等列为可解析条件，并描述 Agent 接收“解析出来的过滤条件”。
-- **`[源码已确认]`** Python `/recommend` 只接收原始 `query` 和 `thread_id`，没有接收 `SearchCondition` 参数；条件提取结果也没有传入 Agent 函数。
+- **`[源码已确认]`** Python `/recommend` 只接收原始 `query` 和 `thread_id`（S2、S5）。
+- **`[源码已确认]`** 在已审查文件范围内未发现 `SearchCondition` 参数传入 `/recommend` 或 Agent 函数（S2、S4、S5）。
 - **`[源码已确认]`** 当前前端是“推荐请求”和“条件提取请求”并行，推荐调用本身不会等待或消费提取结果；提取结果只用于后续传统商品分页接口。
 - **`[待验证]`** Java/Gateway 是否在外层完成了参数转换或隐藏条件拼接，本次指定项目范围没有证据。
 
@@ -218,15 +234,19 @@ frontend/ai_search.html
 
 ### 10.1 Tool Calling
 
-**`[源码已确认]`** 工具通过 `@tool` 声明，参数只有 `query: str`；工具执行 Redis 向量相似度查询，并返回最多 10 条文档文本。Agent 创建时只注册这一项工具，没有库存、价格过滤或商品详情回查工具（S2:24-36）。
+**`[源码已确认]`** 工具通过 `@tool` 声明，参数只有 `query: str`；工具执行 Redis 向量相似度查询，并返回最多 10 条文档文本（S2:24-36）。
+
+**`[源码已确认]`** 在已审查文件范围内未发现库存、价格过滤或商品详情回查工具（S2:24-36）。
 
 ### 10.2 会话标识和 checkpoint
 
 - **`[源码已确认]`** Agent 调用配置 `{"configurable": {"thread_id": thread_id}}`，服务方法默认 `thread_id=0`，API 参数类型为 `int`（S2:60-79、S5:24-27）。
 - **`[源码已确认]`** checkpoint 实例是 `InMemorySaver()`，进程内存保存，服务重启后不保留（S2:21-23）。
-- **`[源码已确认]`** `pyproject.toml` 声明了 `langgraph-checkpoint-redis`，但当前搜索服务没有导入或实例化 Redis checkpoint（S2、S12）。
+- **`[源码已确认]`** `pyproject.toml` 声明了 `langgraph-checkpoint-redis`（S12）。
+- **`[源码已确认]`** 在已审查文件范围内未发现当前搜索服务导入或实例化 Redis checkpoint；当前实例是 `InMemorySaver`（S2:21-23）。
 - **`[待验证]`** 同一进程中同一 thread ID 的多轮消息是否符合目标版本 Agent 的消息格式，需要使用实际依赖执行集成测试；源码只证明传递了 thread ID。
-- **`[源码已确认]`** 前端生成随机整数 `threadId` 并持续复用，但它没有用户身份绑定、持久化或跨标签页共享机制（S9:513-520）。
+- **`[源码已确认]`** 前端生成随机整数 `threadId` 并持续复用（S9:513-520）。
+- **`[源码已确认]`** 在已审查文件范围内未发现该 `threadId` 的用户身份绑定、持久化或跨标签页共享实现（S9:513-520）。
 
 ## 11. Provider 抽象与外部依赖
 
@@ -242,13 +262,14 @@ frontend/ai_search.html
 
 ### 11.3 基础设施依赖
 
-- MySQL：读取 `sku_info`；同步路径通过 SQLAlchemy/SQLDatabase 访问。
-- Redis：承载向量索引；`REDIS_URL` 同时用于 `RedisVectorStore` 配置。
-- Embedding API：把商品分片和查询转换为向量。
-- Chat API：执行条件提取和 Agent 推荐。
-- 传统商品搜索接口：前端 AI 模式在条件提取成功后仍调用 `/search/product/page`；其实现不在本次 Python 模块内。
+- **`[源码已确认]`** MySQL：同步路径通过 SQLAlchemy/SQLDatabase 读取 `sku_info`（S1、S3；文件路径见 1.3）。
+- **`[源码已确认]`** Redis：`RedisVectorStore` 承载向量索引，`REDIS_URL` 用于其配置；Redis 普通连接工厂也在 S3 对应文件中定义（S3；文件路径见 1.3）。Redis Vector Store 是向量存储，不是业务结果缓存。
+- **`[源码已确认]`** Embedding API：`OpenAIEmbeddings` 为向量入库和相似度查询提供向量化（S1-S3；文件路径见 1.3）。
+- **`[源码已确认]`** Chat API：`ChatOpenAI` 用于条件提取链和 Agent 推荐（S2、S3；文件路径见 1.3）。
+- **`[源码已确认]`** 传统商品搜索接口：前端 AI 模式在条件提取成功后调用 `/search/product/page`，其实现不在本次 Python 模块内（S9:622-633；文件路径见 1.3）。
+- **`[源码已确认]`** 在本次审查的 mall-ai-search Python 模块范围内，未发现独立业务结果缓存、检索结果缓存或商品缓存。`Tools` 的 `_embedding_cache`/`_llm_cache` 只是客户端实例缓存（S3:20-23、78-93、128-143）；Redis Vector Store 是向量存储，二者均不等同于业务结果缓存。
 
-**`[待验证]`** 这些外部依赖的连接池、认证、权限、限流、监控、SLA 和部署拓扑均未在指定源码中得到完整证明。
+**`[待验证]`** 在已审查文件范围内未发现以上外部依赖的真实连接池、认证、权限、限流、监控、SLA 和部署拓扑的完整证明；这些内容需要受控环境和整合部署验证（S1-S3、S7、S9）。
 
 ## 12. FastAPI 接口与前端协作
 
@@ -282,7 +303,9 @@ frontend/ai_search.html
 ### 13.1 异常处理
 
 - **`[源码已确认]`** FastAPI 注册了全局 `Exception` handler，日志记录路径和异常，再返回 `Result(code=500, msg=...)`（S6:16-26）。
-- **`[源码已确认]`** `JSONResponse` 没有显式传 `status_code=500`，因此响应体 code 与 HTTP 状态码可能不一致；实际 HTTP 层状态需要验证。
+- **`[源码已确认]`** `JSONResponse` 未显式传 `status_code=500`（S6）。
+
+**`[待验证]`** HTTP 层状态是否与响应体 `code=500` 一致，需要实际 HTTP 验证。
 - **`[待验证]`** Pydantic 输出解析错误、Embedding 失败、Redis 超时、MySQL 连接失败和模型 API 错误是否都能被统一 handler 捕获，尚未做运行测试。
 - **`[源码已确认]`** 错误消息直接包含异常字符串，可能泄露内部实现、连接信息或上游错误细节，应在生产接口中脱敏。
 
@@ -295,16 +318,17 @@ frontend/ai_search.html
 
 ### 13.3 可靠性风险清单
 
-1. **`[源码已确认]`** RedisVectorStore 是当前向量存储；本模块没有 ES 客户端或 DSL。
-2. **`[源码已确认]`** `similarity_search(..., k=10)` 无商品业务硬过滤。
-3. **`[源码已确认]`** `ProductRecommendResponse` 只有结构校验，无 ID 白名单和 MySQL 二次回查。
-4. **`[源码已确认]`** `InMemorySaver` 不支持跨进程/跨 Pod 共享；声明的 Redis checkpoint 依赖未被使用。
-5. **`[源码已确认]`** `/sync` 全量扫描有效 SKU，无增量、删除同步、分布式锁和断点续传。
-6. **`[待验证]`** 全局异常体虽含 `code=500`，但 HTTP status 未显式设置。
-7. **`[待验证]`** 前端/后端路径和 `threadId` 映射未在模块内证明。
-8. **`[源码已确认]`** Word 的 top5 与源码后端 `k=10` 不一致；前端另行截取 5 条。
-9. **`[源码已确认]`** 文档概念上描述条件提取参与推荐，但 `/recommend` 实际只接收原始 query。
-10. **`[待验证]`** 日志中 `vector_search_tool` 使用 `print`，缺少结构化日志、请求 ID 和敏感数据治理。
+1. **`[源码已确认]`** RedisVectorStore 是当前向量存储；在已审查文件范围内未发现 ES 客户端或 DSL（S3；文件路径见 1.3）。
+2. **`[源码已确认]`** 在已审查文件范围内未发现商品业务硬过滤；当前调用是 `similarity_search(..., k=10)`（S2）。
+3. **`[源码已确认]`** 在已审查文件范围内未发现 ID 白名单和 MySQL 二次回查；`ProductRecommendResponse` 只做结构校验（S2、S4）。
+4. **`[源码已确认]`** `InMemorySaver` 是当前 checkpoint；在已审查文件范围内未发现 Redis checkpoint 被当前搜索服务实例化（S2、S12）。
+5. **`[源码已确认]`** `/sync` 全量扫描有效 SKU；在已审查文件范围内未发现增量、删除同步、分布式锁和断点续传实现（S1、S5）。
+6. **`[待验证]`** 全局异常体虽含 `code=500`，但 HTTP status 未显式设置；需 HTTP 集成验证（S6）。
+7. **`[待验证]`** 在已审查文件范围内未发现前端/后端路径和 `threadId` 映射证据（S5、S9）。
+8. **`[源码已确认]`** Word 的 top5 与源码后端 `k=10` 不一致；前端另行截取 5 条（S2、S9；Word 第 9.1.2 节）。
+9. **`[源码已确认]`** 在已审查文件范围内未发现条件提取结果传入 `/recommend`；该接口实际只接收原始 query（S2、S5；Word 第 9.1.2 节）。
+10. **`[源码已确认]`** `vector_search_tool` 的源码包含 `print` 调用（S2:32-34）。
+11. **`[待验证]`** 在已审查文件范围内未发现生产日志采集、结构化、请求 ID 关联或脱敏配置；生产环境是否采集该 `print` 输出仍需部署和日志平台验证。
 
 ## 14. 测试覆盖与验证局限
 
@@ -336,22 +360,24 @@ frontend/ai_search.html
 
 | 文档表述 | 源码核验 | 结论 |
 |---|---|---|
-| MySQL 商品数据转换为向量并存入向量库 | `sku_info` 查询、懒加载、分片和 `RedisVectorStore.add_documents()` 均存在 | `[源码已确认]` 主链路成立；实时一致性不成立 |
-| 向量库是“Redis” | `tools.py` 构造 `RedisVectorStore` | `[源码已确认]` |
-| 搜索返回 top5 文档 | `similarity_search(query, k=10)` | `[源码已确认]` 后端是 10；`[源码已确认]` 前端显示最多 5 |
-| Agent 结合过滤条件推荐 | `/recommend` 只收 `query` 和 `thread_id`，不收 `SearchCondition` | `[源码已确认]` 文档描述超出当前 Python 实现 |
-| 支持 Redis 持久化会话 | 依赖声明有 Redis checkpoint，但服务实例化 `InMemorySaver` | `[源码已确认]` 当前不是 Redis 持久化；Word 属于规划/描述 |
-| `/sync` 保证数据闭环一致 | 全量读有效数据，缺少删除、增量、锁、断点 | `[待验证]` 只能说提供同步入口，不能说已保证一致 |
-| 统一异常返回 | 有全局 handler，body code=500 | `[源码已确认]` body 统一；`[待验证]` HTTP status 是否为 500 |
-| 前端调用 `/v1/search/recommend`、`/v1/search/extract` | Python 路由为 `/api/v1/recommend`、`/api/v1/extract` | `[待验证]` 需 Java/Gateway 映射证据 |
-| 条件包含品牌、产品特性 | 当前 Pydantic 仅 keyword/price 三字段 | `[源码已确认]` 当前字段范围更窄 |
-| 可独立部署、业务系统直接 HTTP 调用 | FastAPI 应用和 REST 路由存在；整合部署未执行 | `[Word描述]` / `[待验证]` |
+| MySQL 商品数据转换为向量并存入向量库 | `sku_info` 查询、懒加载、分片和 `RedisVectorStore.add_documents()` 均存在 | `[源码已确认]` 主链路成立（S1、S3） |
+| 向量库是“Redis” | `tools.py` 构造 `RedisVectorStore` | `[源码已确认]`（S3） |
+| 搜索返回 top5 文档 | `similarity_search(query, k=10)`，前端另行截取 | `[源码已确认]` 后端召回 10，前端显示最多 5（S2、S9） |
+| Agent 结合过滤条件推荐 | `/recommend` 只收 `query` 和 `thread_id` | `[源码已确认]` 在已审查文件范围内未发现 `SearchCondition` 传入推荐链路（S2、S4、S5） |
+| 支持 Redis 持久化会话 | 依赖声明有 Redis checkpoint，服务实例化 `InMemorySaver` | `[源码已确认]` 当前 checkpoint 实例是 `InMemorySaver`（S2、S12） |
+| `/sync` 保证数据闭环一致 | 全量读有效数据，缺少删除、增量、锁、断点 | `[源码已确认]` 当前实现提供全量同步入口，但未实现这些一致性保障（S1、S5） |
+| 统一异常返回 | 有全局 handler，body `code=500` | `[源码已确认]` 全局 handler 返回包含 `code=500` 的响应体（S6） |
+| 前端调用 `/v1/search/recommend`、`/v1/search/extract` | Python 路由为 `/api/v1/recommend`、`/api/v1/extract` | `[待验证]` 在已审查文件范围内未发现 Java/Gateway 映射证据（S5、S9；Word 第 9.2 节） |
+| 条件包含品牌、产品特性 | 当前 Pydantic 仅 keyword/price 三字段 | `[源码已确认]` 当前 `SearchCondition` 字段范围更窄（S4） |
+| 可独立部署、业务系统直接 HTTP 调用 | FastAPI 应用和 REST 路由存在 | `[Word描述]` Word 第 9.1/9.2 节如此描述 |
+
+**`[待验证]`** 在已审查文件范围内未发现整合部署实际运行、HTTP 状态码与传统搜索后端实现的完整证据；这些事项需要联调或运行验证。
 
 ### 15.1 事实审查结论
 
-- 报告没有把 ES、Rerank、消息队列、分布式高可用或 Redis checkpoint 写成当前已实现能力。
-- 报告将 Word 中的 SpringCloud/Feign/Gateway 视为整合设计叙述，未用其补充 Python 源码不存在的事实。
-- 报告将“文档示例运行结果”和“静态源码实现”分开；未声称接口当前可连接或推荐结果可复现。
+- **`[源码已确认]`** 在已审查文件范围内未发现 ES、Rerank、消息队列、分布式高可用或 Redis checkpoint 已被当前 Python 模块实现的证据（S2、S3、S12）。
+- **`[Word描述]`** Word 中的 SpringCloud、Feign、Gateway 等内容属于第 9.2 节整合设计叙述。
+- **`[待验证]`** 在已审查文件范围内未发现文档示例运行结果可由当前环境复现的证据（Word 第 9.1 节；S1-S13）。文档示例与静态源码实现应分开核验。
 
 ## 16. 生产化改造路线
 
@@ -399,26 +425,32 @@ frontend/ai_search.html
 
 ### 17.1 30 秒版本
 
-**`[源码已确认]`** 这是一个面向电商的 AI 商品搜索微服务：从 MySQL 的 `sku_info` 读取有效 SKU，把商品名称、属性、品牌、类目和价格拼成文档，经过分片和 OpenAI-compatible Embedding 写入 Redis 向量库；查询时由 LangChain Agent 调用向量搜索工具，召回商品后按 `ProductRecommendResponse` 返回摘要、商品列表和推荐理由。我的可讲亮点是把数据同步、语义召回、结构化输出和前端 AI/传统搜索协作串起来；边界是当前后端召回 `k=10` 没有业务硬过滤，推荐结果也没有 MySQL 二次回查，生产化还要补会话持久化、增量同步和结果校验。
+1. **`[源码已确认]`** 业务入口是电商 AI 商品搜索；Python 模块的 FastAPI 路由、前端推荐解释和传统分页调用分别见 S5、S6、S9（文件路径见 1.3）。
+2. **`[源码已确认]`** 数据链路是 `sku_info` → 分片 → Embedding → RedisVectorStore；推荐链路是 Agent → `vector_search_tool` → `similarity_search(k=10)` → Pydantic 结果（S1-S4；文件路径见 1.3）。
+3. **`[源码已确认]`** 可讲亮点是把同步、语义召回、结构化输出和前端 AI/传统搜索协作串起来（S1-S5、S9）。
+4. **`[源码已确认]`** 在本次审查的 mall-ai-search Python 模块范围内，未发现独立业务结果缓存、检索结果缓存或商品缓存；`Tools` 只有客户端实例缓存，Redis Vector Store 是向量存储（S3；文件路径见 1.3）。
+5. **`[源码已确认]`** 关键边界是后端 `k=10`；在已审查文件范围内未发现价格/库存/上下架等硬过滤和商品 ID 二次回查；checkpoint 为进程内 `InMemorySaver`（S2、S4；文件路径见 1.3）。
 
 ### 17.2 3 分钟版本
 
-1. **业务**：用户可以输入“预算和使用诉求”这类自然语言；系统同时提供推荐解释和传统商品分页结果，降低精确关键词输入门槛。
-2. **同步**：`/sync` 查询 `sku_info WHERE deleted=0`，用 mapper 将五个主要商品字段拼成 `page_content`，把整行字段放入 metadata；`lazy_load` 后按 256 token、25 overlap 分片，每 100 个分片批量写入 RedisVectorStore。
-3. **推荐**：`/recommend` 接收原始 query 和 thread ID，Agent 注册 `vector_search_tool`，执行 `similarity_search(query, k=10)`，再让模型按 Pydantic Schema 生成摘要、商品列表和理由；前端目前只显示前 5 个商品卡片。
-4. **条件提取**：`/extract` 通过提示词和 Pydantic parser 提取 keyword、最低价、最高价；前端把结果交给传统 `/search/product/page`。注意当前 Python 推荐接口并没有接收这组结构化条件，因此文档中“条件参与推荐”的说法需要和整合层继续核对。
-5. **亮点与边界**：Provider 工厂支持不同 OpenAI-compatible Embedding/LLM；但当前 checkpoint 是进程内 `InMemorySaver`，同步是全量同步，召回没有价格/库存/上下架过滤，也没有商品 ID 白名单或二次回查。
+1. **`[源码已确认]`** 业务：前端 AI 模式同时请求推荐和条件提取，并展示推荐解释或传统商品分页结果（S9；`frontend/ai_search.html`；Word 第 9.1 节仅作目标描述）。
+2. **`[源码已确认]`** 同步：`/sync` 查询 `sku_info WHERE deleted=0`，将五个主要商品字段拼成 `page_content`，把查询行字段放入 metadata；`lazy_load` 后按 256 token、25 overlap 分片，每 100 个分片批量写入 RedisVectorStore（S1、S5；文件路径见 1.3）。
+3. **`[源码已确认]`** 推荐：`/recommend` 接收原始 query 和 thread ID，Agent 注册 `vector_search_tool`，执行 `similarity_search(query, k=10)`，再按 Pydantic Schema 生成摘要、商品列表和理由；前端显示前 5 个商品卡片（S2、S4、S5、S9；文件路径见 1.3）。
+4. **`[源码已确认]`** 条件提取：`/extract` 通过提示词和 Pydantic parser 提取 keyword、最低价、最高价；前端把结果交给传统 `/search/product/page`（S2、S4、S5、S9；文件路径见 1.3）。
+5. **`[源码已确认]`** 在已审查文件范围内未发现 Python 推荐接口接收或消费这组结构化条件；它只接收原始 query 和 thread ID（S2、S5）。
+6. **`[源码已确认]`** Provider 工厂支持不同 OpenAI-compatible Embedding/LLM，当前 checkpoint 是进程内 `InMemorySaver`，同步是全量同步（S2、S3、S7；文件路径见 1.3）。
+7. **`[源码已确认]`** 在已审查文件范围内未发现独立业务结果缓存、检索结果缓存或商品缓存；Tools 的缓存是客户端实例缓存，Redis Vector Store 是向量存储（S3；文件路径见 1.3）。
 
 ### 17.3 10 分钟版本
 
-先按 3 分钟版本讲清链路，然后主动指出实现缺口并给方案：
+先按 3 分钟版本讲清链路，然后主动指出实现缺口并给方案。以下每条方案均为 `[架构规划]`，不是当前已有能力；当前实现证据见 S1-S9（文件路径见 1.3）。
 
-- **正确性**：把模型推荐的 SKU ID 与商品库有效 SKU 做白名单校验，二次读取实时价格、上下架和库存；不满足条件的结果过滤或降级。
-- **同步**：从全量 `/sync` 改为变更事件/更新时间增量任务，记录文档版本和删除标记；用幂等键、分布式锁、可重试批次和断点续传保证任务可恢复。
-- **检索**：先用 Redis 向量召回，再用结构化价格/品牌/库存过滤和 Rerank；对型号、品牌等精确词增加关键词召回，并以 Recall@K/NDCG@K 和 P95 延迟评估。
-- **会话**：将 `InMemorySaver` 替换为 Redis checkpoint 或有明确 TTL 的持久化会话，确保 thread ID 绑定用户并支持多实例；统一前端 camelCase 与后端 snake_case。
-- **接口**：修正异常 HTTP status、请求校验和错误脱敏；为长同步和模型调用改成异步任务/流式响应，避免 Web worker 长时间阻塞。
-- **运维**：补齐 trace、请求 ID、模型 token/成本、Redis/MySQL/外部 API 延迟和失败指标，并为 Provider 设置超时、退避、熔断和有限故障转移。
-- **验证**：建立自然语言查询评估集，覆盖价格、品牌、属性、无结果和多轮追问；在灰度环境比较业务指标、质量指标、成本和稳定性，不把 Word 示例输出当作生产证明。
+- **`[架构规划]`** 正确性：把模型推荐的 SKU ID 与商品库有效 SKU 做白名单校验，二次读取实时价格、上下架和库存；不满足条件的结果过滤或降级。
+- **`[架构规划]`** 同步：从全量 `/sync` 改为变更事件/更新时间增量任务，记录文档版本和删除标记；用幂等键、分布式锁、可重试批次和断点续传保证任务可恢复。
+- **`[架构规划]`** 检索：先用 Redis 向量召回，再用结构化价格/品牌/库存过滤和 Rerank；对型号、品牌等精确词增加关键词召回，并以 Recall@K/NDCG@K 和 P95 延迟评估。
+- **`[架构规划]`** 会话：将 `InMemorySaver` 替换为 Redis checkpoint 或有明确 TTL 的持久化会话，确保 thread ID 绑定用户并支持多实例；统一前端 camelCase 与后端 snake_case。
+- **`[架构规划]`** 接口：修正异常 HTTP status、请求校验和错误脱敏；为长同步和模型调用改成异步任务/流式响应，避免 Web worker 长时间阻塞。
+- **`[架构规划]`** 运维：补齐 trace、请求 ID、模型 token/成本、Redis/MySQL/外部 API 延迟和失败指标，并为 Provider 设置超时、退避、熔断和有限故障转移。
+- **`[架构规划]`** 验证：建立自然语言查询评估集，覆盖价格、品牌、属性、无结果和多轮追问；在灰度环境比较业务指标、质量指标、成本和稳定性，不把 Word 示例输出当作生产证明。
 
 以上方案均为生产化改造建议，不代表当前项目已经具备这些能力。
