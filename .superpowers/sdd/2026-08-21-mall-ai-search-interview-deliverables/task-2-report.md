@@ -2,7 +2,7 @@
 
 ## 改动文件
 
-- `D:/code/codeAgentDev/interview-note/.claude/worktrees/agent-a8590dbef26defc93/projects/ai-mall/mall-ai-search-knowledge-map.md`
+- `D:/code/codeAgentDev/interview-note/.claude/worktrees/mall-ai-search-interview-deliverables/projects/ai-mall/mall-ai-search-knowledge-map.md`
   - 新增项目知识树与 Mermaid 依赖图。
   - 新增固定字段的事实证据矩阵，覆盖商品加载、切分、Embedding、Redis Vector、Agent、结构化输出、Checkpoint、Provider、异常、前端协作、测试和生产化缺口。
   - 新增 Level 1—5 的 1-60 题号映射，数量为 12/18/14/12/4，共 60 题；未生成题库全文。

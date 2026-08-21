@@ -2,7 +2,7 @@
 
 ## 改动文件
 
-- `D:\code\codeAgentDev\interview-note\.claude\worktrees\agent-a12a6ecf7dcd429d0\projects\ai-mall\mall-ai-search-interview-questions.md`
+- `D:\code\codeAgentDev\interview-note\.claude\worktrees\mall-ai-search-interview-deliverables\projects\ai-mall\mall-ai-search-interview-questions.md`
   - 新增 60 道云商城智能搜索专项面试题。
   - 严格消费 `mall-ai-search-project-analysis.md` 与 `mall-ai-search-knowledge-map.md`，沿用 S1-S13 证据边界。
   - 补充项目 Goal/阅读方式/证据等级/实现边界/答题策略、30 秒/3 分钟/10 分钟项目表达和 100 分评分标准。
@@ -15,7 +15,7 @@
 - Level 1：12 题；Level 2：18 题；Level 3：14 题；Level 4：12 题；Level 5：4 题。
 - 十类题型各有主归类：事实复述 7、原理解释 9、代码走读 9、接口契约 7、故障排查 5、性能成本 6、测试验证 4、一致性幂等 3、安全可靠性 7、架构设计 3。
 - Level 3：代码题 3、Bug 题 3、场景题 5、测试/排障题 3。
-- Level 4：12 题均包含 4 轮编号追问。
+- Level 4：12 题均保留 4 轮追问，统一字段为 `**面试官追问**：第 N 轮：`。
 - Level 5：4 题分别覆盖亿级增量向量同步、关键词+向量+Rerank 混合搜索、生产高可用与降级、多轮会话/SSE/成本/安全；每题覆盖目标、约束、架构、数据流、接口、存储、故障、指标、容量估算和取舍。
 - 每题均有编号、难度、类型、考察点、项目证据、问题、标准答案、深入解析、追问、优秀回答要点和常见误答。
 
@@ -31,9 +31,9 @@ from pathlib import Path
 import re, collections
 p=Path('projects/ai-mall/mall-ai-search-interview-questions.md')
 s=p.read_text(encoding='utf-8')
-nums=[int(x) for x in re.findall(r'^### 题目 (\\d+)：',s,re.M)]
+nums=[int(x) for x in re.findall(r'^### 题目 (\d+)：',s,re.M)]
 levels=[sum(a<=n<=b for n in nums) for a,b in [(1,12),(13,30),(31,44),(45,56),(57,60)]]
-types=collections.Counter(re.findall(r'^\\*\\*类型\\*\\*：(.*?)(?:\\s+)?$',s,re.M))
+types=collections.Counter(re.findall(r'^\*\*类型\*\*：(.*)$',s,re.M))
 print(len(nums), len(set(nums)), nums == list(range(1,61)), levels)
 print(len(types), dict(types))
 PY
