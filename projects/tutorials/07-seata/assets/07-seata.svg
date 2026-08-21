@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 880 620" role="img" aria-labelledby="t07-title t07-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="t07-title">Seata AT 分布式事务两阶段提交</title>
+<desc id="t07-desc">AT 模式两阶段提交流程：一阶段 beforeImage→SQL→afterImage→undo_log，二阶段 commit 或 rollback。对比 AT/TCC/Saga/XA 四种模式。</desc>
+<defs>
+<style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap');</style>
+<marker id="a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#4f5d75"/></marker>
+<marker id="b" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#eb6c36"/></marker>
+<marker id="d" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#2e5aa8"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="#f5f5f5"/>
+
+<rect x="310" y="16" width="260" height="40" rx="4" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
+<text x="440" y="40" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">@GlobalTransactional</text>
+
+<line x1="440" y1="56" x2="440" y2="80" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#a)"/>
+
+<rect x="280" y="80" width="320" height="40" rx="4" fill="rgba(46,90,168,0.08)" stroke="#2e5aa8" stroke-width="1"/>
+<text x="440" y="104" fill="#2d3142" font-size="11" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">TC (Transaction Coordinator) 协调者</text>
+
+<line x1="440" y1="120" x2="440" y2="148" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#a)"/>
+
+<rect x="310" y="148" width="260" height="40" rx="4" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1.2"/>
+<text x="440" y="168" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Phase 1：一阶段（准备）</text>
+<text x="440" y="182" fill="#eb6c36" font-size="8" font-family="'Geist Mono',monospace" text-anchor="middle">@GlobalTransactional 开启全局事务</text>
+
+<line x1="440" y1="188" x2="440" y2="212" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#a)"/>
+
+<rect x="48" y="212" width="240" height="52" rx="6" fill="rgba(45,49,66,0.03)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
+<text x="168" y="236" fill="#2d3142" font-size="11" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">beforeImage</text>
+<text x="168" y="252" fill="#4f5d75" font-size="8" font-family="'Geist Mono',monospace" text-anchor="middle">SQL 执行前数据快照</text>
+
+<path d="M 288,238 H 316" fill="none" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#a)"/>
+
+<rect x="316" y="212" width="248" height="52" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
+<rect x="324" y="218" width="36" height="12" rx="2" fill="transparent" stroke="rgba(45,49,66,0.4)" stroke-width="0.8"/>
+<text x="342" y="227" fill="#2d3142" font-size="7" font-family="'Geist Mono',monospace" text-anchor="middle" letter-spacing="0.08em">SQL</text>
+<text x="440" y="244" fill="#2d3142" font-size="11" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">执行业务 SQL</text>
+<text x="440" y="258" fill="#4f5d75" font-size="8" font-family="'Geist Mono',monospace" text-anchor="middle">INSERT / UPDATE / DELETE</text>
+
+<path d="M 564,238 H 592" fill="none" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#a)"/>
+
+<rect x="592" y="212" width="240" height="52" rx="6" fill="rgba(45,49,66,0.03)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
+<text x="712" y="236" fill="#2d3142" font-size="11" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">afterImage</text>
+<text x="712" y="252" fill="#4f5d75" font-size="8" font-family="'Geist Mono',monospace" text-anchor="middle">SQL 执行后数据快照</text>
+
+<line x1="440" y1="264" x2="440" y2="288" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#a)"/>
+
+<rect x="310" y="288" width="260" height="40" rx="4" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
+<text x="440" y="308" fill="#2d3142" font-size="11" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">写入 undo_log 表</text>
+<text x="440" y="322" fill="#4f5d75" font-size="8" font-family="'Geist Mono',monospace" text-anchor="middle">beforeImage + afterImage 持久化</text>
+
+<line x1="440" y1="328" x2="440" y2="356" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#a)"/>
+
+<rect x="310" y="356" width="260" height="40" rx="4" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1.2"/>
+<text x="440" y="376" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Phase 2：二阶段（提交/回滚）</text>
+<text x="440" y="390" fill="#eb6c36" font-size="8" font-family="'Geist Mono',monospace" text-anchor="middle">TC 根据全局事务状态决策</text>
+
+<path d="M 310,396 V 420 H 248 V 432" fill="none" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#a)"/>
+<path d="M 570,396 V 420 H 632 V 432" fill="none" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#b)"/>
+
+<rect x="48" y="432" width="200" height="56" rx="6" fill="rgba(46,90,168,0.08)" stroke="#2e5aa8" stroke-width="1.2"/>
+<text x="148" y="456" fill="#2d3142" font-size="11" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">提交（Commit）</text>
+<text x="148" y="472" fill="#2e5aa8" font-size="8" font-family="'Geist Mono',monospace" text-anchor="middle">删除 undo_log → 事务完成</text>
+
+<rect x="632" y="432" width="200" height="56" rx="6" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1.2"/>
+<text x="732" y="456" fill="#2d3142" font-size="11" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">回滚（Rollback）</text>
+<text x="732" y="472" fill="#eb6c36" font-size="8" font-family="'Geist Mono',monospace" text-anchor="middle">undo_log → beforeImage 恢复</text>
+
+<line x1="32" y1="508" x2="848" y2="508" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/>
+
+<rect x="310" y="516" width="260" height="40" rx="4" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
+<text x="440" y="540" fill="#2d3142" font-size="11" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">四种模式对比</text>
+
+<line x1="440" y1="556" x2="440" y2="572" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#a)"/>
+
+<rect x="48" y="572" width="180" height="28" rx="4" fill="rgba(45,49,66,0.03)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
+<text x="138" y="590" fill="#eb6c36" font-size="9" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">AT 无侵入</text>
+
+<rect x="244" y="572" width="180" height="28" rx="4" fill="rgba(45,49,66,0.03)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
+<text x="334" y="590" fill="#4f5d75" font-size="9" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">TCC 需实现</text>
+
+<rect x="440" y="572" width="180" height="28" rx="4" fill="rgba(45,49,66,0.03)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
+<text x="530" y="590" fill="#4f5d75" font-size="9" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Saga 补偿</text>
+
+<rect x="636" y="572" width="196" height="28" rx="4" fill="rgba(45,49,66,0.03)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
+<text x="734" y="590" fill="#4f5d75" font-size="9" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">XA 资源锁</text>
+</svg>

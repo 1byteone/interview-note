@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 760 480" role="img" aria-labelledby="nacos-title nacos-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="nacos-title">Nacos 服务注册与配置中心原理图</title>
+<desc id="nacos-desc">展示服务提供者向Nacos注册、消费者从Nacos发现服务，以及配置中心长轮询动态刷新的完整流程。</desc>
+<defs>
+<style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap');</style>
+<marker id="a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#4f5d75"/></marker>
+<marker id="b" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#eb6c36"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="#f5f5f5"/>
+<rect x="40" y="40" width="680" height="200" rx="8" fill="rgba(45,49,66,0.02)" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/>
+<rect x="44" y="44" width="56" height="12" rx="2" fill="#f5f5f5"/><text x="72" y="53" fill="rgba(45,49,66,0.40)" font-size="7" font-family="'Geist Mono',monospace" text-anchor="middle" letter-spacing="0.08em">服务发现</text>
+<rect x="40" y="260" width="680" height="176" rx="8" fill="rgba(45,49,66,0.02)" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/>
+<rect x="44" y="264" width="56" height="12" rx="2" fill="#f5f5f5"/><text x="72" y="273" fill="rgba(45,49,66,0.40)" font-size="7" font-family="'Geist Mono',monospace" text-anchor="middle" letter-spacing="0.08em">配置中心</text>
+<rect x="160" y="80" width="180" height="56" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/><text x="250" y="104" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">服务提供者</text><text x="250" y="120" fill="#4f5d75" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">启动时注册 · 5s心跳</text>
+<rect x="420" y="80" width="180" height="56" rx="6" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1.2"/><text x="510" y="104" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Nacos 服务端</text><text x="510" y="120" fill="#eb6c36" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">注册表 · 健康检查</text>
+<rect x="160" y="164" width="180" height="56" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/><text x="250" y="188" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">服务消费者</text><text x="250" y="204" fill="#4f5d75" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">订阅 · 拉取实例列表</text>
+<path d="M 340,108 H 412" fill="none" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#b)"/><text x="376" y="100" fill="#eb6c36" font-size="8" font-family="'Geist Mono',monospace" text-anchor="middle">注册</text>
+<path d="M 340,192 H 412" fill="none" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#a)"/><text x="376" y="204" fill="#4f5d75" font-size="8" font-family="'Geist Mono',monospace" text-anchor="middle">发现</text>
+<rect x="120" y="300" width="220" height="56" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/><text x="230" y="324" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Nacos Config 客户端</text><text x="230" y="340" fill="#4f5d75" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">长轮询监听 · 30s挂起</text>
+<rect x="420" y="300" width="220" height="56" rx="6" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1.2"/><text x="530" y="324" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">Nacos Config 服务端</text><text x="530" y="340" fill="#eb6c36" font-size="9" font-family="'Geist Mono',monospace" text-anchor="middle">配置变更 · 立即响应</text>
+<path d="M 340,328 H 412" fill="none" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#b)"/><text x="376" y="320" fill="#eb6c36" font-size="8" font-family="'Geist Mono',monospace" text-anchor="middle">长轮询</text>
+<path d="M 440,356 V 380" fill="none" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#b)"/><rect x="380" y="380" width="200" height="36" rx="6" fill="rgba(45,49,66,0.05)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/><text x="480" y="402" fill="#2d3142" font-size="11" font-weight="600" font-family="'Geist',sans-serif" text-anchor="middle">@RefreshScope 刷新 Bean</text>
+<line x1="40" y1="440" x2="720" y2="440" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/><text x="40" y="456" fill="#4f5d75" font-size="8" font-family="'Geist Mono',monospace" letter-spacing="0.14em">LEGEND</text>
+<line x1="120" y1="452" x2="152" y2="452" stroke="#eb6c36" stroke-width="1.2"/><text x="160" y="456" fill="#7a8399" font-size="8" font-family="'Geist Mono',monospace">焦点</text>
+<line x1="220" y1="452" x2="252" y2="452" stroke="#4f5d75" stroke-width="1.2"/><text x="260" y="456" fill="#7a8399" font-size="8" font-family="'Geist Mono',monospace">普通</text>
+</svg>

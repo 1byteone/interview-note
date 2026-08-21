@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spring Boot 自动配置原理流程图</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #f5f5f5; font-family: 'Geist', sans-serif; }
+  .page { max-width: 960px; margin: 0 auto; padding: 48px 24px; }
+  .eyebrow { font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #4f5d75; margin: 0 0 12px; }
+  h1 { font-family: 'Instrument Serif', serif; font-size: 40px; font-weight: 400; color: #2d3142; margin: 0 0 8px; }
+  .subtitle { font-size: 16px; color: #7a8399; margin: 0 0 32px; }
+  .frame { background: #ececec; border: 1px solid rgba(45,49,66,0.12); border-radius: 8px; padding: 24px; overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="page">
+  <p class="eyebrow">FLOWCHART · TUTORIAL 01</p>
+  <h1>Spring Boot 自动配置原理</h1>
+  <p class="subtitle">从 @SpringBootApplication 到 Bean 注入的完整链路，对应 mall-micro-cloud 实际应用</p>
+  <div class="frame">
+  <svg viewBox="0 0 880 640" role="img" aria-labelledby="sb01-title sb01-desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="sb01-title">Spring Boot 自动配置原理流程图</title>
+    <desc id="sb01-desc">展示 @SpringBootApplication 注解经 AutoConfigurationImportSelector 加载自动配置类，再经条件判断生成 Bean 的完整流程，最终由 @ComponentScan 补充业务组件。</desc>
+
+    <defs>
+      <marker id="sb01-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#4f5d75"/>
+      </marker>
+      <marker id="sb01-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#eb6c36"/>
+      </marker>
+    </defs>
+
+    <!-- 主流程：先画箭头再画盒子 -->
+    <!-- 垂直主链路 -->
+    <line x1="440" y1="120" x2="440" y2="168" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#sb01-arrow)"/>
+    <line x1="440" y1="232" x2="440" y2="280" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#sb01-arrow)"/>
+    <line x1="440" y1="344" x2="440" y2="392" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#sb01-arrow-accent)"/>
+    <line x1="440" y1="456" x2="440" y2="504" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#sb01-arrow)"/>
+
+    <!-- 分叉：条件判断 → 两个分支 -->
+    <path d="M 440,568 H 440" stroke="#4f5d75" stroke-width="1.2"/>
+    <line x1="440" y1="568" x2="440" y2="568" stroke="#4f5d75" stroke-width="1.2"/>
+    <line x1="440" y1="568" x2="440" y2="568" stroke="#4f5d75" stroke-width="1.2"/>
+    <!-- 条件成立 → 右侧 -->
+    <path d="M 440,568 H 584 Q 592,568 592,576 V 608" fill="none" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#sb01-arrow-accent)"/>
+    <!-- 条件不成立 → 左侧 -->
+    <path d="M 440,568 H 296 Q 288,568 288,576 V 608" fill="none" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#sb01-arrow)"/>
+
+    <!-- 标签 mask -->
+    <rect x="408" y="580" width="64" height="12" rx="2" fill="#f5f5f5"/>
+    <text x="440" y="589" fill="#eb6c36" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">成立</text>
+    <rect x="240" y="580" width="64" height="12" rx="2" fill="#f5f5f5"/>
+    <text x="272" y="589" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">不成立</text>
+
+    <!-- 启动终点的两条汇聚线 -->
+    <line x1="592" y1="656" x2="592" y2="680" stroke="#eb6c36" stroke-width="1.2" marker-end="url(#sb01-arrow-accent)"/>
+    <line x1="288" y1="656" x2="288" y2="680" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#sb01-arrow)"/>
+    <line x1="288" y1="688" x2="592" y2="688" stroke="#4f5d75" stroke-width="1.2"/>
+    <line x1="440" y1="688" x2="440" y2="680" stroke="#4f5d75" stroke-width="1.2"/>
+
+    <!-- 从 @SpringBootApplication 分支到 @ComponentScan -->
+    <path d="M 440,120 H 120 Q 112,120 112,128 V 160" fill="none" stroke="#4f5d75" stroke-width="1.2" marker-end="url(#sb01-arrow)" stroke-dasharray="4,3"/>
+
+    <!-- ==== 节点盒子（后画，保证 z-order 在上层）==== -->
+    <!-- 起点：@SpringBootApplication -->
+    <rect x="320" y="56" width="240" height="64" rx="12" fill="#f5f5f5" stroke="#eb6c36" stroke-width="1.2"/>
+    <rect x="328" y="62" width="56" height="12" rx="2" fill="transparent" stroke="rgba(235,108,54,0.5)" stroke-width="0.8"/>
+    <text x="356" y="71" fill="#eb6c36" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">ENTRY</text>
+    <text x="440" y="92" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">@SpringBootApplication</text>
+    <text x="440" y="108" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">组合注解 · 复合能力</text>
+
+    <!-- 第2步：AutoConfigurationImportSelector -->
+    <rect x="320" y="168" width="240" height="64" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
+    <rect x="328" y="174" width="56" height="12" rx="2" fill="transparent" stroke="rgba(45,49,66,0.4)" stroke-width="0.8"/>
+    <text x="356" y="183" fill="#2d3142" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">IMPORT</text>
+    <text x="440" y="204" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">AutoConfigurationImportSelector</text>
+    <text x="440" y="220" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">读取 *.imports 清单</text>
+
+    <!-- 第3步：自动配置类清单 -->
+    <rect x="320" y="280" width="240" height="64" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
+    <rect x="328" y="286" width="56" height="12" rx="2" fill="transparent" stroke="rgba(45,49,66,0.4)" stroke-width="0.8"/>
+    <text x="356" y="295" fill="#2d3142" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">LISTS</text>
+    <text x="440" y="316" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">自动配置类清单</text>
+    <text x="440" y="332" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">RedisAutoConfiguration 等</text>
+
+    <!-- 第4步：条件判断（焦点，coral） -->
+    <rect x="340" y="392" width="200" height="64" rx="6" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1.2"/>
+    <rect x="348" y="398" width="56" height="12" rx="2" fill="transparent" stroke="rgba(235,108,54,0.5)" stroke-width="0.8"/>
+    <text x="376" y="407" fill="#eb6c36" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">CORE</text>
+    <text x="440" y="428" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">条件判断</text>
+    <text x="440" y="444" fill="#eb6c36" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">@ConditionalOnClass 等</text>
+
+    <!-- 第5步：@ConditionalOnMissingBean 过滤器 -->
+    <rect x="320" y="504" width="240" height="64" rx="6" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
+    <rect x="328" y="510" width="56" height="12" rx="2" fill="transparent" stroke="rgba(45,49,66,0.4)" stroke-width="0.8"/>
+    <text x="356" y="519" fill="#2d3142" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">FILTER</text>
+    <text x="440" y="540" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">@ConditionalOnMissingBean 过滤</text>
+    <text x="440" y="556" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">用户自定义优先 · 避免覆盖</text>
+
+    <!-- 右侧：成立分支 → Bean 创建 -->
+    <rect x="496" y="608" width="192" height="48" rx="6" fill="rgba(235,108,54,0.08)" stroke="#eb6c36" stroke-width="1"/>
+    <text x="592" y="636" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">自动配置 Bean 注入</text>
+
+    <!-- 左侧：不成立分支 → 跳过 -->
+    <rect x="192" y="608" width="192" height="48" rx="6" fill="rgba(45,49,66,0.05)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
+    <text x="288" y="636" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">跳过（Spring Boot</text>
+    <text x="288" y="652" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">不加载该组件）</text>
+
+    <!-- 底部：Bean 容器 -->
+    <rect x="300" y="688" width="280" height="64" rx="6" fill="rgba(45,49,66,0.05)" stroke="rgba(45,49,66,0.3)" stroke-width="1"/>
+    <rect x="308" y="694" width="56" height="12" rx="2" fill="transparent" stroke="rgba(45,49,66,0.4)" stroke-width="0.8"/>
+    <text x="336" y="703" fill="#2d3142" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">POOL</text>
+    <text x="440" y="724" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">IoC Bean 容器</text>
+    <text x="440" y="740" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">RedisTemplate / RocketMQ 客户端…</text>
+
+    <!-- 左下：@ComponentScan 补充 -->
+    <rect x="16" y="160" width="192" height="64" rx="6" fill="rgba(45,49,66,0.03)" stroke="rgba(45,49,66,0.3)" stroke-width="1" stroke-dasharray="4,3"/>
+    <rect x="24" y="166" width="72" height="12" rx="2" fill="transparent" stroke="rgba(45,49,66,0.4)" stroke-width="0.8"/>
+    <text x="60" y="175" fill="#2d3142" font-size="7" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">SCAN</text>
+    <text x="112" y="192" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">@ComponentScan</text>
+    <text x="112" y="208" fill="#4f5d75" font-size="9" font-family="'Geist Mono', monospace" text-anchor="middle">扫描 @Service 业务组件</text>
+
+    <!-- 图例 -->
+    <line x1="32" y1="776" x2="848" y2="776" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/>
+    <text x="32" y="792" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LEGEND</text>
+    <line x1="96" y1="788" x2="128" y2="788" stroke="#eb6c36" stroke-width="1.2"/>
+    <text x="136" y="792" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace">焦点/主链路</text>
+    <line x1="216" y1="788" x2="248" y2="788" stroke="#4f5d75" stroke-width="1.2"/>
+    <text x="256" y="792" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace">普通链路</text>
+    <line x1="328" y1="788" x2="360" y2="788" stroke="#4f5d75" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <text x="368" y="792" fill="#7a8399" font-size="8" font-family="'Geist Mono', monospace">可选/补充</text>
+  </svg>
+  </div>
+</div>
+</body>
+</html>
