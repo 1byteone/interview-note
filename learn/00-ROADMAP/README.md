@@ -433,6 +433,70 @@ learn/
 
 ---
 
+## 🎤 面试话术速查
+
+### 10 秒版本（电梯演讲）
+
+> "我做过四个项目：Java 微服务电商（12 个微服务）、Java 核心技能练习（AOP/反射/集合）、Python AI 搜索（LangChain Agent + 向量检索）、Java Text2SQL（Spring AI + RAG）。覆盖了从 Java 基础到微服务到 AI 的全栈能力。"
+
+### 60 秒版本（技术深度展示）
+
+> "Java 核心方面，我写过自定义 AOP 注解做缓存和权限控制，用反射实现过动态 SQL 生成。微服务方面，我参与过 12 个服务的电商系统，处理过 Seata 分布式事务、Redisson 秒杀防超卖、RocketMQ 异步解耦。AI 方面，我用 Python 做过 LangChain Agent 的智能搜索，也用 Java 的 Spring AI 做过 Text2SQL。三个方向都有实战经验。"
+
+### 5 分钟版本（完整项目介绍）
+
+> **mall-exercise（Java 核心技能）**：自定义注解 + AOP 实现缓存/日志/权限/监控四个切面；反射实现 DynamicSqlBuilder（MyBatis-Plus 原理）和通用验证框架；Redis Cache-Aside 模式实现商品缓存。
+>
+> **mall-micro-cloud（微服务电商）**：12 个微服务，Nacos 注册发现 + Gateway 网关鉴权 + Seata 分布式事务 + Redisson 分布式锁 + RocketMQ 异步解耦。秒杀用四层防护：静态页 + 布隆过滤器 + 分布式锁 + Redis 原子扣减。
+>
+> **mall-ai-search（AI 搜索）**：Python FastAPI 网关 + LangChain Agent + RedisVL 向量检索 + 多供应商 LLM 切换。用户输入自然语言 → Embedding → 向量相似度匹配 → Agent 调用工具检索 → LLM 生成推荐。
+>
+> **text2SQL（Java AI）**：Spring AI + DeepSeek + RAG 混合检索 + SQL 四层验证（语法/安全/语义/性能）。用户输入"查询本月销售额前10的商品" → RAG 检索相关表 → Prompt 构建 → LLM 生成 SQL → 验证后执行。
+
+---
+
+## 🗺️ 知识速查表
+
+### 16 栈状态总览
+
+| # | 栈 | 状态 | 文档数 | 项目剖析链接数 | 核心关键词 |
+|---|---|------|--------|-------------|-----------|
+| 01 | 后端开发 | ✅ | 13 | 3 | 架构/RESTful/DDD/Clean |
+| 02 | Java 核心 | ✅ | 15 | 4 | HashMap/JUC/JVM/反射 |
+| 03 | Spring Boot | ✅ | 16 | 5 | 自动配置/Starter/Gateway |
+| 04 | Python | ✅ | 14 | 3 | 异步/FastAPI/类型系统 |
+| 05 | FastAPI | ✅ | 16 | 3 | Pydantic/依赖注入/异步 |
+| 06 | MySQL | ✅ | 16 | 4 | 索引/MVCC/事务/分库分表 |
+| 07 | Redis | ✅ | 16 | 4 | 缓存/分布式锁/集群/Bloom |
+| 08 | RocketMQ | ✅ | 15 | 4 | 事务消息/幂等/削峰/Sentinel |
+| 09 | Elasticsearch | ✅ | 15 | 4 | 倒排索引/分词/聚合/高亮 |
+| 10 | Docker | ✅ | 15 | 3 | 镜像/Compose/多阶段构建 |
+| 11 | Linux | ✅ | 14 | 2 | 命令/Shell/网络排查 |
+| 12 | 基础设施 | ✅ | 17 | 4 | Nacos/Sentinel/CI/CD |
+| 13 | 开发工具 | ✅ | 11 | 2 | Git/Conda/Jupyter |
+| 14 | LangChain | ✅ | 17 | 4 | Agent/Tool/Chain/Memory |
+| 15 | RAG | ✅ | 17 | 4 | 分块/混合检索/Reranker |
+| 16 | OpenAI | ✅ | 17 | 4 | Embedding/FC/结构化输出 |
+
+### 面试高频关键词 → 哪里学
+
+| 关键词 | learn 路径 | 项目剖析路径 |
+|--------|-----------|-------------|
+| HashMap 原理 | `learn/02-java/02-core/01-collections-framework.md` | `mall-exercise/02-COLLECTIONS.md` |
+| 分布式锁 | `learn/07-redis/02-core/03-distributed-lock.md` | `mall-micro-cloud/06-SECKILL-HIGHCONCUR.md` |
+| 缓存穿透 | `learn/07-redis/02-core/02-cache-patterns.md` | `mall-exercise/04-REDIS-CACHE.md` |
+| Seata 分布式事务 | `learn/12-infrastructure/03-advanced/02-distributed-transaction-seata.md` | `mall-micro-cloud/04-ORDER-SEATA.md` |
+| RocketMQ 幂等消费 | `learn/08-rocketmq/02-core/02-reliability-and-idempotency.md` | `mall-micro-cloud/11-SCHEDULER-BLOOMFILTER.md` |
+| LangChain Agent | `learn/14-langchain/` | `mall-ai-search/07-LANGCHAIN-AGENT.md` |
+| RAG 混合检索 | `learn/15-rag/` | `text2sql/03-RAG-RETRIEVAL.md` |
+| 向量检索 RedisVL | `learn/07-redis/04-projects/mall-integration.md` | `mall-ai-search/06-VECTOR-STORE.md` |
+| SQL 验证器 | — | `text2sql/05-SQL-VALIDATOR.md` |
+| AOP 自定义注解 | `learn/02-java/04-projects/mall-integration.md` | `mall-exercise/01-AOP-PRACTICE.md` |
+| 反射动态 SQL | `learn/02-java/` | `mall-exercise/03-REFLECTION.md` |
+| Git 分支策略 | `learn/13-dev-tools/01-git/` | — |
+
+---
+
 ## 📖 导航
 
 | ← 上一篇 | 📚 目录 | 下一篇 → |
