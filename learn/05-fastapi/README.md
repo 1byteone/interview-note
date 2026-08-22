@@ -122,4 +122,28 @@ learn/05-fastapi/
     ├── deep-dive.md              # 深挖题
     ├── scenario.md               # 场景题
     └── coding.md                 # 代码题
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← Python 基础](../04-python/README.md) | [📚 总目录](../README.md) | [MySQL →](../06-mysql/README.md) |
+
+**相关技术栈：**
+- [14-LangChain](../14-langchain/README.md) — FastAPI 作为 AI 网关，路由 LangChain 编排的 AI 服务
+- [16-OpenAI](../16-openai/README.md) — FastAPI 的 AI 服务依赖 OpenAI API 提供底层模型能力
+
+---
+
+## 项目剖析深度参考
+
+本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
+
+| 本 learn 核心内容 | 对应项目剖析 | 重点看什么 |
+|------------------|------------|-----------|
+| FastAPI 路由/异常处理 | [02-API-GATEWAY.md](../../docs/tech-stack-analysis/mall-ai-search/02-API-GATEWAY.md) | FastAPI 路由 + Pydantic v2 + 全局异常 |
+| Pydantic 多 Provider 配置 | [03-CONFIG-MULTI-PROVIDER.md](../../docs/tech-stack-analysis/mall-ai-search/03-CONFIG-MULTI-PROVIDER.md) | pydantic-settings 嵌套配置 + 策略模式 |
+| Java→Python 桥接 | [12-AI-SEARCH-BRIDGE.md](../../docs/tech-stack-analysis/mall-micro-cloud/12-AI-SEARCH-BRIDGE.md) | FeignClient 调用 Python 服务 |
 ```

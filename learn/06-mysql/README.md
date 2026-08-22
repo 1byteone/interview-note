@@ -112,10 +112,6 @@ mall-micro-cloud 是一个基于微服务架构的 AI 商城系统，MySQL 在�
 
 ---
 
-> 下一篇：[07-redis](../07-redis/README.md) — 缓存 · 分布式锁 · 数据结构
-
----
-
 ## 项目剖析深度参考
 
 本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
@@ -126,3 +122,15 @@ mall-micro-cloud 是一个基于微服务架构的 AI 商城系统，MySQL 在�
 | 分布式事务 | [04-ORDER-SEATA.md](../../docs/tech-stack-analysis/mall-micro-cloud/04-ORDER-SEATA.md) | Seata AT 下单+扣库存事务 |
 | 缓存穿透/击穿/雪崩 | [04-REDIS-CACHE.md](../../docs/tech-stack-analysis/mall-exercise/04-REDIS-CACHE.md) | Cache-Aside + 分布式锁 + 空值缓存 |
 | MySQL→向量化同步 | [09-DATA-SYNC.md](../../docs/tech-stack-analysis/mall-ai-search/09-DATA-SYNC.md) | SQLAlchemy lazy_load + tiktoken 切片 |
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← FastAPI](../05-fastapi/README.md) | [📚 总目录](../README.md) | [Redis →](../07-redis/README.md) |
+
+**相关技术栈：**
+- [03-Spring Boot](../03-spring-boot/README.md) — Spring Boot 通过 JPA/MyBatis 整合 MySQL 持久化层
+- [09-Elasticsearch](../09-elasticsearch/README.md) — ES 与 MySQL 组成搜索与存储的互补架构

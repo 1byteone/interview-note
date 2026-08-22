@@ -123,3 +123,15 @@ AI 商城（mall-micro-cloud）里，Redis 几乎是"无处不在"：
 | 秒杀库存预扣 + 分布式锁 | [06-SECKILL-HIGHCONCUR.md](../../docs/tech-stack-analysis/mall-micro-cloud/06-SECKILL-HIGHCONCUR.md) | Redisson RLock + Redis 原子扣减 |
 | 布隆过滤器 | [11-SCHEDULER-BLOOMFILTER.md](../../docs/tech-stack-analysis/mall-micro-cloud/11-SCHEDULER-BLOOMFILTER.md) | Redisson RBloomFilter 防穿透 |
 | RedisVL 向量检索 | [06-VECTOR-STORE.md](../../docs/tech-stack-analysis/mall-ai-search/06-VECTOR-STORE.md) | Redis Stack HNSW 索引 |
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← MySQL](../06-mysql/README.md) | [📚 总目录](../README.md) | [RocketMQ →](../08-rocketmq/README.md) |
+
+**相关技术栈：**
+- [03-Spring Boot](../03-spring-boot/README.md) — Spring Boot 通过 Spring Cache/RedisTemplate 操作 Redis
+- [10-Docker](../10-docker/README.md) — Docker 容器化部署 Redis 集群，实现环境一致性

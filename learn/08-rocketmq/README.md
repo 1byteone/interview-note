@@ -128,3 +128,14 @@ AI 智能商城是一个典型的微服务架构，RocketMQ 在其中承担异�
 ---
 
 **开始学习：** 从 [01-basics/01-quick-start.md](01-basics/01-quick-start.md) 开始你的 RocketMQ 之旅。
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← Redis](../07-redis/README.md) | [📚 总目录](../README.md) | [Elasticsearch →](../09-elasticsearch/README.md) |
+
+**相关技术栈：**
+- [12-基础设施](../12-infrastructure/README.md) — 基础设施中的监控与日志体系保障 MQ 集群可观测性

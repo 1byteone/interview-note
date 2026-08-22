@@ -111,3 +111,28 @@
 ```
 
 **一句话概括**：Java 管交易，LangChain 管智能编排——它把「模型调用、提示词、工具、记忆」拼装成可维护、可观测、可测试的 AI 业务链路。
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← 开发工具](../13-dev-tools/README.md) | [📚 总目录](../README.md) | [RAG →](../15-rag/README.md) |
+
+**相关技术栈：**
+- [05-FastAPI](../05-fastapi/README.md) — FastAPI 暴露 LangChain 编排的 AI 服务为 REST API
+- [16-OpenAI](../16-openai/README.md) — LangChain 通过 OpenAI 模型实现对话、推理与工具调用
+
+---
+
+## 项目剖析深度参考
+
+本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
+
+| 本 learn 核心内容 | 对应项目剖析 | 重点看什么 |
+|------------------|------------|-----------|
+| Agent + Tool + Structured Output | [07-LANGCHAIN-AGENT.md](../../docs/tech-stack-analysis/mall-ai-search/07-LANGCHAIN-AGENT.md) | `create_agent` + `@tool` + `response_format` |
+| Checkpointer 记忆管理 | [08-LANGGRAPH-MEMORY.md](../../docs/tech-stack-analysis/mall-ai-search/08-LANGGRAPH-MEMORY.md) | InMemorySaver + thread_id 会话隔离 |
+| LLM 多供应商切换 | [04-LLM-PROVIDER.md](../../docs/tech-stack-analysis/mall-ai-search/04-LLM-PROVIDER.md) | 阿里云通义千问 + Agnes AI + OpenAI 兼容 |
+| Java Spring AI 对标 | [01-LLM-CLIENT.md](../../docs/tech-stack-analysis/text2sql/01-LLM-CLIENT.md) | Spring AI ChatClient 对接 DeepSeek |

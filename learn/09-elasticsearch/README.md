@@ -127,10 +127,6 @@ mall-micro-cloud 是一个基于微服务架构的 AI 商城系统，Elasticsear
 
 ---
 
-> 下一篇：[10-消息队列](../10-message-queue/README.md) — 消息驱动 · 异步解耦 · 削峰填谷
-
----
-
 ## 项目剖析深度参考
 
 本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
@@ -141,3 +137,15 @@ mall-micro-cloud 是一个基于微服务架构的 AI 商城系统，Elasticsear
 | 向量搜索 (RedisVL) | [06-VECTOR-STORE.md](../../docs/tech-stack-analysis/mall-ai-search/06-VECTOR-STORE.md) | HNSW 索引 + Embedding |
 | ES vs 向量搜索对比 | [00-OVERVIEW.md](../../docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) | 关键词搜索 vs 语义搜索 |
 | MySQL→ES 数据同步 | [09-DATA-SYNC.md](../../docs/tech-stack-analysis/mall-ai-search/09-DATA-SYNC.md) | SQLAlchemy + tiktoken + 向量化 |
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← RocketMQ](../08-rocketmq/README.md) | [📚 总目录](../README.md) | [Docker →](../10-docker/README.md) |
+
+**相关技术栈：**
+- [15-RAG](../15-rag/README.md) — RAG 系统常使用 ES 作为向量存储与 BM25 检索的后端
+- [06-MySQL](../06-mysql/README.md) — ES 与 MySQL 通过 CDC 同步，构建搜索与存储分离架构

@@ -114,3 +114,14 @@ AI 商城（mall-micro-cloud）是一个完整的微服务架构，所有服务�
 3. **编排即管理**：单容器是基础，多容器编排（Compose/K8s）才是生产环境的核心能力。
 
 > 从快速入门开始：安装 Docker，运行你的第一个容器。
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← Elasticsearch](../09-elasticsearch/README.md) | [📚 总目录](../README.md) | [Linux →](../11-linux/README.md) |
+
+**相关技术栈：**
+- [12-基础设施](../12-infrastructure/README.md) — Docker 是基础设施 CI/CD 和容器编排的核心依赖

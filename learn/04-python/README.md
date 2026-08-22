@@ -83,3 +83,15 @@
 | 09-elasticsearch | AI 搜索服务中常用 ES 做召回，与本栈 04-projects 互相印证 |
 
 > 建议学习顺序：**02-java → 03-spring-boot → 04-python（本栈）→ 05-fastapi → 14-langchain**。
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← Spring Boot](../03-spring-boot/README.md) | [📚 总目录](../README.md) | [FastAPI →](../05-fastapi/README.md) |
+
+**相关技术栈：**
+- [02-Java 核心](../02-java/README.md) — Java 与 Python 分别主导后端与 AI 服务，建议对比学习
+- [14-LangChain](../14-langchain/README.md) — LangChain 是 Python AI 生态的核心编排框架

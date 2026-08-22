@@ -246,4 +246,122 @@ MIT License
 
 ---
 
+## 📚 16 技术栈教程体系 (learn/)
+
+> 16 个技术栈 · 262 篇教程文档 · 12 张 SVG 架构图 · 204 个可运行代码示例 · AI 智能商城贯穿项目
+
+本仓库的 [`learn/`](./learn/) 目录是一套完整的 **16 技术栈双轨教程体系**，从入门到面试，项目驱动，STAR 法则贯穿。与 `docs/tech-stack-analysis/`（项目实战剖析）互补，形成「知识输入 → 项目输出」的闭环学习体验。
+
+### 🗺️ 三条学习路线
+
+| 路线 | 适合人群 | 目标 | 学习路径 |
+|------|---------|------|---------|
+| 👶 **零基础入门路线** | 转行、应届生、非科班 | 从零到能干活 | `backend-dev → Java → Linux → Git → Spring Boot → MySQL → Redis → Docker → Python → FastAPI → LangChain → RAG → OpenAI` |
+| 🎯 **面试突击路线** | 1-3 年经验、准备跳槽 | 快速准备面试 | 直接进入各栈 `05-interview/` 目录，按需回溯基础 |
+| 🚀 **全栈进阶路线** | 有后端基础、拓展 AI 能力 | Java 后端 + AI 双修 | 按编号 01→16 依次推进，每栈完成五个阶段 |
+
+### 📊 16 技术栈一览
+
+| # | 技术栈 | 目录 | 文件数 | 核心内容 |
+|---|--------|------|--------|---------|
+| 01 | 🌐 后端开发基础 | `01-backend-development/` | 14 | 架构设计、API 设计、分层架构、项目实战 |
+| 02 | ☕ Java 核心 | `02-java/` | 18 | OOP、集合、JVM、JUC、IO/NIO、新特性 |
+| 03 | 🚀 Spring Boot | `03-spring-boot/` | 17 | 自动配置、启动流程、Actuator、测试、GraalVM |
+| 04 | 🐍 Python 基础 | `04-python/` | 15 | 语法、OOP、异步编程、类型注解、AI 生态 |
+| 05 | ⚡ FastAPI | `05-fastapi/` | 17 | 路由、DI、Pydantic、WebSocket、生产部署 |
+| 06 | 🗄️ MySQL | `06-mysql/` | 17 | 高级 SQL、索引原理、事务 MVCC、分库分表 |
+| 07 | 🧩 Redis | `07-redis/` | 17 | 数据类型、持久化、缓存策略、分布式锁、集群 |
+| 08 | 📨 RocketMQ | `08-rocketmq/` | 17 | 消息类型、事务消息、可靠性、高可用、MQ 对比 |
+| 09 | 🔍 Elasticsearch | `09-elasticsearch/` | 15 | DSL 搜索、倒排索引、集群架构、数据同步 |
+| 10 | 🐳 Docker | `10-docker/` | 17 | Dockerfile、镜像、Compose、Swarm/K8s、CI/CD |
+| 11 | 🐧 Linux | `11-linux/` | 15 | 常用命令、Shell 脚本、网络排查、性能调优 |
+| 12 | 🏗️ 基础设施 | `12-infrastructure/` | 17 | Nginx、服务发现、网关、Sentinel、Seata、监控 |
+| 13 | 🛠️ 开发工具 | `13-dev-tools/` | 11 | Git、Conda、Jupyter 三个工具全覆盖 |
+| 14 | 🔗 LangChain | `14-langchain/` | 17 | LCEL、Chain、Memory、Tool、Agent、LangGraph |
+| 15 | 📚 RAG | `15-rag/` | 17 | Embedding、分块策略、检索策略、Graph RAG |
+| 16 | 🤖 OpenAI API | `16-openai/` | 17 | Prompt 工程、Function Calling、微调、Assistants |
+| — | 🏪 AI 智能商城 | `projects/ai-mall/` | 12 | 贯穿项目：全栈 16 栈集成手册 |
+
+> **总计**：262 篇教程文档 + 12 张 SVG 架构图 + 204 个可运行代码示例 + 贯穿项目 12 篇
+
+### ✨ 设计特色
+
+| 特色 | 说明 |
+|------|------|
+| **🎯 双轨制** | 每个技术栈同时提供 👶 新手入门版和 🎯 面试进阶版，同一内容两种视角 |
+| **⭐ STAR 法则驱动** | 面试答案全部按 Situation-Task-Action-Result 框架组织，告别八股文 |
+| **🏪 16 栈 × AI 商城贯穿** | 每个技术栈都在 AI 智能商城中找到落地场景，学完即拥有完整项目 |
+| **💻 可运行代码示例** | 16 个技术栈均提供 `examples/` 目录，含 Maven/Gradle 工程和 Python 脚本，开箱即跑 |
+| **📐 12 张 SVG 架构图** | 核心流程全部配有架构图：JVM 内存、B+ 树索引、RocketMQ 事务消息、微服务架构等 |
+| **📋 面试四件套** | 每个栈的 `05-interview/` 包含：速记卡 + 深挖题 + 场景题 + 代码题 |
+
+### 📁 目录结构
+
+```
+learn/
+├── 00-ROADMAP/              ← 学习路线总纲
+├── 01-backend-development/  ← 后端开发基础
+├── 02-java/                 ← Java 核心
+├── 03-spring-boot/          ← Spring Boot
+├── 04-python/               ← Python 基础
+├── 05-fastapi/              ← FastAPI
+├── 06-mysql/                ← MySQL
+├── 07-redis/                ← Redis
+├── 08-rocketmq/             ← RocketMQ
+├── 09-elasticsearch/        ← Elasticsearch
+├── 10-docker/               ← Docker
+├── 11-linux/                ← Linux 基础
+├── 12-infrastructure/       ← 基础设施
+├── 13-dev-tools/            ← 开发工具
+├── 14-langchain/            ← LangChain
+├── 15-rag/                  ← RAG 检索增强生成
+├── 16-openai/               ← OpenAI API
+└── projects/                ← 贯穿项目
+    └── ai-mall/             ← AI 智能商城完整项目
+```
+
+每个技术栈内部结构（以 `03-spring-boot/` 为例）：
+
+```
+03-spring-boot/
+├── 01-basics/          ← 基础概念（👶 入门必读）
+├── 02-core/            ← 核心原理（👶 必读）
+├── 03-advanced/        ← 进阶源码（🚀 进阶选读）
+├── 04-projects/        ← 商城实战（👶 必做）
+│   └── mini-blog/      ← 过渡项目
+├── 05-interview/       ← 面试专项（🎯 面试必读）
+│   ├── quick-revision.md   ← 速记卡
+│   ├── deep-dive.md        ← 深挖题
+│   ├── scenario.md         ← 场景题
+│   └── coding.md           ← 代码题
+└── resources/          ← 参考资料
+```
+
+### 🚀 如何使用
+
+| 你的角色 | 推荐路径 |
+|---------|---------|
+| 🧑‍💻 **零基础新手** | 从 `00-ROADMAP/` 开始 → 选一条学习路线 → 按栈依次推进 `01-basics → 02-core → 04-projects` |
+| 🎯 **面试准备者** | 直接进入目标栈的 `05-interview/` → 速记卡 → 场景题 → 深挖题 → 代码题 |
+| 🚀 **进阶学习者** | 按编号 01→16 全部完成，重点攻克 `03-advanced/` 源码分析 |
+| 🏗️ **项目实践者** | 直接进入 `projects/ai-mall/`，按需回溯各栈基础 |
+
+### 🔗 快速链接
+
+| 入口 | 链接 |
+|------|------|
+| 🗺️ 总路线图 | [`learn/00-ROADMAP/README.md`](./learn/00-ROADMAP/README.md) |
+| 🏪 AI 智能商城贯穿项目 | [`learn/projects/ai-mall/README.md`](./learn/projects/ai-mall/README.md) |
+| ☕ Java 核心教程 | [`learn/02-java/README.md`](./learn/02-java/README.md) |
+| 🚀 Spring Boot 教程 | [`learn/03-spring-boot/README.md`](./learn/03-spring-boot/README.md) |
+| 🐍 Python 基础教程 | [`learn/04-python/README.md`](./learn/04-python/README.md) |
+| ⚡ FastAPI 教程 | [`learn/05-fastapi/README.md`](./learn/05-fastapi/README.md) |
+| 🗄️ MySQL 教程 | [`learn/06-mysql/README.md`](./learn/06-mysql/README.md) |
+| 🧩 Redis 教程 | [`learn/07-redis/README.md`](./learn/07-redis/README.md) |
+| 🐳 Docker 教程 | [`learn/10-docker/README.md`](./learn/10-docker/README.md) |
+| 🔗 LangChain 教程 | [`learn/14-langchain/README.md`](./learn/14-langchain/README.md) |
+| 📚 RAG 教程 | [`learn/15-rag/README.md`](./learn/15-rag/README.md) |
+
+---
+
 > 💡 本项目旨在帮助开发者系统化准备 Java 后端和 AI 工程师面试，祝你面试顺利！

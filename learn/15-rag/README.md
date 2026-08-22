@@ -131,3 +131,15 @@ mall-micro-cloud 是一个基于微服务架构的 AI 商城系统，RAG 在其�
 ---
 
 > 上一篇：[14-LangChain](../14-langchain/README.md) — LangChain 框架 · 链式调用 · 工具调用 · Agent
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← LangChain](../14-langchain/README.md) | [📚 总目录](../README.md) | [OpenAI →](../16-openai/README.md) |
+
+**相关技术栈：**
+- [14-LangChain](../14-langchain/README.md) — RAG 系统基于 LangChain 的文档加载、向量存储和链式调用
+- [09-Elasticsearch](../09-elasticsearch/README.md) — ES 可作为 RAG 系统的向量存储与 BM25 检索引擎

@@ -91,3 +91,15 @@
 - Moderation API 过滤违规内容
 - 用户评论自动审核
 - 商品描述合规检查
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← RAG](../15-rag/README.md) | [📚 总目录](../README.md) | [AI 智能商城 →](../projects/ai-mall/README.md) |
+
+**相关技术栈：**
+- [14-LangChain](../14-langchain/README.md) — LangChain 封装 OpenAI API 提供链式调用与工具编排
+- [05-FastAPI](../05-fastapi/README.md) — FastAPI 作为 AI 网关路由 OpenAI 模型调用请求

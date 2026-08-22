@@ -122,3 +122,15 @@ AI 商城（mall-micro-cloud）是一个典型的微服务架构，所有微服�
 | Gateway + Nacos | [01-NACOS-GATEWAY.md](../../docs/tech-stack-analysis/mall-micro-cloud/01-NACOS-GATEWAY.md) | 自定义 `AuthGatewayFilterFactory` |
 | Spring AI 集成 | [01-LLM-CLIENT.md](../../docs/tech-stack-analysis/text2sql/01-LLM-CLIENT.md) | Spring AI `ChatClient` 对接 DeepSeek |
 | FastAPI (Python 对标) | [02-API-GATEWAY.md](../../docs/tech-stack-analysis/mall-ai-search/02-API-GATEWAY.md) | FastAPI 路由+异常+Pydantic 对照 Spring Boot |
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← Java 核心](../02-java/README.md) | [📚 总目录](../README.md) | [Python 基础 →](../04-python/README.md) |
+
+**相关技术栈：**
+- [06-MySQL](../06-mysql/README.md) — Spring Boot 通过 JPA/MyBatis 整合 MySQL 数据持久化
+- [07-Redis](../07-redis/README.md) — Spring Boot 通过 Spring Cache/RedisTemplate 整合缓存

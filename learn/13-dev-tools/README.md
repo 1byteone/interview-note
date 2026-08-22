@@ -122,3 +122,15 @@ learn/13-dev-tools/
 - **整体时间**：每篇文章约 20-30 分钟，总耗时约 4-6 小时
 
 > 工欲善其事，必先利其器。从 Git 的基础操作开始，打造你的高效开发工具链。
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← 基础设施](../12-infrastructure/README.md) | [📚 总目录](../README.md) | [LangChain →](../14-langchain/README.md) |
+
+**相关技术栈：**
+- [02-Java 核心](../02-java/README.md) — Git 和 IDE 调试工具是 Java 后端开发的日常必备
+- [04-Python 基础](../04-python/README.md) — Conda 和 Jupyter 是 Python AI 开发的标配工具链

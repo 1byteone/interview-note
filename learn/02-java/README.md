@@ -101,3 +101,15 @@ Java 核心不是指 Spring 框架或某个中间件，而是指**不依赖任�
 3. **JVM 是最终解释器**：任何 Java 代码的性能问题，最终都要回到 JVM 层面找答案。
 
 > 让我们从 Java 快速入门开始：版本演进、环境搭建、基础语法检视。
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← 后端开发总纲](../01-backend-development/README.md) | [📚 总目录](../README.md) | [Spring Boot →](../03-spring-boot/README.md) |
+
+**相关技术栈：**
+- [04-Python 基础](../04-python/README.md) — Python 与 Java 对比学习，掌握后端双语言能力
+- [13-开发工具](../13-dev-tools/README.md) — 开发工具链提升 Java 项目的协作与调试效率

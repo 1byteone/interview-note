@@ -103,3 +103,14 @@ AI 智能商城是一个典型的微服务架构应用，包含以下组件：
 ---
 
 **开始学习：** 从 [01-basics/01-linux-quick-start.md](01-basics/01-linux-quick-start.md) 开始你的 Linux 之旅。
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← Docker](../10-docker/README.md) | [📚 总目录](../README.md) | [基础设施 →](../12-infrastructure/README.md) |
+
+**相关技术栈：**
+- [01-后端开发总纲](../01-backend-development/README.md) — Linux 是后端服务部署与运行的基础环境
