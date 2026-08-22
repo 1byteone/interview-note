@@ -10,6 +10,7 @@
 |------|-----|
 | Stars | 34 |
 | Topics | ai-agent, claude, claude-code, guide, tutorial |
+| 生态 | E01 · Claude Code 生态 |
 
 ## 内容分析
 
@@ -29,3 +30,13 @@ Claude Code 友好入门指南，零术语从安装到日常使用。
 
 - **适合人群**: 绝对初学者（不需编程背景）
 - **优先级**: ⭐⭐⭐（入门首选）
+---
+
+## 生态交叉引用
+
+- **主生态**: E01 · Claude Code 生态
+- **交叉引用**: 同上生态
+  - **E02**: [freestylefly/CodexGuide](../repositories/freestylefly_CodexGuide.md)
+  - **E06**: [realpython/python-guide](../repositories/realpython_python-guide.md), [ombharatiya/ai-system-design-guide](../repositories/ombharatiya_ai-system-design-guide.md)
+
+> 📖 完整矩阵见 [data/cross-reference.md](../data/cross-reference.md)

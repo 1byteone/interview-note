@@ -1,6 +1,6 @@
 # FlorianBruniaux/claude-code-ultimate-guide
 
-> ⭐ 5,781 | 🗣 Python | [GitHub](https://github.com/FlorianBruniaux/claude-code-ultimate-guide) | 收录: 2026-08-22
+> ⭐ 5,783 | 🗣 Python | [GitHub](https://github.com/FlorianBruniaux/claude-code-ultimate-guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,9 +8,10 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 5,781 |
+| Stars | 5,783 |
 | 语言 | Python |
 | Topics | agentic-coding, ai-coding, anthropic, claude, claude-code, mcp-servers, prompt-engineering, vibe-coding |
+| 生态 | E01 · Claude Code 生态 |
 
 ## 内容分析
 
@@ -50,3 +51,14 @@
 - **适合人群**: 中级→专家 Claude Code 用户
 - **预计耗时**: 2-4 周（完整阅读）
 - **配合阅读**: zebbern/claude-code-guide（功能参考互补）
+---
+
+## 生态交叉引用
+
+- **主生态**: E01 · Claude Code 生态
+- **交叉引用**: 同上生态
+  - **E03**: [yeasy/harness_engineering_guide](../repositories/yeasy_harness_engineering_guide.md), [flaqai/deepeseek-harness-guide](../repositories/flaqai_deepeseek-harness-guide.md)
+  - **E05**: [liaokongVFX/MCP-Chinese-Getting-Started-Guide](../repositories/liaokongVFX_MCP-Chinese-Getting-Started-Guide.md)
+  - **E06**: [realpython/python-guide](../repositories/realpython_python-guide.md), [ombharatiya/ai-system-design-guide](../repositories/ombharatiya_ai-system-design-guide.md)
+
+> 📖 完整矩阵见 [data/cross-reference.md](../data/cross-reference.md)

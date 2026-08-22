@@ -11,6 +11,7 @@
 | Stars | 2,857 |
 | 语言 | Shell |
 | Topics | 无 |
+| 生态 | E04 · Hermes/OpenClaw 生态 |
 
 ## 内容分析
 
@@ -47,3 +48,13 @@ Post-action（事后）
 
 - **适合人群**: 高级 Agent 用户、安全工程师
 - **前置知识**: 了解 OpenClaw 或类似 Agent 运行时
+---
+
+## 生态交叉引用
+
+- **主生态**: E04 · Hermes/OpenClaw 生态
+- **交叉引用**: 同上生态
+  - **E01**: [FlorianBruniaux/claude-code-ultimate-guide](../repositories/FlorianBruniaux_claude-code-ultimate-guide.md), [zebbern/claude-code-guide](../repositories/zebbern_claude-code-guide.md)
+  - **E03**: [yeasy/harness_engineering_guide](../repositories/yeasy_harness_engineering_guide.md), [flaqai/deepeseek-harness-guide](../repositories/flaqai_deepeseek-harness-guide.md)
+
+> 📖 完整矩阵见 [data/cross-reference.md](../data/cross-reference.md)

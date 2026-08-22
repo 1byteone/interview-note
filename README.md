@@ -379,18 +379,26 @@ learn/
 ## 🗺️ Guide 生态导航
 
 > 基于今天（2026-08-22）Starred 的 `guide` 系列仓库，按**技术栈生态**分类的 AI Agent 知识库。
-> 20 个仓库 · 6 大生态 · 深度分析 · 场景驱动
 
-| 生态 | 名称 | 核心定位 | 分类入口 |
-|------|------|----------|----------|
-| **E01** | 🤖 Claude Code 生态 | 最主流 Coding Agent 平台 | [`guide/categories/01-ecosystem-claude-code.md`](./guide/categories/01-ecosystem-claude-code.md) |
-| **E02** | 🐙 Codex 生态 | OpenAI Coding Agent | [`guide/categories/02-ecosystem-codex.md`](./guide/categories/02-ecosystem-codex.md) |
-| **E03** | ⚙️ DSH/Harness 生态 | 新一代 Agent 运行时 | [`guide/categories/03-ecosystem-dsh-harness.md`](./guide/categories/03-ecosystem-dsh-harness.md) |
-| **E04** | 🔗 Hermes/OpenClaw 生态 | 开源社区 Agent 框架 | [`guide/categories/04-ecosystem-hermes-openclaw.md`](./guide/categories/04-ecosystem-hermes-openclaw.md) |
-| **E05** | 🌐 MCP 协议生态 | 跨平台工具调用协议 | [`guide/categories/05-ecosystem-mcp.md`](./guide/categories/05-ecosystem-mcp.md) |
-| **E06** | 📚 通识与基础 | 跨生态通用知识 | [`guide/categories/06-ecosystem-general-agent.md`](./guide/categories/06-ecosystem-general-agent.md) |
+<div align="center">
 
-**专业交付物**：[收录标准](guide/data/standards.md) · [领域全景图](guide/data/landscape.md) · [学习路线](guide/data/learning-paths.md) · [技术雷达](guide/data/tech-radar.md) · [交叉引用矩阵](guide/data/cross-reference.md)
+![Guide Repos](https://img.shields.io/badge/repos-27-informational?style=for-the-badge&logo=github)
+![Ecosystems](https://img.shields.io/badge/ecosystems-6-blueviolet?style=for-the-badge&logo=github)
+![Stars](https://img.shields.io/badge/stars-186K-gold?style=for-the-badge&logo=github)
+![Maintained](https://img.shields.io/badge/maintained-2026-success?style=for-the-badge)
+
+</div>
+
+| 生态 | 名称 | 核心定位 | Stars | 分类入口 |
+|------|------|----------|-------|----------|
+| **E01** | 🤖 Claude Code 生态 | 最主流 Coding Agent 平台 | 10.4K | [`categories/01`](./guide/categories/01-ecosystem-claude-code.md) |
+| **E02** | 🐙 Codex 生态 | OpenAI Coding Agent | 3.2K | [`categories/02`](./guide/categories/02-ecosystem-codex.md) |
+| **E03** | ⚙️ DSH/Harness 生态 | 新一代 Agent 运行时 | 4.1K | [`categories/03`](./guide/categories/03-ecosystem-dsh-harness.md) |
+| **E04** | 🔗 Hermes/OpenClaw 生态 | 开源社区 Agent 框架 | 9.2K | [`categories/04`](./guide/categories/04-ecosystem-hermes-openclaw.md) |
+| **E05** | 🌐 MCP 协议生态 | 跨平台工具调用协议 | 3.6K | [`categories/05`](./guide/categories/05-ecosystem-mcp.md) |
+| **E06** | 📚 通识与基础 | 跨生态通用知识 | 156.2K | [`categories/06`](./guide/categories/06-ecosystem-general-agent.md) |
+
+**专业交付物**：[收录标准](guide/data/standards.md) · [领域全景图](guide/data/landscape.md) · [学习路线](guide/data/learning-paths.md) · [技术雷达](guide/data/tech-radar.md) · [交叉引用矩阵](guide/data/cross-reference.md) · [双向映射表](guide/guide-learn-mapping.md)
 
 > 想快速入门？→ `guide/README.md` 提供场景导航（初学者/后端转型/架构师三条路径）
 

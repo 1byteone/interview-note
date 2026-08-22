@@ -10,6 +10,7 @@
 |------|-----|
 | Stars | 13 |
 | Topics | deepseek, dsh, harness, plugin |
+| 生态 | E03 · DSH/Harness 生态 |
 
 ## 内容分析
 
@@ -39,3 +40,13 @@ DeepSeek Harness（DSH）的综合社区指南。
 
 - **适合人群**: DSH 开发者
 - **前置知识**: 了解 Agent 基本概念
+---
+
+## 生态交叉引用
+
+- **主生态**: E03 · DSH/Harness 生态
+- **交叉引用**: 同上生态
+  - **E05**: [liaokongVFX/MCP-Chinese-Getting-Started-Guide](../repositories/liaokongVFX_MCP-Chinese-Getting-Started-Guide.md)
+  - **E06**: [realpython/python-guide](../repositories/realpython_python-guide.md), [ombharatiya/ai-system-design-guide](../repositories/ombharatiya_ai-system-design-guide.md)
+
+> 📖 完整矩阵见 [data/cross-reference.md](../data/cross-reference.md)

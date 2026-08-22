@@ -11,6 +11,7 @@
 | Stars | 650 |
 | 语言 | Python |
 | Topics | 无 |
+| 生态 | E04 · Hermes/OpenClaw 生态 |
 
 ## 内容分析
 
@@ -51,3 +52,14 @@
 
 - **适合人群**: 跨层次读者（小白到创业者）
 - **预计耗时**: 因人而异（30 万字）
+---
+
+## 生态交叉引用
+
+- **主生态**: E04 · Hermes/OpenClaw 生态
+- **交叉引用**: 同上生态
+  - **E03**: [yeasy/harness_engineering_guide](../repositories/yeasy_harness_engineering_guide.md), [flaqai/deepeseek-harness-guide](../repositories/flaqai_deepeseek-harness-guide.md)
+  - **E05**: [liaokongVFX/MCP-Chinese-Getting-Started-Guide](../repositories/liaokongVFX_MCP-Chinese-Getting-Started-Guide.md)
+  - **E06**: [realpython/python-guide](../repositories/realpython_python-guide.md), [ombharatiya/ai-system-design-guide](../repositories/ombharatiya_ai-system-design-guide.md)
+
+> 📖 完整矩阵见 [data/cross-reference.md](../data/cross-reference.md)

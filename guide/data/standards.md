@@ -62,6 +62,11 @@
 | E03 | walkinglabs/awesome-harness-engineering | 3 | 4 | 4 | 3 | 3 | 17 | ⭐⭐⭐⭐ |
 | E06 | heilcheng/awesome-agent-skills | 3 | 4 | 4 | 3 | 3 | 17 | ⭐⭐⭐⭐ |
 | E06 | libukai/awesome-agent-skills | 3 | 4 | 4 | 3 | 3 | 17 | ⭐⭐⭐⭐ |
+| E04 | liyupi/openclaw-guide | 3 | 2 | 3 | 4 | 3 | 15 | ⭐⭐⭐ |
+| E06 | liyupi/ai-guide | 4 | 5 | 5 | 4 | 4 | 22 | ⭐⭐⭐⭐⭐ |
+| E06 | liyupi/ai-code-helper | 4 | 2 | 3 | 5 | 4 | 18 | ⭐⭐⭐⭐ |
+| E04 | liyupi/github-claw | 2 | 1 | 3 | 3 | 3 | 12 | ⭐⭐ |
+| E03 | liyupi/dsh-kun-like-pet | 2 | 1 | 3 | 3 | 4 | 13 | ⭐⭐ |
 
 ---
 
@@ -70,10 +75,11 @@
 ### 2.1 必读（⭐⭐⭐⭐⭐）
 
 每日必读，构建核心知识体系：
-- **Prompt-Engineering-Guide** — 理论基础
-- **AgentGuide** — Agent 求职体系
-- **claude-code-ultimate-guide** — Coding Agent 深度
-- **ai-system-design-guide** — 系统设计
+- **Prompt-Engineering-Guide** — 理论基础（E06）
+- **AgentGuide** — Agent 求职体系（E06）
+- **claude-code-ultimate-guide** — Coding Agent 深度（E01）
+- **ai-system-design-guide** — 系统设计（E06）
+- **liyupi/ai-guide** — 中文 AI 资源大全 + Vibe Coding（E06）
 
 ### 2.2 选读（⭐⭐⭐⭐）
 

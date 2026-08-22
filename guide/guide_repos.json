@@ -20,7 +20,7 @@
     "full_name": "ombharatiya/ai-system-design-guide",
     "html_url": "https://github.com/ombharatiya/ai-system-design-guide",
     "description": "AI system design guide for engineers building production AI systems and evals.",
-    "stargazers_count": 2698,
+    "stargazers_count": 2704,
     "language": null,
     "topics": [
       "agentic-ai",
@@ -79,7 +79,7 @@
     "full_name": "adongwanai/AgentGuide",
     "html_url": "https://github.com/adongwanai/AgentGuide",
     "description": "AI Agent开发指南 | LangGraph实战 | 高级RAG | 转行大模型",
-    "stargazers_count": 8639,
+    "stargazers_count": 8646,
     "language": "HTML",
     "topics": [
       "agenticrag",
@@ -113,7 +113,7 @@
     "full_name": "bcefghj/ai-agent-interview-guide",
     "html_url": "https://github.com/bcefghj/ai-agent-interview-guide",
     "description": "AI Agent 面试全攻略：从零到Offer",
-    "stargazers_count": 2119,
+    "stargazers_count": 2120,
     "language": "Python",
     "topics": [],
     "pushed_at": "",
@@ -132,7 +132,7 @@
     "full_name": "FlorianBruniaux/claude-code-ultimate-guide",
     "html_url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
     "description": "The most comprehensive Claude Code guide",
-    "stargazers_count": 5781,
+    "stargazers_count": 5783,
     "language": "Python",
     "topics": [
       "agentic-coding",
@@ -185,7 +185,7 @@
     "full_name": "dair-ai/Prompt-Engineering-Guide",
     "html_url": "https://github.com/dair-ai/Prompt-Engineering-Guide",
     "description": "Guides, papers, lessons for prompt engineering",
-    "stargazers_count": 77672,
+    "stargazers_count": 77681,
     "language": "MDX",
     "topics": [
       "prompt-engineering",
@@ -215,7 +215,7 @@
     "full_name": "yeasy/harness_engineering_guide",
     "html_url": "https://github.com/yeasy/harness_engineering_guide",
     "description": "智能体 = 大模型 + Harness",
-    "stargazers_count": 115,
+    "stargazers_count": 116,
     "language": "Python",
     "topics": [
       "agent",
@@ -355,7 +355,7 @@
     "full_name": "0xNyk/awesome-hermes-agent",
     "html_url": "https://github.com/0xNyk/awesome-hermes-agent",
     "description": "Independent directory of skills, plugins, memory providers for Hermes Agent",
-    "stargazers_count": 5405,
+    "stargazers_count": 5406,
     "language": null,
     "topics": [
       "agent-skills",
@@ -405,7 +405,7 @@
     "full_name": "didilili/ai-agents-from-zero",
     "html_url": "https://github.com/didilili/ai-agents-from-zero",
     "description": "2026 最系统的 AI Agent 速成指南",
-    "stargazers_count": 3979,
+    "stargazers_count": 3981,
     "language": "Python",
     "topics": [
       "agent",
@@ -490,7 +490,7 @@
     "full_name": "lingxling/awesome-skills-cn",
     "html_url": "https://github.com/lingxling/awesome-skills-cn",
     "description": "热门Skills中文学习版+教程，7000+Skills",
-    "stargazers_count": 257,
+    "stargazers_count": 258,
     "language": "Python",
     "topics": [
       "claude-skills",
@@ -532,5 +532,134 @@
       "Claude Code 生态",
       "Hermes/OpenClaw 生态"
     ]
+  },
+  {
+    "full_name": "liyupi/openclaw-guide",
+    "html_url": "https://github.com/liyupi/openclaw-guide",
+    "description": "开源OpenClaw中文文档站，OpenClaw中文指南，安装部署、Agent架构、Skills配置等全方位文档",
+    "stargazers_count": 186,
+    "language": "PowerShell",
+    "topics": [
+      "agents",
+      "ai",
+      "openclaw",
+      "claude",
+      "gpt",
+      "qwen"
+    ],
+    "pushed_at": "2026-04-15T03:19:10Z",
+    "ecosystem_primary": "E04",
+    "ecosystem_primary_name": "Hermes/OpenClaw 生态",
+    "ecosystem_cross": [
+      "E03",
+      "E06"
+    ],
+    "ecosystem_cross_names": [
+      "DSH/Harness 生态",
+      "通识与基础"
+    ]
+  },
+  {
+    "full_name": "liyupi/ai-guide",
+    "html_url": "https://github.com/liyupi/ai-guide",
+    "description": "程序员鱼皮的 AI 资源大全 + Vibe Coding 零基础教程，OpenClaw保姆级教程、AI知识百科",
+    "stargazers_count": 19020,
+    "language": "JavaScript",
+    "topics": [
+      "ai",
+      "llm",
+      "mcp",
+      "rag",
+      "vibe-coding",
+      "openclaw",
+      "deepseek",
+      "claude"
+    ],
+    "pushed_at": "2026-08-21T07:07:15Z",
+    "ecosystem_primary": "E06",
+    "ecosystem_primary_name": "通识与基础",
+    "ecosystem_cross": [
+      "E01",
+      "E02",
+      "E04",
+      "E05"
+    ],
+    "ecosystem_cross_names": [
+      "Claude Code 生态",
+      "Codex 生态",
+      "Hermes/OpenClaw 生态",
+      "MCP 协议生态"
+    ]
+  },
+  {
+    "full_name": "liyupi/ai-code-helper",
+    "html_url": "https://github.com/liyupi/ai-code-helper",
+    "description": "基于 Spring Boot 3.5 + LangChain4j 的 AI 编程助手实战项目，覆盖 MCP / RAG / Tool Calling",
+    "stargazers_count": 733,
+    "language": "Vue",
+    "topics": [
+      "ai",
+      "java",
+      "langchain4j",
+      "mcp",
+      "rag",
+      "spring-ai",
+      "springboot"
+    ],
+    "pushed_at": "2025-07-10T11:32:26Z",
+    "ecosystem_primary": "E06",
+    "ecosystem_primary_name": "通识与基础",
+    "ecosystem_cross": [
+      "E03",
+      "E05"
+    ],
+    "ecosystem_cross_names": [
+      "DSH/Harness 生态",
+      "MCP 协议生态"
+    ]
+  },
+  {
+    "full_name": "liyupi/github-claw",
+    "html_url": "https://github.com/liyupi/github-claw",
+    "description": "用 GitHub 打造 AI 智能体：长期记忆 + AI Agent 技能包 + GitHub Actions + Copilot",
+    "stargazers_count": 68,
+    "language": "Python",
+    "topics": [
+      "agent",
+      "agent-skills",
+      "ai-agent",
+      "hermes-agent",
+      "openclaw",
+      "python"
+    ],
+    "pushed_at": "2026-04-21T12:16:57Z",
+    "ecosystem_primary": "E04",
+    "ecosystem_primary_name": "Hermes/OpenClaw 生态",
+    "ecosystem_cross": [
+      "E06"
+    ],
+    "ecosystem_cross_names": [
+      "通识与基础"
+    ]
+  },
+  {
+    "full_name": "liyupi/dsh-kun-like-pet",
+    "html_url": "https://github.com/liyupi/dsh-kun-like-pet",
+    "description": "DeepSeek Harness 桌面宠物插件，随 Agent 工作状态切换 9 种动作",
+    "stargazers_count": 81,
+    "language": "JavaScript",
+    "topics": [
+      "cordis",
+      "deepseek-harness",
+      "desktop-pet",
+      "dsh",
+      "dsh-plugin",
+      "plugin"
+    ],
+    "pushed_at": "2026-08-14T06:54:53Z",
+    "ecosystem_primary": "E03",
+    "ecosystem_primary_name": "DSH/Harness 生态",
+    "ecosystem_cross": [],
+    "ecosystem_cross_names": []
   }
 ]

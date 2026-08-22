@@ -11,6 +11,7 @@
 | Stars | 29,770 |
 | 语言 | Batchfile |
 | Topics | book, guide, python |
+| 生态 | E06 · 通识与基础 |
 
 ## 内容分析
 
@@ -35,3 +36,10 @@ Python 最佳实践手册（Hitchhiker's Guide to Python），有观点的指南
 
 - **适合人群**: Python 新手到专家
 - **阅读方式**: 内容在 docs.python-guide.org 完整站点
+---
+
+## 生态交叉引用
+
+- **主生态**: E06 · 通识与基础
+
+> 📖 完整矩阵见 [data/cross-reference.md](../data/cross-reference.md)

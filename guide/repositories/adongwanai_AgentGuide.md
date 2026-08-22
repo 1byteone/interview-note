@@ -1,6 +1,6 @@
 # adongwanai/AgentGuide
 
-> ⭐ 8,639 | 🗣 HTML | [GitHub](https://github.com/adongwanai/AgentGuide) | 收录: 2026-08-22
+> ⭐ 8,646 | 🗣 HTML | [GitHub](https://github.com/adongwanai/AgentGuide) | 收录: 2026-08-22
 
 ---
 
@@ -10,15 +10,17 @@
 |------|-----|
 | 全名 | adongwanai/AgentGuide |
 | 描述 | AI Agent开发指南 \| LangGraph实战 \| 高级RAG \| 转行大模型 \| 大模型面试 \| 算法工程师 \| 面试题库 \| 强化学习 \| 数据合成 |
-| Stars | 8,639 |
+| Stars | 8,646 |
 | 语言 | HTML |
 | 最后更新 | 2026-08-04 |
 | Topics | agenticrag, ai-agent, crewai, graphrag, grpo, interview, job-hunting, langchain, llm, multi-agent, rag, sft, tutorial |
+| 生态 | E06 · 通识与基础 |
 
 ## 分类
 
-- **主要分类**: 🎓 AI Agent 综合指南
-- **次要分类**: 📘 Coding Agent 指南与最佳实践
+- **主生态**: E06 · 通识与基础
+- **交叉生态**: Claude Code 生态, Codex 生态, Hermes/OpenClaw 生态, MCP 协议生态
+
 
 ## 内容分析
 
@@ -57,3 +59,15 @@
 - **前置要求**: 无（从零开始）
 - **预计耗时**: 8-10 周（完整路径）
 - **配合阅读**: Prompt-Engineering-Guide → AgentGuide → ai-agent-interview-guide
+---
+
+## 生态交叉引用
+
+- **主生态**: E06 · 通识与基础
+- **交叉引用**: 同上生态
+  - **E01**: [FlorianBruniaux/claude-code-ultimate-guide](../repositories/FlorianBruniaux_claude-code-ultimate-guide.md), [zebbern/claude-code-guide](../repositories/zebbern_claude-code-guide.md)
+  - **E02**: [freestylefly/CodexGuide](../repositories/freestylefly_CodexGuide.md)
+  - **E04**: [slowmist/openclaw-security-practice-guide](../repositories/slowmist_openclaw-security-practice-guide.md), [jwangkun/hermes-agent-guide](../repositories/jwangkun_hermes-agent-guide.md)
+  - **E05**: [liaokongVFX/MCP-Chinese-Getting-Started-Guide](../repositories/liaokongVFX_MCP-Chinese-Getting-Started-Guide.md)
+
+> 📖 完整矩阵见 [data/cross-reference.md](../data/cross-reference.md)

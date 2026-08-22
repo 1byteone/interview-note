@@ -54,12 +54,16 @@
 | 学习 Hermes / OpenClaw | [E04 Hermes/OpenClaw 生态](categories/04-ecosystem-hermes-openclaw.md) |
 | 学习 MCP 协议 | [E05 MCP 协议生态](categories/05-ecosystem-mcp.md) |
 | 想入门 Agent / 面试准备 | [E06 通识与基础](categories/06-ecosystem-general-agent.md) |
+| 想快速总览所有仓库 | [📊 生态总索引](ecosystem-index.md) |
+| 想看 Guide ↔ Learn 映射 | [🔗 双向映射表](guide-learn-mapping.md) |
 
 ### 分类目录
 
 ```
 guide/
 ├── README.md                       # 本文件 — 生态总览
+├── ecosystem-index.md              # 📊 生态总索引（按生态/Stars/角色/层级速查）
+├── guide-learn-mapping.md          # 🔗 Guide ↔ Learn 双向映射表
 ├── categories/                     # 六大技术栈生态分类
 │   ├── 01-ecosystem-claude-code.md        # E01 Claude Code
 │   ├── 02-ecosystem-codex.md              # E02 Codex
@@ -74,6 +78,7 @@ guide/
 │   ├── learning-paths.md           # 学习路线建议
 │   ├── tech-radar.md               # 技术雷达
 │   └── cross-reference.md          # 生态交叉引用矩阵
+├── assets/                         # 生态图谱（Mermaid）
 └── guide_repos.json                # 结构化数据
 ```
 
@@ -92,32 +97,77 @@ guide/
 
 ## 🚀 场景导航
 
-### 场景 1：我是 AI Agent 初学者
+> 3 秒定位 — 你是什么角色，直接走哪条路
+
+### 👶 我是 AI Agent 初学者，从零开始
+
 ```
-E06 通识 → AgentGuide/Prompt-Engineering-Guide（理论基础）
-  → 选一个生态深入：E01 (Claude Code) 或 E02 (Codex)
-  → E05 MCP（理解 Agent 工具调用）
+📌 目标：12 周达到求职水平
+① E06 Prompt-Engineering-Guide  (理论基础，1周)
+② E06 AgentGuide                 (求职体系，双线路径，2周)
+③ E01 claudecode-guide → claude-code-guide  (上手 Coding Agent，2周)
+④ E06 ai-system-design-guide     (系统设计，2周)
+⑤ E06 ai-agent-interview-guide   (面试冲刺，2周)
 ```
 
-### 场景 2：我是后端工程师，想转型 AI
+### 🔄 我是后端工程师，想转型 AI
+
 ```
-E06 → python-guide（语言补强）
-  → E03 Harness 工程（理解 Agent 本质）
-  → E01/E02（上手 Coding Agent）
+📌 目标：8 周完成转型
+① E06 python-guide                (语言补强，1周)
+② E03 harness_engineering_guide   (理解 Agent 本质，2周)
+③ E01 claude-code-ultimate-guide  (Coding Agent 工具链，2周)
+④ E04 hermes-agent-guide          (开源框架探索，2周)
+⑤ E06 ai-agent-interview-guide    (面试准备，1周)
 ```
 
-### 场景 3：我是资深开发者，想深入 Agent 架构
+### 🏗️ 我是资深开发者，深入 Agent 架构
+
 ```
-E03 Harness 工程（理论体系）
-  → E04 Hermes/OpenClaw（开源框架深度）
-  → E05 MCP（协议深度）
-  → E06 ai-system-design-guide（系统设计）
+📌 目标：深入架构能力
+① E06 ai-system-design-guide      (系统设计，3周)
+② E03 harness_engineering_guide   (Harness 理论，3周)
+③ E04 openclaw-security-practice-guide (安全体系，2周)
+④ E01/E02/E04 框架对比            (选型能力，2周)
 ```
+
+### 🎯 我要面试 Agent 岗位
+
+```
+📌 目标：快速冲刺
+① E06 AgentGuide                   (求职体系 + 简历)
+② E06 ai-agent-interview-guide      (200+ 八股文)
+③ E06 ai-system-design-guide        (128 道系统设计题)
+④ E01 claude-code-ultimate-guide    (Agent 深度理解)
+```
+
+### 💰 我是独立开发者/创业者
+
+```
+📌 目标：探索变现机会
+① E04 hermes-agent-guide (第14册)  (九大变现路径，1周)
+② E01 claude-code-ultimate-guide   (提升开发效率，1周)
+③ E05 MCP-Chinese-Getting-Started-Guide (MCP 服务开发，3天)
+```
+
+### 🔒 我关注 Agent 安全
+
+```
+📌 目标：安全体系构建
+① E04 openclaw-security-practice-guide  (零信任三层防御)
+② E01 claude-code-ultimate-guide        (28 CVE 威胁库)
+③ E03 harness_engineering_guide Part 4  (安全体系设计)
+```
+
+---
+
+> 📖 完整学习路线详见 [`data/learning-paths.md`](data/learning-paths.md)  
+> 📊 生态总索引详见 [`ecosystem-index.md`](ecosystem-index.md)
 
 ---
 
 > **维护者**: @1byteone  
 > **收录日期**: 2026-08-22  
-> **收录仓库数**: 20  
+> **收录仓库数**: 27  
 > **生态分类**: 6 大技术栈生态  
-> **排除**: yupi/* 系列仓库
+> **总 Stars**: 186,650

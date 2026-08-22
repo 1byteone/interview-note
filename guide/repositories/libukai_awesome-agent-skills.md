@@ -10,6 +10,7 @@
 |------|-----|
 | Stars | 4,998 |
 | Topics | agent, awesome-list, claudecode, openclaw, skills |
+| 生态 | E06 · 通识与基础 |
 
 ## 内容分析
 
@@ -25,3 +26,14 @@ Agent Skills 终极指南：快速入门、资源推荐、精选技能与实用�
 ## 阅读建议
 
 - **适合人群**: Agent Skills 初学者
+---
+
+## 生态交叉引用
+
+- **主生态**: E06 · 通识与基础
+- **交叉引用**: 同上生态
+  - **E01**: [FlorianBruniaux/claude-code-ultimate-guide](../repositories/FlorianBruniaux_claude-code-ultimate-guide.md), [zebbern/claude-code-guide](../repositories/zebbern_claude-code-guide.md)
+  - **E03**: [yeasy/harness_engineering_guide](../repositories/yeasy_harness_engineering_guide.md), [flaqai/deepeseek-harness-guide](../repositories/flaqai_deepeseek-harness-guide.md)
+  - **E04**: [slowmist/openclaw-security-practice-guide](../repositories/slowmist_openclaw-security-practice-guide.md), [jwangkun/hermes-agent-guide](../repositories/jwangkun_hermes-agent-guide.md)
+
+> 📖 完整矩阵见 [data/cross-reference.md](../data/cross-reference.md)

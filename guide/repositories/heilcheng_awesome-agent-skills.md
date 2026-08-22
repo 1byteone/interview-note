@@ -11,6 +11,7 @@
 | Stars | 6,126 |
 | 语言 | TypeScript |
 | Topics | agent-skills, ai-agents, claude, codex, mcp, openai |
+| 生态 | E06 · 通识与基础 |
 
 ## 内容分析
 
@@ -26,3 +27,15 @@ Agent Skills 教程、指南和目录合集。
 ## 阅读建议
 
 - **适合人群**: Skills 开发者、使用多 Coding Agent 的用户
+---
+
+## 生态交叉引用
+
+- **主生态**: E06 · 通识与基础
+- **交叉引用**: 同上生态
+  - **E01**: [FlorianBruniaux/claude-code-ultimate-guide](../repositories/FlorianBruniaux_claude-code-ultimate-guide.md), [zebbern/claude-code-guide](../repositories/zebbern_claude-code-guide.md)
+  - **E02**: [freestylefly/CodexGuide](../repositories/freestylefly_CodexGuide.md)
+  - **E03**: [yeasy/harness_engineering_guide](../repositories/yeasy_harness_engineering_guide.md), [flaqai/deepeseek-harness-guide](../repositories/flaqai_deepeseek-harness-guide.md)
+  - **E04**: [slowmist/openclaw-security-practice-guide](../repositories/slowmist_openclaw-security-practice-guide.md), [jwangkun/hermes-agent-guide](../repositories/jwangkun_hermes-agent-guide.md)
+
+> 📖 完整矩阵见 [data/cross-reference.md](../data/cross-reference.md)

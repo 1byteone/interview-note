@@ -1,6 +1,6 @@
 # bcefghj/ai-agent-interview-guide
 
-> ⭐ 2,119 | 🗣 Python | [GitHub](https://github.com/bcefghj/ai-agent-interview-guide) | 收录: 2026-08-22
+> ⭐ 2,120 | 🗣 Python | [GitHub](https://github.com/bcefghj/ai-agent-interview-guide) | 收录: 2026-08-22
 
 ---
 
@@ -10,9 +10,10 @@
 |------|-----|
 | 全名 | bcefghj/ai-agent-interview-guide |
 | 描述 | AI Agent 面试全攻略：从零到Offer，包含200+面试题、企业级项目(Python/Java/Go)、简历模板、STAR面试稿、哆啦A梦漫画图解 |
-| Stars | 2,119 |
+| Stars | 2,120 |
 | 语言 | Python |
 | 最后更新 | - |
+| 生态 | E06 · 通识与基础 |
 
 ## 内容分析
 
@@ -33,3 +34,13 @@
 
 - **适合人群**: AI Agent 求职者，Java/Go 后端转型人群
 - **配合阅读**: AgentGuide → ai-agent-interview-guide（先学后练）
+---
+
+## 生态交叉引用
+
+- **主生态**: E06 · 通识与基础
+- **交叉引用**: 同上生态
+  - **E01**: [FlorianBruniaux/claude-code-ultimate-guide](../repositories/FlorianBruniaux_claude-code-ultimate-guide.md), [zebbern/claude-code-guide](../repositories/zebbern_claude-code-guide.md)
+  - **E02**: [freestylefly/CodexGuide](../repositories/freestylefly_CodexGuide.md)
+
+> 📖 完整矩阵见 [data/cross-reference.md](../data/cross-reference.md)

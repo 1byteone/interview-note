@@ -11,6 +11,7 @@
 | Stars | 3,234 |
 | 语言 | TypeScript |
 | Topics | 无 |
+| 生态 | E02 · Codex 生态 |
 
 ## 内容分析
 
@@ -37,3 +38,14 @@
 
 - **适合人群**: Codex 初学者到团队
 - **在线体验**: codexguide.ai
+---
+
+## 生态交叉引用
+
+- **主生态**: E02 · Codex 生态
+- **交叉引用**: 同上生态
+  - **E01**: [FlorianBruniaux/claude-code-ultimate-guide](../repositories/FlorianBruniaux_claude-code-ultimate-guide.md), [zebbern/claude-code-guide](../repositories/zebbern_claude-code-guide.md)
+  - **E05**: [liaokongVFX/MCP-Chinese-Getting-Started-Guide](../repositories/liaokongVFX_MCP-Chinese-Getting-Started-Guide.md)
+  - **E06**: [realpython/python-guide](../repositories/realpython_python-guide.md), [ombharatiya/ai-system-design-guide](../repositories/ombharatiya_ai-system-design-guide.md)
+
+> 📖 完整矩阵见 [data/cross-reference.md](../data/cross-reference.md)

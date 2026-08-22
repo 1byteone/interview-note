@@ -135,4 +135,23 @@ learn/
 
 ---
 
+## 🗺️ Guide 生态导航（反向入口）
+
+> 学完 16 技术栈后，想探索 AI Agent 领域的前沿生态？
+
+本仓库的 [`guide/`](../guide/) 目录是按**技术栈生态**分类的 AI Agent 知识索引，覆盖 27 个精选仓库（186K+ stars）、6 大生态。
+
+| 生态 | 名称 | 与本教程的关联 | 入口 |
+|------|------|----------------|------|
+| **E01** | 🤖 Claude Code | Coding Agent 实践，你学的 Spring Boot/Python/LangChain 都能用上 | [`categories/01`](../guide/categories/01-ecosystem-claude-code.md) |
+| **E02** | 🐙 Codex | OpenAI Coding Agent，和 OpenAI API 篇直接相关 | [`categories/02`](../guide/categories/02-ecosystem-codex.md) |
+| **E03** | ⚙️ DSH/Harness | Agent 运行时框架，LangChain 篇的底层原理延伸 | [`categories/03`](../guide/categories/03-ecosystem-dsh-harness.md) |
+| **E04** | 🔗 Hermes/OpenClaw | 开源 Agent 框架，多平台接入 + MCP 集成 | [`categories/04`](../guide/categories/04-ecosystem-hermes-openclaw.md) |
+| **E05** | 🌐 MCP 协议 | 跨平台工具调用，LangChain/Agent 篇的必修协议 | [`categories/05`](../guide/categories/05-ecosystem-mcp.md) |
+| **E06** | 📚 通识与基础 | Prompt/Agent/系统设计，面试必备 | [`categories/06`](../guide/categories/06-ecosystem-general-agent.md) |
+
+**一键跳转**：[guide 总览](../guide/README.md) · [生态总索引](../guide/ecosystem-index.md) · [生态-教程映射图](../guide/guide-learn-mapping.md)
+
+---
+
 > 🎉 祝你学习顺利，面试成功！

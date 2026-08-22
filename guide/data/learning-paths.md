@@ -106,9 +106,11 @@ Phase 4: 框架选型与对比（E01 + E02 + E04，2 周）
 | DeepSeek Harness | **E03** | deepeseek-harness-guide Quick Start → GUIDE.md → 插件开发 |
 | Harness 工程理论 | **E03** | harness_engineering_guide（14 章专著从头到尾） |
 | Hermes Agent | **E04** | hermes-agent-guide 阅读路线 1（快速入门）→ 路线 2（技术深度） |
+| OpenClaw 中文 | **E04** | liyupi/openclaw-guide（安装部署→多平台接入→Agent 架构） |
 | OpenClaw 安全 | **E04** | openclaw-security-practice-guide（三层防御） |
 | MCP 协议 | **E05** | MCP-Chinese-Getting-Started-Guide（从头到尾） |
-| 通识入门 | **E06** | Prompt-Engineering-Guide → AgentGuide → ai-agents-from-zero |
+| 通识入门 | **E06** | liyupi/ai-guide（中文导航站）→ Prompt-Engineering-Guide → AgentGuide |
+| Spring AI 实战 | **E06** | liyupi/ai-code-helper（Java + Spring Boot 3.5 + LangChain4j） |
 | 面试准备 | **E06** | AgentGuide（求职体系）→ ai-agent-interview-guide（八股文）→ ai-system-design-guide（系统设计题） |
 
 ---

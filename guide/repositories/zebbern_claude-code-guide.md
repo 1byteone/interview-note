@@ -11,6 +11,7 @@
 | Stars | 4,585 |
 | 语言 | Python |
 | Topics | claude, claude-code, claude-code-guide, mcp, skills |
+| 生态 | E01 · Claude Code 生态 |
 
 ## 内容分析
 
@@ -46,3 +47,13 @@ Claude Code 全功能单文件超级手册，社区维护。
 - **适合人群**: Claude Code 日常使用者
 - **使用方式**: 作为功能参考手册，按需查阅
 - **配合阅读**: claude-code-ultimate-guide（深度理解互补）
+---
+
+## 生态交叉引用
+
+- **主生态**: E01 · Claude Code 生态
+- **交叉引用**: 同上生态
+  - **E03**: [yeasy/harness_engineering_guide](../repositories/yeasy_harness_engineering_guide.md), [flaqai/deepeseek-harness-guide](../repositories/flaqai_deepeseek-harness-guide.md)
+  - **E05**: [liaokongVFX/MCP-Chinese-Getting-Started-Guide](../repositories/liaokongVFX_MCP-Chinese-Getting-Started-Guide.md)
+
+> 📖 完整矩阵见 [data/cross-reference.md](../data/cross-reference.md)

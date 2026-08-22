@@ -50,6 +50,7 @@ E05 MCP 协议 ─────────────────────�
 | harness_engineering_guide | 参考实现 | 参考实现 | 参考实现 | MCP 协议集成 | 系统设计 |
 | deepeseek-harness-guide | 竞品对比 | — | 插件架构对比 | MCP 集成 | Agent 开发 |
 | awesome-harness-engineering | — | — | — | — | — |
+| dsh-kun-like-pet | — | — | — | — | — |
 
 ### E04 → 其他生态
 
@@ -58,6 +59,8 @@ E05 MCP 协议 ─────────────────────�
 | hermes-agent-guide | 安全实践参考 | — | Harness 参考实现 | MCP 集成 | 框架对比 |
 | openclaw-security-practice-guide | 安全实践参考 | — | 安全体系设计 | — | Agent 安全 |
 | awesome-hermes-agent | — | — | — | — | 生态索引 |
+| openclaw-guide (yupi) | — | — | Harness 理论 | MCP 集成 | Agent 开发 |
+| github-claw (yupi) | — | — | — | — | Agent 技能 |
 
 ### E05 → 其他生态
 
