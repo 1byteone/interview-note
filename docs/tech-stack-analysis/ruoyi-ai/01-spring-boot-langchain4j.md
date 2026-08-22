@@ -323,7 +323,11 @@ public interface AiChatService {
 /**
  * 模型工厂：根据配置动态创建对应的 ChatLanguageModel。
  * 支持通过配置文件或运行时动态切换模型提供商。
+ * 标注 @RefreshScope：当配置中心的 ai.* 配置变更时，
+ * 工厂 Bean 会重新创建，其 @Value 注入的配置值随即刷新，
+ * 从而让依赖它的 DynamicAiChatService 使用到最新的模型配置。
  */
+@RefreshScope  // 配置刷新时重新创建此 Bean，使 @Value 配置值同步更新
 @Component
 public class ChatModelFactory {
 
@@ -394,7 +398,8 @@ public class DynamicAiChatService implements AiChatService {
     @Override
     public String chat(String message) {
         ChatLanguageModel model = factory.createChatModel();
-        return model.generate(message);
+        // generate() 返回 Response<AiMessage>，通过 .content().text() 取出文本内容
+        return model.generate(message).content().text();
     }
 }
 ```
@@ -430,7 +435,29 @@ public class DynamicAiChatService implements AiChatService {
   - 能结合生产环境经验，说明 AI 服务调用中的超时控制、重试策略、熔断降级（Resilience4j/Sentinel）等工程实践
   - 能提到虚拟线程（Project Loom）在 AI 调用场景中的优势：AI 接口调用是典型的 I/O 密集型操作，虚拟线程可以大幅降低线程开销
 
-## 五、参考资料与扩展阅读
+## 五、LangChain4j vs Spring AI Alibaba 对比
+
+> 本节是为后续跨项目对比（如 mall-ai-search 项目使用 Spring AI Alibaba）所做的铺垫。了解两者差异，有助于在面试中展现对 Java AI 框架生态的全局视野。
+
+| 对比维度 | LangChain4j 1.13.0 | Spring AI Alibaba |
+|----------|-------------------|-------------------|
+| **定位** | 独立的 Java AI 编排框架，不依赖 Spring 生态也可使用 | 阿里云通义系列大模型在 Spring AI 体系中的官方集成方案 |
+| **Spring 生态整合** | 通过 `langchain4j-spring-boot-starter` 实现自动配置，但核心框架与 Spring 解耦 | 深度绑定 Spring 生态，是 Spring AI 官方 MCP（Model Context Protocol）的阿里云实现 |
+| **厂商支持范围** | 20+ LLM 提供商（OpenAI、智谱、通义千问、Ollama 等），30+ Embedding Store | 以阿里云通义系列为核心，通过 Spring AI 抽象层兼容其他厂商 |
+| **核心抽象** | `ChatLanguageModel` 统一接口 + `@AiService` 注解代理 + `AiServices` Builder | `ChatModel` 抽象类 + `@Service` 注解 + `Prompt` 模板机制 |
+| **RAG 管线** | 完整的 Advanced RAG 管线（QueryTransformer、ContentRouter、ContentAggregator 等模块化组件） | 通过 Spring AI 的 `DocumentRetriever` 和向量存储抽象实现基本 RAG |
+| **Agent 支持** | 内置 Agentic API、Tool 注解、MCP 协议集成、langgraph4j 图编排 | 基于 Spring AI 的 Tool Calling 机制，Agent 能力相对基础 |
+| **社区活跃度** | 开源社区活跃，版本迭代快（当前 1.13.0），GitHub 13k+ Stars | 阿里巴巴官方维护，更新节奏跟随 Spring AI 版本，文档以中文为主 |
+| **适用场景** | 需要多厂商灵活切换、复杂 RAG 管线、Agent 编排的 Java 项目 | 阿里云生态用户，需要与通义大模型深度集成、阿里云服务紧密配合的项目 |
+| **学习曲线** | 中等，需要理解 `@AiService` 代理机制和 RAG 管线概念 | 较低，如果熟悉 Spring 生态，上手较快 |
+| **生产案例** | ruoyi-ai、多个开源商业项目 | 阿里云客户、Spring AI 官方示例 |
+
+**选型建议：**
+- 如果项目需要多厂商灵活接入（如同时使用智谱 glm-5.2、OpenAI 和通义千问），LangChain4j 是更成熟的选择
+- 如果项目深度绑定阿里云生态（ALB、OSS、通义大模型），Spring AI Alibaba 的集成体验更流畅
+- 两者并非互斥，ruoyi-ai 中 LangChain4j 作为核心 AI 框架，Spring AI 的某些组件（如观测性）可作为补充
+
+## 六、参考资料与扩展阅读
 
 - [LangChain4j 官方文档](https://docs.langchain4j.dev) — 核心 API、Spring Boot Starter 集成指南、最佳实践
 - [LangChain4j GitHub 仓库](https://github.com/langchain4j/langchain4j) — 源码、示例、Issues 讨论
@@ -439,4 +466,4 @@ public class DynamicAiChatService implements AiChatService {
 - [ruoyi-ai GitHub 仓库](https://github.com/1byteone/ruoyi-ai) — 项目源码，查看完整的 `@AiService` 接口定义和模型工厂实现
 - [Spring AI Alibaba 官方文档](https://sca.aliyun.com/ai/) — 与 LangChain4j 对比，了解 Spring AI 体系的集成方案
 
-> **对比预告**：下一篇文章将深入分析 ruoyi-ai 的多厂商大模型统一接入（工厂模式）设计，并与 Spring AI Alibaba 的多模型管理方案进行对比，敬请期待。
+> **对比预告**：下一篇文章将深入分析 ruoyi-ai 的多厂商大模型统一接入（工厂模式）设计，与我们已在第五节梳理的 LangChain4j vs Spring AI Alibaba 对比相结合，展现完整的 Java AI 框架选型思考，敬请期待。
