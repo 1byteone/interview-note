@@ -200,11 +200,51 @@
 
 ## 🔗 配套资源
 
+### 核心文档体系
+
+| 资源 | 路径 | 说明 |
+|------|------|------|
+| 16 技术栈学习路径 | [`learn/`](learn/) | 每个技术栈按「入门→核心→进阶→项目→面试」组织 |
+| 学习路线总纲 | [`learn/00-ROADMAP/`](learn/00-ROADMAP/) | 16 栈全景 + 三条学习路线 + 双体系关联索引 |
+| 项目实战剖析 (38 篇) | [`docs/tech-stack-analysis/`](docs/tech-stack-analysis/) | 4 个项目深度剖析，含代码+面试题+Java 对照 |
+| 面试计划 | 本文件 | 3 个月系统准备计划 |
+
+### 四个项目剖析系列
+
+| 项目 | 语言 | 篇数 | 核心方向 | 路径 |
+|------|------|------|---------|------|
+| **mall-exercise** | Java | 7 篇 | AOP/反射/集合/Redis/MP | [`mall-exercise/`](docs/tech-stack-analysis/mall-exercise/) |
+| **mall-micro-cloud** | Java | 13 篇 | 微服务/分布式/高并发 | [`mall-micro-cloud/`](docs/tech-stack-analysis/mall-micro-cloud/) |
+| **mall-ai-search** | Python | 11 篇 | AI 搜索/Agent/向量检索 | [`mall-ai-search/`](docs/tech-stack-analysis/mall-ai-search/) |
+| **text2sql** | Java | 7 篇 | Java AI/RAG/SQL 验证 | [`text2sql/`](docs/tech-stack-analysis/text2sql/) |
+
+### 面试工具
+
 - 自动出题：`interview-tools/question-generator/question_generator.py`
 - 面试 Skill：`.claude/skills/java-interview-generator/SKILL.md`
 - 全部题库：本仓库各 `interview-questions.md`
 - 项目模板：`examples/sample-java-project/`
 
 ---
+
+## 🎤 面试话术速查
+
+### 10 秒版本（电梯演讲）
+
+> "我做过四个项目：Java 微服务电商（12 个微服务）、Java 核心技能练习（AOP/反射/集合）、Python AI 搜索（LangChain Agent + 向量检索）、Java Text2SQL（Spring AI + RAG）。覆盖了从 Java 基础到微服务到 AI 的全栈能力。"
+
+### 60 秒版本（技术深度展示）
+
+> "Java 核心方面，我写过自定义 AOP 注解做缓存和权限控制，用反射实现过动态 SQL 生成。微服务方面，我参与过 12 个服务的电商系统，处理过 Seata 分布式事务、Redisson 秒杀防超卖、RocketMQ 异步解耦。AI 方面，我用 Python 做过 LangChain Agent 的智能搜索，也用 Java 的 Spring AI 做过 Text2SQL。三个方向都有实战经验。"
+
+### 5 分钟版本（完整项目介绍）
+
+> **mall-exercise（Java 核心技能）**：自定义注解 + AOP 实现缓存/日志/权限/监控四个切面；反射实现 DynamicSqlBuilder（MyBatis-Plus 原理）和通用验证框架；Redis Cache-Aside 模式实现商品缓存。
+>
+> **mall-micro-cloud（微服务电商）**：12 个微服务，Nacos 注册发现 + Gateway 网关鉴权 + Seata 分布式事务 + Redisson 分布式锁 + RocketMQ 异步解耦。秒杀用四层防护：静态页 + 布隆过滤器 + 分布式锁 + Redis 原子扣减。
+>
+> **mall-ai-search（AI 搜索）**：Python FastAPI 网关 + LangChain Agent + RedisVL 向量检索 + 多供应商 LLM 切换。用户输入自然语言 → Embedding → 向量相似度匹配 → Agent 调用工具检索 → LLM 生成推荐。
+>
+> **text2SQL（Java AI）**：Spring AI + DeepSeek + RAG 混合检索 + SQL 四层验证（语法/安全/语义/性能）。用户输入"查询本月销售额前10的商品" → RAG 检索相关表 → Prompt 构建 → LLM 生成 SQL → 验证后执行。
 
 > 💡 提示：不要只是"看"，要"输出"。每道题学完，用自己的话讲一遍（或写一遍），才是真正的掌握。
