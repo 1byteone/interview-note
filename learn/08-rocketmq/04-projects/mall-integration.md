@@ -8,10 +8,10 @@
 
 | 主题 | 本 learn 文档 | docs/tech-stack-analysis 深度剖析 |
 |------|--------------|--------------------------------|
-| RocketMQ 消息驱动 | 本文 | [09-ROCKETMQ.md](../../docs/tech-stack-analysis/mall-micro-cloud/09-ROCKETMQ.md) — 订单回调/库存同步/最终一致性 |
-| 秒杀库存 MQ 削峰 | 本文 § 秒杀 | [06-SECKILL-HIGHCONCUR.md](../../docs/tech-stack-analysis/mall-micro-cloud/06-SECKILL-HIGHCONCUR.md) — Redis 扣减+MQ 双写 |
-| MQ 幂等消费 | — | [11-SCHEDULER-BLOOMFILTER.md](../../docs/tech-stack-analysis/mall-micro-cloud/11-SCHEDULER-BLOOMFILTER.md) — transactionId 幂等 |
-| 购物车清空(消费端) | — | [05-CART-MONGODB.md](../../docs/tech-stack-analysis/mall-micro-cloud/05-CART-MONGODB.md) — MongoDB 购物车 |
+| RocketMQ 消息驱动 | 本文 | [09-ROCKETMQ.md](../../../docs/tech-stack-analysis/mall-micro-cloud/09-ROCKETMQ.md) — 订单回调/库存同步/最终一致性 |
+| 秒杀库存 MQ 削峰 | 本文 § 秒杀 | [06-SECKILL-HIGHCONCUR.md](../../../docs/tech-stack-analysis/mall-micro-cloud/06-SECKILL-HIGHCONCUR.md) — Redis 扣减+MQ 双写 |
+| MQ 幂等消费 | — | [11-SCHEDULER-BLOOMFILTER.md](../../../docs/tech-stack-analysis/mall-micro-cloud/11-SCHEDULER-BLOOMFILTER.md) — transactionId 幂等 |
+| 购物车清空(消费端) | — | [05-CART-MONGODB.md](../../../docs/tech-stack-analysis/mall-micro-cloud/05-CART-MONGODB.md) — MongoDB 购物车 |
 
 ---
 

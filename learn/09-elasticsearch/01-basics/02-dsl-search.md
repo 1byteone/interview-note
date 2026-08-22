@@ -360,4 +360,4 @@ GET /products/_search
 - bool 复合查询：must / should / filter / must_not 的组合与 minimum_should_match 语义
 - 聚合分析：terms / avg / date_histogram / extended_stats 及嵌套子聚合
 
-下一步：学习 [索引与映射](02-core/01-index-and-mapping.md)，掌握 text vs keyword 的映射原理与显式 Mapping 设计规范。
+下一步：学习 [索引与映射](../02-core/01-inverted-index.md)，掌握 text vs keyword 的映射原理与显式 Mapping 设计规范。

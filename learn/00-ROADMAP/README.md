@@ -405,10 +405,10 @@ learn/
 
 | 项目 | 语言 | 篇数 | 核心方向 | 路径 |
 |------|------|------|---------|------|
-| **mall-exercise** | Java | 7 篇 | AOP/反射/集合/Redis/MP | [→ 查看](../docs/tech-stack-analysis/mall-exercise/01-AOP-PRACTICE.md) |
-| **mall-micro-cloud** | Java | 13 篇 | 微服务/分布式/高并发 | [→ 查看](../docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) |
-| **mall-ai-search** | Python | 11 篇 | AI 搜索/Agent/向量检索 | [→ 查看](../docs/tech-stack-analysis/mall-ai-search/00-OVERVIEW.md) |
-| **text2sql** | Java | 7 篇 | Java AI/RAG/SQL 验证 | [→ 查看](../docs/tech-stack-analysis/text2sql/00-OVERVIEW.md) |
+| **mall-exercise** | Java | 7 篇 | AOP/反射/集合/Redis/MP | [→ 查看](../../docs/tech-stack-analysis/mall-exercise/01-AOP-PRACTICE.md) |
+| **mall-micro-cloud** | Java | 13 篇 | 微服务/分布式/高并发 | [→ 查看](../../docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) |
+| **mall-ai-search** | Python | 11 篇 | AI 搜索/Agent/向量检索 | [→ 查看](../../docs/tech-stack-analysis/mall-ai-search/00-OVERVIEW.md) |
+| **text2sql** | Java | 7 篇 | Java AI/RAG/SQL 验证 | [→ 查看](../../docs/tech-stack-analysis/text2sql/00-OVERVIEW.md) |
 
 ### 各技术栈的双体系对照
 

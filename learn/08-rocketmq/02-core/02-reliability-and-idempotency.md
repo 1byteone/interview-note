@@ -355,4 +355,4 @@ public class PaymentConsumer implements RocketMQListener<PaymentEvent> {
 
 **核心原则**：生产端可靠发送 + Broker 端同步刷盘 + 消费端幂等处理 = 消息系统终极可靠性方案。
 
-下一步：进入 [高可用](03-advanced/01-high-availability.md)，了解 Dledger 多副本机制。
+下一步：进入 [高可用](../03-advanced/01-high-availability.md)，了解 Dledger 多副本机制。

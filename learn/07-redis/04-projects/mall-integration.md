@@ -10,10 +10,10 @@
 
 | 主题 | 本 learn 文档 | docs/tech-stack-analysis 深度剖析 |
 |------|--------------|--------------------------------|
-| Cache-Aside 模式 | 本文 § 一 | [04-REDIS-CACHE.md](../../docs/tech-stack-analysis/mall-exercise/04-REDIS-CACHE.md) — 缓存策略实战 |
-| 秒杀库存预扣 + 分布式锁 | 本文 § 二 | [06-SECKILL-HIGHCONCUR.md](../../docs/tech-stack-analysis/mall-micro-cloud/06-SECKILL-HIGHCONCUR.md) — Redisson + 布隆过滤器 |
-| Redis 向量检索 (RedisVL) | — | [06-VECTOR-STORE.md](../../docs/tech-stack-analysis/mall-ai-search/06-VECTOR-STORE.md) — Redis Stack HNSW 索引 |
-| 布隆过滤器防穿透 | — | [11-SCHEDULER-BLOOMFILTER.md](../../docs/tech-stack-analysis/mall-micro-cloud/11-SCHEDULER-BLOOMFILTER.md) — Redisson RBloomFilter |
+| Cache-Aside 模式 | 本文 § 一 | [04-REDIS-CACHE.md](../../../docs/tech-stack-analysis/mall-exercise/04-REDIS-CACHE.md) — 缓存策略实战 |
+| 秒杀库存预扣 + 分布式锁 | 本文 § 二 | [06-SECKILL-HIGHCONCUR.md](../../../docs/tech-stack-analysis/mall-micro-cloud/06-SECKILL-HIGHCONCUR.md) — Redisson + 布隆过滤器 |
+| Redis 向量检索 (RedisVL) | — | [06-VECTOR-STORE.md](../../../docs/tech-stack-analysis/mall-ai-search/06-VECTOR-STORE.md) — Redis Stack HNSW 索引 |
+| 布隆过滤器防穿透 | — | [11-SCHEDULER-BLOOMFILTER.md](../../../docs/tech-stack-analysis/mall-micro-cloud/11-SCHEDULER-BLOOMFILTER.md) — Redisson RBloomFilter |
 
 ---
 

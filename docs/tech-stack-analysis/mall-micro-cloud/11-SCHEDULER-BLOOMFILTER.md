@@ -186,6 +186,6 @@ StockDeductConsumer 消费
 
 ---
 
-> **下一篇：** [AI搜索桥接服务 —— Java 桥接 Python AI 搜索服务的 Feign 客户端设计](./AI-SEARCH-BRIDGE.md)
+> **下一篇：** [AI搜索桥接服务 —— Java 桥接 Python AI 搜索服务的 Feign 客户端设计](./12-AI-SEARCH-BRIDGE.md)
 >
 > 看 mall-aisearch-service 如何通过 Feign 调用 Python AI 搜索服务，实现 Java 微服务与 Python AI 的桥接。

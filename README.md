@@ -69,6 +69,18 @@ interview-note/
 │       ├── mall-ai-search/      # mall-ai-search 智能搜索项目（11篇系列）
 │       ├── mall-micro-cloud/    # mall-micro-cloud 微服务电商项目（11篇系列）
 │       └── text2sql/            # text2sql Java Text2SQL+RAG 项目（7篇系列）
+├── guide/                       # 📚 Guide 仓库收录指南（六大生态）
+│   ├── README.md                # 生态总览与索引
+│   ├── categories/              # 六大技术栈生态分类
+│   │   ├── 01-ecosystem-claude-code.md        # E01 Claude Code 生态
+│   │   ├── 02-ecosystem-codex.md              # E02 Codex 生态
+│   │   ├── 03-ecosystem-dsh-harness.md        # E03 DSH/Harness 生态
+│   │   ├── 04-ecosystem-hermes-openclaw.md    # E04 Hermes/OpenClaw 生态
+│   │   ├── 05-ecosystem-mcp.md                # E05 MCP 协议生态
+│   │   └── 06-ecosystem-general-agent.md      # E06 通识与基础
+│   ├── repositories/           # 仓库详情（每库一个文件）
+│   ├── data/                   # 专业交付物（标准/全景/路线/雷达/交叉引用）
+│   └── assets/                 # 生态图谱等资源
 └── projects/                    # 项目实战
     ├── java-projects/           # Java 项目
     │   ├── ecommerce/           # 电商系统
@@ -361,6 +373,26 @@ learn/
 | 🐳 Docker 教程 | [`learn/10-docker/README.md`](./learn/10-docker/README.md) |
 | 🔗 LangChain 教程 | [`learn/14-langchain/README.md`](./learn/14-langchain/README.md) |
 | 📚 RAG 教程 | [`learn/15-rag/README.md`](./learn/15-rag/README.md) |
+
+---
+
+## 🗺️ Guide 生态导航
+
+> 基于今天（2026-08-22）Starred 的 `guide` 系列仓库，按**技术栈生态**分类的 AI Agent 知识库。
+> 20 个仓库 · 6 大生态 · 深度分析 · 场景驱动
+
+| 生态 | 名称 | 核心定位 | 分类入口 |
+|------|------|----------|----------|
+| **E01** | 🤖 Claude Code 生态 | 最主流 Coding Agent 平台 | [`guide/categories/01-ecosystem-claude-code.md`](./guide/categories/01-ecosystem-claude-code.md) |
+| **E02** | 🐙 Codex 生态 | OpenAI Coding Agent | [`guide/categories/02-ecosystem-codex.md`](./guide/categories/02-ecosystem-codex.md) |
+| **E03** | ⚙️ DSH/Harness 生态 | 新一代 Agent 运行时 | [`guide/categories/03-ecosystem-dsh-harness.md`](./guide/categories/03-ecosystem-dsh-harness.md) |
+| **E04** | 🔗 Hermes/OpenClaw 生态 | 开源社区 Agent 框架 | [`guide/categories/04-ecosystem-hermes-openclaw.md`](./guide/categories/04-ecosystem-hermes-openclaw.md) |
+| **E05** | 🌐 MCP 协议生态 | 跨平台工具调用协议 | [`guide/categories/05-ecosystem-mcp.md`](./guide/categories/05-ecosystem-mcp.md) |
+| **E06** | 📚 通识与基础 | 跨生态通用知识 | [`guide/categories/06-ecosystem-general-agent.md`](./guide/categories/06-ecosystem-general-agent.md) |
+
+**专业交付物**：[收录标准](guide/data/standards.md) · [领域全景图](guide/data/landscape.md) · [学习路线](guide/data/learning-paths.md) · [技术雷达](guide/data/tech-radar.md) · [交叉引用矩阵](guide/data/cross-reference.md)
+
+> 想快速入门？→ `guide/README.md` 提供场景导航（初学者/后端转型/架构师三条路径）
 
 ---
 

@@ -245,4 +245,4 @@ curl -X DELETE http://localhost:8080/posts/1
 | 内存数据 | dict 模拟数据库，无外部依赖 |
 | 测试 | curl 手动测试 API 各端点 |
 
-下一步：进入 [05-interview/quick-revision.md](../05-interview/quick-revision.md) 开始面试冲刺。
+下一步：进入 [05-interview/quick-revision.md](../../05-interview/quick-revision.md) 开始面试冲刺。

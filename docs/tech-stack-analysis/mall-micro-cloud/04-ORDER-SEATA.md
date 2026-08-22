@@ -118,6 +118,6 @@ String orderId = IdWorker.getIdStr();  // 基于雪花算法的分布式唯一 I
 
 ---
 
-> **下一篇：** [05-CART-REDIS.md —— 购物车服务与 Redis 缓存设计](./05-CART-REDIS.md)
+> **下一篇：** [05-CART-MONGODB.md —— 购物车服务与 Redis 缓存设计](./05-CART-MONGODB.md)
 >
 > 购物车为什么用 Redis 存？Hash 结构为什么比 String 更合适？

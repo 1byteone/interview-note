@@ -247,4 +247,4 @@ rocketMQTemplate.syncSend("mall-order-topic", msg);
 - 批量消息的使用与限制
 - Tag 过滤与 SQL 过滤的区别
 
-下一步：进入 [事务消息](02-core/01-transaction-message.md)，掌握分布式事务消息原理。
+下一步：进入 [事务消息](../02-core/01-transaction-message.md)，掌握分布式事务消息原理。

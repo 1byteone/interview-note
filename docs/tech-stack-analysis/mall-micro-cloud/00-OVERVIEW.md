@@ -179,7 +179,7 @@ RocketMQ 消息 → mall-consumer-service 消费
 | 02 | [公共模块与统一架构](./02-COMMON-ARCH.md) | Result, 异常处理, Feign, 拦截器 | 统一架构设计 | ★★★★ |
 | 03 | [商品服务与 MyBatis-Plus](./03-PRODUCT-MYBATISPLUS.md) | MyBatis-Plus, SPU/SKU, 分类品牌 | 数据库设计、ORM | ★★★★ |
 | 04 | [订单服务与 Seata 分布式事务](./04-ORDER-SEATA.md) | Seata AT, @GlobalTransactional | 分布式事务 | ★★★★★ |
-| 05 | [购物车服务与 Redis 缓存](./05-CART-REDIS.md) | Redis Hash, 缓存策略 | 缓存设计、数据结构 | ★★★★ |
+| 05 | [购物车服务与 Redis 缓存](./05-CART-MONGODB.md) | Redis Hash, 缓存策略 | 缓存设计、数据结构 | ★★★★ |
 | 06 | [秒杀服务与高并发](./06-SECKILL-HIGHCONCUR.md) | Redisson, 布隆过滤器, 限流 | 高并发、分布式锁 | ★★★★★ |
 | 07 | [用户服务与 JWT 鉴权](./07-USER-JWT.md) | JWT, 拦截器, 网关鉴权 | 认证授权 | ★★★★ |
 | 08 | [ES 搜索服务](./08-ES-SEARCH.md) | Elasticsearch, 索引, 分页 | 搜索、数据分析 | ★★★ |

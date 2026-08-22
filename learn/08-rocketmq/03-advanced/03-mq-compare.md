@@ -183,4 +183,4 @@ Exchange ── Binding ── Queue 0
 
 **一句话总结**：Java 业务场景选 RocketMQ（事务、顺序、功能全），日志流处理选 Kafka（吞吐之王），灵活路由选 RabbitMQ（AMQP 协议）。
 
-下一步：进入 [AI 商城集成](04-projects/mall-integration.md)，将 RocketMQ 应用到真实项目。
+下一步：进入 [AI 商城集成](../04-projects/mall-integration.md)，将 RocketMQ 应用到真实项目。

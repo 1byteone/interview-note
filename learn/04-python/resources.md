@@ -80,4 +80,4 @@
 4. **读源码**：至少精读一个库的源码（推荐 `requests` 或 `asyncio` 的 `Task` 相关）
 5. **LeetCode 刷 Python 版**：顺手练习语法与算法
 
-> 面试记忆要点已浓缩在 [05-interview/quick-revision.md](../05-interview/quick-revision.md)，冲刺前过一遍即可。
+> 面试记忆要点已浓缩在 [05-interview/quick-revision.md](05-interview/quick-revision.md)，冲刺前过一遍即可。

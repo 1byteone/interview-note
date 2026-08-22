@@ -10,9 +10,9 @@
 
 | 主题 | 本 learn 文档 | docs/tech-stack-analysis 深度剖析 |
 |------|--------------|--------------------------------|
-| ES 搜索架构 | 本文 mall-integration | [08-ES-SEARCH.md](../../docs/tech-stack-analysis/mall-micro-cloud/08-ES-SEARCH.md) — ES 商品搜索服务 |
-| AI 向量搜索 | — | [06-VECTOR-STORE.md](../../docs/tech-stack-analysis/mall-ai-search/06-VECTOR-STORE.md) — RedisVL 向量检索 |
-| ES vs 向量搜索对比 | — | [00-OVERVIEW.md](../../docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) — 两种搜索范式全景 |
+| ES 搜索架构 | 本文 mall-integration | [08-ES-SEARCH.md](../../../docs/tech-stack-analysis/mall-micro-cloud/08-ES-SEARCH.md) — ES 商品搜索服务 |
+| AI 向量搜索 | — | [06-VECTOR-STORE.md](../../../docs/tech-stack-analysis/mall-ai-search/06-VECTOR-STORE.md) — RedisVL 向量检索 |
+| ES vs 向量搜索对比 | — | [00-OVERVIEW.md](../../../docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) — 两种搜索范式全景 |
 
 > 💡 ES 关键词搜索 vs 向量语义搜索是面试高频对比题。ES 精确匹配 + 属性过滤，向量搜索语义理解 + 模糊推荐，两者互补。
 

@@ -119,6 +119,5 @@ public class AiSearchSeriveImpl implements IAiSearchService {
 
 ---
 
-> **下一篇：** [更新现有文档 —— 补充 00-OVERVIEW、06-SECKILL、10-ARCHITECTURE 中遗漏的内容](./UPDATE-EXISTING.md)
 >
 > 更新全景导读、秒杀篇、架构复盘篇，补全 ElasticJob、布隆过滤器、MQ 幂等消费、AI 桥接服务等内容。

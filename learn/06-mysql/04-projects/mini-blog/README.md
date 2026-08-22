@@ -300,4 +300,4 @@ UPDATE post SET comment_count = comment_count + 1 WHERE id = 100;
 - 递归 CTE 查询树形结构数据
 - 读写性能优化手段
 
-> 下一步：[05-interview/quick-revision.md](../05-interview/quick-revision.md) — 面试速记版
+> 下一步：[05-interview/quick-revision.md](../../05-interview/quick-revision.md) — 面试速记版
