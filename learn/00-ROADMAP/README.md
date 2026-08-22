@@ -380,3 +380,49 @@ learn/
 > **最后的话**：技术栈数量不是重点，重点是你能用它们**做出什么**。16 个技术栈学完，你将拥有一个完整的 AI 智能商城项目，一段可以写在简历上的实战经历，以及一套用 STAR 法则应对面试的思维框架。过程中遇到任何问题，请回到这里，对照路线图检查自己的位置，调整节奏继续前进。
 >
 > 学习的敌人是完美主义，请记住：先完成，再完美。
+
+---
+
+## 十、本仓库文档体系与 `docs/tech-stack-analysis` 的关联
+
+> 本仓库有两套互补的文档体系：**`learn/`**（16 技术栈双轨教程）+ **`docs/tech-stack-analysis/`**（4 个项目实战剖析）。前者是学习路径，后者是面试落地。
+
+### 两套文档的定位
+
+| | `learn/`（本目录） | `docs/tech-stack-analysis/` |
+|--|-------------------|---------------------------|
+| **定位** | 技术栈学习路径，按难度递进 | 项目实战剖析，按请求链路串联 |
+| **视角** | "这个技术栈是什么" | "这个技术栈在我的项目里怎么用" |
+| **结构** | 双轨制（入门 + 面试） | 单轨（面试 + 代码 + Java 对照） |
+| **配套** | Mini-Project | 完整项目源码 |
+| **面试价值** | 背景知识 + 面试题库 | 项目故事 + STAR 答案 |
+
+### 项目剖析系列索引（`docs/tech-stack-analysis/`）
+
+| 项目 | 语言 | 篇数 | 核心方向 | 路径 |
+|------|------|------|---------|------|
+| **mall-exercise** | Java | 7 篇 | AOP/反射/集合/Redis/MP | [→ 查看](../docs/tech-stack-analysis/mall-exercise/01-AOP-PRACTICE.md) |
+| **mall-micro-cloud** | Java | 13 篇 | 微服务/分布式/高并发 | [→ 查看](../docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) |
+| **mall-ai-search** | Python | 11 篇 | AI 搜索/Agent/向量检索 | [→ 查看](../docs/tech-stack-analysis/mall-ai-search/00-OVERVIEW.md) |
+| **text2sql** | Java | 7 篇 | Java AI/RAG/SQL 验证 | [→ 查看](../docs/tech-stack-analysis/text2sql/00-OVERVIEW.md) |
+
+### 各技术栈的双体系对照
+
+当你在 `learn/02-java/` 学习 Java 核心时，可以同时在 `docs/tech-stack-analysis/mall-exercise/03-REFLECTION.md` 看到 Java 反射在真实项目中的落地：
+
+| learn 中的栈 | 对应的项目剖析文档 | 双体系学习路径 |
+|------------|------------------|---------------|
+| `01-backend-development` | `mall-micro-cloud/02-COMMON-ARCH.md` | 架构设计理论 → 项目中的统一响应/异常处理 |
+| `02-java` | `mall-exercise/01~03` | 集合/反射理论 → AOP/反射/集合实战代码 |
+| `03-spring-boot` | `mall-micro-cloud/02-COMMON-ARCH.md` | Spring Boot 理论 → 项目中的 Controller/Service 实践 |
+| `04-python` | `mall-ai-search/00-OVERVIEW.md` | Python 基础 → 项目中的完整 Python 代码 |
+| `05-fastapi` | `mall-ai-search/02-API-GATEWAY.md` | FastAPI 理论 → 项目中的路由/异常处理/Pydantic |
+| `06-mysql` | `mall-micro-cloud/03-PRODUCT-MYBATISPLUS.md` | MySQL 索引理论 → 项目中的多表设计/MP 查询 |
+| `07-redis` | `mall-exercise/04-REDIS-CACHE.md` | Redis 结构理论 → Cache-Aside/分布式锁实战 |
+| `08-rocketmq` | `mall-micro-cloud/09-ROCKETMQ.md` | MQ 模型理论 → 支付回调/库存同步/最终一致性 |
+| `09-elasticsearch` | `mall-micro-cloud/08-ES-SEARCH.md` | ES 索引理论 → 商品搜索/分页/数据分析 |
+| `14-langchain` | `mall-ai-search/07-LANGCHAIN-AGENT.md` | LCEL/Agent 理论 → create_agent/Tool/结构化输出 |
+| `15-rag` | `text2sql/03-RAG-RETRIEVAL.md` | RAG 架构理论 → 混合检索/融合排序实战 |
+| `16-openai` | `mall-ai-search/04-LLM-PROVIDER.md` | OpenAI API 理论 → 多供应商兼容协议 |
+
+> 💡 **面试话术**："我有一套完整的技术栈学习体系（`learn/`，16 个技术栈双轨教程），以及 4 个真实项目的深度剖析文档（`docs/tech-stack-analysis/`，38 篇，覆盖 AOP/反射/微服务/分布式/AI/RAG/Agent/向量检索）。前者是知识输入，后者是项目输出——面试时，我可以用 4 个项目讲清 40+ 个技术栈的实际应用。"
