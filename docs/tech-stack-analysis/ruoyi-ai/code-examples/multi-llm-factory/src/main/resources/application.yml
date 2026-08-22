@@ -1,0 +1,52 @@
+# ==========================================
+# 多模型工厂模式示例 - 应用配置文件
+# ==========================================
+# 使用 kebab-case 命名规范（Spring Boot 推荐）
+# kebab-case 会自动映射到 Java 的 camelCase 属性
+
+# 模型通用配置
+model:
+  # 当前激活的模型提供商
+  # 可选值: openai | deepseek | qwen
+  # 切换模型时只需修改此字段，无需改代码
+  provider: deepseek
+
+  # OpenAI 模型配置块
+  openai:
+    # OpenAI API 密钥（从 https://platform.openai.com/api-keys 获取）
+    api-key: ${OPENAI_API_KEY:sk-your-openai-api-key}
+    # 模型名称（gpt-4o 为最新多模态模型）
+    model-name: gpt-4o
+    # 生成温度：0.0 确定性输出，0.7 平衡，2.0 最大随机性
+    temperature: 0.7
+    # 自定义 API 地址（使用代理或兼容服务时设置，官方地址可留空）
+    base-url: ${OPENAI_BASE_URL:}
+
+  # DeepSeek 模型配置块
+  deepseek:
+    # DeepSeek API 密钥（从 https://platform.deepseek.com 获取）
+    api-key: ${DEEPSEEK_API_KEY:sk-your-deepseek-api-key}
+    # DeepSeek 通用对话模型
+    model-name: deepseek-chat
+    # 推荐温度 0.7 用于通用对话
+    temperature: 0.7
+    # DeepSeek 官方 API 地址（兼容 OpenAI 格式）
+    base-url: https://api.deepseek.com
+
+  # 通义千问模型配置块
+  qwen:
+    # DashScope API 密钥（从阿里云 DashScope 控制台获取）
+    api-key: ${DASHSCOPE_API_KEY:sk-your-dashscope-api-key}
+    # qwen-plus 为均衡模型，性价比最高
+    model-name: qwen-plus
+    # 生成温度
+    temperature: 0.7
+    # 通义千问无需设置 base-url，SDK 内置官方地址
+
+# Spring Boot 日志配置
+logging:
+  level:
+    # 显示工厂模式的调试日志
+    com.ruoyi.ai.factory: DEBUG
+    # LangChain4j 日志（调试时可开启）
+    dev.langchain4j: INFO
