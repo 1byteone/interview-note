@@ -174,7 +174,7 @@ df.sort_values("价格", ascending=False).head(10)  # TOP 10 商品
 
 ## 4. LangChain 中 Python 的异步实践
 
-[14-langchain](../14-langchain/README.md) 会系统讲解，这里给出异步的关键模式——**调大模型 API 是最典型的 I/O 密集型场景**：
+[14-langchain](../../14-langchain/README.md) 会系统讲解，这里给出异步的关键模式——**调大模型 API 是最典型的 I/O 密集型场景**：
 
 ```python
 import asyncio

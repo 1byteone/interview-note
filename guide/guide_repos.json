@@ -1,50 +1,36 @@
 [
   {
-    "description": "Python best practices guidebook, written for humans. ",
     "full_name": "realpython/python-guide",
+    "html_url": "https://github.com/realpython/python-guide",
+    "description": "Python best practices guidebook, written for humans.",
+    "stargazers_count": 29770,
     "language": "Batchfile",
-    "starred_at": "2026-08-22T03:05:53Z",
-    "stars": 29770,
     "topics": [
       "book",
       "guide",
       "python"
     ],
-    "url": "https://github.com/realpython/python-guide",
+    "pushed_at": "2026-07-27T05:52:34Z",
     "ecosystem_primary": "E06",
     "ecosystem_primary_name": "通识与基础",
     "ecosystem_cross": [],
     "ecosystem_cross_names": []
   },
   {
-    "description": "AI system design guide for engineers building production AI systems and evals.",
     "full_name": "ombharatiya/ai-system-design-guide",
+    "html_url": "https://github.com/ombharatiya/ai-system-design-guide",
+    "description": "AI system design guide for engineers building production AI systems and evals.",
+    "stargazers_count": 2698,
     "language": null,
-    "starred_at": "2026-08-22T03:00:58Z",
-    "stars": 2698,
     "topics": [
       "agentic-ai",
       "agentic-workflow",
       "ai",
-      "ai-jobs",
-      "artificial-intelligence",
-      "aws",
-      "azure",
-      "claude",
-      "evals",
-      "forward-deployed-engineer",
-      "gemini",
-      "gen-ai",
-      "interview",
-      "interview-questions",
       "llm",
-      "machine-learning",
-      "natural-language-processing",
-      "open-ai",
       "rag",
       "system-design-interview"
     ],
-    "url": "https://github.com/ombharatiya/ai-system-design-guide",
+    "pushed_at": "2026-08-15T17:36:14Z",
     "ecosystem_primary": "E06",
     "ecosystem_primary_name": "通识与基础",
     "ecosystem_cross": [
@@ -59,11 +45,11 @@
     ]
   },
   {
-    "description": "Model Context Protocol(MCP) 编程极速入门",
     "full_name": "liaokongVFX/MCP-Chinese-Getting-Started-Guide",
+    "html_url": "https://github.com/liaokongVFX/MCP-Chinese-Getting-Started-Guide",
+    "description": "Model Context Protocol(MCP) 编程极速入门",
+    "stargazers_count": 3560,
     "language": null,
-    "starred_at": "2026-08-22T02:59:50Z",
-    "stars": 3560,
     "topics": [
       "ai",
       "deepseek",
@@ -71,7 +57,7 @@
       "mcp-server",
       "modelcontextprotocol"
     ],
-    "url": "https://github.com/liaokongVFX/MCP-Chinese-Getting-Started-Guide",
+    "pushed_at": "2025-04-23T14:06:41Z",
     "ecosystem_primary": "E05",
     "ecosystem_primary_name": "MCP 协议生态",
     "ecosystem_cross": [
@@ -90,27 +76,24 @@
     ]
   },
   {
-    "description": "https://adongwanai.github.io/AgentGuide | AI Agent开发指南 | LangGraph实战 | 高级RAG | 转行大模型 | 大模型面试 | 算法工程师 | 面试题库 | 强化学习｜数据合成",
     "full_name": "adongwanai/AgentGuide",
+    "html_url": "https://github.com/adongwanai/AgentGuide",
+    "description": "AI Agent开发指南 | LangGraph实战 | 高级RAG | 转行大模型",
+    "stargazers_count": 8639,
     "language": "HTML",
-    "starred_at": "2026-08-22T02:58:23Z",
-    "stars": 8639,
     "topics": [
       "agenticrag",
       "ai-agent",
       "crewai",
       "graphrag",
       "grpo",
-      "interview",
-      "job-hunting",
       "langchain",
       "llm",
-      "multi-agent",
       "rag",
       "sft",
       "tutorial"
     ],
-    "url": "https://github.com/adongwanai/AgentGuide",
+    "pushed_at": "2026-08-04T06:02:35Z",
     "ecosystem_primary": "E06",
     "ecosystem_primary_name": "通识与基础",
     "ecosystem_cross": [
@@ -127,13 +110,13 @@
     ]
   },
   {
-    "description": "AI Agent 面试全攻略：从零到Offer，包含200+面试题、企业级项目(Python/Java/Go)、简历模板、STAR面试稿、哆啦A梦漫画图解",
     "full_name": "bcefghj/ai-agent-interview-guide",
+    "html_url": "https://github.com/bcefghj/ai-agent-interview-guide",
+    "description": "AI Agent 面试全攻略：从零到Offer",
+    "stargazers_count": 2119,
     "language": "Python",
-    "starred_at": "2026-08-22T02:58:19Z",
-    "stars": 2119,
     "topics": [],
-    "url": "https://github.com/bcefghj/ai-agent-interview-guide",
+    "pushed_at": "",
     "ecosystem_primary": "E06",
     "ecosystem_primary_name": "通识与基础",
     "ecosystem_cross": [
@@ -146,34 +129,20 @@
     ]
   },
   {
-    "description": "The most comprehensive Claude Code guide: agentic workflows, hooks, skills, MCP servers, quizzes, and production-ready templates. 430K+ lines.",
     "full_name": "FlorianBruniaux/claude-code-ultimate-guide",
+    "html_url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
+    "description": "The most comprehensive Claude Code guide",
+    "stargazers_count": 5781,
     "language": "Python",
-    "starred_at": "2026-08-22T02:56:39Z",
-    "stars": 5781,
     "topics": [
       "agentic-coding",
-      "ai-assistant",
-      "ai-coding",
-      "ai-pair-programming",
-      "ai-security",
-      "anthropic",
-      "best-practices",
       "claude",
       "claude-code",
-      "claude-code-guide",
-      "claude-code-tutorial",
-      "cli-tool",
-      "coding-assistant",
-      "cursor-alternative",
-      "developer-tools",
-      "llm",
       "mcp-servers",
       "prompt-engineering",
-      "tutorial",
       "vibe-coding"
     ],
-    "url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
+    "pushed_at": "",
     "ecosystem_primary": "E01",
     "ecosystem_primary_name": "Claude Code 生态",
     "ecosystem_cross": [
@@ -188,34 +157,19 @@
     ]
   },
   {
-    "description": "Claude Code Guide - Setup, Commands, workflows, agents, skills & tips-n-tricks from beginner to power user!",
     "full_name": "zebbern/claude-code-guide",
+    "html_url": "https://github.com/zebbern/claude-code-guide",
+    "description": "Claude Code Guide - Setup, Commands, workflows, agents, skills",
+    "stargazers_count": 4585,
     "language": "Python",
-    "starred_at": "2026-08-22T02:56:35Z",
-    "stars": 4585,
     "topics": [
-      "ai",
-      "ai-agent",
-      "ai-agent-tools",
-      "anthropic-claude",
       "claude",
-      "claude-ai",
-      "claude-api",
       "claude-code",
-      "claude-code-communication",
       "claude-code-guide",
-      "claude-code-skills",
-      "claude-commands",
-      "claude-desktop",
-      "claude-mcp",
-      "claude-sonnet",
-      "code",
       "mcp",
-      "mcp-agents",
-      "mcp-tools",
-      "vscode-extension"
+      "skills"
     ],
-    "url": "https://github.com/zebbern/claude-code-guide",
+    "pushed_at": "",
     "ecosystem_primary": "E01",
     "ecosystem_primary_name": "Claude Code 生态",
     "ecosystem_cross": [
@@ -228,25 +182,18 @@
     ]
   },
   {
-    "description": "🐙 Guides, papers, lessons, notebooks and resources for prompt engineering, context engineering, RAG, and AI Agents.",
     "full_name": "dair-ai/Prompt-Engineering-Guide",
+    "html_url": "https://github.com/dair-ai/Prompt-Engineering-Guide",
+    "description": "Guides, papers, lessons for prompt engineering",
+    "stargazers_count": 77672,
     "language": "MDX",
-    "starred_at": "2026-08-22T02:55:08Z",
-    "stars": 77672,
     "topics": [
-      "agent",
-      "agents",
-      "ai-agents",
-      "chatgpt",
-      "deep-learning",
-      "generative-ai",
-      "language-model",
-      "llms",
-      "openai",
       "prompt-engineering",
-      "rag"
+      "rag",
+      "agents",
+      "llms"
     ],
-    "url": "https://github.com/dair-ai/Prompt-Engineering-Guide",
+    "pushed_at": "",
     "ecosystem_primary": "E06",
     "ecosystem_primary_name": "通识与基础",
     "ecosystem_cross": [
@@ -265,11 +212,11 @@
     ]
   },
   {
-    "description": "智能体 = 大模型 + Harness。深入剖析 Harness 工程原理、设计、实现与实践！",
     "full_name": "yeasy/harness_engineering_guide",
+    "html_url": "https://github.com/yeasy/harness_engineering_guide",
+    "description": "智能体 = 大模型 + Harness",
+    "stargazers_count": 115,
     "language": "Python",
-    "starred_at": "2026-08-22T02:52:38Z",
-    "stars": 115,
     "topics": [
       "agent",
       "book",
@@ -278,7 +225,7 @@
       "harness-engineering",
       "llm"
     ],
-    "url": "https://github.com/yeasy/harness_engineering_guide",
+    "pushed_at": "",
     "ecosystem_primary": "E03",
     "ecosystem_primary_name": "DSH/Harness 生态",
     "ecosystem_cross": [
@@ -295,13 +242,13 @@
     ]
   },
   {
-    "description": "This guide is designed for OpenClaw itself (Agent-facing), not as a traditional human-only hardening checklist.",
     "full_name": "slowmist/openclaw-security-practice-guide",
+    "html_url": "https://github.com/slowmist/openclaw-security-practice-guide",
+    "description": "Agent-facing security practice guide",
+    "stargazers_count": 2857,
     "language": "Shell",
-    "starred_at": "2026-08-22T02:45:24Z",
-    "stars": 2857,
     "topics": [],
-    "url": "https://github.com/slowmist/openclaw-security-practice-guide",
+    "pushed_at": "",
     "ecosystem_primary": "E04",
     "ecosystem_primary_name": "Hermes/OpenClaw 生态",
     "ecosystem_cross": [
@@ -314,13 +261,13 @@
     ]
   },
   {
-    "description": "Hermes Agent 是目前开源社区最具潜力的 AI Agent 框架之一。它继承了 OpenClaw 的优秀基因，在架构设计、记忆系统、技能生态和自动化能力上实现全面升级。但 Hermes 的文档分散在多个仓库和平台，缺乏一本系统性的中文指南。  本书填补的正是这个空白。全书 16 册、30 万+ 字，覆盖从安装部署到高阶开发、从个人玩赚到企业服务、从单 Agent 操控到多 Agent 编排的完整知识图谱。",
     "full_name": "jwangkun/hermes-agent-guide",
+    "html_url": "https://github.com/jwangkun/hermes-agent-guide",
+    "description": "Hermes Agent 中文指南",
+    "stargazers_count": 650,
     "language": "Python",
-    "starred_at": "2026-08-22T02:43:15Z",
-    "stars": 650,
     "topics": [],
-    "url": "https://github.com/jwangkun/hermes-agent-guide",
+    "pushed_at": "",
     "ecosystem_primary": "E04",
     "ecosystem_primary_name": "Hermes/OpenClaw 生态",
     "ecosystem_cross": [
@@ -335,13 +282,13 @@
     ]
   },
   {
-    "description": "CodexGuide：面向全球初学者、创作者、开发者与团队的 Codex 实践指南",
     "full_name": "freestylefly/CodexGuide",
+    "html_url": "https://github.com/freestylefly/CodexGuide",
+    "description": "CodexGuide：面向全球的 Codex 实践指南",
+    "stargazers_count": 3234,
     "language": "TypeScript",
-    "starred_at": "2026-08-22T02:41:32Z",
-    "stars": 3234,
     "topics": [],
-    "url": "https://github.com/freestylefly/CodexGuide",
+    "pushed_at": "",
     "ecosystem_primary": "E02",
     "ecosystem_primary_name": "Codex 生态",
     "ecosystem_cross": [
@@ -356,34 +303,19 @@
     ]
   },
   {
-    "description": "The friendly guide to Claude Code. Zero jargon — from first install to daily operating system.",
     "full_name": "mshadmanrahman/claudecode-guide",
+    "html_url": "https://github.com/mshadmanrahman/claudecode-guide",
+    "description": "The friendly guide to Claude Code",
+    "stargazers_count": 34,
     "language": "TypeScript",
-    "starred_at": "2026-08-22T02:40:41Z",
-    "stars": 34,
     "topics": [
       "ai-agent",
-      "ai-assistant",
-      "ai-coding",
-      "ai-tools",
-      "anthropic",
-      "beginners",
       "claude",
-      "claude-ai",
       "claude-code",
-      "cli",
-      "developer-tools",
-      "documentation",
       "guide",
-      "hacktoberfest",
-      "llm",
-      "nextjs",
-      "open-source",
-      "product-management",
-      "productivity",
       "tutorial"
     ],
-    "url": "https://github.com/mshadmanrahman/claudecode-guide",
+    "pushed_at": "",
     "ecosystem_primary": "E01",
     "ecosystem_primary_name": "Claude Code 生态",
     "ecosystem_cross": [
@@ -396,27 +328,18 @@
     ]
   },
   {
-    "description": "Guide for development with DeepSeek Harness. Building plugin for DeepSeek Harness Project.",
     "full_name": "flaqai/deepeseek-harness-guide",
+    "html_url": "https://github.com/flaqai/deepeseek-harness-guide",
+    "description": "Guide for development with DeepSeek Harness",
+    "stargazers_count": 13,
     "language": null,
-    "starred_at": "2026-08-22T02:27:47Z",
-    "stars": 13,
     "topics": [
       "deepseek",
-      "deepseek-api",
-      "deepseek-harness",
-      "deepseek-harness-guide",
-      "deepseek-harness-plugin",
-      "deepseek-harness-skills",
-      "deepseek-v4",
-      "deepseek-v4-flash",
-      "deepseek-v4-flash-api",
-      "deepseek-v4-pro",
-      "deepseek-v4-pro-api",
-      "flaq-skills",
-      "flaqai"
+      "dsh",
+      "harness",
+      "plugin"
     ],
-    "url": "https://github.com/flaqai/deepeseek-harness-guide",
+    "pushed_at": "",
     "ecosystem_primary": "E03",
     "ecosystem_primary_name": "DSH/Harness 生态",
     "ecosystem_cross": [
@@ -426,6 +349,188 @@
     "ecosystem_cross_names": [
       "MCP 协议生态",
       "通识与基础"
+    ]
+  },
+  {
+    "full_name": "0xNyk/awesome-hermes-agent",
+    "html_url": "https://github.com/0xNyk/awesome-hermes-agent",
+    "description": "Independent directory of skills, plugins, memory providers for Hermes Agent",
+    "stargazers_count": 5405,
+    "language": null,
+    "topics": [
+      "agent-skills",
+      "hermes-agent",
+      "mcp",
+      "memory",
+      "nous-research",
+      "skills"
+    ],
+    "pushed_at": "2026-08-16T14:50:13Z",
+    "ecosystem_primary": "E04",
+    "ecosystem_primary_name": "Hermes/OpenClaw 生态",
+    "ecosystem_cross": [
+      "E06"
+    ],
+    "ecosystem_cross_names": [
+      "通识与基础"
+    ]
+  },
+  {
+    "full_name": "Marcos-wu/ai-agent-daily-mentor",
+    "html_url": "https://github.com/Marcos-wu/ai-agent-daily-mentor",
+    "description": "一个规划学习agent应用开发的导师skills",
+    "stargazers_count": 133,
+    "language": null,
+    "topics": [],
+    "pushed_at": "2026-06-10T11:06:09Z",
+    "ecosystem_primary": "E06",
+    "ecosystem_primary_name": "通识与基础",
+    "ecosystem_cross": [],
+    "ecosystem_cross_names": []
+  },
+  {
+    "full_name": "by123456by/AI-Shell",
+    "html_url": "https://github.com/by123456by/AI-Shell",
+    "description": "自然语言驱动的Linux命令行助手",
+    "stargazers_count": 15,
+    "language": "Shell",
+    "topics": [],
+    "pushed_at": "2025-03-28T08:29:22Z",
+    "ecosystem_primary": "E06",
+    "ecosystem_primary_name": "通识与基础",
+    "ecosystem_cross": [],
+    "ecosystem_cross_names": []
+  },
+  {
+    "full_name": "didilili/ai-agents-from-zero",
+    "html_url": "https://github.com/didilili/ai-agents-from-zero",
+    "description": "2026 最系统的 AI Agent 速成指南",
+    "stargazers_count": 3979,
+    "language": "Python",
+    "topics": [
+      "agent",
+      "langchain",
+      "langgraph",
+      "mcp",
+      "rag",
+      "skills",
+      "tutorial"
+    ],
+    "pushed_at": "2026-06-23T16:29:23Z",
+    "ecosystem_primary": "E06",
+    "ecosystem_primary_name": "通识与基础",
+    "ecosystem_cross": [
+      "E01",
+      "E04",
+      "E05"
+    ],
+    "ecosystem_cross_names": [
+      "Claude Code 生态",
+      "Hermes/OpenClaw 生态",
+      "MCP 协议生态"
+    ]
+  },
+  {
+    "full_name": "heilcheng/awesome-agent-skills",
+    "html_url": "https://github.com/heilcheng/awesome-agent-skills",
+    "description": "Tutorials, Guides and Agent Skills Directories",
+    "stargazers_count": 6126,
+    "language": "TypeScript",
+    "topics": [
+      "agent-skills",
+      "ai-agents",
+      "claude",
+      "codex",
+      "mcp",
+      "openai"
+    ],
+    "pushed_at": "2026-04-05T20:39:24Z",
+    "ecosystem_primary": "E06",
+    "ecosystem_primary_name": "通识与基础",
+    "ecosystem_cross": [
+      "E01",
+      "E02",
+      "E03",
+      "E04"
+    ],
+    "ecosystem_cross_names": [
+      "Claude Code 生态",
+      "Codex 生态",
+      "DSH/Harness 生态",
+      "Hermes/OpenClaw 生态"
+    ]
+  },
+  {
+    "full_name": "libukai/awesome-agent-skills",
+    "html_url": "https://github.com/libukai/awesome-agent-skills",
+    "description": "Agent Skills 终极指南：快速入门、资源推荐",
+    "stargazers_count": 4998,
+    "language": null,
+    "topics": [
+      "agent",
+      "claudecode",
+      "openclaw",
+      "skills"
+    ],
+    "pushed_at": "2026-08-05T15:41:35Z",
+    "ecosystem_primary": "E06",
+    "ecosystem_primary_name": "通识与基础",
+    "ecosystem_cross": [
+      "E01",
+      "E03",
+      "E04"
+    ],
+    "ecosystem_cross_names": [
+      "Claude Code 生态",
+      "DSH/Harness 生态",
+      "Hermes/OpenClaw 生态"
+    ]
+  },
+  {
+    "full_name": "lingxling/awesome-skills-cn",
+    "html_url": "https://github.com/lingxling/awesome-skills-cn",
+    "description": "热门Skills中文学习版+教程，7000+Skills",
+    "stargazers_count": 257,
+    "language": "Python",
+    "topics": [
+      "claude-skills",
+      "openclaw",
+      "skills",
+      "chinese"
+    ],
+    "pushed_at": "2026-07-16T05:31:34Z",
+    "ecosystem_primary": "E06",
+    "ecosystem_primary_name": "通识与基础",
+    "ecosystem_cross": [
+      "E01",
+      "E04"
+    ],
+    "ecosystem_cross_names": [
+      "Claude Code 生态",
+      "Hermes/OpenClaw 生态"
+    ]
+  },
+  {
+    "full_name": "walkinglabs/awesome-harness-engineering",
+    "html_url": "https://github.com/walkinglabs/awesome-harness-engineering",
+    "description": "Awesome tools & guides for harness engineering",
+    "stargazers_count": 3892,
+    "language": null,
+    "topics": [
+      "agentic",
+      "harness-engineering",
+      "llm"
+    ],
+    "pushed_at": "2026-08-19T07:27:55Z",
+    "ecosystem_primary": "E03",
+    "ecosystem_primary_name": "DSH/Harness 生态",
+    "ecosystem_cross": [
+      "E01",
+      "E04"
+    ],
+    "ecosystem_cross_names": [
+      "Claude Code 生态",
+      "Hermes/OpenClaw 生态"
     ]
   }
 ]
