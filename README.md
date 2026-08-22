@@ -67,7 +67,8 @@ interview-note/
 ├── docs/                        # 文档库
 │   └── tech-stack-analysis/     # 项目技术栈深度剖析
 │       ├── mall-ai-search/      # mall-ai-search 智能搜索项目（11篇系列）
-│       └── mall-micro-cloud/    # mall-micro-cloud 微服务电商项目（11篇系列）
+│       ├── mall-micro-cloud/    # mall-micro-cloud 微服务电商项目（11篇系列）
+│       └── text2sql/            # text2sql Java Text2SQL+RAG 项目（7篇系列）
 └── projects/                    # 项目实战
     ├── java-projects/           # Java 项目
     │   ├── ecommerce/           # 电商系统
@@ -150,6 +151,7 @@ Python → LLM 基础 → RAG → Agent → Agentic → LangGraph → Harness �
 |------|--------|------|---------|
 | mall-ai-search | Python AI 搜索 (FastAPI + LangChain + RedisVL) | [11篇](docs/tech-stack-analysis/mall-ai-search/00-OVERVIEW.md) | AI + 向量检索 + Agent |
 | mall-micro-cloud | Java Spring Cloud 微服务电商 (12个服务) | [11篇](docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) | 微服务 + 分布式 + 高并发 |
+| text2sql | Java Text2SQL + RAG (Spring AI + DeepSeek) | [7篇](docs/tech-stack-analysis/text2sql/00-OVERVIEW.md) | Java AI + RAG + SQL 安全 |
 
 ### mall-ai-search（智能搜索项目）
 
@@ -186,6 +188,21 @@ Python → LLM 基础 → RAG → Agent → Agentic → LangGraph → Harness �
 | 08 | [ES 搜索服务](docs/tech-stack-analysis/mall-micro-cloud/08-ES-SEARCH.md) | Elasticsearch, 倒排索引 |
 | 09 | [RocketMQ 消息驱动](docs/tech-stack-analysis/mall-micro-cloud/09-ROCKETMQ.md) | RocketMQ, StreamBridge, 最终一致性 |
 | 10 | [架构复盘与面试题集](docs/tech-stack-analysis/mall-micro-cloud/10-ARCHITECTURE.md) | 20+ 面试题 + 能力雷达图 |
+
+### text2sql（Java Text2SQL + RAG）
+
+> 用户输入自然语言 → 系统自动生成 SQL → 执行返回结果。纯 Java 实现的 AI 实战项目：Spring AI + DeepSeek + RAG
+
+| # | 文档 | 核心栈 |
+|---|------|--------|
+| 00 | [全景导读](docs/tech-stack-analysis/text2sql/00-OVERVIEW.md) | 架构总览 |
+| 01 | [Spring AI + DeepSeek LLM 集成](docs/tech-stack-analysis/text2sql/01-LLM-CLIENT.md) | ChatClient, 多供应商抽象 |
+| 02 | [Embedding 与向量存储](docs/tech-stack-analysis/text2sql/02-EMBEDDING-VECTOR.md) | EmbeddingModel, VectorStore |
+| 03 | [RAG 检索增强](docs/tech-stack-analysis/text2sql/03-RAG-RETRIEVAL.md) | 混合检索, 融合排序 |
+| 04 | [Prompt 工程与 Schema 增强](docs/tech-stack-analysis/text2sql/04-PROMPT-SCHEMA.md) | M-Schema, Few-shot |
+| 05 | [SQL 验证器四层防护](docs/tech-stack-analysis/text2sql/05-SQL-VALIDATOR.md) | 语法/安全/语义/性能验证 |
+| 06 | [对话管理与上下文压缩](docs/tech-stack-analysis/text2sql/06-CONVERSATION.md) | 多轮对话, 滑动窗口 |
+| 07 | [架构复盘与面试题集](docs/tech-stack-analysis/text2sql/07-ARCHITECTURE.md) | 三项目对比 + 面试题 |
 
 ## 🔗 推荐资源
 
