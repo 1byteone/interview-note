@@ -4,6 +4,17 @@
 
 ---
 
+## 〇、深度剖析参考
+
+| 主题 | 本 learn 文档 | docs/tech-stack-analysis 深度剖析 |
+|------|--------------|--------------------------------|
+| SPU/SKU 商品表设计 | 本文 | [03-PRODUCT-MYBATISPLUS.md](../../docs/tech-stack-analysis/mall-micro-cloud/03-PRODUCT-MYBATISPLUS.md) — MyBatis-Plus 多表关联 |
+| Seata 分布式事务 | — | [04-ORDER-SEATA.md](../../docs/tech-stack-analysis/mall-micro-cloud/04-ORDER-SEATA.md) — 下单+扣库存事务 |
+| MyBatis-Plus 高级查询 | — | [05-MYBATISPLUS-ADV.md](../../docs/tech-stack-analysis/mall-exercise/05-MYBATISPLUS-ADV.md) — Wrapper/批量/统计 |
+| ES 数据同步到向量库 | — | [09-DATA-SYNC.md](../../docs/tech-stack-analysis/mall-ai-search/09-DATA-SYNC.md) — MySQL→Embedding→RedisVL |
+
+---
+
 ## 一、AI 商城中 MySQL 的角色
 
 mall-micro-cloud 是一个基于微服务架构的 AI 商城系统，MySQL 作为核心的关系型数据库，承载着所有业务数据。
