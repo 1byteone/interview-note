@@ -128,3 +128,16 @@ mall-micro-cloud 是一个基于微服务架构的 AI 商城系统，Elasticsear
 ---
 
 > 下一篇：[10-消息队列](../10-message-queue/README.md) — 消息驱动 · 异步解耦 · 削峰填谷
+
+---
+
+## 项目剖析深度参考
+
+本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
+
+| 本 learn 核心内容 | 对应项目剖析 | 重点看什么 |
+|------------------|------------|-----------|
+| ES 商品搜索架构 | [08-ES-SEARCH.md](../../docs/tech-stack-analysis/mall-micro-cloud/08-ES-SEARCH.md) | mall-es-service 搜索接口 |
+| 向量搜索 (RedisVL) | [06-VECTOR-STORE.md](../../docs/tech-stack-analysis/mall-ai-search/06-VECTOR-STORE.md) | HNSW 索引 + Embedding |
+| ES vs 向量搜索对比 | [00-OVERVIEW.md](../../docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) | 关键词搜索 vs 语义搜索 |
+| MySQL→ES 数据同步 | [09-DATA-SYNC.md](../../docs/tech-stack-analysis/mall-ai-search/09-DATA-SYNC.md) | SQLAlchemy + tiktoken + 向量化 |

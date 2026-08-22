@@ -108,3 +108,17 @@ AI 商城（mall-micro-cloud）是一个典型的微服务架构，所有微服�
 3. **启动即生产**：从内嵌容器到 Actuator，Spring Boot 设计的每一个环节都在为"上线"做准备。
 
 > 让我们从快速入门开始：从零搭建第一个 Spring Boot 应用。
+
+---
+
+## 项目剖析深度参考
+
+本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
+
+| 本 learn 核心内容 | 对应项目剖析 | 重点看什么 |
+|------------------|------------|-----------|
+| Spring Boot 自动配置 | [02-COMMON-ARCH.md](../../docs/tech-stack-analysis/mall-micro-cloud/02-COMMON-ARCH.md) | `GlobalResponseAdvice` / `GlobalExceptionHandler` 实现 |
+| 微服务拆分 | [00-OVERVIEW.md](../../docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) | 12 个微服务的职责边界 |
+| Gateway + Nacos | [01-NACOS-GATEWAY.md](../../docs/tech-stack-analysis/mall-micro-cloud/01-NACOS-GATEWAY.md) | 自定义 `AuthGatewayFilterFactory` |
+| Spring AI 集成 | [01-LLM-CLIENT.md](../../docs/tech-stack-analysis/text2sql/01-LLM-CLIENT.md) | Spring AI `ChatClient` 对接 DeepSeek |
+| FastAPI (Python 对标) | [02-API-GATEWAY.md](../../docs/tech-stack-analysis/mall-ai-search/02-API-GATEWAY.md) | FastAPI 路由+异常+Pydantic 对照 Spring Boot |

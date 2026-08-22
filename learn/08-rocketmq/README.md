@@ -114,4 +114,17 @@ AI 智能商城是一个典型的微服务架构，RocketMQ 在其中承担异�
 
 ---
 
+## 项目剖析深度参考
+
+本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
+
+| 本 learn 核心内容 | 对应项目剖析 | 重点看什么 |
+|------------------|------------|-----------|
+| 订单支付回调消息 | [09-ROCKETMQ.md](../../docs/tech-stack-analysis/mall-micro-cloud/09-ROCKETMQ.md) | 支付回调→清购物车/更新订单/同步ES |
+| 秒杀库存 MQ 削峰 | [06-SECKILL-HIGHCONCUR.md](../../docs/tech-stack-analysis/mall-micro-cloud/06-SECKILL-HIGHCONCUR.md) | Redis 预扣 + StreamBridge 异步双写 |
+| MQ 幂等消费 | [11-SCHEDULER-BLOOMFILTER.md](../../docs/tech-stack-analysis/mall-micro-cloud/11-SCHEDULER-BLOOMFILTER.md) | transactionId + Redis SETNX 幂等 |
+| 购物车清空(消费端) | [05-CART-MONGODB.md](../../docs/tech-stack-analysis/mall-micro-cloud/05-CART-MONGODB.md) | MongoDB 购物车 + 消费端清空 |
+
+---
+
 **开始学习：** 从 [01-basics/01-quick-start.md](01-basics/01-quick-start.md) 开始你的 RocketMQ 之旅。

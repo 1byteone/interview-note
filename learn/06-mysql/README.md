@@ -113,3 +113,16 @@ mall-micro-cloud 是一个基于微服务架构的 AI 商城系统，MySQL 在�
 ---
 
 > 下一篇：[07-redis](../07-redis/README.md) — 缓存 · 分布式锁 · 数据结构
+
+---
+
+## 项目剖析深度参考
+
+本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
+
+| 本 learn 核心内容 | 对应项目剖析 | 重点看什么 |
+|------------------|------------|-----------|
+| SPU/SKU 表设计 | [03-PRODUCT-MYBATISPLUS.md](../../docs/tech-stack-analysis/mall-micro-cloud/03-PRODUCT-MYBATISPLUS.md) | 分类体系 + MyBatis-Plus 多表关联 |
+| 分布式事务 | [04-ORDER-SEATA.md](../../docs/tech-stack-analysis/mall-micro-cloud/04-ORDER-SEATA.md) | Seata AT 下单+扣库存事务 |
+| 缓存穿透/击穿/雪崩 | [04-REDIS-CACHE.md](../../docs/tech-stack-analysis/mall-exercise/04-REDIS-CACHE.md) | Cache-Aside + 分布式锁 + 空值缓存 |
+| MySQL→向量化同步 | [09-DATA-SYNC.md](../../docs/tech-stack-analysis/mall-ai-search/09-DATA-SYNC.md) | SQLAlchemy lazy_load + tiktoken 切片 |

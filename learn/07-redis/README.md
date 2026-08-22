@@ -110,3 +110,16 @@ AI 商城（mall-micro-cloud）里，Redis 几乎是"无处不在"：
 3. **面试考的是"取舍"**：数据结构选型、缓存策略选择、高可用架构选型，本质都是权衡——先想清楚业务场景，再谈技术方案。
 
 > 让我们从快速入门开始：用 Docker 启动 Redis，把 5 大基础数据结构全部敲一遍。
+
+---
+
+## 项目剖析深度参考
+
+本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
+
+| 本 learn 核心内容 | 对应项目剖析 | 重点看什么 |
+|------------------|------------|-----------|
+| Cache-Aside + 缓存穿透 | [04-REDIS-CACHE.md](../../docs/tech-stack-analysis/mall-exercise/04-REDIS-CACHE.md) | `ProductCacheServiceImpl` 手写缓存 |
+| 秒杀库存预扣 + 分布式锁 | [06-SECKILL-HIGHCONCUR.md](../../docs/tech-stack-analysis/mall-micro-cloud/06-SECKILL-HIGHCONCUR.md) | Redisson RLock + Redis 原子扣减 |
+| 布隆过滤器 | [11-SCHEDULER-BLOOMFILTER.md](../../docs/tech-stack-analysis/mall-micro-cloud/11-SCHEDULER-BLOOMFILTER.md) | Redisson RBloomFilter 防穿透 |
+| RedisVL 向量检索 | [06-VECTOR-STORE.md](../../docs/tech-stack-analysis/mall-ai-search/06-VECTOR-STORE.md) | Redis Stack HNSW 索引 |
