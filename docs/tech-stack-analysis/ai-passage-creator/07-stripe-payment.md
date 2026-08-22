@@ -167,7 +167,7 @@ digraph StripePayment {
 stripe:
   # Stripe Secret Key（从 Stripe Dashboard 获取）
   # sk_test_xxx 是测试密钥，sk_live_xxx 是生产密钥
-  secret-key: sk_test_xxxxxxxxxxxxxxxxxxxxxxxx
+  secret-key: <your-stripe-secret-key>
   # Webhook Secret（用于验证 Webhook 签名）
   # whsec_xxx 从 Stripe Dashboard > Webhooks 获取
   webhook-secret: whsec_xxxxxxxxxxxxxxxxxxxxxxxx
