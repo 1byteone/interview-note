@@ -16,12 +16,20 @@
 ### 题目 1：一句话说明项目的输入、处理和输出
 **难度**：Level 1
 **类型**：事实复述
+**题型形式**：选择题
 **考察点**：业务定位、RAG 主链路、边界意识
 **项目证据**：S1-S6；分析文件第 2、4.1 节 `[源码已确认]`；Java/传统搜索整合为 `[待验证]`。
 
-**问题**：不用泛泛介绍，请说明一次商品同步和一次推荐请求分别从哪里来、经过什么组件、产出什么。
+**问题**：以下哪项最准确地描述当前一次商品同步和一次推荐请求的主链路？
 
-**标准答案**：同步从 MySQL `sku_info` 查询 `deleted=0` SKU，使用 `lazy_load` 得到文档，构造 `page_content`/`metadata`，按 256 token、25 overlap 切分，经 OpenAI-compatible Embedding 批量写入 Redis `RedisVectorStore`。推荐由 FastAPI `/api/v1/recommend` 接收 query 和 `thread_id`，Agent 配置/注册 `vector_search_tool`，实际运行调用仍需集成验证，以 `similarity_search(query,k=10)` 召回，再按 `ProductRecommendResponse` 返回摘要、商品列表和理由。
+A. MySQL `sku_info` → `lazy_load`/`page_content`/`metadata` → 分片与 Embedding → Redis `RedisVectorStore`；推荐由 `/api/v1/recommend` 进入 Agent/tool，召回后返回结构化结果。
+B. MySQL → Elasticsearch → Rerank → MQ，推荐只返回前端已经过滤的 5 条。
+C. 前端直接调用 OpenAI API，Java 服务负责把商品字段写入 Redis，Python 只做展示。
+D. `/api/v1/recommend` 只调用价格数据库，不经过向量检索或结构化 Schema。
+
+**正确答案**：A。
+
+**解析**：源码确认同步从 MySQL `sku_info` 查询 `deleted=0`，构造 `page_content`/`metadata`，按 256 token、25 overlap 切分，经 OpenAI-compatible Embedding 批量写入 Redis；推荐由 FastAPI 接收 query 和 `thread_id`，配置/注册 `vector_search_tool`，实际运行调用仍需集成验证，以 `similarity_search(query,k=10)` 召回，再按 `ProductRecommendResponse` 返回摘要、商品列表和理由。ES、Rerank、MQ 以及 Java/Gateway 完整映射不是当前源码已确认能力。
 
 **深入解析**：这是“商品数据—向量—工具—Agent—结构化响应”的当前 Python 链路；前端 AI 模式还并行调用条件提取，提取结果用于传统分页接口。点击率、真实连通性、Java/Gateway 映射和业务收益均未由事实文件证明。
 
@@ -34,6 +42,7 @@
 ### 题目 2：哪些 SKU 字段进入 page_content
 **难度**：Level 1
 **类型**：事实复述
+**题型形式**：简答题
 **考察点**：数据建模、文档构造
 **项目证据**：S1 `vector_sync_service.py:31-37,52-61` `[源码已确认]`。
 
@@ -52,12 +61,15 @@
 ### 题目 3：metadata 保存什么，边界是什么
 **难度**：Level 1
 **类型**：事实复述
+**题型形式**：判断题
 **考察点**：metadata、结果展示、过滤边界
 **项目证据**：S1:39-44、S2:24-36、S4 `[源码已确认]`。
 
-**问题**：当前 metadata 的来源和用途是什么？它能否保证只推荐有效商品？
+**问题**：判断：当前 metadata 是 SQL 查询行的全部字段副本，随分片保存后就会自动执行价格/库存/上下架硬过滤，因此能保证推荐商品仍然有效。
 
-**标准答案**：metadata 是 SQL 查询行的全部字段副本，随每个分片复制。向量工具把 `page_content` 和 metadata 文本交给 Agent，便于识别商品信息和展示字段；当前没有 metadata 的价格、品牌、库存、上下架硬过滤，也没有 ID 白名单或 MySQL 二次回查，所以不能保证商品业务真实性。
+**正确/错误**：错误。
+
+**解析**：源码确认 metadata 来自查询行字段并随分片复制，但源码未发现 metadata 自动过滤、ID 白名单或 MySQL 二次回查能力；Pydantic/Agent 结构约束不能替代业务真实性校验。
 
 **深入解析**：携带字段与执行约束是两件事。要保证正确性，规划上应将候选 ID 做白名单/实时回查，再做业务过滤。
 
@@ -70,6 +82,7 @@
 ### 题目 4：chunk size 和 overlap 是什么
 **难度**：Level 1
 **类型**：原理解释
+**题型形式**：简答题
 **考察点**：切分配置、token/字符区别
 **项目证据**：S1:13-17、72-78 `[源码已确认]`。
 
@@ -88,12 +101,20 @@
 ### 题目 5：Embedding 工厂如何接 OpenAI-compatible API
 **难度**：Level 1
 **类型**：原理解释
+**题型形式**：选择题
 **考察点**：Provider 抽象、配置边界
 **项目证据**：S3:51-93、S7:7-12 `[源码已确认]`；连通性 `[待验证]`。
 
-**问题**：当前 Embedding 支持什么 Provider？工厂解决了什么问题？
+**问题**：关于当前 Embedding 工厂，以下哪项正确？
 
-**标准答案**：`EmbeddingProvider` 有 `siliconflow` 和 `openrouter` 两个枚举分支，均构造 `OpenAIEmbeddings`，通过 base URL、key、model 等配置接入 OpenAI-compatible 接口；工厂缓存实例，避免重复创建。实际环境是否连通、配额和 TLS 状态仍待验证，没有自动故障转移证据。
+A. `siliconflow` 和 `openrouter` 分支都通过 `OpenAIEmbeddings` 接入 OpenAI-compatible API，工厂还缓存实例；真实连通性和自动故障转移仍待验证。
+B. 工厂只支持本地模型，并已实现跨 Provider 自动熔断切换。
+C. 工厂缓存的是所有商品向量，因此不需要 Redis。
+D. 只要配置了 base URL，就能证明生产索引和配额已经验收。
+
+**正确答案**：A。
+
+**解析**：源码确认两个 Provider 分支、base URL/key/model 配置和实例缓存；缓存对象不等于缓存向量，也不等于高可用。实际环境连通性、配额、TLS 和故障转移仍需验证。
 
 **深入解析**：抽象统一调用协议，配置决定具体端点；缓存对象不等于缓存向量，也不等于 Provider 高可用。敏感 key 应由环境/Secret 管理，题库不复述具体值。
 
@@ -106,6 +127,7 @@
 ### 题目 6：当前向量存储是什么
 **难度**：Level 1
 **类型**：原理解释
+**题型形式**：简答题
 **考察点**：Redis Vector、索引验证边界
 **项目证据**：S3:145-155 `[源码已确认]`；Redis 索引状态和维度 `[待验证]`。
 
@@ -124,6 +146,7 @@
 ### 题目 7：同步批次和文档 ID 如何生成
 **难度**：Level 1
 **类型**：代码走读
+**题型形式**：简答题
 **考察点**：批处理、MD5 ID  规范
 **项目证据**：S1:46-50、80-101 `[源码已确认]`。
 
@@ -142,12 +165,15 @@
 ### 题目 8：推荐 Agent 由哪些部分组成
 **难度**：Level 1
 **类型**：代码走读
+**题型形式**：判断题
 **考察点**：Agent、Prompt、Tool、Schema
 **项目证据**：S2:13-36、59-79；S8:14-22 `[源码已确认]`。
 
-**问题**：一次 `recommend_product` 会创建怎样的 Agent？
+**问题**：判断：当前推荐 Agent 已经拥有库存和价格查询工具，因此只要输出了结构化商品，就能自动保证商品业务真实性。
 
-**标准答案**：每次调用创建 Agent，模型由 `tools.get_model()` 返回，系统提示使用 `SEARCH_PROMPT`，配置/注册 `vector_search_tool`，实际运行调用仍需集成验证，checkpointer 是服务实例的 `InMemorySaver`，输出格式是 `ProductRecommendResponse`；工具执行 Redis 相似度检索。
+**正确/错误**：错误。
+
+**解析**：源码确认 Agent 配置/注册单一 `vector_search_tool`，使用 `SEARCH_PROMPT`、`InMemorySaver` 和 `ProductRecommendResponse`；源码未发现库存、价格过滤或商品详情回查工具。结构化输出只约束格式，不能替代业务校验。
 
 **深入解析**：Agent 有工具选择和结构化输出约束，但工具集合很窄，没有库存、价格过滤或商品详情回查工具；“每次重建”与后续优化题要区分。
 
@@ -160,12 +186,20 @@
 ### 题目 9：vector_search_tool 召回多少条
 **难度**：Level 1
 **类型**：代码走读
+**题型形式**：选择题
 **考察点**：Top-K、后端与前端口径
 **项目证据**：S2:24-36、S9:604-610 `[源码已确认]`。
 
-**问题**：后端 `k` 是多少，为什么页面最多显示 5 条？
+**问题**：关于后端 Top-K 与前端展示条数，以下哪项正确？
 
-**标准答案**：工具调用 `similarity_search(query, k=10)`，后端最多召回 10 个文档；前端拿推荐列表后 `slice(0,5)`，页面最多渲染 5 个。后端 Top-K 与前端展示条数是两个阶段，不能混为 top5。
+A. 后端调用 `similarity_search(query, k=10)`，前端再 `slice(0,5)`，两者是不同阶段。
+B. 后端只召回 5 条，前端把它扩展为 10 条。
+C. `k=10` 表示系统已经引入独立 Rerank。
+D. 前端展示 5 条意味着 Redis 索引只能存 5 个候选。
+
+**正确答案**：A。
+
+**解析**：源码确认工具最多按 `k=10` 召回，前端展示层最多取前 5 条；Top-K 影响候选覆盖、上下文和成本，不能把展示截断说成后端 top5，也不能据此声称已有 Rerank。
 
 **深入解析**：后端召回数量影响候选覆盖、模型上下文和成本，前端截断只影响展示；当前没有独立 Rerank 的源码证据。
 
@@ -178,6 +212,7 @@
 ### 题目 10：推荐结构化响应有哪些层次
 **难度**：Level 1
 **类型**：代码走读
+**题型形式**：简答题
 **考察点**：Pydantic Schema、统一 Result
 **项目证据**：S4:7-35、S5-S6 `[源码已确认]`。
 
@@ -196,6 +231,7 @@
 ### 题目 11：extract 当前能提取什么
 **难度**：Level 1
 **类型**：事实复述
+**题型形式**：简答题
 **考察点**：条件 Schema、实现与文档差异
 **项目证据**：S2:38-57、S4:23-28、S8 `[源码已确认]`；品牌/库存等为 `[Word描述]`。
 
@@ -214,6 +250,7 @@
 ### 题目 12：OpenFeign 基础：声明式 HTTP 调用是什么
 **难度**：Level 1
 **类型**：接口契约
+**题型形式**：简答题
 **考察点**：OpenFeign 基础、声明式客户端、契约边界
 **项目证据**：Word 第 9.2 节提到 Java/Gateway/Feign 适配方案 `[Word描述]`；本次指定范围无 Java 源码 `[待验证]`。
 
@@ -729,7 +766,7 @@ async def handle_exception(request: Request, exc: Exception):
 **难度**：Level 3
 **类型**：接口契约
 **考察点**：Schema 与业务真实性、安全可靠性
-**项目证据**：S4 Schema `[源码已确认]`；无白名单/二次回查 `[源码已确认缺口]`。
+**项目证据**：S4 Schema `[源码已确认]`；源码未发现白名单/二次回查能力 `[源码已确认]`。
 
 **场景**：Agent 返回格式正确的商品 ID，但商品已删除或价格已变。
 
@@ -909,7 +946,7 @@ String url = "/api/v1/recommend?query=" + req.query()
 **难度**：Level 4
 **类型**：一致性幂等
 **考察点**：数据一致性、版本、可恢复任务
-**项目证据**：S1 全量 `deleted=0`、MD5 ID；无增量/删除/断点为 `[源码已确认缺口]`。
+**项目证据**：S1 全量 `deleted=0`、MD5 ID `[源码已确认]`；源码未发现增量、删除或断点能力 `[源码已确认]`。
 
 **问题**：当前 `/sync` 每次全量扫描有效 SKU。请设计一个增量、删除、版本化同步方案。
 
@@ -930,7 +967,7 @@ String url = "/api/v1/recommend?query=" + req.query()
 **难度**：Level 4
 **类型**：安全可靠性
 **考察点**：可信输出、业务授权、批量查询
-**项目证据**：S4 Schema；分析第 8.3 节确认无白名单/回查 `[源码已确认缺口]`。
+**项目证据**：S4 Schema `[源码已确认]`；分析第 8.3 节确认源码未发现白名单/回查能力 `[源码已确认]`。
 
 **问题**：如何防止 Agent 返回不存在、下架或价格过期的商品？
 
@@ -1165,7 +1202,7 @@ String url = "/api/v1/recommend?query=" + req.query()
 **难度**：Level 5
 **类型**：测试验证
 **考察点**：大规模同步、一致性、成本、可恢复性
-**项目证据**：当前 S1 是 MySQL 全量 `deleted=0`、lazy load、100 批写 Redis；无增量/删除/队列/高可用 `[源码已确认缺口]`；以下为 `[架构规划]`。
+**项目证据**：当前 S1 是 MySQL 全量 `deleted=0`、lazy load、100 批写 Redis `[源码已确认]`；源码未发现增量、删除、队列或高可用能力 `[源码已确认]`；以下为 `[架构规划]`。
 
 **问题**：在亿级商品规模下，设计增量向量同步平台，并清楚区分当前实现与演进方案。
 
