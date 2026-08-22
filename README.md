@@ -66,7 +66,8 @@ interview-note/
 │       └── evaluation/          # 评估系统
 ├── docs/                        # 文档库
 │   └── tech-stack-analysis/     # 项目技术栈深度剖析
-│       └── mall-ai-search/      # mall-ai-search 智能搜索项目（11篇系列）
+│       ├── mall-ai-search/      # mall-ai-search 智能搜索项目（11篇系列）
+│       └── mall-micro-cloud/    # mall-micro-cloud 微服务电商项目（11篇系列）
 └── projects/                    # 项目实战
     ├── java-projects/           # Java 项目
     │   ├── ecommerce/           # 电商系统
@@ -143,6 +144,13 @@ Python → LLM 基础 → RAG → Agent → Agentic → LangGraph → Harness �
 
 从真实项目出发，逐层剖析技术栈——从基础到进阶再到项目实战，每篇附 Java/Spring 生态对照。
 
+### 项目系列总览
+
+| 项目 | 技术栈 | 文档 | 面试方向 |
+|------|--------|------|---------|
+| mall-ai-search | Python AI 搜索 (FastAPI + LangChain + RedisVL) | [11篇](docs/tech-stack-analysis/mall-ai-search/00-OVERVIEW.md) | AI + 向量检索 + Agent |
+| mall-micro-cloud | Java Spring Cloud 微服务电商 (12个服务) | [11篇](docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) | 微服务 + 分布式 + 高并发 |
+
 ### mall-ai-search（智能搜索项目）
 
 > 一次 AI 搜索请求的完整链路：Vue3 → FastAPI → LangChain Agent → RedisVL → LLM 推荐
@@ -160,6 +168,24 @@ Python → LLM 基础 → RAG → Agent → Agentic → LangGraph → Harness �
 | 08 | [LangGraph 记忆与状态](docs/tech-stack-analysis/mall-ai-search/08-LANGGRAPH-MEMORY.md) | Checkpointer + InMemorySaver | 会话管理 |
 | 09 | [数据同步链路](docs/tech-stack-analysis/mall-ai-search/09-DATA-SYNC.md) | MySQL → 切片 → Embedding → RedisVL | JPA + ETL |
 | 10 | [架构复盘与面试题集](docs/tech-stack-analysis/mall-ai-search/10-ARCHITECTURE.md) | 20+ 面试题 + 架构模式 | 跨栈对比表 |
+
+### mall-micro-cloud（Spring Cloud 微服务电商）
+
+> 从一次"下单"请求出发，穿透 12 个微服务、9 大技术栈：Nacos / Gateway / Seata / Redisson / RocketMQ / JWT / MongoDB / ES
+
+| # | 文档 | 核心栈 |
+|---|------|--------|
+| 00 | [全景导读](docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) | 架构总览 |
+| 01 | [Nacos + Gateway 网关](docs/tech-stack-analysis/mall-micro-cloud/01-NACOS-GATEWAY.md) | Nacos, Gateway, Sentinel, 过滤器 |
+| 02 | [公共模块与统一架构](docs/tech-stack-analysis/mall-micro-cloud/02-COMMON-ARCH.md) | Result, 异常处理, Feign, 拦截器 |
+| 03 | [商品服务与 MyBatis-Plus](docs/tech-stack-analysis/mall-micro-cloud/03-PRODUCT-MYBATISPLUS.md) | MyBatis-Plus, SPU/SKU |
+| 04 | [订单服务与 Seata 分布式事务](docs/tech-stack-analysis/mall-micro-cloud/04-ORDER-SEATA.md) | Seata AT, @GlobalTransactional |
+| 05 | [购物车服务与 MongoDB](docs/tech-stack-analysis/mall-micro-cloud/05-CART-MONGODB.md) | MongoDB, NoSQL 选型 |
+| 06 | [秒杀服务与高并发](docs/tech-stack-analysis/mall-micro-cloud/06-SECKILL-HIGHCONCUR.md) | Redisson, 布隆过滤器, 库存双写 |
+| 07 | [用户服务与 JWT 鉴权](docs/tech-stack-analysis/mall-micro-cloud/07-USER-JWT.md) | JWT, 拦截器, 无感续期 |
+| 08 | [ES 搜索服务](docs/tech-stack-analysis/mall-micro-cloud/08-ES-SEARCH.md) | Elasticsearch, 倒排索引 |
+| 09 | [RocketMQ 消息驱动](docs/tech-stack-analysis/mall-micro-cloud/09-ROCKETMQ.md) | RocketMQ, StreamBridge, 最终一致性 |
+| 10 | [架构复盘与面试题集](docs/tech-stack-analysis/mall-micro-cloud/10-ARCHITECTURE.md) | 20+ 面试题 + 能力雷达图 |
 
 ## 🔗 推荐资源
 
