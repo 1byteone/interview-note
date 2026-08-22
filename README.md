@@ -68,7 +68,12 @@ interview-note/
 │   └── tech-stack-analysis/     # 项目技术栈深度剖析
 │       ├── mall-ai-search/      # mall-ai-search 智能搜索项目（11篇系列）
 │       ├── mall-micro-cloud/    # mall-micro-cloud 微服务电商项目（11篇系列）
-│       └── text2sql/            # text2sql Java Text2SQL+RAG 项目（7篇系列）
+│       ├── text2sql/            # text2sql Java Text2SQL+RAG 项目（7篇系列）
+│       ├── ruoyi-ai/            # ruoyi-ai 企业级AI应用框架（16篇 + 深度系列）
+│       ├── ai-passage-creator/  # ai-passage-creator AI文章生成器（12篇 + 深度系列）
+│       ├── mewpaw-code/         # mewpaw-code CLI编码Agent（8篇 + 深度系列）
+│       ├── zznursing/           # zznursing 养老物联网平台（10篇 + 深度系列）
+│       └── cross-cutting/       # 跨项目综合（AI框架对比/架构模式/STAR亮点）
 ├── guide/                       # 📚 Guide 仓库收录指南（六大生态）
 │   ├── README.md                # 生态总览与索引
 │   ├── categories/              # 六大技术栈生态分类
@@ -159,11 +164,15 @@ Python → LLM 基础 → RAG → Agent → Agentic → LangGraph → Harness �
 
 ### 项目系列总览
 
-| 项目 | 技术栈 | 文档 | 面试方向 |
-|------|--------|------|---------|
-| mall-ai-search | Python AI 搜索 (FastAPI + LangChain + RedisVL) | [11篇](docs/tech-stack-analysis/mall-ai-search/00-OVERVIEW.md) | AI + 向量检索 + Agent |
-| mall-micro-cloud | Java Spring Cloud 微服务电商 (12个服务) | [11篇](docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) | 微服务 + 分布式 + 高并发 |
-| text2sql | Java Text2SQL + RAG (Spring AI + DeepSeek) | [7篇](docs/tech-stack-analysis/text2sql/00-OVERVIEW.md) | Java AI + RAG + SQL 安全 |
+| 项目 | 技术栈 | 面试文档 | 代码示例 | 深度系列 | 面试方向 |
+|------|--------|---------|---------|---------|---------|
+| mall-ai-search | Python AI 搜索 (FastAPI + LangChain + RedisVL) | [11篇](docs/tech-stack-analysis/mall-ai-search/00-OVERVIEW.md) | — | — | AI + 向量检索 + Agent |
+| mall-micro-cloud | Java Spring Cloud 微服务电商 (12个服务) | [11篇](docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) | — | — | 微服务 + 分布式 + 高并发 |
+| text2sql | Java Text2SQL + RAG (Spring AI + DeepSeek) | [7篇](docs/tech-stack-analysis/text2sql/00-OVERVIEW.md) | — | — | Java AI + RAG + SQL 安全 |
+| **ruoyi-ai** 🆕 | **Java Spring Boot + LangChain4j + langgraph4j** | [**16篇**](docs/tech-stack-analysis/ruoyi-ai/00-PROJECT-OVERVIEW.md) | **22个** | **RAG 7篇** | **企业级AI + Agent + RAG + MCP** |
+| **ai-passage-creator** 🆕 | **Spring AI Alibaba + Vue 3 + StateGraph** | [**12篇**](docs/tech-stack-analysis/ai-passage-creator/00-PROJECT-OVERVIEW.md) | **32个** | **9篇** | **多Agent编排 + 策略模式 + 支付** |
+| **mewpaw-code** 🆕 | **Java 21 + LangChain4j CLI** | [**8篇**](docs/tech-stack-analysis/mewpaw-code/00-PROJECT-OVERVIEW.md) | **17个** | **5篇** | **ReAct Agent + 安全沙箱 + CLI** |
+| **zznursing** 🆕 | **Spring Boot + 百度千帆 + 华为IoTDA** | [**10篇**](docs/tech-stack-analysis/zznursing/00-PROJECT-OVERVIEW.md) | **11个** | **7篇** | **IoT + 大模型 + 小程序** |
 
 ### mall-ai-search（智能搜索项目）
 
@@ -217,6 +226,81 @@ Python → LLM 基础 → RAG → Agent → Agentic → LangGraph → Harness �
 | 05 | [SQL 验证器四层防护](docs/tech-stack-analysis/text2sql/05-SQL-VALIDATOR.md) | 语法/安全/语义/性能验证 |
 | 06 | [对话管理与上下文压缩](docs/tech-stack-analysis/text2sql/06-CONVERSATION.md) | 多轮对话, 滑动窗口 |
 | 07 | [架构复盘与面试题集](docs/tech-stack-analysis/text2sql/07-ARCHITECTURE.md) | 三项目对比 + 面试题 |
+
+### ruoyi-ai（企业级AI应用开发框架）
+
+> 企业级AI应用开发框架，基于 Spring Boot 3.5 + LangChain4j 1.13.0 + langgraph4j 1.5.3，覆盖 RAG 全链路、多Agent编排、MCP 协议、流程引擎等
+
+| 阶段 | 内容 | 文件数 | 入口 |
+|------|------|-------|------|
+| 🎯 **面试导向** | 13个技术栈 + 面试题 + STAR亮点 | 16篇 | [00-PROJECT-OVERVIEW](docs/tech-stack-analysis/ruoyi-ai/00-PROJECT-OVERVIEW.md) |
+| 💻 **代码示例** | 多模型工厂/RAG管线/Supervisor Agent | 22个 | [code-examples/](docs/tech-stack-analysis/ruoyi-ai/code-examples/) |
+| 📚 **深度系列** | RAG全链路7篇（入门→架构级） | 34篇 | [deep-series/](docs/tech-stack-analysis/ruoyi-ai/deep-series/) |
+
+**核心技术栈：** Spring Boot 3.5 · LangChain4j 1.13.0 · langgraph4j 1.5.3 · Sa-Token · MyBatis-Plus · Redis/Redisson · Milvus/Weaviate/Qdrant · Neo4j GraphRAG · MCP 协议 · Warm-Flow BPM · SSE/WebSocket · Docker
+
+| # | 面试文档 | 核心技术 | 面试题 |
+|---|---------|---------|-------|
+| 00 | [项目全景](docs/tech-stack-analysis/ruoyi-ai/00-PROJECT-OVERVIEW.md) | 四层架构 + 架构图 | 3分钟/1分钟话术 |
+| 01 | [Spring Boot + LangChain4j](docs/tech-stack-analysis/ruoyi-ai/01-spring-boot-langchain4j.md) | @AiService, 自动配置 | 3道 |
+| 02 | [多厂商大模型工厂](docs/tech-stack-analysis/ruoyi-ai/02-multi-llm-factory.md) | 工厂+策略模式, 6厂商 | 3道 |
+| 03 | [RAG 全链路](docs/tech-stack-analysis/ruoyi-ai/03-rag-pipeline.md) | 文档解析→切分→Embedding→检索→Rerank | 4道 |
+| 04 | [向量存储策略](docs/tech-stack-analysis/ruoyi-ai/04-vector-store-strategy.md) | Milvus/Weaviate/Qdrant 工厂策略 | 3道 |
+| 05 | [langgraph4j 流程引擎](docs/tech-stack-analysis/ruoyi-ai/05-langgraph-flow-engine.md) | StateGraph, 11种节点, 条件边 | 3道 |
+| 06 | [Supervisor 多智能体](docs/tech-stack-analysis/ruoyi-ai/06-supervisor-agent.md) | 4个子Agent, 工具调用 | 4道 |
+| 07 | [MCP 协议实现](docs/tech-stack-analysis/ruoyi-ai/07-mcp-protocol.md) | MCP Server/Client, SSE传输 | 3道 |
+| 08 | [MyBatis-Plus + 多数据源](docs/tech-stack-analysis/ruoyi-ai/08-mybatis-plus-mysql.md) | Dynamic-Datasource, 事务 | 3道 |
+| 09 | [Redis + Redisson](docs/tech-stack-analysis/ruoyi-ai/09-redis-redisson.md) | 缓存策略, 分布式锁, Lock4j | 3道 |
+| 10 | [Sa-Token + JWT](docs/tech-stack-analysis/ruoyi-ai/10-sa-token-auth.md) | 双重认证, RBAC | 3道 |
+| 11 | [BPM 审批引擎](docs/tech-stack-analysis/ruoyi-ai/11-bpm-workflow.md) | Warm-Flow, 节点流转 | 3道 |
+| 12 | [SSE/WebSocket](docs/tech-stack-analysis/ruoyi-ai/12-sse-websocket.md) | 实时通信, 流式输出 | 3道 |
+| 13 | [监控部署](docs/tech-stack-analysis/ruoyi-ai/13-monitor-deploy.md) | Boot Admin, Docker Compose | 3道 |
+| 14 | [面试题汇总](docs/tech-stack-analysis/ruoyi-ai/14-interview-questions.md) | 35题（5种题型） | 35道 |
+| 15 | [STAR 亮点](docs/tech-stack-analysis/ruoyi-ai/15-star-highlights.md) | 5个STAR亮点 | — |
+
+### ai-passage-creator（AI 多Agent图文创作平台）
+
+> 基于 Spring AI Alibaba 1.1.0 + StateGraph 编排5个Agent，实现AI文章生成、配图策略、人机协作
+
+| 阶段 | 内容 | 文件数 | 入口 |
+|------|------|-------|------|
+| 🎯 **面试导向** | 9个技术栈 + 面试题 + STAR亮点 | 12篇 | [00-PROJECT-OVERVIEW](docs/tech-stack-analysis/ai-passage-creator/00-PROJECT-OVERVIEW.md) |
+| 💻 **代码示例** | StateGraph编排/配图策略模式 | 32个 | [code-examples/](docs/tech-stack-analysis/ai-passage-creator/code-examples/) |
+| 📚 **深度系列** | 9个技术栈 Level 1 入门篇 | 9篇 | [deep-series/](docs/tech-stack-analysis/ai-passage-creator/deep-series/) |
+
+**核心技术栈：** Spring Boot 3.5 · Spring AI Alibaba 1.1.0 · MyBatis-Flex · Redis/Redisson · Stripe · Vue 3.5 + Ant Design · SSE · 腾讯云 COS
+
+### mewpaw-code（Java CLI 编码Agent）
+
+> Java 21 + LangChain4j 实现的 CLI 编码Agent，ReAct 循环 + 5层安全沙箱 + TUI/REPL 交互
+
+| 阶段 | 内容 | 文件数 | 入口 |
+|------|------|-------|------|
+| 🎯 **面试导向** | 5个技术栈 + 面试题 + STAR亮点 | 8篇 | [00-PROJECT-OVERVIEW](docs/tech-stack-analysis/mewpaw-code/00-PROJECT-OVERVIEW.md) |
+| 💻 **代码示例** | ReAct循环/安全沙箱 | 17个 | [code-examples/](docs/tech-stack-analysis/mewpaw-code/code-examples/) |
+| 📚 **深度系列** | 5个技术栈 Level 1 入门篇 | 5篇 | [deep-series/](docs/tech-stack-analysis/mewpaw-code/deep-series/) |
+
+**核心技术栈：** Java 21 · Spring Boot · LangChain4j · JLine · Picocli · Lanterna
+
+### zznursing（养老机构物联网平台）
+
+> 集成百度千帆AI + 华为IoTDA + 微信小程序，实现养老机构综合运营
+
+| 阶段 | 内容 | 文件数 | 入口 |
+|------|------|-------|------|
+| 🎯 **面试导向** | 7个技术栈 + 面试题 + STAR亮点 | 10篇 | [00-PROJECT-OVERVIEW](docs/tech-stack-analysis/zznursing/00-PROJECT-OVERVIEW.md) |
+| 💻 **代码示例** | IoT设备接入/千帆AI集成 | 11个 | [code-examples/](docs/tech-stack-analysis/zznursing/code-examples/) |
+| 📚 **深度系列** | 7个技术栈 Level 1 入门篇 | 7篇 | [deep-series/](docs/tech-stack-analysis/zznursing/deep-series/) |
+
+**核心技术栈：** Spring Boot · 百度千帆AI · 华为IoTDA · MQTT · 微信小程序 · Vue 3 · MySQL · Redis
+
+### 跨项目综合
+
+| 文档 | 内容 | 入口 |
+|------|------|------|
+| Java AI 生态对比 | LangChain4j vs Spring AI Alibaba vs 百度千帆 | [进入](docs/tech-stack-analysis/cross-cutting/java-ai-ecosystem-comparison.md) |
+| 企业架构模式 | 工厂/策略/Agent/适配器/责任链模式提炼 | [进入](docs/tech-stack-analysis/cross-cutting/enterprise-architecture-patterns.md) |
+| 综合STAR亮点 | 4个项目亮点汇总 + 面试自我介绍模板 | [进入](docs/tech-stack-analysis/cross-cutting/overall-star-highlights.md) |
 
 ## 🔗 推荐资源
 
