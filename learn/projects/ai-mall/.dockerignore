@@ -1,0 +1,86 @@
+# =============================================================================
+# AI Mall — Docker 构建上下文忽略文件
+# 在构建镜像时，排除以下文件以减小构建上下文大小和加速构建
+# =============================================================================
+
+# --- Git ---
+.git
+.gitignore
+.gitattributes
+.gitmodules
+
+# --- IDE ---
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- 日志 ---
+*.log
+logs/
+
+# --- Node.js ---
+node_modules/
+npm-debug.log*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# --- Java / Maven ---
+target/
+*.class
+*.jar
+*.war
+*.ear
+!.mvn/wrapper/maven-wrapper.jar
+.vertx/
+
+# --- Docker ---
+.dockerignore
+docker-compose*.yml
+.env
+.env.*
+
+# --- 临时文件 ---
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+
+# --- 文档/截图 ---
+*.md
+docs/
+screenshots/
+
+# --- 大文件 ---
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+*.iso
+
+# --- 监控配置（不需要进构建上下文） ---
+prometheus/
+grafana/
+nginx/

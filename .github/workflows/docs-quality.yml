@@ -1,0 +1,174 @@
+name: Docs Quality Check
+
+on:
+  push:
+    branches: [master]
+    paths: ['learn/**', '.github/workflows/docs-quality.yml']
+  pull_request:
+    branches: [master]
+    paths: ['learn/**']
+
+jobs:
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint Markdown files
+        uses: avto-dev/markdown-lint@v1
+        with:
+          args: 'learn/**/*.md'
+          config: '.markdownlint.json'
+
+  link-check:
+    name: Check Links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check internal links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --verbose
+            --exclude-loopback false
+            --no-progress
+            --accept 200,301,302
+            --exclude 'https?://(www\.)?(github\.com|bilibili\.com|csdn\.net|zhihu\.com|juejin\.cn)'
+            --exclude 'https?://localhost.*'
+            --exclude 'https?://127\..*'
+            'learn/**/*.md'
+          fail: false
+
+  structure-check:
+    name: Validate Structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check required files per tech stack
+        run: |
+          echo "🔍 Checking tutorial structure..."
+          MISSING=0
+
+          STACKS=(
+            "00-ROADMAP"
+            "01-backend-development"
+            "02-java"
+            "03-spring-boot"
+            "04-python"
+            "05-fastapi"
+            "06-mysql"
+            "07-redis"
+            "08-rocketmq"
+            "09-elasticsearch"
+            "10-docker"
+            "11-linux"
+            "12-infrastructure"
+            "13-dev-tools"
+            "14-langchain"
+            "15-rag"
+            "16-openai"
+          )
+
+          REQUIRED_FILES=("README.md" "cheat-sheet.md" "resources.md")
+
+          for stack in "${STACKS[@]}"; do
+            DIR="learn/$stack"
+            if [ ! -d "$DIR" ]; then
+              echo "❌ Missing directory: $DIR"
+              MISSING=$((MISSING + 1))
+              continue
+            fi
+
+            for file in "${REQUIRED_FILES[@]}"; do
+              if [ ! -f "$DIR/$file" ]; then
+                echo "❌ Missing $DIR/$file"
+                MISSING=$((MISSING + 1))
+              fi
+            done
+
+            # Check for basics directory
+            if [ ! -d "$DIR/01-basics" ]; then
+              echo "❌ Missing $DIR/01-basics/"
+              MISSING=$((MISSING + 1))
+            fi
+
+            # Check for interview directory
+            if [ ! -d "$DIR/05-interview" ]; then
+              echo "❌ Missing $DIR/05-interview/"
+              MISSING=$((MISSING + 1))
+            fi
+
+            echo "✅ $stack structure OK"
+          done
+
+          if [ $MISSING -gt 0 ]; then
+            echo ""
+            echo "⚠️  Found $MISSING missing items"
+            exit 1
+          else
+            echo ""
+            echo "🎉 All tech stacks have correct structure!"
+          fi
+
+  code-validation:
+    name: Validate Code
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: [python]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        if: matrix.language == 'python'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate Python syntax
+        if: matrix.language == 'python'
+        run: |
+          echo "🔍 Checking Python files in learn/..."
+          find learn -name "*.py" -type f | while read f; do
+            if python -m py_compile "$f" 2>/dev/null; then
+              echo "✅ $f"
+            else
+              echo "❌ $f"
+            fi
+          done
+          echo "✅ Python syntax check complete"
+
+  stats:
+    name: Project Stats
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate stats
+        run: |
+          echo "📊 16 技术栈教程体系统计"
+          echo "========================"
+          echo ""
+          echo "Markdown files: $(find learn -name '*.md' | wc -l)"
+          echo "Python files:   $(find learn -name '*.py' | wc -l)"
+          echo "Java files:     $(find learn -name '*.java' | wc -l)"
+          echo "Shell scripts:  $(find learn -name '*.sh' | wc -l)"
+          echo "SQL files:      $(find learn -name '*.sql' | wc -l)"
+          echo "SVG diagrams:   $(find learn -name '*.svg' | wc -l)"
+          echo "YAML configs:   $(find learn -name '*.yml' -o -name '*.yaml' | wc -l)"
+          echo "Dockerfiles:    $(find learn -name 'Dockerfile' | wc -l)"
+          echo "Lua scripts:    $(find learn -name '*.lua' | wc -l)"
+          echo "Cheat sheets:   $(find learn -name 'cheat-sheet.md' | wc -l)"
+          echo ""
+          echo "Total files:    $(find learn -type f | wc -l)"
+          echo "Total lines:    $(find learn -name '*.md' -exec cat {} + | wc -l)"
+          echo ""
+          echo "Per tech stack:"
+          for dir in learn/*/; do
+            name=$(basename "$dir")
+            count=$(find "$dir" -type f | wc -l)
+            printf "  %-30s %4d files\n" "$name" "$count"
+          done

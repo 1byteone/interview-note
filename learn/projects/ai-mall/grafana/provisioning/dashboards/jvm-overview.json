@@ -1,0 +1,102 @@
+{
+  "title": "AI Mall - JVM Overview",
+  "uid": "ai-mall-jvm",
+  "version": 1,
+  "panels": [
+    {
+      "id": 1,
+      "title": "JVM Heap Usage",
+      "type": "timeseries",
+      "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8},
+      "targets": [
+        {
+          "expr": "sum(jvm_memory_used_bytes{area='heap'}) by (service)",
+          "legendFormat": "{{service}} - Used",
+          "interval": "15s"
+        },
+        {
+          "expr": "sum(jvm_memory_max_bytes{area='heap'}) by (service)",
+          "legendFormat": "{{service}} - Max",
+          "interval": "15s"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "custom": {"lineInterpolation": "smooth"}
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "HTTP Requests Rate",
+      "type": "timeseries",
+      "gridPos": {"x": 12, "y": 0, "w": 12, "h": 8},
+      "targets": [
+        {
+          "expr": "rate(http_server_requests_seconds_count[1m])",
+          "legendFormat": "{{service}} - {{method}} {{uri}}",
+          "interval": "15s"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "cps",
+          "custom": {"lineInterpolation": "smooth"}
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "JVM GC Pause Time",
+      "type": "timeseries",
+      "gridPos": {"x": 0, "y": 8, "w": 12, "h": 8},
+      "targets": [
+        {
+          "expr": "rate(jvm_gc_pause_seconds_sum[1m])",
+          "legendFormat": "{{service}} - {{cause}}",
+          "interval": "15s"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "custom": {"lineInterpolation": "smooth"}
+        }
+      }
+    },
+    {
+      "id": 4,
+      "title": "HikariCP Connection Pool",
+      "type": "timeseries",
+      "gridPos": {"x": 12, "y": 8, "w": 12, "h": 8},
+      "targets": [
+        {
+          "expr": "hikaricp_connections_active",
+          "legendFormat": "{{service}} - Active",
+          "interval": "15s"
+        },
+        {
+          "expr": "hikaricp_connections_idle",
+          "legendFormat": "{{service}} - Idle",
+          "interval": "15s"
+        },
+        {
+          "expr": "hikaricp_connections_pending",
+          "legendFormat": "{{service}} - Pending",
+          "interval": "15s"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {"lineInterpolation": "smooth"}
+        }
+      }
+    }
+  ],
+  "schemaVersion": 38,
+  "tags": ["ai-mall", "jvm"],
+  "time": {"from": "now-1h", "to": "now"},
+  "timepicker": {},
+  "timezone": "browser"
+}

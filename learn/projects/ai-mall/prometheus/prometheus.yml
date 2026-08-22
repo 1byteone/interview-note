@@ -1,0 +1,147 @@
+# =============================================================================
+# Prometheus 监控配置 — AI Mall 指标采集
+# 挂载路径: /etc/prometheus/prometheus.yml
+# 全局配置: 15s 采集间隔，7天数据保留（通过 docker-compose command 参数设置）
+# =============================================================================
+
+global:
+  scrape_interval:     15s       # 默认采集间隔
+  evaluation_interval: 15s       # 告警规则评估间隔
+  scrape_timeout:      10s       # 采集超时
+
+# 告警规则文件（可扩展）
+rule_files:
+  # - "alerts.yml"
+
+# 采集目标配置
+scrape_configs:
+
+  # ---------------------------------------------------------------------------
+  # 1. Prometheus 自身监控
+  # ---------------------------------------------------------------------------
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: 'go_.*'
+        action: keep
+
+  # ---------------------------------------------------------------------------
+  # 2. Spring Boot Actuator 指标 — 所有 Java 微服务
+  # ---------------------------------------------------------------------------
+  - job_name: 'spring-boot-actuator'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 10s
+    static_configs:
+      - targets:
+          - 'mall-gateway:8080'
+          - 'mall-user-service:8081'
+          - 'mall-product-service:8082'
+          - 'mall-order-service:8083'
+          - 'mall-payment-service:8084'
+        labels:
+          application: 'ai-mall'
+          layer: 'java-backend'
+    relabel_configs:
+      # 将实例地址替换为服务名，方便看图
+      - source_labels: [__address__]
+        regex: '(.*):.*'
+        replacement: '${1}'
+        target_label: 'service'
+    metric_relabel_configs:
+      # 保留 JVM 关键指标
+      - source_labels: [__name__]
+        regex: '(jvm_.*|tomcat_.*|hikaricp_.*|http_.*|logback_.*|process_.*)'
+        action: keep
+
+  # ---------------------------------------------------------------------------
+  # 3. Nginx 指标采集（通过 nginx-vts-exporter 或 stub_status）
+  # 注意：需要额外部署 nginx-exporter 容器，或 nginx 开启 stub_status
+  # ---------------------------------------------------------------------------
+  - job_name: 'nginx'
+    static_configs:
+      - targets:
+          - 'nginx:80'
+        labels:
+          service: 'nginx'
+    metrics_path: '/nginx-health'
+    # 简化：仅做存活检测，不采集详细指标
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: '.*'
+        action: keep
+
+  # ---------------------------------------------------------------------------
+  # 4. Redis 指标采集（通过 redis_exporter）
+  # 注意：需要额外部署 redis_exporter 容器
+  # 或者使用 Spring Boot Actuator 中的 Redis 指标
+  # ---------------------------------------------------------------------------
+  - job_name: 'redis'
+    static_configs:
+      - targets:
+          - 'redis:6379'
+        labels:
+          service: 'redis'
+    metrics_path: '/metrics'
+    # 如果使用 redis_exporter 容器，实际地址应为 redis-exporter:9121
+    # 此处注释保留，实际部署时请根据 exporter 配置调整
+
+  # ---------------------------------------------------------------------------
+  # 5. Elasticsearch 指标采集
+  # ---------------------------------------------------------------------------
+  - job_name: 'elasticsearch'
+    static_configs:
+      - targets:
+          - 'elasticsearch:9200'
+        labels:
+          service: 'elasticsearch'
+    metrics_path: '/_nodes/stats'
+    params:
+      pretty: ['false']
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: '(es_.*|elasticsearch_.*)'
+        action: keep
+
+  # ---------------------------------------------------------------------------
+  # 6. Nacos 指标采集
+  # ---------------------------------------------------------------------------
+  - job_name: 'nacos'
+    metrics_path: '/nacos/v1/console/monitor/metrics'
+    static_configs:
+      - targets:
+          - 'nacos:8848'
+        labels:
+          service: 'nacos'
+    # Nacos 的指标格式可能不是标准 Prometheus 格式，此配置仅供参考
+    # 建议使用 Nacos 官方提供的 Prometheus 集成
+
+  # ---------------------------------------------------------------------------
+  # 7. RocketMQ 指标采集（通过 rocketmq-exporter）
+  # ---------------------------------------------------------------------------
+  - job_name: 'rocketmq'
+    static_configs:
+      - targets:
+          - 'rocketmq-namesrv:9876'
+          - 'rocketmq-broker:10911'
+        labels:
+          service: 'rocketmq'
+    # 实际 RocketMQ 指标需要 rocketmq-exporter 容器代理
+    # 默认 exporter 端口 5557/5558
+
+  # ---------------------------------------------------------------------------
+  # 8. Docker 主机指标采集（通过 cadvisor）
+  # 在生产环境中部署 cadvisor 后启用此项
+  # ---------------------------------------------------------------------------
+  # - job_name: 'cadvisor'
+  #   static_configs:
+  #     - targets: ['cadvisor:8080']
+  #       labels:
+  #         service: 'docker'
+  #
+  # - job_name: 'node-exporter'
+  #   static_configs:
+  #     - targets: ['node-exporter:9100']
+  #       labels:
+  #         service: 'host'
