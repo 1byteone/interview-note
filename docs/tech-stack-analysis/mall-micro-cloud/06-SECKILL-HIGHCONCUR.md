@@ -215,11 +215,19 @@ streamBridge.send("stockDeductOutput-out-0", message);
 └───────────────────────────────┘
     │
     ▼
+┌─ StockDeductConsumer 幂等消费 ─┐
+│ SETNX transactionId 防重复     │
+│ 写入库存流水表 + 同步 MySQL    │
+└───────────────────────────────┘
+    │
+    ▼
 ┌─ 释放分布式锁 ─────────────────┐
 │ finally: isHeldByCurrentThread│
 │ → unlock()                   │
 └───────────────────────────────┘
 ```
+
+**完整的异步双写落库链路见[补充篇 11：定时任务 + 布隆过滤器 + MQ 幂等消费](./11-SCHEDULER-BLOOMFILTER.md)。**
 
 ### 3.2 代码演进记录（读注释中的三版实现）
 

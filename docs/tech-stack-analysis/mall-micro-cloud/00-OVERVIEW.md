@@ -185,6 +185,8 @@ RocketMQ 消息 → mall-consumer-service 消费
 | 08 | [ES 搜索服务](./08-ES-SEARCH.md) | Elasticsearch, 索引, 分页 | 搜索、数据分析 | ★★★ |
 | 09 | [RocketMQ 消息驱动](./09-ROCKETMQ.md) | RocketMQ, StreamBridge, 消息消费 | 消息队列、异步解耦 | ★★★★★ |
 | 10 | [架构复盘与面试题集](./10-ARCHITECTURE.md) | 全栈复盘, 面试题, 跨栈对比 | 综合能力 | ★★★★★ |
+| 11 | [定时任务 + 布隆过滤器 + MQ 幂等消费](./11-SCHEDULER-BLOOMFILTER.md) | ElasticJob, Redisson 布隆过滤器 | 分布式任务、缓存穿透 | ★★★★ |
+| 12 | [AI 搜索桥接服务](./12-AI-SEARCH-BRIDGE.md) | Feign → Python AI 服务 | Java-Python 桥接 | ★★★★ |
 
 ---
 

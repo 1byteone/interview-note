@@ -188,6 +188,8 @@ Python → LLM 基础 → RAG → Agent → Agentic → LangGraph → Harness �
 | 08 | [ES 搜索服务](docs/tech-stack-analysis/mall-micro-cloud/08-ES-SEARCH.md) | Elasticsearch, 倒排索引 |
 | 09 | [RocketMQ 消息驱动](docs/tech-stack-analysis/mall-micro-cloud/09-ROCKETMQ.md) | RocketMQ, StreamBridge, 最终一致性 |
 | 10 | [架构复盘与面试题集](docs/tech-stack-analysis/mall-micro-cloud/10-ARCHITECTURE.md) | 20+ 面试题 + 能力雷达图 |
+| 11 | [定时任务 + 布隆过滤器 + MQ 幂等消费](docs/tech-stack-analysis/mall-micro-cloud/11-SCHEDULER-BLOOMFILTER.md) | ElasticJob, Redisson 布隆过滤器 |
+| 12 | [AI 搜索桥接服务](docs/tech-stack-analysis/mall-micro-cloud/12-AI-SEARCH-BRIDGE.md) | Feign → Python AI 桥接 |
 
 ### text2sql（Java Text2SQL + RAG）
 
