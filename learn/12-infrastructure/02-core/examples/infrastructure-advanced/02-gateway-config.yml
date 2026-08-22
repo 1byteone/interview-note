@@ -1,0 +1,83 @@
+# ============================================
+# Spring Cloud Gateway 路由配置（YAML）
+# 演示：路由 / 断言 / 过滤器 / 限流 / 熔断
+# ============================================
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      # 服务发现：自动从 Nacos 获取服务列表
+      discovery:
+        locator:
+          enabled: true                # 开启服务名路由（/服务名/**）
+          lower-case-service-id: true
+
+      routes:
+        # -------- 路由 1: 用户服务 --------
+        - id: user-service
+          uri: lb://user-service       # lb:// 表示负载均衡到 Nacos 服务
+          predicates:
+            - Path=/api/user/**
+          filters:
+            # 路径重写: /api/user/xxx -> /xxx
+            - RewritePath=/api/user/(?<segment>.*), /${segment}
+            # 请求限流: 每秒 1 个令牌，桶容量 10
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 10
+                key-resolver: "#{@ipKeyResolver}"
+
+        # -------- 路由 2: 订单服务 --------
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/order/**
+            - Method=GET,POST
+          filters:
+            - RewritePath=/api/order/(?<segment>.*), /${segment}
+            # 添加请求头
+            - AddRequestHeader=X-Gateway-Caller, order-api
+
+        # -------- 路由 3: 商品服务（Query 参数路由）---------
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/api/product/**
+            - Query=category            # 必须携带 category 参数
+          filters:
+            - RewritePath=/api/product/(?<segment>.*), /${segment}
+
+        # -------- 路由 4: 健康检查（直连） --------
+        - id: health-check
+          uri: http://localhost:8080
+          predicates:
+            - Path=/health
+
+# ============================================
+# 限流 KeyResolver Bean（Java 配置）
+# ============================================
+# @Configuration
+# public class RateLimitConfig {
+#     @Bean
+#     KeyResolver ipKeyResolver() {
+#         return exchange -> Mono.just(
+#             Objects.requireNonNull(exchange.getRequest()
+#                 .getRemoteAddress()).getAddress().getHostAddress());
+#     }
+# }
+#
+# ============================================
+# 全局过滤器示例（Java，统一认证）
+# ============================================
+# @Component
+# public class AuthGlobalFilter implements GlobalFilter {
+#     @Override
+#     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+#         String token = exchange.getRequest().getHeaders().getFirst("Authorization");
+#         // 校验 token... 不通过则返回 401
+#         return chain.filter(exchange);
+#     }
+# }

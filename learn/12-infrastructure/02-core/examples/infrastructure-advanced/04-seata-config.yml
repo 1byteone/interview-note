@@ -1,0 +1,80 @@
+# ============================================
+# Seata 配置示例 — AT 模式
+# ============================================
+
+server:
+  # Seata Server（TC 事务协调器）端口
+  port: 7091
+
+# ---------- 注册中心 ----------
+registry:
+  type: nacos
+  nacos:
+    application: seata-server
+    server-addr: 127.0.0.1:8848
+    group: SEATA_GROUP
+    namespace: ""
+    cluster: default
+    username: nacos
+    password: nacos
+
+# ---------- 配置中心 ----------
+config:
+  type: nacos
+  nacos:
+    server-addr: 127.0.0.1:8848
+    namespace: ""
+    group: SEATA_GROUP
+    username: nacos
+    password: nacos
+    data-id: seataServer.properties
+
+# ---------- 事务存储（仅在单机时使用 file 演示） ----------
+store:
+  mode: db                    # 生产建议使用 db 模式（配合 undo_log 表）
+  db:
+    datasource: druid
+    db-type: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/seata?useUnicode=true&characterEncoding=utf8
+    user: root
+    password: root123
+
+# ---------- 事务处理超时 ----------
+service:
+  enable-degrade: false
+  disable-global-transaction: false
+  vgroup-mapping:
+    # 事务分组：my_test_tx_group 映射到集群 default（必须与应用一致）
+    my_test_tx_group: default
+  default-grouplist:
+    - 127.0.0.1:8091
+
+# ---------- 日志 ----------
+logging:
+  level:
+    io.seata: info
+
+# ============================================
+# 客户端（Spring Boot 应用）application.yml 配置
+# ============================================
+# spring:
+#   cloud:
+#     alibaba:
+#       seata:
+#         tx-service-group: my_test_tx_group   # 事务分组
+#
+# seata:
+#   registry:
+#     type: nacos
+#     nacos:
+#       server-addr: 127.0.0.1:8848
+#       group: SEATA_GROUP
+#   config:
+#     type: nacos
+#     nacos:
+#       server-addr: 127.0.0.1:8848
+#       group: SEATA_GROUP
+#
+# # 业务代码：@GlobalTransactional(name="create-order", rollbackFor=Exception.class)
+# # 即可让远程调用参与同一分布式事务（AT 模式自动回滚）

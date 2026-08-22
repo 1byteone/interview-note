@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 820" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+  <title>RAG 检索增强生成流水线</title>
+  <desc>RAG pipeline: query transformation, hybrid retrieval (vector + BM25), RRF fusion, reranking, and LLM generation, plus document ingestion.</desc>
+  <defs>
+    <marker id="arrowRAG" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748B"/></marker>
+    <marker id="arrowRAGTeal" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#10A37F"/></marker>
+    <linearGradient id="bgRAG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/><stop offset="1" stop-color="#12121f"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="820" rx="18" fill="url(#bgRAG)"/>
+  <text x="480" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#FFFFFF">RAG 检索增强生成流水线</text>
+  <text x="480" y="80" text-anchor="middle" font-size="14" fill="#94A3B8">混合检索（向量 + BM25）→ RRF 融合 → 重排序 → LLM 生成</text>
+
+  <!-- ===== 上半部分：查询处理 ===== -->
+  <text x="480" y="118" text-anchor="middle" font-size="16" font-weight="bold" fill="#5EEAD4">查询侧（Query Processing）</text>
+
+  <!-- 用户查询 -->
+  <rect x="40" y="132" width="140" height="60" rx="12" fill="#1E293B" stroke="#F59E0B" stroke-width="2"/>
+  <text x="110" y="162" text-anchor="middle" font-size="14" font-weight="bold" fill="#FDE68A">用户查询</text>
+  <text x="110" y="182" text-anchor="middle" font-size="10" fill="#FEF3C7">User Query</text>
+
+  <path d="M180,162 L230,162" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowRAG)"/>
+
+  <!-- 查询转换 -->
+  <rect x="235" y="132" width="150" height="60" rx="12" fill="#1E293B" stroke="#8B5CF6" stroke-width="2"/>
+  <text x="310" y="156" text-anchor="middle" font-size="14" font-weight="bold" fill="#C4B5FD">查询转换</text>
+  <text x="310" y="176" text-anchor="middle" font-size="10" fill="#DDD6FE">Rewrite · HyDE · 多查询</text>
+
+  <path d="M385,162 L410,162 L410,150 L434,150" stroke="#64748B" stroke-width="2.5" stroke-dasharray="6 3" fill="none" marker-end="url(#arrowRAG)"/>
+  <path d="M385,162 L410,162 L410,205 L434,205" stroke="#64748B" stroke-width="2.5" stroke-dasharray="6 3" fill="none" marker-end="url(#arrowRAG)"/>
+
+  <!-- 向量检索 -->
+  <rect x="440" y="125" width="170" height="55" rx="12" fill="#0F766E" stroke="#10A37F" stroke-width="2"/>
+  <text x="525" y="149" text-anchor="middle" font-size="14" font-weight="bold" fill="#99F6E4">向量检索</text>
+  <text x="525" y="170" text-anchor="middle" font-size="10" fill="#5EEAD4">向量数据库相似度检索</text>
+
+  <!-- BM25 检索 -->
+  <rect x="440" y="192" width="170" height="55" rx="12" fill="#1E3A8A" stroke="#3B82F6" stroke-width="2"/>
+  <text x="525" y="216" text-anchor="middle" font-size="14" font-weight="bold" fill="#93C5FD">BM25 检索</text>
+  <text x="525" y="237" text-anchor="middle" font-size="10" fill="#BFDBFE">关键词稀疏检索</text>
+
+  <!-- 融合 -->
+  <rect x="650" y="150" width="130" height="75" rx="12" fill="#1E293B" stroke="#F59E0B" stroke-width="2"/>
+  <text x="715" y="178" text-anchor="middle" font-size="14" font-weight="bold" fill="#FDE68A">RRF 融合</text>
+  <text x="715" y="198" text-anchor="middle" font-size="10" fill="#FEF3C7">Reciprocal Rank</text>
+  <text x="715" y="214" text-anchor="middle" font-size="10" fill="#FEF3C7">Fusion 排序合并</text>
+
+  <path d="M610,155 L648,165" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowRAG)"/>
+  <path d="M610,195 L648,190" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowRAG)"/>
+
+  <path d="M780,187 L815,187" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowRAG)"/>
+
+  <!-- 重排序 -->
+  <rect x="820" y="150" width="110" height="75" rx="12" fill="#1E293B" stroke="#A855F7" stroke-width="2"/>
+  <text x="875" y="178" text-anchor="middle" font-size="14" font-weight="bold" fill="#D8B4FE">重排序</text>
+  <text x="875" y="198" text-anchor="middle" font-size="10" fill="#E9D5FF">Reranker</text>
+  <text x="875" y="214" text-anchor="middle" font-size="10" fill="#E9D5FF">精排 Top-K</text>
+
+  <!-- ===== 下半部分：文档处理 ===== -->
+  <text x="480" y="290" text-anchor="middle" font-size="16" font-weight="bold" fill="#5EEAD4">文档侧（Document Ingestion）</text>
+
+  <rect x="40" y="306" width="130" height="55" rx="12" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="105" y="330" text-anchor="middle" font-size="14" font-weight="bold" fill="#CBD5E1">文档加载</text>
+  <text x="105" y="350" text-anchor="middle" font-size="10" fill="#94A3B8">PDF · HTML · DB</text>
+
+  <path d="M170,333 L210,333" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowRAG)"/>
+
+  <rect x="215" y="306" width="130" height="55" rx="12" fill="#1E293B" stroke="#F97316" stroke-width="1.5"/>
+  <text x="280" y="330" text-anchor="middle" font-size="14" font-weight="bold" fill="#FDBA74">文本切分</text>
+  <text x="280" y="350" text-anchor="middle" font-size="10" fill="#FED7AA">Chunking · 重叠窗口</text>
+
+  <path d="M345,333 L385,333" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowRAG)"/>
+
+  <rect x="390" y="306" width="130" height="55" rx="12" fill="#1E293B" stroke="#10A37F" stroke-width="1.5"/>
+  <text x="455" y="330" text-anchor="middle" font-size="14" font-weight="bold" fill="#6EE7B7">向量化</text>
+  <text x="455" y="350" text-anchor="middle" font-size="10" fill="#A7F3D0">Embedding 模型</text>
+
+  <path d="M520,333 L560,333" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowRAG)"/>
+
+  <!-- 向量库 -->
+  <ellipse cx="640" cy="333" rx="70" ry="32" fill="#0F766E" stroke="#10A37F" stroke-width="2"/>
+  <ellipse cx="640" cy="322" rx="70" ry="13" fill="#0D9488"/>
+  <text x="640" y="327" text-anchor="middle" font-size="11" font-weight="bold" fill="#CCFBF1">向量数据库</text>
+  <text x="640" y="342" text-anchor="middle" font-size="10" fill="#99F6E4">FAISS · Milvus · ES</text>
+
+  <!-- 文档侧连接到向量检索 -->
+  <path d="M560,333 L565,333" stroke="#64748B" stroke-width="0"/>
+
+  <!-- 文档处理管线标注 -->
+  <text x="640" y="376" text-anchor="middle" font-size="11" fill="#64748B">Documents → Chunking → Embedding → Vector Store</text>
+
+  <!-- ===== 文档侧（补充：倒排索引/BM25） ===== -->
+  <rect x="740" y="306" width="180" height="55" rx="12" fill="#1E3A8A" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="830" y="330" text-anchor="middle" font-size="14" font-weight="bold" fill="#93C5FD">倒排索引</text>
+  <text x="830" y="350" text-anchor="middle" font-size="10" fill="#BFDBFE">为 BM25 建立词项索引</text>
+
+  <!-- ===== 生成阶段 ===== -->
+  <path d="M875,225 L875,270 L500,270 L500,283" stroke="#64748B" stroke-width="0"/>
+  <path d="M480,162 L480,425" stroke="#64748B" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowRAGTeal)"/>
+
+  <!-- LLM 生成 -->
+  <rect x="120" y="420" width="720" height="90" rx="16" fill="#0F766E" stroke="#10A37F" stroke-width="3"/>
+  <text x="480" y="455" text-anchor="middle" font-size="18" font-weight="bold" fill="#CCFBF1">LLM 生成（Generation）</text>
+  <text x="480" y="482" text-anchor="middle" font-size="13" fill="#99F6E4">Prompt = 用户问题 + 检索到的 Top-K 相关片段（上下文注入）</text>
+  <text x="480" y="503" text-anchor="middle" font-size="12" fill="#5EEAD4">基于上下文生成，降低幻觉 · 支持引用溯源</text>
+
+  <path d="M480,510 L480,538" stroke="#10A37F" stroke-width="3" marker-end="url(#arrowRAGTeal)"/>
+
+  <!-- 响应 -->
+  <rect x="330" y="543" width="300" height="60" rx="30" fill="#1E293B" stroke="#2DD4BF" stroke-width="2.5"/>
+  <text x="480" y="572" text-anchor="middle" font-size="16" font-weight="bold" fill="#5EEAD4">最终响应（Response）</text>
+  <text x="480" y="594" text-anchor="middle" font-size="11" fill="#94A3B8">自然语言回答 + 引用来源</text>
+
+  <!-- ===== 关键公式/要点 ===== -->
+  <rect x="40" y="630" width="880" height="160" rx="14" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="480" y="660" text-anchor="middle" font-size="14" font-weight="bold" fill="#E2E8F0">关键机制</text>
+  <line x1="65" y1="672" x2="895" y2="672" stroke="#475569" stroke-width="1"/>
+  <text x="480" y="700" text-anchor="middle" font-size="12" fill="#94A3B8">· 混合检索：向量检索召回语义相似，BM25 召回精确关键词，互补提升召回率</text>
+  <text x="480" y="726" text-anchor="middle" font-size="12" fill="#94A3B8">· RRF 融合公式：score(d) = Σ 1/(k + rank_i(d))，无需分数归一化即可融合多路排序</text>
+  <text x="480" y="752" text-anchor="middle" font-size="12" fill="#94A3B8">· 重排序：使用 Cross-Encoder Reranker 对候选片段逐对打分，选出最相关 Top-K</text>
+  <text x="480" y="778" text-anchor="middle" font-size="12" fill="#94A3B8">· 生产优化：缓存、上下文压缩（Compression）、引用溯源、在线更新向量索引</text>
+</svg>

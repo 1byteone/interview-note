@@ -6,6 +6,16 @@
 
 ---
 
+## 〇、深度剖析参考
+
+| 主题 | 本 learn 文档 | docs/tech-stack-analysis 深度剖析 |
+|------|--------------|--------------------------------|
+| 微服务架构总览 | 本文 mall-integration | [00-OVERVIEW.md](../../docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) — 12 个微服务全景 |
+| 公共模块/统一响应 | 本文 § 二 | [02-COMMON-ARCH.md](../../docs/tech-stack-analysis/mall-micro-cloud/02-COMMON-ARCH.md) — Result/异常处理/Feign |
+| Gateway 网关鉴权 | — | [01-NACOS-GATEWAY.md](../../docs/tech-stack-analysis/mall-micro-cloud/01-NACOS-GATEWAY.md) — Nacos+Gateway+Sentinel |
+| Seata 分布式事务 | — | [04-ORDER-SEATA.md](../../docs/tech-stack-analysis/mall-micro-cloud/04-ORDER-SEATA.md) — @GlobalTransactional |
+| Python FastAPI 对标 | [04-python](../04-python/04-projects/mall-integration.md) | [02-API-GATEWAY.md](../../docs/tech-stack-analysis/mall-ai-search/02-API-GATEWAY.md) — FastAPI 网关层 |
+
 ## 一、AI 商城微服务全景
 
 AI 商城是一个基于 Spring Boot 3 + Spring Cloud Alibaba 的微服务架构系统，包含以下服务：

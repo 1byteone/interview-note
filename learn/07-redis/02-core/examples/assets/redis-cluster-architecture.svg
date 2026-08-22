@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+  <title>Redis 集群架构</title>
+  <desc>Redis Cluster architecture with 3 master nodes, 3 replica nodes, hash slot assignment, and client connection.</desc>
+  <defs>
+    <marker id="arrowRC" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748B"/></marker>
+    <linearGradient id="bgRC" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/><stop offset="1" stop-color="#12121f"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="780" rx="18" fill="url(#bgRC)"/>
+  <text x="480" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#FFFFFF">Redis 集群架构</text>
+  <text x="480" y="80" text-anchor="middle" font-size="14" fill="#94A3B8">无中心化架构 · 16384 个哈希槽 · 3 主 3 从 · 自动故障转移</text>
+
+  <!-- ===== 哈希槽全局分配 ===== -->
+  <rect x="180" y="100" width="600" height="42" rx="21" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="480" y="126" text-anchor="middle" font-size="14" fill="#94A3B8">哈希槽分配（16384 slots）</text>
+  <rect x="230" y="110" width="110" height="24" rx="12" fill="#DC382D" opacity="0.8"/>
+  <text x="285" y="127" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="bold">0 - 5460</text>
+  <rect x="425" y="110" width="110" height="24" rx="12" fill="#4479A1" opacity="0.8"/>
+  <text x="480" y="127" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="bold">5461 - 10922</text>
+  <rect x="620" y="110" width="110" height="24" rx="12" fill="#10B981" opacity="0.8"/>
+  <text x="675" y="127" text-anchor="middle" font-size="12" fill="#FFFFFF" font-weight="bold">10923 - 16383</text>
+
+  <!-- ===== 主节点 ===== -->
+  <text x="480" y="170" text-anchor="middle" font-size="16" font-weight="bold" fill="#F87171">主节点（Master）</text>
+
+  <!-- Master 1 -->
+  <rect x="50" y="190" width="240" height="220" rx="14" fill="#7F1D1D" stroke="#DC382D" stroke-width="2.5"/>
+  <circle cx="170" cy="220" r="30" fill="#DC382D"/>
+  <text x="170" y="225" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">M1</text>
+  <text x="170" y="265" text-anchor="middle" font-size="14" fill="#FECACA">主节点 1</text>
+  <text x="170" y="285" text-anchor="middle" font-size="11" fill="#FCA5A5">哈希槽 0 - 5460</text>
+  <rect x="70" y="300" width="200" height="28" rx="6" fill="#991B1B"/>
+  <text x="170" y="319" text-anchor="middle" font-size="11" fill="#FEE2E2">数据分片 1</text>
+  <rect x="70" y="335" width="200" height="28" rx="6" fill="#991B1B"/>
+  <text x="170" y="354" text-anchor="middle" font-size="11" fill="#FEE2E2">数据分片 2</text>
+  <rect x="70" y="370" width="200" height="28" rx="6" fill="#991B1B"/>
+  <text x="170" y="389" text-anchor="middle" font-size="11" fill="#FEE2E2">数据分片 N</text>
+
+  <!-- Master 2 -->
+  <rect x="360" y="190" width="240" height="220" rx="14" fill="#1E3A8A" stroke="#4479A1" stroke-width="2.5"/>
+  <circle cx="480" cy="220" r="30" fill="#4479A1"/>
+  <text x="480" y="225" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">M2</text>
+  <text x="480" y="265" text-anchor="middle" font-size="14" fill="#BFDBFE">主节点 2</text>
+  <text x="480" y="285" text-anchor="middle" font-size="11" fill="#93C5FD">哈希槽 5461 - 10922</text>
+  <rect x="380" y="300" width="200" height="28" rx="6" fill="#1E40AF"/>
+  <text x="480" y="319" text-anchor="middle" font-size="11" fill="#DBEAFE">数据分片 1</text>
+  <rect x="380" y="335" width="200" height="28" rx="6" fill="#1E40AF"/>
+  <text x="480" y="354" text-anchor="middle" font-size="11" fill="#DBEAFE">数据分片 2</text>
+  <rect x="380" y="370" width="200" height="28" rx="6" fill="#1E40AF"/>
+  <text x="480" y="389" text-anchor="middle" font-size="11" fill="#DBEAFE">数据分片 N</text>
+
+  <!-- Master 3 -->
+  <rect x="670" y="190" width="240" height="220" rx="14" fill="#064E3B" stroke="#10B981" stroke-width="2.5"/>
+  <circle cx="790" cy="220" r="30" fill="#10B981"/>
+  <text x="790" y="225" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">M3</text>
+  <text x="790" y="265" text-anchor="middle" font-size="14" fill="#A7F3D0">主节点 3</text>
+  <text x="790" y="285" text-anchor="middle" font-size="11" fill="#6EE7B7">哈希槽 10923 - 16383</text>
+  <rect x="690" y="300" width="200" height="28" rx="6" fill="#065F46"/>
+  <text x="790" y="319" text-anchor="middle" font-size="11" fill="#D1FAE5">数据分片 1</text>
+  <rect x="690" y="335" width="200" height="28" rx="6" fill="#065F46"/>
+  <text x="790" y="354" text-anchor="middle" font-size="11" fill="#D1FAE5">数据分片 2</text>
+  <rect x="690" y="370" width="200" height="28" rx="6" fill="#065F46"/>
+  <text x="790" y="389" text-anchor="middle" font-size="11" fill="#D1FAE5">数据分片 N</text>
+
+  <!-- ===== 从节点 ===== -->
+  <text x="480" y="460" text-anchor="middle" font-size="16" font-weight="bold" fill="#94A3B8">从节点（Replica / Slave）</text>
+
+  <!-- Replica 1 -->
+  <rect x="50" y="480" width="240" height="140" rx="14" fill="#7F1D1D" stroke="#DC382D" stroke-width="1.5" opacity="0.7"/>
+  <circle cx="170" cy="510" r="24" fill="#DC382D" opacity="0.7"/>
+  <text x="170" y="515" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">R1</text>
+  <text x="170" y="548" text-anchor="middle" font-size="13" fill="#FECACA">从节点 1</text>
+  <text x="170" y="568" text-anchor="middle" font-size="11" fill="#FCA5A5">主从复制·数据备份</text>
+  <text x="170" y="588" text-anchor="middle" font-size="11" fill="#FCA5A5">M1 宕机时 R1 升主</text>
+  <text x="170" y="608" text-anchor="middle" font-size="10" fill="#F87171">主从模式</text>
+
+  <!-- Replica 2 -->
+  <rect x="360" y="480" width="240" height="140" rx="14" fill="#1E3A8A" stroke="#4479A1" stroke-width="1.5" opacity="0.7"/>
+  <circle cx="480" cy="510" r="24" fill="#4479A1" opacity="0.7"/>
+  <text x="480" y="515" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">R2</text>
+  <text x="480" y="548" text-anchor="middle" font-size="13" fill="#BFDBFE">从节点 2</text>
+  <text x="480" y="568" text-anchor="middle" font-size="11" fill="#93C5FD">主从复制·数据备份</text>
+  <text x="480" y="588" text-anchor="middle" font-size="11" fill="#93C5FD">M2 宕机时 R2 升主</text>
+  <text x="480" y="608" text-anchor="middle" font-size="10" fill="#60A5FA">主从模式</text>
+
+  <!-- Replica 3 -->
+  <rect x="670" y="480" width="240" height="140" rx="14" fill="#064E3B" stroke="#10B981" stroke-width="1.5" opacity="0.7"/>
+  <circle cx="790" cy="510" r="24" fill="#10B981" opacity="0.7"/>
+  <text x="790" y="515" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFFFFF">R3</text>
+  <text x="790" y="548" text-anchor="middle" font-size="13" fill="#A7F3D0">从节点 3</text>
+  <text x="790" y="568" text-anchor="middle" font-size="11" fill="#6EE7B7">主从复制·数据备份</text>
+  <text x="790" y="588" text-anchor="middle" font-size="11" fill="#6EE7B7">M3 宕机时 R3 升主</text>
+  <text x="790" y="608" text-anchor="middle" font-size="10" fill="#34D399">主从模式</text>
+
+  <!-- ===== 复制箭头 ===== -->
+  <path d="M170,410 L170,478" stroke="#DC382D" stroke-width="2.5" marker-end="url(#arrowRC)" stroke-dasharray="6 3"/>
+  <text x="160" y="450" text-anchor="end" font-size="10" fill="#FCA5A5">同步</text>
+  <path d="M480,410 L480,478" stroke="#4479A1" stroke-width="2.5" marker-end="url(#arrowRC)" stroke-dasharray="6 3"/>
+  <text x="490" y="450" text-anchor="start" font-size="10" fill="#93C5FD">同步</text>
+  <path d="M790,410 L790,478" stroke="#10B981" stroke-width="2.5" marker-end="url(#arrowRC)" stroke-dasharray="6 3"/>
+  <text x="800" y="450" text-anchor="start" font-size="10" fill="#6EE7B7">同步</text>
+
+  <!-- ===== 客户端 ===== -->
+  <rect x="360" y="650" width="240" height="60" rx="30" fill="#1E293B" stroke="#F59E0B" stroke-width="2.5"/>
+  <text x="480" y="680" text-anchor="middle" font-size="16" font-weight="bold" fill="#FBBF24">客户端</text>
+  <text x="480" y="700" text-anchor="middle" font-size="11" fill="#FDE68A">Redis Cluster Client</text>
+
+  <!-- 客户端连接箭头 -->
+  <path d="M170,620 L170,645 L130,645 L130,670 L290,670" stroke="#FBBF24" stroke-width="2" fill="none" marker-end="url(#arrowRC)"/>
+  <path d="M480,620 L480,648" stroke="#FBBF24" stroke-width="2" marker-end="url(#arrowRC)"/>
+  <path d="M790,620 L790,645 L830,645 L830,670 L630,670" stroke="#FBBF24" stroke-width="2" fill="none" marker-end="url(#arrowRC)"/>
+
+  <!-- 集群通信 -->
+  <path d="M290,300 L358,300" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowRC)"/>
+  <path d="M600,300 L668,300" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowRC)"/>
+  <text x="324" y="292" text-anchor="middle" font-size="9" fill="#64748B">Gossip</text>
+  <text x="634" y="292" text-anchor="middle" font-size="9" fill="#64748B">Gossip</text>
+
+  <!-- ===== 图例 ===== -->
+  <rect x="50" y="660" width="260" height="90" rx="10" fill="#0F172A" stroke="#475569" stroke-width="1"/>
+  <text x="180" y="684" text-anchor="middle" font-size="12" font-weight="bold" fill="#94A3B8">集群功能特性</text>
+  <text x="180" y="706" text-anchor="middle" font-size="11" fill="#64748B">自动分片 · 无中心化 · 高可用</text>
+  <text x="180" y="726" text-anchor="middle" font-size="11" fill="#64748B">故障转移 &lt; 30s · 在线扩容缩容</text>
+  <text x="180" y="746" text-anchor="middle" font-size="11" fill="#64748B">Smart Client 缓存槽位信息</text>
+
+  <rect x="670" y="660" width="240" height="90" rx="10" fill="#0F172A" stroke="#475569" stroke-width="1"/>
+  <text x="790" y="684" text-anchor="middle" font-size="12" font-weight="bold" fill="#94A3B8">分片与复制</text>
+  <text x="790" y="706" text-anchor="middle" font-size="11" fill="#64748B">CRC16(key) % 16384</text>
+  <text x="790" y="726" text-anchor="middle" font-size="11" fill="#64748B">异步复制（默认）</text>
+  <text x="790" y="746" text-anchor="middle" font-size="11" fill="#64748B">Sentinel 不在集群模式使用</text>
+</svg>

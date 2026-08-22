@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 820" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+  <title>RocketMQ 事务消息流程</title>
+  <desc>RocketMQ Transaction Message flow: half message, local transaction, commit/rollback, back-check, and consumption.</desc>
+  <defs>
+    <marker id="arrowRMQ" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748B"/></marker>
+    <marker id="arrowRMQRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#EF4444"/></marker>
+    <marker id="arrowRMQGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#22C55E"/></marker>
+    <linearGradient id="bgRMQ" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/><stop offset="1" stop-color="#12121f"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="820" rx="18" fill="url(#bgRMQ)"/>
+  <text x="480" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#FFFFFF">RocketMQ 事务消息流程</text>
+  <text x="480" y="80" text-anchor="middle" font-size="14" fill="#94A3B8">事务消息确保分布式事务的最终一致性 · 半消息 + 事务回查机制</text>
+
+  <!-- ===== 角色列 ===== -->
+  <rect x="30" y="110" width="240" height="660" rx="12" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="150" y="142" text-anchor="middle" font-size="18" font-weight="bold" fill="#22C55E">生产者（Producer）</text>
+  <line x1="55" y1="155" x2="245" y2="155" stroke="#475569" stroke-width="1"/>
+
+  <rect x="360" y="110" width="240" height="660" rx="12" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="480" y="142" text-anchor="middle" font-size="18" font-weight="bold" fill="#D62229">Broker</text>
+  <line x1="385" y1="155" x2="625" y2="155" stroke="#475569" stroke-width="1"/>
+
+  <rect x="690" y="110" width="240" height="660" rx="12" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="810" y="142" text-anchor="middle" font-size="18" font-weight="bold" fill="#F59E0B">消费者（Consumer）</text>
+  <line x1="715" y1="155" x2="905" y2="155" stroke="#475569" stroke-width="1"/>
+
+  <!-- ===== 步骤 1 ===== -->
+  <text x="150" y="195" text-anchor="middle" font-size="15" font-weight="bold" fill="#E2E8F0">① 发送半消息</text>
+  <rect x="50" y="210" width="200" height="70" rx="10" fill="#DC2626" opacity="0.15" stroke="#EF4444" stroke-width="2"/>
+  <text x="150" y="240" text-anchor="middle" font-size="13" fill="#FCA5A5" font-weight="bold">发送半消息</text>
+  <text x="150" y="260" text-anchor="middle" font-size="11" fill="#FECACA">Half Message</text>
+  <text x="150" y="276" text-anchor="middle" font-size="11" fill="#FEE2E2">消息暂不可见</text>
+
+  <path d="M250,245 L358,245" stroke="#EF4444" stroke-width="3" marker-end="url(#arrowRMQRed)"/>
+  <text x="304" y="235" text-anchor="middle" font-size="10" fill="#EF4444">①</text>
+
+  <rect x="360" y="210" width="240" height="70" rx="10" fill="#7F1D1D" stroke="#EF4444" stroke-width="2"/>
+  <text x="480" y="240" text-anchor="middle" font-size="13" fill="#FCA5A5" font-weight="bold">半消息存储</text>
+  <text x="480" y="260" text-anchor="middle" font-size="11" fill="#FECACA">Topic: TX_ORDER</text>
+  <text x="480" y="276" text-anchor="middle" font-size="11" fill="#FEE2E2">标记为"待确认"状态</text>
+
+  <!-- ===== 步骤 2 ===== -->
+  <path d="M480,280 L480,310" stroke="#64748B" stroke-width="2" marker-end="url(#arrowRMQ)"/>
+  <text x="490" y="305" text-anchor="middle" font-size="10" fill="#64748B">存储成功回复</text>
+
+  <text x="150" y="345" text-anchor="middle" font-size="15" font-weight="bold" fill="#E2E8F0">② 执行本地事务</text>
+  <rect x="50" y="360" width="200" height="90" rx="10" fill="#065F46" opacity="0.3" stroke="#22C55E" stroke-width="2"/>
+  <text x="150" y="390" text-anchor="middle" font-size="13" fill="#6EE7B7" font-weight="bold">执行本地事务</text>
+  <text x="150" y="412" text-anchor="middle" font-size="11" fill="#A7F3D0">执行本地 DB 操作</text>
+  <text x="150" y="432" text-anchor="middle" font-size="11" fill="#A7F3D0">（如：更新订单状态）</text>
+  <text x="150" y="448" text-anchor="middle" font-size="10" fill="#34D399">执行 LocalTransactionExecutor</text>
+
+  <!-- ===== 步骤 3 ===== -->
+  <text x="150" y="490" text-anchor="middle" font-size="15" font-weight="bold" fill="#E2E8F0">③ 提交 / 回滚</text>
+  <rect x="50" y="505" width="200" height="70" rx="10" fill="#1E3A8A" opacity="0.3" stroke="#3B82F6" stroke-width="2"/>
+  <text x="150" y="530" text-anchor="middle" font-size="13" fill="#93C5FD" font-weight="bold">提交或回滚</text>
+  <text x="150" y="550" text-anchor="middle" font-size="11" fill="#BFDBFE">Commit / Rollback</text>
+
+  <path d="M250,540 L358,540" stroke="#22C55E" stroke-width="3" marker-end="url(#arrowRMQGreen)"/>
+  <text x="304" y="530" text-anchor="middle" font-size="10" fill="#22C55E">③</text>
+
+  <rect x="360" y="505" width="240" height="70" rx="10" fill="#7F1D1D" stroke="#22C55E" stroke-width="2"/>
+  <text x="480" y="530" text-anchor="middle" font-size="13" fill="#6EE7B7" font-weight="bold">标记为可消费</text>
+  <text x="480" y="550" text-anchor="middle" font-size="11" fill="#A7F3D0">Commit → 投递到消费者</text>
+
+  <path d="M640,540 L738,540" stroke="#22C55E" stroke-width="3" marker-end="url(#arrowRMQGreen)"/>
+  <text x="689" y="530" text-anchor="middle" font-size="10" fill="#22C55E">④</text>
+
+  <rect x="690" y="505" width="240" height="70" rx="10" fill="#78350F" stroke="#F59E0B" stroke-width="2"/>
+  <text x="810" y="530" text-anchor="middle" font-size="13" fill="#FDE68A" font-weight="bold">消费消息</text>
+  <text x="810" y="550" text-anchor="middle" font-size="11" fill="#FEF3C7">Consumer 拉取 + 消费</text>
+
+  <!-- 回滚分支 -->
+  <path d="M250,540 L250,620 L358,620" stroke="#EF4444" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#arrowRMQRed)"/>
+  <text x="304" y="612" text-anchor="middle" font-size="10" fill="#EF4444">回滚路径</text>
+  <rect x="360" y="595" width="240" height="50" rx="10" fill="#7F1D1D" stroke="#EF4444" stroke-width="2"/>
+  <text x="480" y="618" text-anchor="middle" font-size="13" fill="#FCA5A5" font-weight="bold">标记为删除</text>
+  <text x="480" y="638" text-anchor="middle" font-size="11" fill="#FECACA">Rollback → 丢弃半消息</text>
+
+  <!-- ===== 步骤 4：事务回查 ===== -->
+  <text x="480" y="690" text-anchor="middle" font-size="16" font-weight="bold" fill="#F59E0B">④ 事务回查机制（Transaction Back-Check）</text>
+  <text x="480" y="712" text-anchor="middle" font-size="12" fill="#FDE68A">Broker 长时间未收到 Commit/Rollback → 主动回查 Producer 事务状态</text>
+
+  <rect x="440" y="725" width="80" height="40" rx="8" fill="#92400E" stroke="#F59E0B" stroke-width="2"/>
+  <text x="480" y="750" text-anchor="middle" font-size="12" fill="#FDE68A" font-weight="bold">回查</text>
+  <path d="M440,745 L255,745" stroke="#F59E0B" stroke-width="2.5" marker-end="url(#arrowRMQ)" stroke-dasharray="6 3"/>
+  <text x="347" y="735" text-anchor="middle" font-size="10" fill="#FBBF24">回查请求</text>
+  <path d="M250,760 L358,760" stroke="#22C55E" stroke-width="2.5" marker-end="url(#arrowRMQGreen)"/>
+  <text x="304" y="770" text-anchor="middle" font-size="10" fill="#22C55E">提交结果</text>
+
+  <rect x="50" y="730" width="200" height="40" rx="10" fill="#1E3A8A" opacity="0.3" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="150" y="755" text-anchor="middle" font-size="13" fill="#93C5FD">检查本地事务状态</text>
+</svg>

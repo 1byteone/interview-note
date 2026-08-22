@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+  <title>OpenAI 函数调用（Function Calling）流程</title>
+  <desc>OpenAI Function Calling: user message, function definitions, model returns function call, system executes, model generates final response.</desc>
+  <defs>
+    <marker id="arrowOFC" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748B"/></marker>
+    <marker id="arrowOFCGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#22C55E"/></marker>
+    <linearGradient id="bgOFC" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/><stop offset="1" stop-color="#12121f"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="780" rx="18" fill="url(#bgOFC)"/>
+  <text x="480" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#FFFFFF">OpenAI 函数调用（Function Calling）</text>
+  <text x="480" y="80" text-anchor="middle" font-size="14" fill="#94A3B8">模型智能选择工具 · 系统执行并返回结果 · 模型生成最终回答</text>
+
+  <!-- ===== 角色列 ===== -->
+  <rect x="30" y="110" width="240" height="620" rx="12" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="150" y="142" text-anchor="middle" font-size="18" font-weight="bold" fill="#22C55E">用户 / 系统</text>
+  <line x1="55" y1="155" x2="245" y2="155" stroke="#475569" stroke-width="1"/>
+
+  <rect x="360" y="110" width="240" height="620" rx="12" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="480" y="142" text-anchor="middle" font-size="18" font-weight="bold" fill="#10A37F">OpenAI 模型</text>
+  <line x1="385" y1="155" x2="625" y2="155" stroke="#475569" stroke-width="1"/>
+
+  <rect x="690" y="110" width="240" height="620" rx="12" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="810" y="142" text-anchor="middle" font-size="18" font-weight="bold" fill="#3B82F6">外部工具</text>
+  <line x1="715" y1="155" x2="905" y2="155" stroke="#475569" stroke-width="1"/>
+
+  <!-- ===== 步骤 1 ===== -->
+  <rect x="45" y="175" width="210" height="90" rx="10" fill="#1E293B" stroke="#22C55E" stroke-width="2"/>
+  <circle cx="70" cy="195" r="14" fill="#22C55E"/>
+  <text x="70" y="200" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">1</text>
+  <text x="150" y="200" text-anchor="middle" font-size="14" font-weight="bold" fill="#E2E8F0">用户问题</text>
+  <text x="150" y="222" text-anchor="middle" font-size="12" fill="#94A3B8">"北京现在的天气怎么样？"</text>
+  <text x="150" y="242" text-anchor="middle" font-size="11" fill="#64748B">+ 函数定义（tools 参数）</text>
+
+  <path d="M255,220 L358,220" stroke="#10A37F" stroke-width="3" marker-end="url(#arrowOFC)"/>
+
+  <!-- 函数定义标注 -->
+  <rect x="360" y="175" width="240" height="90" rx="10" fill="#0F766E" stroke="#10A37F" stroke-width="2"/>
+  <text x="480" y="200" text-anchor="middle" font-size="13" fill="#99F6E4">接收消息 + 函数定义</text>
+  <text x="480" y="222" text-anchor="middle" font-size="11" fill="#5EEAD4">tools: [{</text>
+  <text x="480" y="240" text-anchor="middle" font-size="11" fill="#5EEAD4">  name: "get_weather",</text>
+  <text x="480" y="258" text-anchor="middle" font-size="11" fill="#5EEAD4">  parameters: { location, unit }</text>
+
+  <!-- ===== 步骤 2 ===== -->
+  <path d="M480,265 L480,295" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowOFC)"/>
+
+  <rect x="360" y="300" width="240" height="90" rx="10" fill="#0F766E" stroke="#10A37F" stroke-width="2"/>
+  <circle cx="385" cy="320" r="14" fill="#10A37F"/>
+  <text x="385" y="325" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">2</text>
+  <text x="480" y="325" text-anchor="middle" font-size="13" fill="#99F6E4">模型判断需调用工具</text>
+  <text x="480" y="348" text-anchor="middle" font-size="12" fill="#5EEAD4" font-weight="bold">返回函数调用</text>
+  <text x="480" y="370" text-anchor="middle" font-size="11" fill="#5EEAD4">get_weather(location="北京")</text>
+  <text x="480" y="386" text-anchor="middle" font-size="10" fill="#2DD4BF">tool_calls / function_call</text>
+
+  <path d="M600,345 L688,345" stroke="#3B82F6" stroke-width="3" marker-end="url(#arrowOFC)"/>
+
+  <!-- ===== 步骤 3 ===== -->
+  <rect x="690" y="300" width="240" height="90" rx="10" fill="#1E3A8A" stroke="#3B82F6" stroke-width="2"/>
+  <circle cx="715" cy="320" r="14" fill="#3B82F6"/>
+  <text x="715" y="325" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">3</text>
+  <text x="810" y="325" text-anchor="middle" font-size="13" font-weight="bold" fill="#93C5FD">执行函数</text>
+  <text x="810" y="348" text-anchor="middle" font-size="12" fill="#BFDBFE">调用天气 API</text>
+  <text x="810" y="370" text-anchor="middle" font-size="11" fill="#BFDBFE">curl https://api.weather.com/</text>
+  <text x="810" y="386" text-anchor="middle" font-size="11" fill="#BFDBFE">v1/current?city=北京</text>
+
+  <path d="M810,390 L810,420" stroke="#64748B" stroke-width="2" marker-end="url(#arrowOFC)"/>
+
+  <rect x="690" y="425" width="240" height="65" rx="10" fill="#1E3A8A" stroke="#3B82F6" stroke-width="2"/>
+  <text x="810" y="448" text-anchor="middle" font-size="13" font-weight="bold" fill="#93C5FD">返回执行结果</text>
+  <text x="810" y="470" text-anchor="middle" font-size="11" fill="#BFDBFE">"北京晴，25°C，湿度 45%"</text>
+
+  <path d="M690,457 L600,457" stroke="#10A37F" stroke-width="3" marker-end="url(#arrowOFC)"/>
+
+  <!-- ===== 步骤 4 ===== -->
+  <rect x="360" y="425" width="240" height="90" rx="10" fill="#0F766E" stroke="#10A37F" stroke-width="2"/>
+  <circle cx="385" cy="445" r="14" fill="#10A37F"/>
+  <text x="385" y="450" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">4</text>
+  <text x="480" y="450" text-anchor="middle" font-size="13" fill="#99F6E4">模型接收工具结果</text>
+  <text x="480" y="472" text-anchor="middle" font-size="12" fill="#5EEAD4" font-weight="bold">生成最终回答</text>
+  <text x="480" y="494" text-anchor="middle" font-size="11" fill="#5EEAD4">结合工具输出推理</text>
+  <text x="480" y="510" text-anchor="middle" font-size="10" fill="#2DD4BF">tool: 北京晴，25°C</text>
+
+  <path d="M480,515 L480,548" stroke="#10A37F" stroke-width="3" marker-end="url(#arrowOFC)"/>
+
+  <!-- ===== 步骤 5 ===== -->
+  <rect x="330" y="553" width="300" height="80" rx="40" fill="#1E293B" stroke="#22C55E" stroke-width="2.5"/>
+  <circle cx="355" cy="573" r="14" fill="#22C55E"/>
+  <text x="355" y="578" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">5</text>
+  <text x="480" y="578" text-anchor="middle" font-size="16" font-weight="bold" fill="#4ADE80">最终回答</text>
+  <text x="480" y="606" text-anchor="middle" font-size="13" fill="#94A3B8">"北京现在天气晴朗，温度 25°C，湿度适中。"</text>
+  <text x="480" y="625" text-anchor="middle" font-size="10" fill="#64748B">返回给用户，自然语言回答</text>
+
+  <!-- ===== 底部总结 ===== -->
+  <rect x="30" y="660" width="900" height="70" rx="12" fill="#0F172A" stroke="#475569" stroke-width="1"/>
+  <text x="480" y="688" text-anchor="middle" font-size="13" font-weight="bold" fill="#E2E8F0">函数调用流程总结</text>
+  <text x="480" y="712" text-anchor="middle" font-size="12" fill="#94A3B8">用户问题 → 模型+函数定义 → 模型返回 tool_calls → 系统执行工具 → 结果回传模型 → 模型生成最终回答</text>
+</svg>

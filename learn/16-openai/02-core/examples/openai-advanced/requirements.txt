@@ -1,0 +1,4 @@
+# OpenAI 核心高级示例依赖
+openai
+tiktoken
+python-dotenv

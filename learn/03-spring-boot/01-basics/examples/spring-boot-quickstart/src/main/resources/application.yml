@@ -1,0 +1,47 @@
+# ============================================================
+# Spring Boot 应用配置
+# 格式：YAML（层级结构，注意缩进用空格，不能使用 Tab）
+# ============================================================
+
+# 服务配置
+server:
+  port: 8080                    # 内嵌 Tomcat 端口
+
+# Spring 配置
+spring:
+  application:
+    name: spring-boot-quickstart
+
+  # ---- H2 内存数据库配置 ----
+  # H2：纯 Java 嵌入式数据库，常用于开发/测试，重启数据丢失
+  datasource:
+    url: jdbc:h2:mem:testdb     # 内存模式，应用停止数据即消失
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  h2:
+    console:
+      enabled: true             # 启用 H2 控制台：http://localhost:8080/h2-console
+      path: /h2-console
+
+  # ---- JPA / Hibernate 配置 ----
+  jpa:
+    hibernate:
+      ddl-auto: create-drop     # 启动时自动建表（实体类解析），关闭时删除表
+                                # create-drop: 开发用；update: 增量更新；none: 不自动
+    show-sql: true              # 控制台打印 SQL 语句
+    properties:
+      hibernate:
+        format_sql: true        # 格式化 SQL 输出
+        dialect: org.hibernate.dialect.H2Dialect
+
+  # ---- Jackson JSON 序列化配置 ----
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+
+# 自定义配置示例（可通过 @ConfigurationProperties 或 @Value 读取）
+app:
+  info:
+    name: Spring Boot Quickstart Demo
+    version: 1.0.0

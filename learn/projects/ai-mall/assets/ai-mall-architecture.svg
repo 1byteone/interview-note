@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 900" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+  <title>AI 智能商城总体架构</title>
+  <desc>AI Mall architecture: Vue3 frontend, Java microservice backend, Python AI services, and shared infrastructure.</desc>
+  <defs>
+    <marker id="arrowAI" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748B"/></marker>
+    <marker id="arrowAITeal" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#2DD4BF"/></marker>
+    <marker id="arrowAIPurple" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#8B5CF6"/></marker>
+    <linearGradient id="bgAI" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/><stop offset="1" stop-color="#12121f"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="900" rx="18" fill="url(#bgAI)"/>
+  <text x="480" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#FFFFFF">AI 智能商城总体架构</text>
+  <text x="480" y="80" text-anchor="middle" font-size="14" fill="#94A3B8">Vue3 前端 + Java 微服务后端 + Python AI 服务 + 共享基础设施</text>
+
+  <!-- ===== 第一层：用户 / 前端 ===== -->
+  <rect x="40" y="100" width="880" height="110" rx="14" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="480" y="125" text-anchor="middle" font-size="16" font-weight="bold" fill="#E2E8F0">用户层 / 前端</text>
+
+  <rect x="60" y="137" width="120" height="60" rx="10" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="120" y="169" text-anchor="middle" font-size="13" fill="#CBD5E1">用户</text>
+
+  <rect x="250" y="137" width="170" height="60" rx="10" fill="#22C55E" opacity="0.15" stroke="#22C55E" stroke-width="2"/>
+  <text x="335" y="159" text-anchor="middle" font-size="13" font-weight="bold" fill="#4ADE80">Vue3 前端商城</text>
+  <text x="335" y="180" text-anchor="middle" font-size="11" fill="#86EFAC">Vite + Pinia + Element Plus</text>
+
+  <rect x="490" y="137" width="170" height="60" rx="10" fill="#22C55E" opacity="0.15" stroke="#22C55E" stroke-width="2"/>
+  <text x="575" y="159" text-anchor="middle" font-size="13" font-weight="bold" fill="#4ADE80">AI 对话界面</text>
+  <text x="575" y="180" text-anchor="middle" font-size="11" fill="#86EFAC">聊天式购物助手</text>
+
+  <rect x="730" y="137" width="170" height="60" rx="10" fill="#22C55E" opacity="0.15" stroke="#22C55E" stroke-width="2"/>
+  <text x="815" y="159" text-anchor="middle" font-size="13" font-weight="bold" fill="#4ADE80">管理后台</text>
+  <text x="815" y="180" text-anchor="middle" font-size="11" fill="#86EFAC">Vue3 Element Admin</text>
+
+  <!-- ===== 第二层：网关 ===== -->
+  <path d="M480,210 L480,238" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#arrowAIPurple)"/>
+
+  <rect x="340" y="243" width="280" height="55" rx="12" fill="#1E293B" stroke="#8B5CF6" stroke-width="2.5"/>
+  <text x="480" y="270" text-anchor="middle" font-size="16" font-weight="bold" fill="#A78BFA">API 网关（Spring Cloud Gateway）</text>
+  <text x="480" y="290" text-anchor="middle" font-size="11" fill="#C4B5FD">统一入口 · 路由 · 鉴权 · 限流 · 灰度发布</text>
+
+  <!-- ===== 第三层：Java 后端 ===== -->
+  <path d="M330,298 L260,320" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowAIPurple)"/>
+  <path d="M480,298 L480,320" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowAIPurple)"/>
+  <path d="M630,298 L700,320" stroke="#8B5CF6" stroke-width="2" marker-end="url(#arrowAIPurple)"/>
+
+  <rect x="40" y="325" width="420" height="300" rx="14" fill="#0F172A" stroke="#ED8B00" stroke-width="2.5"/>
+  <text x="250" y="352" text-anchor="middle" font-size="16" font-weight="bold" fill="#FBBF24">Java 后端（微服务）</text>
+  <text x="250" y="372" text-anchor="middle" font-size="11" fill="#F59E0B">Spring Boot 3.x · Spring Cloud Alibaba</text>
+
+  <!-- Java 服务 -->
+  <rect x="60" y="388" width="180" height="75" rx="10" fill="#14532D" stroke="#22C55E" stroke-width="1.5"/>
+  <text x="150" y="416" text-anchor="middle" font-size="13" font-weight="bold" fill="#86EFAC">用户服务</text>
+  <text x="150" y="438" text-anchor="middle" font-size="11" fill="#A7F3D0">注册/登录/个人中心</text>
+  <text x="150" y="456" text-anchor="middle" font-size="10" fill="#6EE7B7">JWT + Redis Session</text>
+
+  <rect x="260" y="388" width="180" height="75" rx="10" fill="#1E3A8A" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="350" y="416" text-anchor="middle" font-size="13" font-weight="bold" fill="#93C5FD">商品服务</text>
+  <text x="350" y="438" text-anchor="middle" font-size="11" fill="#BFDBFE">商品/分类/库存/搜索</text>
+  <text x="350" y="456" text-anchor="middle" font-size="10" fill="#60A5FA">MySQL + ES + Redis</text>
+
+  <rect x="60" y="478" width="180" height="75" rx="10" fill="#7C2D12" stroke="#FB923C" stroke-width="1.5"/>
+  <text x="150" y="506" text-anchor="middle" font-size="13" font-weight="bold" fill="#FDBA74">订单服务</text>
+  <text x="150" y="528" text-anchor="middle" font-size="11" fill="#FED7AA">下单/购物车/超时关单</text>
+  <text x="150" y="546" text-anchor="middle" font-size="10" fill="#FBBF24">RocketMQ 延时消息</text>
+
+  <rect x="260" y="478" width="180" height="75" rx="10" fill="#581C87" stroke="#A855F7" stroke-width="1.5"/>
+  <text x="350" y="506" text-anchor="middle" font-size="13" font-weight="bold" fill="#D8B4FE">支付服务</text>
+  <text x="350" y="528" text-anchor="middle" font-size="11" fill="#E9D5FF">支付/退款/对账</text>
+  <text x="350" y="546" text-anchor="middle" font-size="10" fill="#C084FC">第三方支付 + 回调</text>
+
+  <rect x="60" y="568" width="380" height="44" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="250" y="586" text-anchor="middle" font-size="12" fill="#94A3B8">服务注册发现 Nacos · 熔断限流 Sentinel · 配置中心</text>
+  <text x="250" y="604" text-anchor="middle" font-size="12" fill="#94A3B8">分布式事务 Seata（订单-库存-支付）</text>
+
+  <!-- ===== 第三层：Python AI 服务 ===== -->
+  <rect x="500" y="325" width="420" height="300" rx="14" fill="#0F172A" stroke="#10A37F" stroke-width="2.5"/>
+  <text x="710" y="352" text-anchor="middle" font-size="16" font-weight="bold" fill="#5EEAD4">Python AI 服务</text>
+  <text x="710" y="372" text-anchor="middle" font-size="11" fill="#2DD4BF">FastAPI + LangChain + OpenAI API</text>
+
+  <!-- AI 服务 -->
+  <rect x="520" y="388" width="180" height="75" rx="10" fill="#0F766E" stroke="#2DD4BF" stroke-width="1.5"/>
+  <text x="610" y="416" text-anchor="middle" font-size="13" font-weight="bold" fill="#99F6E4">AI 商品搜索</text>
+  <text x="610" y="438" text-anchor="middle" font-size="11" fill="#5EEAD4">语义搜索 · 以图搜图</text>
+  <text x="610" y="456" text-anchor="middle" font-size="10" fill="#CCFBF1">Embedding + 向量检索</text>
+
+  <rect x="720" y="388" width="180" height="75" rx="10" fill="#0F766E" stroke="#2DD4BF" stroke-width="1.5"/>
+  <text x="810" y="416" text-anchor="middle" font-size="13" font-weight="bold" fill="#99F6E4">RAG 智能客服</text>
+  <text x="810" y="438" text-anchor="middle" font-size="11" fill="#5EEAD4">售前咨询 · 售后引导</text>
+  <text x="810" y="456" text-anchor="middle" font-size="10" fill="#CCFBF1">基于知识库检索增强</text>
+
+  <rect x="520" y="478" width="180" height="75" rx="10" fill="#0F766E" stroke="#2DD4BF" stroke-width="1.5"/>
+  <text x="610" y="506" text-anchor="middle" font-size="13" font-weight="bold" fill="#99F6E4">内容审核</text>
+  <text x="610" y="528" text-anchor="middle" font-size="11" fill="#5EEAD4">商品评论 · 违禁识别</text>
+  <text x="610" y="546" text-anchor="middle" font-size="10" fill="#CCFBF1">LLM + 规则引擎</text>
+
+  <rect x="720" y="478" width="180" height="75" rx="10" fill="#0F766E" stroke="#2DD4BF" stroke-width="1.5"/>
+  <text x="810" y="506" text-anchor="middle" font-size="13" font-weight="bold" fill="#99F6E4">个性化推荐</text>
+  <text x="810" y="528" text-anchor="middle" font-size="11" fill="#5EEAD4">"猜你喜欢" · 协同过滤</text>
+  <text x="810" y="546" text-anchor="middle" font-size="10" fill="#CCFBF1">用户行为分析</text>
+
+  <rect x="520" y="568" width="380" height="44" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="710" y="586" text-anchor="middle" font-size="12" fill="#94A3B8">依赖服务：LangChain · OpenAI SDK · Reranker</text>
+  <text x="710" y="604" text-anchor="middle" font-size="12" fill="#94A3B8">异步任务：Celery · 监控：Prometheus</text>
+
+  <!-- Java ↔ Python 通信 -->
+  <path d="M460,430 L498,430" stroke="#2DD4BF" stroke-width="2" stroke-dasharray="6 3" marker-end="url(#arrowAITeal)"/>
+  <text x="479" y="422" text-anchor="middle" font-size="10" fill="#2DD4BF">HTTP/RPC</text>
+
+  <!-- ===== 第四层：基础设施 ===== -->
+  <path d="M250,625 L250,660" stroke="#64748B" stroke-width="2" marker-end="url(#arrowAI)"/>
+  <path d="M710,625 L710,660" stroke="#64748B" stroke-width="2" marker-end="url(#arrowAI)"/>
+
+  <rect x="40" y="665" width="880" height="140" rx="14" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="480" y="692" text-anchor="middle" font-size="16" font-weight="bold" fill="#E2E8F0">共享基础设施</text>
+
+  <!-- 基础组件 -->
+  <rect x="60" y="706" width="125" height="80" rx="10" fill="#1E293B" stroke="#DC382D" stroke-width="1.5"/>
+  <text x="122" y="736" text-anchor="middle" font-size="13" font-weight="bold" fill="#F87171">Redis</text>
+  <text x="122" y="756" text-anchor="middle" font-size="10" fill="#94A3B8">缓存 · 分布式锁</text>
+  <text x="122" y="774" text-anchor="middle" font-size="10" fill="#64748B">会话 · 购物车</text>
+
+  <rect x="200" y="706" width="125" height="80" rx="10" fill="#1E293B" stroke="#4479A1" stroke-width="1.5"/>
+  <text x="262" y="736" text-anchor="middle" font-size="13" font-weight="bold" fill="#7DD3FC">MySQL</text>
+  <text x="262" y="756" text-anchor="middle" font-size="10" fill="#94A3B8">业务数据持久化</text>
+  <text x="262" y="774" text-anchor="middle" font-size="10" fill="#64748B">主从 · 读写分离</text>
+
+  <rect x="340" y="706" width="125" height="80" rx="10" fill="#1E293B" stroke="#D62229" stroke-width="1.5"/>
+  <text x="402" y="736" text-anchor="middle" font-size="13" font-weight="bold" fill="#F87171">RocketMQ</text>
+  <text x="402" y="756" text-anchor="middle" font-size="10" fill="#94A3B8">异步解耦 · 削峰</text>
+  <text x="402" y="774" text-anchor="middle" font-size="10" fill="#64748B">事务消息</text>
+
+  <rect x="480" y="706" width="125" height="80" rx="10" fill="#1E293B" stroke="#005571" stroke-width="1.5"/>
+  <text x="542" y="736" text-anchor="middle" font-size="13" font-weight="bold" fill="#67E8F9">Elasticsearch</text>
+  <text x="542" y="756" text-anchor="middle" font-size="10" fill="#94A3B8">商品搜索 · 日志</text>
+  <text x="542" y="774" text-anchor="middle" font-size="10" fill="#64748B">向量检索协同</text>
+
+  <rect x="620" y="706" width="125" height="80" rx="10" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="682" y="736" text-anchor="middle" font-size="13" font-weight="bold" fill="#FDE68A">Nacos</text>
+  <text x="682" y="756" text-anchor="middle" font-size="10" fill="#94A3B8">注册中心 + 配置中心</text>
+  <text x="682" y="774" text-anchor="middle" font-size="10" fill="#64748B">命名空间</text>
+
+  <rect x="760" y="706" width="140" height="80" rx="10" fill="#1E293B" stroke="#8B5CF6" stroke-width="1.5"/>
+  <text x="830" y="736" text-anchor="middle" font-size="13" font-weight="bold" fill="#A78BFA">Sentinel +</text>
+  <text x="830" y="754" text-anchor="middle" font-size="13" font-weight="bold" fill="#A78BFA">SkyWalking</text>
+  <text x="830" y="774" text-anchor="middle" font-size="10" fill="#64748B">熔断限流 · 链路追踪</text>
+
+  <!-- ===== 底部署名 ===== -->
+  <rect x="40" y="825" width="880" height="60" rx="12" fill="#0F172A" stroke="#475569" stroke-width="1"/>
+  <text x="480" y="850" text-anchor="middle" font-size="13" font-weight="bold" fill="#E2E8F0">完整请求链路</text>
+  <text x="480" y="873" text-anchor="middle" font-size="12" fill="#94A3B8">用户 → Vue3 前端 → API 网关 → 微服务（鉴权/限流）→ MySQL/Redis/ES → 同步调用 Python AI 服务返回智能结果</text>
+</svg>

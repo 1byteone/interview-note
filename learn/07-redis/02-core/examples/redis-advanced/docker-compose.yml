@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # Redis 集群（3 主 3 从，生产最小规模）
+  redis-node-1:
+    image: redis:7-alpine
+    command: redis-server --port 7000 --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes --appendfilename "appendonly.aof" --save 900 1
+    ports:
+      - "7000:7000"
+      - "17000:17000"  # 集群总线
+    volumes:
+      - redis1_data:/data
+
+  redis-node-2:
+    image: redis:7-alpine
+    command: redis-server --port 7001 --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes --appendfilename "appendonly.aof" --save 900 1
+    ports:
+      - "7001:7001"
+      - "17001:17001"
+    volumes:
+      - redis2_data:/data
+
+  redis-node-3:
+    image: redis:7-alpine
+    command: redis-server --port 7002 --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes --appendfilename "appendonly.aof" --save 900 1
+    ports:
+      - "7002:7002"
+      - "17002:17002"
+    volumes:
+      - redis3_data:/data
+
+  # 集群初始化工具
+  redis-cluster-init:
+    image: redis:7-alpine
+    depends_on:
+      - redis-node-1
+      - redis-node-2
+      - redis-node-3
+    entrypoint: >
+      sh -c "
+        echo '等待节点启动...'
+        sleep 5
+        echo '创建集群（3 主节点，可添加从节点副本）'
+        redis-cli --cluster create \
+          172.20.0.11:7000 \
+          172.20.0.12:7001 \
+          172.20.0.13:7002 \
+          --cluster-replicas 0
+        echo '集群创建完成'
+        echo '如需添加从节点，使用:'
+        echo '  redis-cli --cluster add-node <new-node>:7003 <existing-node>:7000 --cluster-slave'
+      "
+    networks:
+      cluster_net:
+        ipv4_address: 172.20.0.10
+
+networks:
+  cluster_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  redis1_data:
+  redis2_data:
+  redis3_data:

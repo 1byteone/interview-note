@@ -1,0 +1,53 @@
+# ============================================================
+# Spring Boot 进阶示例配置
+# ============================================================
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-boot-advanced
+
+# ---- Actuator 配置 ----
+# Actuator 提供生产级监控端点，包括健康检查、指标、环境信息等
+management:
+  # Actuator 端点暴露方式
+  endpoints:
+    web:
+      exposure:
+        # 暴露所有端点（生产环境应选择性暴露）
+        # 常用端点：health, info, metrics, env, loggers, heapdump, threaddump
+        include: "*"
+        # 排除敏感端点（生产环境建议排除 env, shutdown, heapdump）
+        exclude: "shutdown"
+  # 自定义管理端口（与业务端口分开，便于安全策略配置）
+  server:
+    port: 8081
+    address: 127.0.0.1  # 仅本地访问，不暴露到网络
+  # 健康检查详情
+  endpoint:
+    health:
+      show-details: always  # 显示详细健康信息（生产环境建议用 when-authorized）
+      show-components: always
+    # 信息端点
+    info:
+      enabled: true
+
+# ---- 应用自定义配置 ----
+# 可通过 @Value / @ConfigurationProperties 读取
+app:
+  title: "Spring Boot Advanced Demo"
+  version: "1.0.0"
+  features:
+    # 控制 CustomStarterDemo 是否启用
+    custom-starter:
+      enabled: true
+
+# ---- 日志配置 ----
+logging:
+  level:
+    root: INFO
+    com.example.advanced: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

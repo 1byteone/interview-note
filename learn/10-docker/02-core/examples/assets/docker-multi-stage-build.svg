@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 800" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+  <title>Docker 多阶段构建</title>
+  <desc>Docker multi-stage build: Maven builder stage (JDK+Maven, large) to JRE runtime stage (small).</desc>
+  <defs>
+    <marker id="arrowDK" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748B"/></marker>
+    <marker id="arrowDKBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#2496ED"/></marker>
+    <linearGradient id="bgDK" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/><stop offset="1" stop-color="#12121f"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="800" rx="18" fill="url(#bgDK)"/>
+  <text x="480" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#FFFFFF">Docker 多阶段构建</text>
+  <text x="480" y="80" text-anchor="middle" font-size="14" fill="#94A3B8">将构建环境与运行环境分离，显著减小最终镜像体积</text>
+
+  <!-- ===== 第一阶段：构建阶段 ===== -->
+  <rect x="30" y="110" width="440" height="500" rx="14" fill="#0C1929" stroke="#2496ED" stroke-width="3"/>
+  <text x="250" y="145" text-anchor="middle" font-size="20" font-weight="bold" fill="#60A5FA">第一阶段：构建阶段（Builder）</text>
+  <text x="250" y="168" text-anchor="middle" font-size="14" fill="#94A3B8">FROM maven:3.8-eclipse-temurin-17 AS builder</text>
+
+  <!-- 基础镜像 -->
+  <rect x="55" y="190" width="390" height="55" rx="10" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="250" y="215" text-anchor="middle" font-size="13" fill="#E2E8F0" font-weight="bold">基础镜像：maven:3.8-eclipse-temurin-17</text>
+  <text x="250" y="237" text-anchor="middle" font-size="12" fill="#F87171">镜像大小 ≈ 400MB</text>
+
+  <path d="M250,245 L250,268" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowDK)"/>
+
+  <!-- 源代码 -->
+  <rect x="55" y="272" width="390" height="55" rx="10" fill="#1E3A8A" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="250" y="297" text-anchor="middle" font-size="14" font-weight="bold" fill="#93C5FD">WORKDIR /app</text>
+  <text x="250" y="319" text-anchor="middle" font-size="12" fill="#BFDBFE">COPY pom.xml . / COPY src .</text>
+
+  <path d="M250,327 L250,350" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowDK)"/>
+
+  <!-- 编译 -->
+  <rect x="55" y="354" width="390" height="55" rx="10" fill="#065F46" stroke="#10B981" stroke-width="1.5"/>
+  <text x="250" y="379" text-anchor="middle" font-size="14" font-weight="bold" fill="#6EE7B7">RUN mvn clean package -DskipTests</text>
+  <text x="250" y="401" text-anchor="middle" font-size="12" fill="#A7F3D0">下载依赖 + 编译 + 打包</text>
+
+  <path d="M250,409 L250,432" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowDK)"/>
+
+  <!-- 产物 -->
+  <rect x="55" y="436" width="390" height="55" rx="10" fill="#7C2D12" stroke="#FB923C" stroke-width="1.5"/>
+  <text x="250" y="461" text-anchor="middle" font-size="14" font-weight="bold" fill="#FDBA74">产物：target/app.jar</text>
+  <text x="250" y="483" text-anchor="middle" font-size="12" fill="#FED7AA">Spring Boot 可执行 JAR 包</text>
+
+  <!-- ===== 第二阶段：运行阶段 ===== -->
+  <rect x="490" y="110" width="440" height="500" rx="14" fill="#0C1929" stroke="#10B981" stroke-width="3"/>
+  <text x="710" y="145" text-anchor="middle" font-size="20" font-weight="bold" fill="#6EE7B7">第二阶段：运行阶段（Runtime）</text>
+  <text x="710" y="168" text-anchor="middle" font-size="14" fill="#94A3B8">FROM eclipse-temurin:17-jre-alpine</text>
+
+  <!-- 基础镜像 -->
+  <rect x="515" y="190" width="390" height="55" rx="10" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="710" y="215" text-anchor="middle" font-size="13" fill="#E2E8F0" font-weight="bold">基础镜像：eclipse-temurin:17-jre-alpine</text>
+  <text x="710" y="237" text-anchor="middle" font-size="12" fill="#34D399">镜像大小 ≈ 150MB</text>
+
+  <path d="M710,245 L710,268" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowDK)"/>
+
+  <!-- 复制产物 -->
+  <rect x="515" y="272" width="390" height="55" rx="10" fill="#1E3A8A" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="710" y="297" text-anchor="middle" font-size="14" font-weight="bold" fill="#93C5FD">COPY --from=builder app.jar app.jar</text>
+  <text x="710" y="319" text-anchor="middle" font-size="12" fill="#BFDBFE">只复制 JAR，不包含 JDK 和 Maven</text>
+
+  <path d="M710,327 L710,350" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowDK)"/>
+
+  <!-- 配置 -->
+  <rect x="515" y="354" width="390" height="55" rx="10" fill="#065F46" stroke="#10B981" stroke-width="1.5"/>
+  <text x="710" y="379" text-anchor="middle" font-size="14" font-weight="bold" fill="#6EE7B7">EXPOSE 8080</text>
+  <text x="710" y="401" text-anchor="middle" font-size="12" fill="#A7F3D0">暴露端口 / 设置时区等</text>
+
+  <path d="M710,409 L710,432" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowDK)"/>
+
+  <!-- 运行 -->
+  <rect x="515" y="436" width="390" height="55" rx="10" fill="#7C2D12" stroke="#FB923C" stroke-width="1.5"/>
+  <text x="710" y="461" text-anchor="middle" font-size="14" font-weight="bold" fill="#FDBA74">ENTRYPOINT ["java", "-jar", "app.jar"]</text>
+  <text x="710" y="483" text-anchor="middle" font-size="12" fill="#FED7AA">启动应用</text>
+
+  <!-- ===== COPY from builder 箭头 ===== -->
+  <path d="M445,463 L510,463" stroke="#2496ED" stroke-width="3" marker-end="url(#arrowDKBlue)"/>
+  <rect x="446" y="440" width="70" height="24" rx="12" fill="#2496ED"/>
+  <text x="481" y="457" text-anchor="middle" font-size="11" fill="#FFFFFF" font-weight="bold">COPY</text>
+  <text x="481" y="475" text-anchor="middle" font-size="10" fill="#93C5FD">--from=builder</text>
+
+  <!-- ===== 镜像体积对比 ===== -->
+  <rect x="30" y="640" width="900" height="130" rx="14" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="480" y="670" text-anchor="middle" font-size="16" font-weight="bold" fill="#E2E8F0">镜像体积对比</text>
+  <line x1="55" y1="682" x2="905" y2="682" stroke="#475569" stroke-width="1"/>
+
+  <!-- 传统构建 -->
+  <rect x="55" y="695" width="390" height="60" rx="10" fill="#7F1D1D" stroke="#EF4444" stroke-width="2"/>
+  <text x="250" y="720" text-anchor="middle" font-size="14" font-weight="bold" fill="#FCA5A5">传统构建（单阶段）</text>
+  <text x="250" y="743" text-anchor="middle" font-size="12" fill="#FECACA">JDK + Maven + 依赖 + 应用代码 ≈ 400MB+</text>
+
+  <!-- 多阶段构建 -->
+  <rect x="515" y="695" width="390" height="60" rx="10" fill="#064E3B" stroke="#10B981" stroke-width="2"/>
+  <text x="710" y="720" text-anchor="middle" font-size="14" font-weight="bold" fill="#6EE7B7">多阶段构建</text>
+  <text x="710" y="743" text-anchor="middle" font-size="12" fill="#A7F3D0">JRE + 应用 JAR ≈ 150MB（减少 60%+）</text>
+
+  <!-- ===== 底部 Dockerfile 示例 ===== -->
+  <rect x="120" y="790" width="720" height="0" rx="10"/>
+</svg>

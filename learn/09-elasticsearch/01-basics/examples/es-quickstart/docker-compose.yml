@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # Elasticsearch 8.x（单节点，启用安全认证）
+  es01:
+    image: elasticsearch:8.13.0
+    container_name: es-quickstart
+    environment:
+      - node.name=es01
+      - cluster.name=es-docker-cluster
+      - discovery.type=single-node       # 单节点模式
+      - bootstrap.memory_lock=true       # 锁定内存，防止交换
+      - xpack.security.enabled=false     # 演示环境关闭安全认证（生产应开启）
+      - xpack.security.enrollment.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m" # JVM 堆内存
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"   # HTTP REST API
+      - "9300:9300"   # TCP 传输端口（集群内部通信）
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+
+  # Kibana 可视化（数据探索 + Dev Tools）
+  kibana:
+    image: kibana:8.13.0
+    container_name: kibana-quickstart
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es01:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - es01
+
+volumes:
+  es_data:

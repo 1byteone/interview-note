@@ -1,0 +1,59 @@
+# ============================================
+# Prometheus 抓取配置
+# ============================================
+
+global:
+  scrape_interval: 15s        # 默认抓取间隔
+  evaluation_interval: 15s    # 告警规则评估间隔
+  scrape_timeout: 10s
+
+# 告警规则文件
+rule_files:
+  - "alert_rules.yml"
+
+# 抓取目标
+scrape_configs:
+  # ---------- Prometheus 自身 ----------
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # ---------- Spring Boot 应用（Micrometer + Actuator） ----------
+  - job_name: 'spring-boot-app'
+    metrics_path: '/actuator/prometheus'   # actuator 暴露 Prometheus 格式指标
+    static_configs:
+      - targets: ['app1:8080', 'app2:8080']
+        labels:
+          application: 'shop-backend'
+
+  # ---------- Node Exporter（服务器硬件指标） ----------
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node1:9100', 'node2:9100']
+
+  # ---------- MySQL 监控 ----------
+  - job_name: 'mysql'
+    static_configs:
+      - targets: ['mysql-exporter:9104']
+
+  # ---------- Redis 监控 ----------
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis-exporter:9121']
+
+  # ---------- RabbitMQ / RocketMQ 等（示例） ----------
+  - job_name: 'rabbitmq'
+    static_configs:
+      - targets: ['rabbitmq-exporter:9419']
+
+# 告警规则示例（alert_rules.yml）：
+# groups:
+#   - name: app-alerts
+#     rules:
+#       - alert: HighCpuUsage
+#         expr: rate(process_cpu_usage[5m]) > 0.8
+#         for: 5m
+#         labels:
+#           severity: warning
+#         annotations:
+#           summary: "应用 CPU 使用率过高: {{ $labels.instance }}"

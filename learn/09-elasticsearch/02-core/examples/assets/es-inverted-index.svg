@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+  <title>Elasticsearch 倒排索引结构</title>
+  <desc>Inverted index: document corpus, tokenization, term dictionary, and posting lists with positions.</desc>
+  <defs>
+    <marker id="arrowES" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748B"/></marker>
+    <marker id="arrowESGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#22C55E"/></marker>
+    <linearGradient id="bgES" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/><stop offset="1" stop-color="#12121f"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="760" rx="18" fill="url(#bgES)"/>
+  <text x="480" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#FFFFFF">Elasticsearch 倒排索引结构</text>
+  <text x="480" y="80" text-anchor="middle" font-size="14" fill="#94A3B8">文档 → 分词 → 词项字典 + 倒排列表，实现全文检索</text>
+
+  <!-- ===== 列标题 ===== -->
+  <text x="165" y="120" text-anchor="middle" font-size="17" font-weight="bold" fill="#60A5FA">文档数据集（Documents）</text>
+  <path d="M55,135 L275,135" stroke="#475569" stroke-width="1.5"/>
+  <text x="500" y="120" text-anchor="middle" font-size="17" font-weight="bold" fill="#FBBF24">分词处理（Analyzer）</text>
+  <path d="M390,135 L610,135" stroke="#475569" stroke-width="1.5"/>
+  <text x="830" y="120" text-anchor="middle" font-size="17" font-weight="bold" fill="#34D399">倒排索引表（Inverted Index）</text>
+  <path d="M700,135 L960,135" stroke="#475569" stroke-width="1.5"/>
+
+  <!-- ===== 左侧：文档 ===== -->
+  <rect x="25" y="155" width="280" height="60" rx="10" fill="#1E3A8A" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="165" y="182" text-anchor="middle" font-size="12" font-weight="bold" fill="#BFDBFE">文档 ID: 1</text>
+  <text x="165" y="203" text-anchor="middle" font-size="11" fill="#DBEAFE">"Elasticsearch 是一个分布式搜索引擎"</text>
+
+  <rect x="25" y="225" width="280" height="60" rx="10" fill="#1E3A8A" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="165" y="252" text-anchor="middle" font-size="12" font-weight="bold" fill="#BFDBFE">文档 ID: 2</text>
+  <text x="165" y="273" text-anchor="middle" font-size="11" fill="#DBEAFE">"倒排索引是搜索引擎的核心技术"</text>
+
+  <rect x="25" y="295" width="280" height="60" rx="10" fill="#1E3A8A" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="165" y="322" text-anchor="middle" font-size="12" font-weight="bold" fill="#BFDBFE">文档 ID: 3</text>
+  <text x="165" y="343" text-anchor="middle" font-size="11" fill="#DBEAFE">"搜索引擎处理海量文本数据"</text>
+
+  <!-- 文档 → 分词箭头 -->
+  <path d="M305,185 L365,185" stroke="#64748B" stroke-width="2" marker-end="url(#arrowES)"/>
+  <path d="M305,255 L365,255" stroke="#64748B" stroke-width="2" marker-end="url(#arrowES)"/>
+  <path d="M305,325 L365,325" stroke="#64748B" stroke-width="2" marker-end="url(#arrowES)"/>
+
+  <!-- ===== 中间：分词 ===== -->
+  <text x="480" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#FDE68A">中文分词（IK / jieba）</text>
+  <rect x="360" y="195" width="240" height="170" rx="10" fill="#451A03" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="480" y="222" text-anchor="middle" font-size="10" fill="#FDBA74">分词流程</text>
+  <line x1="380" y1="232" x2="580" y2="232" stroke="#78350F" stroke-width="1"/>
+  <text x="480" y="256" text-anchor="middle" font-size="11" fill="#FBBF24">① 字符过滤（Character Filter）</text>
+  <text x="480" y="278" text-anchor="middle" font-size="11" fill="#FBBF24">② 分词器（Tokenizer）切分</text>
+  <text x="480" y="300" text-anchor="middle" font-size="11" fill="#FBBF24">③ 词项过滤（Token Filter）</text>
+  <text x="480" y="322" text-anchor="middle" font-size="11" fill="#FBBF24">   · 小写化 / 去停用词 / 词干化</text>
+  <text x="480" y="344" text-anchor="middle" font-size="11" fill="#FBBF24">④ 输出词项序列（Tokens）</text>
+
+  <!-- 分词 → 倒排索引 -->
+
+  <!-- ===== 右侧：倒排索引表 ===== -->
+  <rect x="628" y="155" width="307" height="52" rx="8" fill="#064E3B" stroke="#10B981" stroke-width="2"/>
+  <rect x="628" y="156" width="80" height="50" rx="8" fill="#065F46"/>
+  <text x="668" y="186" text-anchor="middle" font-size="12" font-weight="bold" fill="#6EE7B7">词项</text>
+  <rect x="708" y="156" width="110" height="50" rx="8" fill="#065F46"/>
+  <text x="763" y="186" text-anchor="middle" font-size="12" font-weight="bold" fill="#6EE7B7">倒排列表</text>
+  <rect x="818" y="156" width="115" height="50" rx="8" fill="#065F46"/>
+  <text x="875" y="186" text-anchor="middle" font-size="12" font-weight="bold" fill="#6EE7B7">位置 Position</text>
+
+  <!-- 行 1：搜索引擎 -->
+  <rect x="628" y="212" width="80" height="34" rx="6" fill="#059669"/>
+  <text x="668" y="234" text-anchor="middle" font-size="12" fill="#D1FAE5" font-weight="bold">搜索引擎</text>
+  <rect x="708" y="212" width="110" height="34" rx="6" fill="#047857"/>
+  <text x="763" y="234" text-anchor="middle" font-size="12" fill="#A7F3D0">Doc 1, Doc 2, Doc 3</text>
+  <rect x="818" y="212" width="115" height="34" rx="6" fill="#047857"/>
+  <text x="875" y="234" text-anchor="middle" font-size="11" fill="#A7F3D0">D1:0 · D2:2 · D3:0</text>
+
+  <!-- 行 2：倒排 -->
+  <rect x="628" y="251" width="80" height="34" rx="6" fill="#059669"/>
+  <text x="668" y="273" text-anchor="middle" font-size="12" fill="#D1FAE5" font-weight="bold">倒排</text>
+  <rect x="708" y="251" width="110" height="34" rx="6" fill="#047857"/>
+  <text x="763" y="273" text-anchor="middle" font-size="12" fill="#A7F3D0">Doc 2</text>
+  <rect x="818" y="251" width="115" height="34" rx="6" fill="#047857"/>
+  <text x="875" y="273" text-anchor="middle" font-size="11" fill="#A7F3D0">D2:0</text>
+
+  <!-- 行 3：索引 -->
+  <rect x="628" y="290" width="80" height="34" rx="6" fill="#059669"/>
+  <text x="668" y="312" text-anchor="middle" font-size="12" fill="#D1FAE5" font-weight="bold">索引</text>
+  <rect x="708" y="290" width="110" height="34" rx="6" fill="#047857"/>
+  <text x="763" y="312" text-anchor="middle" font-size="12" fill="#A7F3D0">Doc 1, Doc 2</text>
+  <rect x="818" y="290" width="115" height="34" rx="6" fill="#047857"/>
+  <text x="875" y="312" text-anchor="middle" font-size="11" fill="#A7F3D0">D1:1 · D2:1</text>
+
+  <!-- 行 4：分布式 -->
+  <rect x="628" y="329" width="80" height="34" rx="6" fill="#059669"/>
+  <text x="668" y="351" text-anchor="middle" font-size="12" fill="#D1FAE5" font-weight="bold">分布式</text>
+  <rect x="708" y="329" width="110" height="34" rx="6" fill="#047857"/>
+  <text x="763" y="351" text-anchor="middle" font-size="12" fill="#A7F3D0">Doc 1, Doc 3</text>
+  <rect x="818" y="329" width="115" height="34" rx="6" fill="#047857"/>
+  <text x="875" y="351" text-anchor="middle" font-size="11" fill="#A7F3D0">D1:2 · D3:2</text>
+
+  <!-- 行 5：海量 -->
+  <rect x="628" y="368" width="80" height="34" rx="6" fill="#059669"/>
+  <text x="668" y="390" text-anchor="middle" font-size="12" fill="#D1FAE5" font-weight="bold">海量</text>
+  <rect x="708" y="368" width="110" height="34" rx="6" fill="#047857"/>
+  <text x="763" y="390" text-anchor="middle" font-size="12" fill="#A7F3D0">Doc 3</text>
+  <rect x="818" y="368" width="115" height="34" rx="6" fill="#047857"/>
+  <text x="875" y="390" text-anchor="middle" font-size="11" fill="#A7F3D0">D3:1</text>
+
+  <!-- ===== 底部说明 ===== -->
+  <rect x="25" y="420" width="910" height="120" rx="12" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="480" y="452" text-anchor="middle" font-size="14" font-weight="bold" fill="#E2E8F0">查询执行流程</text>
+  <line x1="55" y1="465" x2="905" y2="465" stroke="#475569" stroke-width="1"/>
+
+  <!-- 查询流程节点 -->
+  <rect x="45" y="482" width="120" height="44" rx="8" fill="#1E293B"/>
+  <text x="105" y="501" text-anchor="middle" font-size="11" fill="#E2E8F0">用户搜索</text>
+  <text x="105" y="517" text-anchor="middle" font-size="10" fill="#94A3B8">"分布式"</text>
+  <path d="M165,504 L185,504" stroke="#64748B" stroke-width="2" marker-end="url(#arrowES)"/>
+
+  <rect x="188" y="482" width="120" height="44" rx="8" fill="#1E293B"/>
+  <text x="248" y="501" text-anchor="middle" font-size="11" fill="#E2E8F0">分词为词项</text>
+  <text x="248" y="517" text-anchor="middle" font-size="10" fill="#94A3B8">分布式</text>
+  <path d="M308,504 L328,504" stroke="#64748B" stroke-width="2" marker-end="url(#arrowES)"/>
+
+  <rect x="331" y="482" width="120" height="44" rx="8" fill="#1E293B"/>
+  <text x="391" y="501" text-anchor="middle" font-size="11" fill="#E2E8F0">查找词项字典</text>
+  <text x="391" y="517" text-anchor="middle" font-size="10" fill="#94A3B8">Term Dictionary</text>
+  <path d="M451,504 L471,504" stroke="#64748B" stroke-width="2" marker-end="url(#arrowES)"/>
+
+  <rect x="474" y="482" width="120" height="44" rx="8" fill="#1E293B"/>
+  <text x="534" y="501" text-anchor="middle" font-size="11" fill="#E2E8F0">读取倒排列表</text>
+  <text x="534" y="517" text-anchor="middle" font-size="10" fill="#94A3B8">Posting List</text>
+  <path d="M594,504 L614,504" stroke="#64748B" stroke-width="2" marker-end="url(#arrowES)"/>
+
+  <rect x="617" y="482" width="120" height="44" rx="8" fill="#1E293B"/>
+  <text x="677" y="501" text-anchor="middle" font-size="11" fill="#E2E8F0">合并文档 ID</text>
+  <text x="677" y="517" text-anchor="middle" font-size="10" fill="#94A3B8">Doc 1, Doc 3</text>
+  <path d="M737,504 L757,504" stroke="#64748B" stroke-width="2" marker-end="url(#arrowES)"/>
+
+  <rect x="760" y="482" width="150" height="44" rx="8" fill="#0E7490"/>
+  <text x="835" y="501" text-anchor="middle" font-size="11" fill="#CFFAFE" font-weight="bold">相关性打分（BM25）</text>
+  <text x="835" y="517" text-anchor="middle" font-size="10" fill="#A5F3FC">TF-IDF · 返回结果</text>
+
+  <!-- ===== 顺序遍历与跳跃表 ===== -->
+  <rect x="25" y="565" width="910" height="150" rx="12" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="480" y="595" text-anchor="middle" font-size="14" font-weight="bold" fill="#E2E8F0">倒排索引的压缩与加速</text>
+  <line x1="55" y1="608" x2="905" y2="608" stroke="#475569" stroke-width="1"/>
+  <text x="480" y="635" text-anchor="middle" font-size="12" fill="#94A3B8">· Frame Of Reference（FOR）：差值编码压缩 Doc ID 序列</text>
+  <text x="480" y="659" text-anchor="middle" font-size="12" fill="#94A3B8">· Roaring Bitmap：按块存储位图，高效集合运算</text>
+  <text x="480" y="683" text-anchor="middle" font-size="12" fill="#94A3B8">· Skip List（跳跃表）：倒排列表中实现二分查找加速</text>
+  <path d="M96,620 L150,620" stroke="#64748B" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrowESGreen)"/>
+</svg>

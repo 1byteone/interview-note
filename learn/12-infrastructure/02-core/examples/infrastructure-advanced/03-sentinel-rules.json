@@ -1,0 +1,50 @@
+[
+  {
+    "resource": "/api/user/query",
+    "resourceMode": 0,
+    "count": 1000,
+    "grade": 1,
+    "limitApp": "default",
+    "strategy": 0,
+    "controlBehavior": 0,
+    "clusterMode": false,
+    "namespace": "default",
+    "ruleName": "user-query-flow-limit"
+  },
+  {
+    "resource": "/api/order/create",
+    "resourceMode": 0,
+    "count": 500,
+    "grade": 1,
+    "limitApp": "default",
+    "strategy": 0,
+    "controlBehavior": 1,
+    "clusterMode": false,
+    "namespace": "default",
+    "ruleName": "order-create-throttle"
+  },
+  {
+    "resource": "/api/product/list",
+    "resourceMode": 0,
+    "count": 800,
+    "grade": 1,
+    "limitApp": "default",
+    "strategy": 0,
+    "controlBehavior": 2,
+    "clusterMode": false,
+    "namespace": "default",
+    "ruleName": "product-list-warmup"
+  },
+  {
+    "resource": "user-service",
+    "resourceMode": 0,
+    "count": 2000,
+    "grade": 1,
+    "limitApp": "default",
+    "strategy": 1,
+    "controlBehavior": 0,
+    "clusterMode": false,
+    "namespace": "default",
+    "ruleName": "user-service-thread-limit"
+  }
+]

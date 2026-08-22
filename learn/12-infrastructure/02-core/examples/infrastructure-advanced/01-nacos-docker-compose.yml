@@ -1,0 +1,66 @@
+# ============================================
+# Nacos 单机模式（使用 MySQL 持久化）
+# 默认账号: nacos / nacos
+# ============================================
+version: '3.8'
+
+services:
+  # -------- MySQL：Nacos 配置持久化 --------
+  mysql:
+    image: mysql:8.0
+    container_name: nacos-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: nacos_config
+      MYSQL_USER: nacos
+      MYSQL_PASSWORD: nacos123
+      TZ: Asia/Shanghai
+    ports:
+      - "3306:3306"
+    volumes:
+      - nacos_mysql_data:/var/lib/mysql
+      # Nacos 官方初始化 SQL（首次启动自动执行）
+      - ./nacos-mysql.sql:/docker-entrypoint-initdb.d/nacos-mysql.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pnacos123"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - nacos_net
+
+  # -------- Nacos 单机（内嵌模式改为 MySQL 存储） --------
+  nacos:
+    image: nacos/nacos-server:v2.3.2
+    container_name: nacos-server
+    environment:
+      MODE: standalone                 # 单机模式
+      NACOS_AUTH_ENABLE: "true"        # 开启鉴权
+      NACOS_AUTH_TOKEN: "VGhpc0lzTXlDdXN0b21TZWNyZXRLZXkwMTIzNDU2Nzg="
+      NACOS_AUTH_IDENTITY_KEY: nacos
+      NACOS_AUTH_IDENTITY_VALUE: nacos
+      # 使用 MySQL 持久化
+      SPRING_DATASOURCE_PLATFORM: mysql
+      MYSQL_SERVICE_HOST: mysql
+      MYSQL_SERVICE_DB_NAME: nacos_config
+      MYSQL_SERVICE_PORT: 3306
+      MYSQL_SERVICE_USER: nacos
+      MYSQL_SERVICE_PASSWORD: nacos123
+      JVM_XMS: 256m
+      JVM_XMX: 512m
+    ports:
+      - "8848:8848"    # Nacos 控制台 / HTTP API
+      - "9848:9848"    # gRPC 客户端端口（2.x 必须暴露）
+      - "9849:9849"    # gRPC 服务器端口
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - nacos_net
+
+volumes:
+  nacos_mysql_data:
+
+networks:
+  nacos_net:
+    driver: bridge

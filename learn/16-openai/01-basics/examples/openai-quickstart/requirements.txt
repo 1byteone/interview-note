@@ -1,0 +1,3 @@
+# OpenAI 快速入门示例依赖
+openai
+python-dotenv

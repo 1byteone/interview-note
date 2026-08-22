@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 800" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+  <title>B+ 树索引结构</title>
+  <desc>B+Tree index structure: root node, internal nodes, leaf nodes with data pointers and doubly-linked list.</desc>
+  <defs>
+    <marker id="arrowB" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748B"/></marker>
+    <marker id="arrowBGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#16A34A"/></marker>
+    <linearGradient id="bgB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/><stop offset="1" stop-color="#12121f"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="800" rx="18" fill="url(#bgB)"/>
+  <text x="480" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#FFFFFF">B+ 树索引结构（InnoDB）</text>
+  <text x="480" y="80" text-anchor="middle" font-size="14" fill="#94A3B8">非叶子节点只存索引键 · 叶子节点存全部数据并通过双向链表串联 · 高度通常 2~4 层</text>
+
+  <!-- ===== 根节点 ===== -->
+  <rect x="195" y="110" width="380" height="60" rx="10" fill="#4479A1" opacity="0.25" stroke="#4479A1" stroke-width="2"/>
+  <text x="385" y="138" text-anchor="middle" font-size="13" font-weight="bold" fill="#93C5FD">根节点（Root · 非叶子）</text>
+  <text x="385" y="158" text-anchor="middle" font-size="10" fill="#BFDBFE">至少 2 棵子树 · 存储 1 个索引键（2 个指针）</text>
+
+  <!-- 根节点盒子 -->
+  <rect x="195" y="175" width="380" height="52" rx="8" fill="#1E3A8A" stroke="#3B82F6" stroke-width="2"/>
+  <rect x="195" y="176" width="60" height="50" rx="8" fill="#172554"/>
+  <rect x="277" y="182" width="36" height="36" rx="6" fill="#2563EB"/>
+  <rect x="333" y="182" width="36" height="36" rx="6" fill="#172554"/>
+  <rect x="389" y="182" width="36" height="36" rx="6" fill="#2563EB"/>
+  <rect x="445" y="182" width="36" height="36" rx="6" fill="#172554"/>
+  <rect x="501" y="182" width="36" height="36" rx="6" fill="#2563EB"/>
+  <text x="225" y="209" text-anchor="middle" font-size="14" fill="#93C5FD">指针</text>
+  <text x="295" y="206" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">30</text>
+  <text x="351" y="206" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">58</text>
+  <text x="407" y="206" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">90</text>
+  <text x="463" y="206" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">?</text>
+  <text x="519" y="206" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">?</text>
+  <text x="430" y="226" text-anchor="middle" font-size="9" fill="#93C5FD">(指针域宽度大于键域)</text>
+
+  <!-- ===== 内部节点 ===== -->
+  <text x="385" y="280" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">↓ 指向内部节点（Level 1 非叶子）</text>
+  <path d="M240,227 L175,318" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <path d="M385,227 L385,318" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <path d="M535,227 L600,318" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+
+  <rect x="25" y="320" width="285" height="58" rx="9" fill="#1E3A8A" stroke="#3B82F6" stroke-width="1.5" opacity="0.85"/>
+  <text x="167" y="342" text-anchor="middle" font-size="12" font-weight="bold" fill="#93C5FD">内部节点 1</text>
+  <rect x="40" y="352" width="34" height="18" rx="4" fill="#2563EB"/>
+  <rect x="128" y="352" width="34" height="18" rx="4" fill="#2563EB"/>
+  <text x="57" y="365" text-anchor="middle" font-size="12" fill="#FFFFFF">5</text>
+  <text x="145" y="365" text-anchor="middle" font-size="12" fill="#FFFFFF">28</text>
+
+  <rect x="342" y="320" width="285" height="58" rx="9" fill="#1E3A8A" stroke="#3B82F6" stroke-width="1.5" opacity="0.85"/>
+  <text x="484" y="342" text-anchor="middle" font-size="12" font-weight="bold" fill="#93C5FD">内部节点 2</text>
+  <rect x="357" y="352" width="34" height="18" rx="4" fill="#2563EB"/>
+  <rect x="445" y="352" width="34" height="18" rx="4" fill="#2563EB"/>
+  <rect x="533" y="352" width="34" height="18" rx="4" fill="#2563EB"/>
+  <text x="374" y="365" text-anchor="middle" font-size="12" fill="#FFFFFF">35</text>
+  <text x="462" y="365" text-anchor="middle" font-size="12" fill="#FFFFFF">45</text>
+  <text x="550" y="365" text-anchor="middle" font-size="12" fill="#FFFFFF">57</text>
+
+  <rect x="659" y="320" width="285" height="58" rx="9" fill="#1E3A8A" stroke="#3B82F6" stroke-width="1.5" opacity="0.85"/>
+  <text x="801" y="342" text-anchor="middle" font-size="12" font-weight="bold" fill="#93C5FD">内部节点 3</text>
+  <rect x="674" y="352" width="34" height="18" rx="4" fill="#2563EB"/>
+  <rect x="762" y="352" width="34" height="18" rx="4" fill="#2563EB"/>
+  <text x="691" y="365" text-anchor="middle" font-size="12" fill="#FFFFFF">78</text>
+  <text x="779" y="365" text-anchor="middle" font-size="12" fill="#FFFFFF">98</text>
+
+  <!-- ===== 叶子节点 ===== -->
+  <text x="480" y="420" text-anchor="middle" font-size="13" font-weight="bold" fill="#64748B">↓ 最低层所有键值+数据指针，按序排列，双向链表相连</text>
+
+  <path d="M90,378 L46,468" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <path d="M167,378 L150,468" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <path d="M285,378 L260,468" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <path d="M420,378 L400,468" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <path d="M505,378 L505,468" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <path d="M580,378 L600,468" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <path d="M720,378 L705,468" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <path d="M800,378 L800,468" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+
+  <!-- 叶 1 -->
+  <rect x="12" y="470" width="83" height="150" rx="8" fill="#064E3B" stroke="#059669" stroke-width="2"/>
+  <text x="53" y="494" text-anchor="middle" font-size="12" font-weight="bold" fill="#6EE7B7">叶子 1</text>
+  <rect x="22" y="505" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="53" y="521" text-anchor="middle" font-size="12" fill="#A7F3D0">2</text>
+  <rect x="22" y="533" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="53" y="549" text-anchor="middle" font-size="12" fill="#A7F3D0">5</text>
+  <rect x="22" y="561" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="53" y="577" text-anchor="middle" font-size="12" fill="#A7F3D0">8</text>
+  <text x="53" y="610" text-anchor="middle" font-size="10" fill="#34D399">含数据指针</text>
+
+  <!-- 叶 2 -->
+  <rect x="105" y="470" width="83" height="150" rx="8" fill="#064E3B" stroke="#059669" stroke-width="2"/>
+  <text x="146" y="494" text-anchor="middle" font-size="12" font-weight="bold" fill="#6EE7B7">叶子 2</text>
+  <rect x="115" y="505" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="146" y="521" text-anchor="middle" font-size="12" fill="#A7F3D0">11</text>
+  <rect x="115" y="533" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="146" y="549" text-anchor="middle" font-size="12" fill="#A7F3D0">17</text>
+  <rect x="115" y="561" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="146" y="577" text-anchor="middle" font-size="12" fill="#A7F3D0">24</text>
+  <text x="146" y="610" text-anchor="middle" font-size="10" fill="#34D399">含数据指针</text>
+
+  <!-- 叶 3 -->
+  <rect x="198" y="470" width="83" height="150" rx="8" fill="#064E3B" stroke="#059669" stroke-width="2"/>
+  <text x="239" y="494" text-anchor="middle" font-size="12" font-weight="bold" fill="#6EE7B7">叶子 3</text>
+  <rect x="208" y="505" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="239" y="521" text-anchor="middle" font-size="12" fill="#A7F3D0">30</text>
+  <rect x="208" y="533" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="239" y="549" text-anchor="middle" font-size="12" fill="#A7F3D0">32</text>
+  <rect x="208" y="561" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="239" y="577" text-anchor="middle" font-size="12" fill="#A7F3D0">34</text>
+  <text x="239" y="610" text-anchor="middle" font-size="10" fill="#34D399">含数据指针</text>
+
+  <!-- 叶 4 -->
+  <rect x="291" y="470" width="83" height="150" rx="8" fill="#064E3B" stroke="#059669" stroke-width="2"/>
+  <text x="332" y="494" text-anchor="middle" font-size="12" font-weight="bold" fill="#6EE7B7">叶子 4</text>
+  <rect x="301" y="505" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="332" y="521" text-anchor="middle" font-size="12" fill="#A7F3D0">35</text>
+  <rect x="301" y="533" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="332" y="549" text-anchor="middle" font-size="12" fill="#A7F3D0">41</text>
+  <rect x="301" y="561" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="332" y="577" text-anchor="middle" font-size="12" fill="#A7F3D0">45</text>
+  <text x="332" y="610" text-anchor="middle" font-size="10" fill="#34D399">含数据指针</text>
+
+  <!-- 叶 5 -->
+  <rect x="384" y="470" width="83" height="150" rx="8" fill="#064E3B" stroke="#059669" stroke-width="2"/>
+  <text x="425" y="494" text-anchor="middle" font-size="12" font-weight="bold" fill="#6EE7B7">叶子 5</text>
+  <rect x="394" y="505" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="425" y="521" text-anchor="middle" font-size="12" fill="#A7F3D0">57</text>
+  <rect x="394" y="533" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="425" y="549" text-anchor="middle" font-size="12" fill="#A7F3D0">63</text>
+  <rect x="394" y="561" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="425" y="577" text-anchor="middle" font-size="12" fill="#A7F3D0">72</text>
+  <text x="425" y="610" text-anchor="middle" font-size="10" fill="#34D399">含数据指针</text>
+
+  <!-- 叶 6 -->
+  <rect x="477" y="470" width="83" height="150" rx="8" fill="#064E3B" stroke="#059669" stroke-width="2"/>
+  <text x="518" y="494" text-anchor="middle" font-size="12" font-weight="bold" fill="#6EE7B7">叶子 6</text>
+  <rect x="487" y="505" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="518" y="521" text-anchor="middle" font-size="12" fill="#A7F3D0">78</text>
+  <rect x="487" y="533" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="518" y="549" text-anchor="middle" font-size="12" fill="#A7F3D0">84</text>
+  <rect x="487" y="561" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="518" y="577" text-anchor="middle" font-size="12" fill="#A7F3D0">90</text>
+  <text x="518" y="610" text-anchor="middle" font-size="10" fill="#34D399">含数据指针</text>
+
+  <!-- 叶 7 -->
+  <rect x="570" y="470" width="83" height="150" rx="8" fill="#064E3B" stroke="#059669" stroke-width="2"/>
+  <text x="611" y="494" text-anchor="middle" font-size="12" font-weight="bold" fill="#6EE7B7">叶子 7</text>
+  <rect x="580" y="505" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="611" y="521" text-anchor="middle" font-size="12" fill="#A7F3D0">92</text>
+  <rect x="580" y="533" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="611" y="549" text-anchor="middle" font-size="12" fill="#A7F3D0">97</text>
+  <rect x="580" y="561" width="63" height="22" rx="4" fill="#065F46"/>
+  <text x="611" y="577" text-anchor="middle" font-size="12" fill="#A7F3D0">99</text>
+  <text x="611" y="610" text-anchor="middle" font-size="10" fill="#34D399">含数据指针</text>
+
+  <!-- ===== 数据指针 ===== -->
+  <path d="M53,640 L53,690" stroke="#F59E0B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <rect x="20" y="690" width="66" height="36" rx="6" fill="#78350F" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="53" y="707" text-anchor="middle" font-size="10" fill="#FDBA74">数据指针</text>
+  <text x="53" y="720" text-anchor="middle" font-size="9" fill="#FBBF24">→ 行记录</text>
+
+  <path d="M332,640 L332,690" stroke="#F59E0B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <rect x="299" y="690" width="66" height="36" rx="6" fill="#78350F" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="332" y="707" text-anchor="middle" font-size="10" fill="#FDBA74">数据指针</text>
+  <text x="332" y="720" text-anchor="middle" font-size="9" fill="#FBBF24">→ 行记录</text>
+
+  <path d="M611,640 L611,690" stroke="#F59E0B" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <rect x="578" y="690" width="66" height="36" rx="6" fill="#78350F" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="611" y="707" text-anchor="middle" font-size="10" fill="#FDBA74">数据指针</text>
+  <text x="611" y="720" text-anchor="middle" font-size="9" fill="#FBBF24">→ 行记录</text>
+
+  <text x="331" y="750" text-anchor="middle" font-size="11" fill="#94A3B8">聚集索引（主键索引）：叶子节点直接存储整行数据</text>
+  <text x="331" y="770" text-anchor="middle" font-size="11" fill="#94A3B8">辅助索引（二级索引）：叶子节点存主键值，通过主键回表查询</text>
+
+  <!-- ===== 双向链表 ===== -->
+  <path d="M95,545 L105,537" stroke="#34D399" stroke-width="2.5" marker-end="url(#arrowBGreen)"/>
+  <path d="M105,553 L95,545" stroke="#34D399" stroke-width="1" marker-end="url(#arrowBGreen)"/>
+  <path d="M188,545 L198,537" stroke="#34D399" stroke-width="2.5" marker-end="url(#arrowBGreen)"/>
+  <path d="M198,553 L188,545" stroke="#34D399" stroke-width="1" marker-end="url(#arrowBGreen)"/>
+  <path d="M281,545 L291,537" stroke="#34D399" stroke-width="2.5" marker-end="url(#arrowBGreen)"/>
+  <path d="M291,553 L281,545" stroke="#34D399" stroke-width="1" marker-end="url(#arrowBGreen)"/>
+  <path d="M374,545 L384,537" stroke="#34D399" stroke-width="2.5" marker-end="url(#arrowBGreen)"/>
+  <path d="M384,553 L374,545" stroke="#34D399" stroke-width="1" marker-end="url(#arrowBGreen)"/>
+  <path d="M467,545 L477,537" stroke="#34D399" stroke-width="2.5" marker-end="url(#arrowBGreen)"/>
+  <path d="M477,553 L467,545" stroke="#34D399" stroke-width="1" marker-end="url(#arrowBGreen)"/>
+  <path d="M560,545 L570,537" stroke="#34D399" stroke-width="2.5" marker-end="url(#arrowBGreen)"/>
+  <path d="M570,553 L560,545" stroke="#34D399" stroke-width="1" marker-end="url(#arrowBGreen)"/>
+
+  <rect x="905" y="470" width="0" height="0"/>
+  <text x="850" y="505" text-anchor="middle" font-size="12" font-weight="bold" fill="#34D399">双向链表</text>
+  <text x="850" y="525" text-anchor="middle" font-size="11" fill="#6EE7B7">叶子相邻节点</text>
+  <text x="850" y="543" text-anchor="middle" font-size="11" fill="#6EE7B7">互相链接</text>
+  <text x="850" y="561" text-anchor="middle" font-size="11" fill="#6EE7B7">支持范围查询</text>
+  <text x="850" y="579" text-anchor="middle" font-size="11" fill="#6EE7B7">与排序扫描</text>
+
+  <!-- ===== 查询路径示例 ===== -->
+  <rect x="700" y="610" width="240" height="160" rx="12" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="820" y="638" text-anchor="middle" font-size="13" font-weight="bold" fill="#E2E8F0">查询示例：WHERE id = 41</text>
+  <text x="820" y="665" text-anchor="middle" font-size="11" fill="#94A3B8">根节点 → 判断 41 &lt; 58 → 左子树</text>
+  <text x="820" y="687" text-anchor="middle" font-size="11" fill="#94A3B8">内部节点 2 → 35 &lt; 41 &lt; 45</text>
+  <text x="820" y="709" text-anchor="middle" font-size="11" fill="#94A3B8">→ 叶子 4 → 找到 41</text>
+  <text x="820" y="731" text-anchor="middle" font-size="11" fill="#94A3B8">→ 数据指针 → 行记录</text>
+  <text x="820" y="761" text-anchor="middle" font-size="11" fill="#F59E0B" font-weight="bold">时间复杂度 O(logₘn) ≈ 3 层磁盘 IO</text>
+</svg>

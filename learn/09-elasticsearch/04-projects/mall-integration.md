@@ -1,6 +1,24 @@
-# AI 商城商品搜索架构
+# AI 商城 — Elasticsearch 搜索集成实战
 
-## 系统架构概述
+> 等级：🎯 面试进阶
+> 主题：ES 在 mall-micro-cloud 中的商品搜索、与 AI 向量搜索的对比
+> 路径：STAR 法则贯穿每个案例
+
+---
+
+## 〇、深度剖析参考
+
+| 主题 | 本 learn 文档 | docs/tech-stack-analysis 深度剖析 |
+|------|--------------|--------------------------------|
+| ES 搜索架构 | 本文 mall-integration | [08-ES-SEARCH.md](../../docs/tech-stack-analysis/mall-micro-cloud/08-ES-SEARCH.md) — ES 商品搜索服务 |
+| AI 向量搜索 | — | [06-VECTOR-STORE.md](../../docs/tech-stack-analysis/mall-ai-search/06-VECTOR-STORE.md) — RedisVL 向量检索 |
+| ES vs 向量搜索对比 | — | [00-OVERVIEW.md](../../docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) — 两种搜索范式全景 |
+
+> 💡 ES 关键词搜索 vs 向量语义搜索是面试高频对比题。ES 精确匹配 + 属性过滤，向量搜索语义理解 + 模糊推荐，两者互补。
+
+---
+
+## 一、系统架构概述
 
 mall-es-service 是商城系统的核心搜索服务，基于 Elasticsearch 7.x 构建，提供商品全文搜索、搜索建议、聚合统计等功能。整体架构分为三层：
 

@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+  <title>Spring Boot 启动流程</title>
+  <desc>Spring Boot startup process from SpringApplication.run() to returning ApplicationContext.</desc>
+  <defs>
+    <marker id="arrowSB" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748B"/></marker>
+    <linearGradient id="bgSB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/><stop offset="1" stop-color="#12121f"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1200" rx="18" fill="url(#bgSB)"/>
+  <text x="400" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#FFFFFF">Spring Boot 启动流程</text>
+  <text x="400" y="80" text-anchor="middle" font-size="14" fill="#94A3B8">从 SpringApplication.run() 到内嵌容器启动，共 10 个核心步骤</text>
+
+  <!-- @SpringBootApplication 标注 -->
+  <rect x="200" y="105" width="400" height="44" rx="22" fill="#6DB33F" opacity="0.15" stroke="#6DB33F" stroke-width="2"/>
+  <text x="400" y="133" text-anchor="middle" font-size="15" font-weight="bold" fill="#4ADE80">@SpringBootApplication</text>
+  <path d="M400,149 L400,172" stroke="#6DB33F" stroke-width="2.5" marker-end="url(#arrowSB)"/>
+
+  <!-- Step 1 -->
+  <rect x="175" y="178" width="450" height="60" rx="12" fill="#1E293B" stroke="#22C55E" stroke-width="2"/>
+  <circle cx="205" cy="208" r="14" fill="#22C55E"/>
+  <text x="205" y="213" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">1</text>
+  <text x="235" y="205" text-anchor="middle" font-size="16" font-weight="bold" fill="#E2E8F0">SpringApplication.run(主类, args)</text>
+  <text x="235" y="225" text-anchor="middle" font-size="11" fill="#94A3B8">创建 SpringApplication 实例，传入主配置类</text>
+  <path d="M400,238 L400,262" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowSB)"/>
+
+  <!-- Step 2 -->
+  <rect x="175" y="268" width="450" height="60" rx="12" fill="#1E293B" stroke="#3B82F6" stroke-width="2"/>
+  <circle cx="205" cy="298" r="14" fill="#3B82F6"/>
+  <text x="205" y="303" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">2</text>
+  <text x="235" y="295" text-anchor="middle" font-size="16" font-weight="bold" fill="#E2E8F0">判断应用类型</text>
+  <text x="235" y="315" text-anchor="middle" font-size="11" fill="#94A3B8">WebApplicationType：NONE / SERVLET / REACTIVE</text>
+  <path d="M400,328 L400,352" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowSB)"/>
+
+  <!-- Step 3 -->
+  <rect x="175" y="358" width="450" height="60" rx="12" fill="#1E293B" stroke="#8B5CF6" stroke-width="2"/>
+  <circle cx="205" cy="388" r="14" fill="#8B5CF6"/>
+  <text x="205" y="393" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">3</text>
+  <text x="235" y="385" text-anchor="middle" font-size="16" font-weight="bold" fill="#E2E8F0">加载所有初始化器</text>
+  <text x="235" y="405" text-anchor="middle" font-size="11" fill="#94A3B8">从 spring.factories 加载 ApplicationContextInitializer</text>
+  <path d="M400,418 L400,442" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowSB)"/>
+
+  <!-- Step 4 -->
+  <rect x="175" y="448" width="450" height="60" rx="12" fill="#1E293B" stroke="#F59E0B" stroke-width="2"/>
+  <circle cx="205" cy="478" r="14" fill="#F59E0B"/>
+  <text x="205" y="483" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">4</text>
+  <text x="235" y="475" text-anchor="middle" font-size="16" font-weight="bold" fill="#E2E8F0">加载所有监听器</text>
+  <text x="235" y="495" text-anchor="middle" font-size="11" fill="#94A3B8">从 spring.factories 加载 ApplicationListener</text>
+  <path d="M400,508 L400,532" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowSB)"/>
+
+  <!-- Step 5 -->
+  <rect x="175" y="538" width="450" height="60" rx="12" fill="#1E293B" stroke="#10B981" stroke-width="2"/>
+  <circle cx="205" cy="568" r="14" fill="#10B981"/>
+  <text x="205" y="573" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">5</text>
+  <text x="235" y="565" text-anchor="middle" font-size="16" font-weight="bold" fill="#E2E8F0">准备 Environment</text>
+  <text x="235" y="585" text-anchor="middle" font-size="11" fill="#94A3B8">加载 application.yml/properties · 环境变量 · 命令行参数</text>
+  <path d="M400,598 L400,622" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowSB)"/>
+
+  <!-- Step 6 -->
+  <rect x="175" y="628" width="450" height="60" rx="12" fill="#1E293B" stroke="#EC4899" stroke-width="2"/>
+  <circle cx="205" cy="658" r="14" fill="#EC4899"/>
+  <text x="205" y="663" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">6</text>
+  <text x="235" y="655" text-anchor="middle" font-size="16" font-weight="bold" fill="#E2E8F0">打印 Banner</text>
+  <text x="235" y="675" text-anchor="middle" font-size="11" fill="#94A3B8">Banner printed to console / log file</text>
+  <path d="M400,688 L400,712" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowSB)"/>
+
+  <!-- Step 7 -->
+  <rect x="175" y="718" width="450" height="60" rx="12" fill="#1E293B" stroke="#F97316" stroke-width="2"/>
+  <circle cx="205" cy="748" r="14" fill="#F97316"/>
+  <text x="205" y="753" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">7</text>
+  <text x="235" y="745" text-anchor="middle" font-size="16" font-weight="bold" fill="#E2E8F0">创建 ApplicationContext</text>
+  <text x="235" y="765" text-anchor="middle" font-size="11" fill="#94A3B8">AnnotationConfigServletWebServerApplicationContext</text>
+  <path d="M400,778 L400,802" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowSB)"/>
+
+  <!-- Step 8 - 核心：refresh 上下文 -->
+  <rect x="100" y="808" width="600" height="130" rx="14" fill="#1E293B" stroke="#6DB33F" stroke-width="2.5"/>
+  <circle cx="130" cy="838" r="14" fill="#6DB33F"/>
+  <text x="130" y="843" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">8</text>
+  <text x="160" y="835" text-anchor="middle" font-size="17" font-weight="bold" fill="#4ADE80">刷新上下文（refresh）</text>
+  <text x="160" y="858" text-anchor="middle" font-size="11" fill="#94A3B8">Spring 核心启动 · 整个 IoC 容器初始化的关键步骤</text>
+  <line x1="140" y1="870" x2="760" y2="870" stroke="#475569" stroke-width="1"/>
+
+  <!-- refresh 子步骤 -->
+  <rect x="120" y="880" width="135" height="42" rx="6" fill="#14532D"/>
+  <text x="187" y="900" text-anchor="middle" font-size="11" fill="#BBF7D0">prepareRefresh</text>
+  <text x="187" y="915" text-anchor="middle" font-size="9" fill="#86EFAC">准备刷新</text>
+
+  <path d="M255,901 L275,901" stroke="#64748B" stroke-width="2" marker-end="url(#arrowSB)"/>
+
+  <rect x="278" y="880" width="135" height="42" rx="6" fill="#14532D"/>
+  <text x="345" y="900" text-anchor="middle" font-size="11" fill="#BBF7D0">obtainBeanFactory</text>
+  <text x="345" y="915" text-anchor="middle" font-size="9" fill="#86EFAC">获取 BeanFactory</text>
+
+  <path d="M413,901 L433,901" stroke="#64748B" stroke-width="2" marker-end="url(#arrowSB)"/>
+
+  <rect x="436" y="880" width="135" height="42" rx="6" fill="#14532D"/>
+  <text x="503" y="900" text-anchor="middle" font-size="11" fill="#BBF7D0">prepareBeanFactory</text>
+  <text x="503" y="915" text-anchor="middle" font-size="9" fill="#86EFAC">准备 BeanFactory</text>
+
+  <path d="M571,901 L591,901" stroke="#64748B" stroke-width="2" marker-end="url(#arrowSB)"/>
+
+  <rect x="594" y="880" width="90" height="42" rx="6" fill="#14532D"/>
+  <text x="639" y="897" text-anchor="middle" font-size="11" fill="#BBF7D0">postProcess</text>
+  <text x="639" y="915" text-anchor="middle" font-size="9" fill="#86EFAC">后置处理</text>
+
+  <path d="M400,922 L400,948" stroke="#64748B" stroke-width="2" marker-end="url(#arrowSB)"/>
+
+  <rect x="160" y="952" width="480" height="38" rx="8" fill="#0F766E"/>
+  <text x="400" y="976" text-anchor="middle" font-size="13" fill="#CCFBF1" font-weight="bold">invokeBeanFactoryPostProcessors · registerBeanPostProcessors · initMessageSource · initApplicationEventMulticaster · onRefresh · registerListeners · finishBeanFactoryInitialization · finishRefresh</text>
+
+  <!-- 自动配置标注 -->
+  <rect x="620" y="808" width="60" height="60" rx="8" fill="#6DB33F" opacity="0.2"/>
+  <text x="650" y="835" text-anchor="middle" font-size="10" fill="#4ADE80" font-weight="bold">自动</text>
+  <text x="650" y="850" text-anchor="middle" font-size="10" fill="#4ADE80" font-weight="bold">配置</text>
+  <text x="650" y="865" text-anchor="middle" font-size="9" fill="#22C55E">此处!</text>
+  <path d="M565,865 L618,865" stroke="#4ADE80" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowSB)"/>
+
+  <path d="M400,990 L400,1014" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowSB)"/>
+
+  <!-- Step 9 -->
+  <rect x="175" y="1020" width="450" height="60" rx="12" fill="#1E293B" stroke="#38BDF8" stroke-width="2"/>
+  <circle cx="205" cy="1050" r="14" fill="#38BDF8"/>
+  <text x="205" y="1055" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">9</text>
+  <text x="235" y="1047" text-anchor="middle" font-size="16" font-weight="bold" fill="#E2E8F0">内嵌容器启动</text>
+  <text x="235" y="1067" text-anchor="middle" font-size="11" fill="#94A3B8">Tomcat / Jetty / Undertow 启动，监听端口</text>
+  <path d="M400,1080 L400,1104" stroke="#64748B" stroke-width="2.5" marker-end="url(#arrowSB)"/>
+
+  <!-- Step 10 -->
+  <rect x="175" y="1110" width="450" height="60" rx="12" fill="#1E293B" stroke="#FBBF24" stroke-width="2"/>
+  <circle cx="205" cy="1140" r="14" fill="#FBBF24"/>
+  <text x="205" y="1145" text-anchor="middle" font-size="13" font-weight="bold" fill="#FFFFFF">10</text>
+  <text x="235" y="1137" text-anchor="middle" font-size="16" font-weight="bold" fill="#E2E8F0">返回 ApplicationContext</text>
+  <text x="235" y="1157" text-anchor="middle" font-size="11" fill="#94A3B8">启动完成 · 返回 ConfigurableApplicationContext · 注册 ShutdownHook</text>
+</svg>

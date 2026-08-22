@@ -1,0 +1,4 @@
+pytest
+pytest-asyncio
+aiohttp
+typing_extensions

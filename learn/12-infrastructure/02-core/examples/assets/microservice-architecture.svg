@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780" font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+  <title>微服务架构总览</title>
+  <desc>Microservice architecture: API Gateway, Service Registry, Microservices, Config Center, Tracing, Monitoring, and Message Queue.</desc>
+  <defs>
+    <marker id="arrowMS" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748B"/></marker>
+    <marker id="arrowMSPurple" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#8B5CF6"/></marker>
+    <linearGradient id="bgMS" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1a2e"/><stop offset="1" stop-color="#12121f"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="780" rx="18" fill="url(#bgMS)"/>
+  <text x="480" y="52" text-anchor="middle" font-size="28" font-weight="bold" fill="#FFFFFF">微服务架构总览</text>
+  <text x="480" y="80" text-anchor="middle" font-size="14" fill="#94A3B8">Spring Cloud 微服务 · 服务注册发现 · 配置中心 · 链路追踪 · 监控告警</text>
+
+  <!-- ===== API Gateway 顶部 ===== -->
+  <rect x="280" y="105" width="400" height="60" rx="12" fill="#1E293B" stroke="#8B5CF6" stroke-width="2.5"/>
+  <text x="480" y="132" text-anchor="middle" font-size="18" font-weight="bold" fill="#A78BFA">API 网关（API Gateway）</text>
+  <text x="480" y="154" text-anchor="middle" font-size="12" fill="#C4B5FD">Spring Cloud Gateway · 路由 · 鉴权 · 限流 · 熔断</text>
+
+  <!-- 客户端请求 -->
+  <path d="M480,85 L480,103" stroke="#64748B" stroke-width="2" marker-end="url(#arrowMS)"/>
+  <text x="520" y="97" text-anchor="start" font-size="11" fill="#94A3B8">客户端请求</text>
+
+  <!-- 网关到服务 -->
+  <path d="M480,165 L480,190" stroke="#8B5CF6" stroke-width="2.5" marker-end="url(#arrowMSPurple)"/>
+
+  <!-- ===== 服务注册中心 ===== -->
+  <rect x="340" y="195" width="280" height="54" rx="27" fill="#1E293B" stroke="#F59E0B" stroke-width="2"/>
+  <text x="480" y="222" text-anchor="middle" font-size="15" font-weight="bold" fill="#FBBF24">服务注册中心（Nacos）</text>
+  <text x="480" y="242" text-anchor="middle" font-size="11" fill="#FDE68A">注册 · 发现 · 健康检查</text>
+
+  <!-- 注册中心到微服务 -->
+  <path d="M480,249 L480,270" stroke="#64748B" stroke-width="2" marker-end="url(#arrowMS)"/>
+
+  <!-- ===== 微服务层 ===== -->
+  <rect x="55" y="278" width="850" height="300" rx="14" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="480" y="306" text-anchor="middle" font-size="16" font-weight="bold" fill="#E2E8F0">微服务层（Microservices）</text>
+
+  <!-- 服务网格 -->
+  <!-- User Service -->
+  <rect x="75" y="320" width="190" height="100" rx="12" fill="#14532D" stroke="#22C55E" stroke-width="2"/>
+  <text x="170" y="350" text-anchor="middle" font-size="15" font-weight="bold" fill="#86EFAC">用户服务</text>
+  <text x="170" y="372" text-anchor="middle" font-size="11" fill="#A7F3D0">User Service</text>
+  <text x="170" y="394" text-anchor="middle" font-size="11" fill="#6EE7B7">注册 · 登录 · 用户信息</text>
+  <text x="170" y="412" text-anchor="middle" font-size="10" fill="#34D399">MySQL + Redis</text>
+
+  <!-- Product Service -->
+  <rect x="280" y="320" width="190" height="100" rx="12" fill="#1E3A8A" stroke="#3B82F6" stroke-width="2"/>
+  <text x="375" y="350" text-anchor="middle" font-size="15" font-weight="bold" fill="#93C5FD">商品服务</text>
+  <text x="375" y="372" text-anchor="middle" font-size="11" fill="#BFDBFE">Product Service</text>
+  <text x="375" y="394" text-anchor="middle" font-size="11" fill="#93C5FD">商品 · 分类 · 库存</text>
+  <text x="375" y="412" text-anchor="middle" font-size="10" fill="#60A5FA">MySQL + ES</text>
+
+  <!-- Order Service -->
+  <rect x="485" y="320" width="190" height="100" rx="12" fill="#7C2D12" stroke="#FB923C" stroke-width="2"/>
+  <text x="580" y="350" text-anchor="middle" font-size="15" font-weight="bold" fill="#FDBA74">订单服务</text>
+  <text x="580" y="372" text-anchor="middle" font-size="11" fill="#FED7AA">Order Service</text>
+  <text x="580" y="394" text-anchor="middle" font-size="11" fill="#FDBA74">下单 · 状态 · 超时</text>
+  <text x="580" y="412" text-anchor="middle" font-size="10" fill="#FBBF24">MySQL + RocketMQ</text>
+
+  <!-- Payment Service -->
+  <rect x="690" y="320" width="190" height="100" rx="12" fill="#581C87" stroke="#A855F7" stroke-width="2"/>
+  <text x="785" y="350" text-anchor="middle" font-size="15" font-weight="bold" fill="#D8B4FE">支付服务</text>
+  <text x="785" y="372" text-anchor="middle" font-size="11" fill="#E9D5FF">Payment Service</text>
+  <text x="785" y="394" text-anchor="middle" font-size="11" fill="#D8B4FE">支付 · 退款 · 账单</text>
+  <text x="785" y="412" text-anchor="middle" font-size="10" fill="#C084FC">MySQL + 第三方对接</text>
+
+  <!-- 微服务间通信 -->
+  <path d="M265,370 L278,370" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowMS)"/>
+  <path d="M470,370 L483,370" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowMS)"/>
+  <path d="M675,370 L688,370" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrowMS)"/>
+
+  <!-- 服务间通信标注 -->
+  <text x="272" y="362" text-anchor="middle" font-size="9" fill="#64748B">Feign</text>
+  <text x="477" y="362" text-anchor="middle" font-size="9" fill="#64748B">Feign</text>
+  <text x="682" y="362" text-anchor="middle" font-size="9" fill="#64748B">Feign</text>
+
+  <!-- 配置中心 -->
+  <rect x="75" y="440" width="190" height="50" rx="10" fill="#1E293B" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="170" y="462" text-anchor="middle" font-size="12" font-weight="bold" fill="#7DD3FC">配置中心</text>
+  <text x="170" y="480" text-anchor="middle" font-size="10" fill="#94A3B8">Nacos Config</text>
+
+  <!-- 消息队列 -->
+  <rect x="280" y="440" width="190" height="50" rx="10" fill="#1E293B" stroke="#D62229" stroke-width="1.5"/>
+  <text x="375" y="462" text-anchor="middle" font-size="12" font-weight="bold" fill="#F87171">消息队列</text>
+  <text x="375" y="480" text-anchor="middle" font-size="10" fill="#94A3B8">RocketMQ</text>
+
+  <!-- 分布式追踪 -->
+  <rect x="485" y="440" width="190" height="50" rx="10" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="580" y="462" text-anchor="middle" font-size="12" font-weight="bold" fill="#6EE7B7">分布式追踪</text>
+  <text x="580" y="480" text-anchor="middle" font-size="10" fill="#94A3B8">SkyWalking</text>
+
+  <!-- 监控 -->
+  <rect x="690" y="440" width="190" height="50" rx="10" fill="#1E293B" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="785" y="462" text-anchor="middle" font-size="12" font-weight="bold" fill="#FDE68A">监控告警</text>
+  <text x="785" y="480" text-anchor="middle" font-size="10" fill="#94A3B8">Prometheus + Grafana</text>
+
+  <!-- 连接到微服务 -->
+  <path d="M170,420 L170,438" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrowMS)"/>
+  <path d="M375,420 L375,438" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrowMS)"/>
+  <path d="M580,420 L580,438" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrowMS)"/>
+  <path d="M785,420 L785,438" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrowMS)"/>
+
+  <!-- ===== 基础设施层 ===== -->
+  <rect x="55" y="595" width="850" height="100" rx="14" fill="#0F172A" stroke="#475569" stroke-width="1.5"/>
+  <text x="480" y="622" text-anchor="middle" font-size="14" font-weight="bold" fill="#94A3B8">基础设施层</text>
+
+  <rect x="75" y="636" width="120" height="44" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="135" y="660" text-anchor="middle" font-size="12" fill="#CBD5E1">MySQL 主从</text>
+
+  <rect x="210" y="636" width="120" height="44" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="270" y="660" text-anchor="middle" font-size="12" fill="#CBD5E1">Redis 集群</text>
+
+  <rect x="345" y="636" width="120" height="44" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="405" y="660" text-anchor="middle" font-size="12" fill="#CBD5E1">Elasticsearch</text>
+
+  <rect x="480" y="636" width="120" height="44" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="540" y="660" text-anchor="middle" font-size="12" fill="#CBD5E1">Sentinel</text>
+
+  <rect x="615" y="636" width="120" height="44" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="675" y="660" text-anchor="middle" font-size="12" fill="#CBD5E1">Docker/K8s</text>
+
+  <rect x="750" y="636" width="135" height="44" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1"/>
+  <text x="817" y="660" text-anchor="middle" font-size="12" fill="#CBD5E1">CI/CD Pipeline</text>
+
+  <!-- ===== 图例 ===== -->
+  <rect x="55" y="710" width="850" height="50" rx="10" fill="#0F172A" stroke="#475569" stroke-width="1"/>
+  <text x="480" y="738" text-anchor="middle" font-size="12" fill="#64748B">微服务通信：REST / Feign（同步） · RocketMQ（异步） · gRPC（高性能） · 服务网格（Istio Sidecar）</text>
+</svg>
