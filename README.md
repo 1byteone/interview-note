@@ -64,6 +64,9 @@ interview-note/
 │   └── mock-interview/          # 模拟面试
 │       ├── interview-agent/     # 面试 Agent
 │       └── evaluation/          # 评估系统
+├── docs/                        # 文档库
+│   └── tech-stack-analysis/     # 项目技术栈深度剖析
+│       └── mall-ai-search/      # mall-ai-search 智能搜索项目（11篇系列）
 └── projects/                    # 项目实战
     ├── java-projects/           # Java 项目
     │   ├── ecommerce/           # 电商系统
@@ -135,6 +138,28 @@ Java 核心 → JVM → 并发编程 → Spring → Spring Boot → Spring Cloud
 ```
 Python → LLM 基础 → RAG → Agent → Agentic → LangGraph → Harness → 项目实战
 ```
+
+## 📖 项目技术栈深度剖析系列
+
+从真实项目出发，逐层剖析技术栈——从基础到进阶再到项目实战，每篇附 Java/Spring 生态对照。
+
+### mall-ai-search（智能搜索项目）
+
+> 一次 AI 搜索请求的完整链路：Vue3 → FastAPI → LangChain Agent → RedisVL → LLM 推荐
+
+| # | 文档 | 核心栈 | 对照 Spring |
+|---|------|--------|-------------|
+| 00 | [全景导读](docs/tech-stack-analysis/mall-ai-search/00-OVERVIEW.md) | 架构总览 | — |
+| 01 | [前端技术栈](docs/tech-stack-analysis/mall-ai-search/01-FRONTEND.md) | Vue3 + Axios + Promise.allSettled | — |
+| 02 | [FastAPI 网关层](docs/tech-stack-analysis/mall-ai-search/02-API-GATEWAY.md) | FastAPI + Pydantic v2 | Spring Boot |
+| 03 | [多 Provider 配置体系](docs/tech-stack-analysis/mall-ai-search/03-CONFIG-MULTI-PROVIDER.md) | pydantic-settings + 策略模式 | @ConfigurationProperties |
+| 04 | [LLM 服务商对接](docs/tech-stack-analysis/mall-ai-search/04-LLM-PROVIDER.md) | 阿里云通义千问 + Agnes AI | Spring AI ChatClient |
+| 05 | [Embedding 向量化](docs/tech-stack-analysis/mall-ai-search/05-EMBEDDING.md) | BGE-M3 + SiliconFlow | Spring AI EmbeddingClient |
+| 06 | [RedisVL 向量存储](docs/tech-stack-analysis/mall-ai-search/06-VECTOR-STORE.md) | Redis Stack + HNSW | Spring Data Redis |
+| 07 | [LangChain Agent 机制](docs/tech-stack-analysis/mall-ai-search/07-LANGCHAIN-AGENT.md) | create_agent + Tool | 工作流引擎 |
+| 08 | [LangGraph 记忆与状态](docs/tech-stack-analysis/mall-ai-search/08-LANGGRAPH-MEMORY.md) | Checkpointer + InMemorySaver | 会话管理 |
+| 09 | [数据同步链路](docs/tech-stack-analysis/mall-ai-search/09-DATA-SYNC.md) | MySQL → 切片 → Embedding → RedisVL | JPA + ETL |
+| 10 | [架构复盘与面试题集](docs/tech-stack-analysis/mall-ai-search/10-ARCHITECTURE.md) | 20+ 面试题 + 架构模式 | 跨栈对比表 |
 
 ## 🔗 推荐资源
 
