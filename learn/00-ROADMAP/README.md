@@ -126,24 +126,24 @@ Java 核心面试 → Spring Boot 面试 → MySQL 面试 → Redis 面试 → R
 
 > 💡 Phase 2 的实战深度已有 `docs/tech-stack-analysis/mall-micro-cloud/`（13 篇）和 `docs/tech-stack-analysis/mall-exercise/`（7 篇）覆盖，learn 中的脚手架提供理论基础。
 
-### Phase 3：AI 核心组（4 栈）
+### Phase 3：AI 核心组（5 栈）— 深度关联 ✅
 
 | 技术栈 | 核心目标 | 商城产出 | 状态 |
 |--------|----------|----------|------|
-| 10 Docker | 镜像、容器、Compose | 容器化商城服务 | 脚手架完成，15 文件 |
-| 05 FastAPI | 异步接口、Pydantic 校验 | 搭建 AI 网关服务 | 脚手架完成，16 文件 |
-| 14 LangChain | Chain、Agent、Memory | 智能客服 Agent | 脚手架完成，17 文件 |
-| 15 RAG | 文档加载、向量存储、检索 | 商品知识库问答 | 脚手架完成，17 文件 |
-| 16 OpenAI API | Chat、Embedding、Function Call | LLM 接入 | 脚手架完成，17 文件 |
+| 10 Docker | 镜像、容器、Compose | 容器化商城服务 | ✅ 15 文件 + 项目剖析 3 篇 |
+| 05 FastAPI | 异步接口、Pydantic 校验 | 搭建 AI 网关服务 | ✅ 16 文件 + 项目剖析 3 篇 |
+| 14 LangChain | Chain、Agent、Memory | 智能客服 Agent | ✅ 17 文件 + 项目剖析 4 篇 |
+| 15 RAG | 文档加载、向量存储、检索 | 商品知识库问答 | ✅ 17 文件 + 项目剖析 4 篇 |
+| 16 OpenAI API | Chat、Embedding、Function Call | LLM 接入 | ✅ 17 文件 + 项目剖析 4 篇 |
 
-> 💡 Phase 3 的实战深度已有 `docs/tech-stack-analysis/mall-ai-search/`（11 篇）和 `docs/tech-stack-analysis/text2sql/`（7 篇）覆盖。
+> 💡 Phase 3 的实战深度由 `docs/tech-stack-analysis/mall-ai-search/`（11 篇）和 `text2sql/`（7 篇）覆盖，learn 中的每个 README 已添加双向交叉引用。
 
-### Phase 4：基础设施组（2 栈 + 贯穿项目）
+### Phase 4：基础设施组（2 栈 + 贯穿项目）— 深度关联 ✅
 
 | 技术栈 | 核心目标 | 商城产出 | 状态 |
 |--------|----------|----------|------|
-| 12 基础设施 | CI/CD、监控、网关 | 全链路部署 | 脚手架完成，17 文件 |
-| 贯穿项目 | 全栈集成、压测、优化 | 完成商城交付 | 4 个项目剖析完成（38 篇） |
+| 12 基础设施 | CI/CD、监控、网关 | 全链路部署 | ✅ 17 文件 + 项目剖析 4 篇 |
+| 贯穿项目 | 全栈集成、压测、优化 | 完成商城交付 | ✅ 4 个项目剖析完成（38 篇） |
 
 ---
 

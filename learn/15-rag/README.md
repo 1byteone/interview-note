@@ -143,3 +143,16 @@ mall-micro-cloud 是一个基于微服务架构的 AI 商城系统，RAG 在其�
 **相关技术栈：**
 - [14-LangChain](../14-langchain/README.md) — RAG 系统基于 LangChain 的文档加载、向量存储和链式调用
 - [09-Elasticsearch](../09-elasticsearch/README.md) — ES 可作为 RAG 系统的向量存储与 BM25 检索引擎
+
+---
+
+## 项目剖析深度参考
+
+本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
+
+| 本 learn 核心内容 | 对应项目剖析 | 重点看什么 |
+|------------------|------------|-----------|
+| 混合检索（向量+关键词） | [03-RAG-RETRIEVAL.md](../../docs/tech-stack-analysis/text2sql/03-RAG-RETRIEVAL.md) | `RAGRetrievalService` 混合检索 + 融合排序 |
+| Embedding + 向量存储 | [02-EMBEDDING-VECTOR.md](../../docs/tech-stack-analysis/text2sql/02-EMBEDDING-VECTOR.md) | Spring AI `EmbeddingModel` + `VectorStore` |
+| Prompt 工程 | [04-PROMPT-SCHEMA.md](../../docs/tech-stack-analysis/text2sql/04-PROMPT-SCHEMA.md) | M-Schema + Few-shot + 结构化输出 |
+| 向量检索 RedisVL | [06-VECTOR-STORE.md](../../docs/tech-stack-analysis/mall-ai-search/06-VECTOR-STORE.md) | Redis Stack HNSW + Embedding 模型 |

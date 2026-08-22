@@ -103,3 +103,16 @@
 **相关技术栈：**
 - [14-LangChain](../14-langchain/README.md) — LangChain 封装 OpenAI API 提供链式调用与工具编排
 - [05-FastAPI](../05-fastapi/README.md) — FastAPI 作为 AI 网关路由 OpenAI 模型调用请求
+
+---
+
+## 项目剖析深度参考
+
+本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
+
+| 本 learn 核心内容 | 对应项目剖析 | 重点看什么 |
+|------------------|------------|-----------|
+| OpenAI 兼容协议接入 | [04-LLM-PROVIDER.md](../../docs/tech-stack-analysis/mall-ai-search/04-LLM-PROVIDER.md) | 阿里云通义千问 + Agnes AI + `enable_thinking=False` |
+| Embedding 多供应商 | [05-EMBEDDING.md](../../docs/tech-stack-analysis/mall-ai-search/05-EMBEDDING.md) | BGE-M3 + SiliconFlow + OpenRouter 切换 |
+| Structured Output | [07-LANGCHAIN-AGENT.md](../../docs/tech-stack-analysis/mall-ai-search/07-LANGCHAIN-AGENT.md) | `response_format=PydanticModel` 结构化输出 |
+| SQL 验证器 | [05-SQL-VALIDATOR.md](../../docs/tech-stack-analysis/text2sql/05-SQL-VALIDATOR.md) | 四层验证：语法/安全/语义/性能 |

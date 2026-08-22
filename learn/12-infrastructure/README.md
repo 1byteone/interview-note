@@ -65,3 +65,16 @@ AI 商城是一个典型的微服务架构系统，包含用户服务、商品�
 **相关技术栈：**
 - [03-Spring Boot](../03-spring-boot/README.md) — 基础设施的网关、限流、监控直接服务 Spring Boot 微服务
 - [10-Docker](../10-docker/README.md) — Docker 容器化是基础设施 CI/CD 流水线的核心载体
+
+---
+
+## 项目剖析深度参考
+
+本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
+
+| 本 learn 核心内容 | 对应项目剖析 | 重点看什么 |
+|------------------|------------|-----------|
+| Nacos + Gateway 路由鉴权 | [01-NACOS-GATEWAY.md](../../docs/tech-stack-analysis/mall-micro-cloud/01-NACOS-GATEWAY.md) | `AuthGatewayFilterFactory` + `RtGlobalFilter` |
+| Sentinel 限流 + Seata 事务 | [04-ORDER-SEATA.md](../../docs/tech-stack-analysis/mall-micro-cloud/04-ORDER-SEATA.md) | `@GlobalTransactional` + Feign 分布式事务 |
+| 微服务部署架构 | [00-OVERVIEW.md](../../docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) | 12 个微服务的职责边界与路由配置 |
+| ElasticJob 定时任务 | [11-SCHEDULER-BLOOMFILTER.md](../../docs/tech-stack-analysis/mall-micro-cloud/11-SCHEDULER-BLOOMFILTER.md) | `LoadSeckillProductTask` / `PayCheckTask` |

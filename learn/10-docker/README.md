@@ -125,3 +125,15 @@ AI 商城（mall-micro-cloud）是一个完整的微服务架构，所有服务�
 
 **相关技术栈：**
 - [12-基础设施](../12-infrastructure/README.md) — Docker 是基础设施 CI/CD 和容器编排的核心依赖
+
+---
+
+## 项目剖析深度参考
+
+本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
+
+| 本 learn 核心内容 | 对应项目剖析 | 重点看什么 |
+|------------------|------------|-----------|
+| 微服务容器化 | [00-OVERVIEW.md](../../docs/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) | 12 个微服务的 Docker Compose 编排 |
+| Docker 部署 Python AI | [02-API-GATEWAY.md](../../docs/tech-stack-analysis/mall-ai-search/02-API-GATEWAY.md) | FastAPI 服务容器化 |
+| ElasticJob 定时任务 | [11-SCHEDULER-BLOOMFILTER.md](../../docs/tech-stack-analysis/mall-micro-cloud/11-SCHEDULER-BLOOMFILTER.md) | Docker 中部署 ElasticJob 调度器 |
