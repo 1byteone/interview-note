@@ -1,0 +1,139 @@
+# Docker — 容器化 · 镜像优化 · 编排 · 云原生
+
+> 本模块是 16 个技术栈学习体系中的**第十个技术栈**，也是阶段四（基础设施与容器化）的核心内容。
+> Docker 是现代软件交付的"事实标准"，从开发环境到生产部署，容器化已成为必选项。
+
+---
+
+## 什么是 Docker？
+
+Docker 是一个**容器化平台**，核心价值在于：
+
+- **环境一致性**：消除"在我机器上能跑"的问题，开发/测试/生产环境完全一致
+- **轻量级**：相比虚拟机，容器共享宿主机内核，启动毫秒级，资源开销极小
+- **镜像封装**：应用 + 依赖 + 配置打包成镜像，一次构建，到处运行
+- **编排能力**：Docker Compose 管理多容器，Docker Swarm/K8s 管理集群
+- **生态丰富**：Docker Hub 上有数百万个镜像，几乎覆盖所有中间件
+
+一句话概括：**Docker 用容器技术让应用的构建、交付、运行变得标准化和可移植。**
+
+---
+
+## 学习路径图
+
+```
+┌──────────────────────────────────────────────────────────────────────────────────────────────┐
+│               10 Docker · 技术栈总览 (本文档)                                                    │
+└──────────────────────────────────────────────────────────────────────────────────────────────┘
+                                         │
+            ┌────────────────────────────┼────────────────────────────────┐
+            ▼                            ▼                                ▼
+┌───────────────────────┐   ┌───────────────────────┐   ┌───────────────────────────┐
+│  01-basics  👶        │   │  02-core  👶→🎯        │   │  03-advanced  🎯          │
+│  ├─ 快速入门           │   │  ├─ 镜像分层与网络      │   │  ├─ Swarm 与 K8s          │
+│  └─ Dockerfile 编写    │   │  └─ Docker Compose     │   │  ├─ CI/CD 与镜像仓库      │
+│                       │   │                       │   │  └─ 安全与可观测性         │
+└───────────────────────┘   └───────────────────────┘   └───────────────────────────┘
+                                         │
+                                         ▼
+            ┌────────────────────────────────────────────────────────────────┐
+            │  04-projects  🎯 项目实战                                      │
+            │  ├─ mall-integration    AI 商城全服务容器化部署                  │
+            │  └─ mini-blog           三层应用容器化 (Nginx + 后端 + MySQL)   │
+            └────────────────────────────────────────────────────────────────┘
+                                         │
+                                         ▼
+            ┌────────────────────────────────────────────────────────────────┐
+            │  05-interview  🎯 面试冲刺                                     │
+            │  ├─ quick-revision  速记版 (25 个高频考点)                     │
+            │  ├─ deep-dive       深挖题 (容器运行时原理)                    │
+            │  ├─ scenario        场景题 (故障排查)                          │
+            │  └─ coding          代码题 (Dockerfile/Compose)               │
+            └────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 前置知识
+
+| 前置要求 | 说明 |
+|---------|------|
+| Linux 基础 | 熟悉文件系统、进程管理、网络配置（详见 11-linux 模块） |
+| 命令行基础 | 熟悉 Shell 操作、管道、重定向 |
+| 网络基础 | 理解 IP 地址、端口、DNS 的基本概念 |
+| 应用部署 | 了解如何部署 Java/Python 应用 |
+
+---
+
+## 面试高频考点一览表
+
+| 考点 | 重要度 | 频次 | 说明 |
+|------|--------|------|------|
+| 镜像分层原理 | ★★★★★ | 必问 | UnionFS/OverlayFS、写时复制、层复用 |
+| Dockerfile 优化 | ★★★★★ | 必问 | 多阶段构建、指令顺序、缓存利用 |
+| 容器网络模式 | ★★★★★ | 必问 | bridge/host/none/container 四种模式 |
+| Docker Compose | ★★★★☆ | 高频 | 服务编排、依赖管理、健康检查 |
+| 数据卷管理 | ★★★★☆ | 高频 | Volume vs Bind Mount、数据持久化 |
+| 容器运行时原理 | ★★★★☆ | 高频 | Namespace 隔离、Cgroup 资源限制 |
+| 多阶段构建 | ★★★★☆ | 高频 | 构建与运行环境分离、镜像瘦身 |
+| 资源限制 | ★★★☆☆ | 中频 | CPU/Memory 限制、OOM 处理 |
+| 容器安全 | ★★★☆☆ | 中频 | 非 root 运行、镜像扫描、Seccomp |
+| K8s 核心概念 | ★★★★☆ | 高频 | Pod/Deployment/Service/Ingress |
+| CI/CD 集成 | ★★★☆☆ | 中频 | GitLab CI / GitHub Actions 容器化 |
+| 日志与监控 | ★★★☆☆ | 中频 | EFK 日志收集、cAdvisor + Prometheus |
+
+---
+
+## Docker 在 AI 商城的角色
+
+AI 商城（mall-micro-cloud）是一个完整的微服务架构，所有服务均通过 Docker 容器化部署：
+
+| 服务 | 镜像 | 基础镜像 | 端口 |
+|------|------|---------|------|
+| 网关服务 | mall-gateway | eclipse-temurin:17-jre-alpine | 8080 |
+| 商品服务 | mall-product-service | eclipse-temurin:17-jre-alpine | 8081 |
+| 订单服务 | mall-order-service | eclipse-temurin:17-jre-alpine | 8082 |
+| 秒杀服务 | mall-seckill-service | eclipse-temurin:17-jre-alpine | 8083 |
+| 用户服务 | mall-user-service | eclipse-temurin:17-jre-alpine | 8084 |
+| 搜索服务 | mall-search-service | eclipse-temurin:17-jre-alpine | 8085 |
+| AI 服务 | mall-ai-service | python:3.11-slim | 8086 |
+| Nacos | nacos/nacos-server:v2.2.3 | - | 8848 |
+| Redis | redis:7-alpine | - | 6379 |
+| MySQL | mysql:8.0 | - | 3306 |
+| RocketMQ | apache/rocketmq:5.1.4 | - | 9876 |
+| Elasticsearch | elasticsearch:8.11.0 | - | 9200 |
+
+所有服务通过 Docker Compose 统一编排，实现**一键启动整个微服务集群**，开发/测试/生产环境完全一致。
+
+---
+
+## 三个贯穿全文的核心思想
+
+1. **镜像即交付**：镜像不仅是运行环境，更是应用的完整交付物，包含代码、依赖、配置、运行时。
+2. **容器即进程**：容器不是虚拟机，它是一个隔离的用户空间进程，理解这一点才能用好 Docker。
+3. **编排即管理**：单容器是基础，多容器编排（Compose/K8s）才是生产环境的核心能力。
+
+> 从快速入门开始：安装 Docker，运行你的第一个容器。
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← Elasticsearch](../09-elasticsearch/README.md) | [📚 总目录](../../README-learning.md) | [Linux →](../11-linux/README.md) |
+
+**相关技术栈：**
+- [12-基础设施](../12-infrastructure/README.md) — Docker 是基础设施 CI/CD 和容器编排的核心依赖
+
+---
+
+## 项目剖析深度参考
+
+本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
+
+| 本 learn 核心内容 | 对应项目剖析 | 重点看什么 |
+|------------------|------------|-----------|
+| 微服务容器化 | [00-OVERVIEW.md](../../../5-research/tech-stack-analysis/mall-micro-cloud/00-OVERVIEW.md) | 12 个微服务的 Docker Compose 编排 |
+| Docker 部署 Python AI | [02-API-GATEWAY.md](../../../5-research/tech-stack-analysis/mall-ai-search/02-API-GATEWAY.md) | FastAPI 服务容器化 |
+| ElasticJob 定时任务 | [11-SCHEDULER-BLOOMFILTER.md](../../../5-research/tech-stack-analysis/mall-micro-cloud/11-SCHEDULER-BLOOMFILTER.md) | Docker 中部署 ElasticJob 调度器 |

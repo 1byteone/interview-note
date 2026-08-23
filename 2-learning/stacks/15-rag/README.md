@@ -1,0 +1,158 @@
+# RAG — 检索增强 · 向量库 · 多路召回 · 评估
+
+> 面向 Python 后端开发者的 RAG 实战教程，覆盖检索增强生成全链路：文档分块、向量存储、混合检索、重排序、幻觉控制、评估与生产化。
+> 场景项目：AI 智能商城（mall-micro-cloud 知识库问答 + 商品检索 + 客服增强）
+
+---
+
+## 学习路径图
+
+```
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│                          RAG 学习路径（双轨制）                                          │
+├──────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                      │
+│  01-basics 👶                                                                       │
+│  ┌──────────────────────────┐  ┌──────────────────────────────────────┐              │
+│  │ RAG 快速入门               │  │ Embedding 与向量数据库               │              │
+│  │ 检索+生成核心理念           │  │ OpenAI/BGE/国产 Embedding 模型       │              │
+│  │ 朴素 RAG 流程              │  │ Chroma/Milvus/FAISS/Qdrant         │              │
+│  │ 最小案例：文档问答          │  │ 向量相似度 · 最小案例               │              │
+│  └────────────┬─────────────┘  └──────────────────┬───────────────────┘              │
+│               │                                    │                                  │
+│               ▼                                    ▼                                  │
+│  02-core 👶→🎯                                                                    │
+│  ┌──────────────────────────┐  ┌──────────────────────────────┐  ┌──────────────┐   │
+│  │ 文档分块策略               │  │ 检索策略                      │  │ 查询转换      │   │
+│  │ 固定大小/语义/递归分块      │  │ 向量检索 · BM25 · 混合检索    │  │ HyDE 查询重写 │   │
+│  │ 分块大小与重叠             │  │ RRF 融合 · Reranker 精排     │  │ Multi-Query  │   │
+│  │ 元数据保留 · PDF 实战      │  │ 证据门控 · 领域守卫           │  │ 查询路由     │   │
+│  └────────────┬─────────────┘  └──────────────┬───────────────┘  └──────┬───────┘   │
+│               │                                │                         │           │
+│               ▼                                ▼                         ▼           │
+│  03-advanced 🎯                                                                      │
+│  ┌──────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐                   │
+│  │ Graph    │ │ 幻觉控制      │ │ 高级 RAG      │ │ 评估与生产化  │                   │
+│  │ RAG      │ │ 证据门控     │ │ Self-RAG     │ │ RAGAS 评估   │                   │
+│  │ 知识图谱  │ │ 引用溯源     │ │ Corrective   │ │ 延迟优化     │                   │
+│  │ Neo4j    │ │ 领域守卫     │ │ Adaptive RAG │ │ 缓存与监控   │                   │
+│  │ 向量+图  │ │ 幻觉检测     │ │ Agentic RAG  │ │ 在线评估     │                   │
+│  └────┬─────┘ └──────┬──────┘ └──────┬───────┘ └──────┬───────┘                   │
+│       │              │               │                 │                             │
+│       ▼              ▼               ▼                 ▼                             │
+│  04-projects 🎯                                                                      │
+│  ┌──────────────────────────┐  ┌──────────────────────────────────┐                  │
+│  │ AI 商城集成               │  │ 迷你知识库 RAG 系统              │                  │
+│  │ 知识库架构 · 商品问答      │  │ 文档分块+向量存储+检索+生成      │                  │
+│  │ 售后检索 · 客服增强       │  │ LangChain + Chroma + LLM       │                  │
+│  └──────────────────────────┘  └──────────────────────────────────┘                  │
+│                                                                                      │
+│  05-interview 📝                                                                     │
+│  ┌───────────────────────────────────────────────────────────────────────────────┐   │
+│  │ 速记 · 深挖 · 场景 · 代码                                                       │   │
+│  └───────────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                      │
+└──────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 前置知识
+
+- **Python**：RAG 开发生态（LangChain, LlamaIndex）基于 Python，需掌握 Python 基础语法
+- **LangChain**：了解 LangChain 的核心组件（Chain, Document Loader, Text Splitter, Vector Store）
+- **LLM 基础**：了解大语言模型的基本原理（Prompt Engineering, Temperature 等）
+- **Elasticsearch**：BM25 检索依赖 ES 的全文搜索能力（可参考 09-elasticsearch 教程）
+
+建议先完成本系列的 **Python** 教程（04-python）和 **LangChain** 教程（14-langchain）。
+
+---
+
+## 面试高频考点一览表
+
+| 考点 | 重要程度 | 频次 | 说明 | 章节 |
+|------|----------|------|------|------|
+| RAG 核心理念与流程 | ⭐⭐⭐⭐⭐ | 高频 | 检索+生成，朴素 RAG 的检索-增强-生成三步 | 01-basics/01 |
+| Embedding 模型对比 | ⭐⭐⭐⭐⭐ | 高频 | OpenAI/BGE/text2vec/国产模型，双编码器 vs 交叉编码器 | 01-basics/02 |
+| 文档分块策略 | ⭐⭐⭐⭐ | 中频 | 固定大小/语义/递归分块，分块大小与重叠参数 | 02-core/01 |
+| 向量检索与相似度计算 | ⭐⭐⭐⭐⭐ | 高频 | 余弦相似度/内积/欧氏距离，HNSW/IVF 索引 | 02-core/02 |
+| 混合检索与 RRF 融合 | ⭐⭐⭐⭐⭐ | 高频 | 向量+BM25 多路召回，RRF 公式与实现 | 02-core/02 |
+| Reranker 精排原理 | ⭐⭐⭐⭐ | 中频 | 双编码器 vs 交叉编码器，BGE-Reranker | 02-core/02 |
+| 查询转换技巧 | ⭐⭐⭐ | 中频 | HyDE、Multi-Query、查询分解、查询路由 | 02-core/03 |
+| 知识图谱 + RAG | ⭐⭐⭐⭐ | 中频 | GraphRAG、实体提取、图检索+向量检索融合 | 03-advanced/01 |
+| 幻觉控制与证据门控 | ⭐⭐⭐⭐⭐ | 高频 | 幻觉来源、证据分级、领域守卫、引用溯源 | 03-advanced/02 |
+| 高级 RAG 模式 | ⭐⭐⭐ | 低频 | Self-RAG、Corrective RAG、Adaptive RAG、Agentic RAG | 03-advanced/03 |
+| RAGAS 评估框架 | ⭐⭐⭐⭐ | 中频 | Faithfulness/Relevancy/Precision/Recall 指标 | 03-advanced/04 |
+| RAG 生产化挑战 | ⭐⭐⭐⭐ | 中频 | 延迟优化、缓存策略、监控告警 | 03-advanced/04 |
+
+---
+
+## RAG 在 AI 商城的角色
+
+mall-micro-cloud 是一个基于微服务架构的 AI 商城系统，RAG 在其中承担**知识检索与智能问答**核心角色：
+
+| 场景 | 技术方案 | 说明 |
+|------|----------|------|
+| **商品知识库问答** | 文档分块 + 向量检索 + LLM 生成 | 将商品文档/规格书分块存入向量库，用户提问时检索相关文档片段生成回答 |
+| **售后政策检索** | 混合检索 + 证据门控 | 用户咨询退换货/保修政策，通过 BM25 精确匹配+向量语义检索定位政策条款 |
+| **客服对话增强** | 多轮对话 + 向量检索 | 客服系统实时检索历史工单和 FAQ，辅助客服快速回复 |
+| **商品推荐解释** | 知识图谱 + 向量检索 | 结合知识图谱的关系推理与向量检索的语义相似，生成推荐理由 |
+| **内部文档检索** | RAG 全文检索 | 技术文档、API 手册、内部 wiki 的智能检索与问答 |
+
+---
+
+## 目录导航
+
+| 章节 | 内容 | 难度 |
+|------|------|------|
+| 01-basics/01-quick-start.md | RAG 核心理念、朴素 RAG 流程、最小案例：文档问答 | 👶 |
+| 01-basics/02-embedding-and-vector-store.md | Embedding 模型、向量数据库、相似度计算、商品文档向量化 | 👶 |
+| 02-core/01-document-chunking.md | 分块策略、分块大小与重叠、元数据保留、PDF 实战 | 👶→🎯 |
+| 02-core/02-retrieval-strategies.md | 向量检索、BM25、混合检索、RRF 融合、Reranker 精排 | 👶→🎯 |
+| 02-core/03-query-transformation.md | 查询重写、查询分解、查询路由、复杂问题分解实战 | 🎯 |
+| 03-advanced/01-graph-rag.md | 知识图谱 RAG、实体提取、Neo4j + 向量检索实战 | 🎯 |
+| 03-advanced/02-hallucination-control.md | 幻觉来源、证据门控、引用溯源、领域守卫、幻觉检测 | 🎯 |
+| 03-advanced/03-advanced-rag-patterns.md | Self-RAG、Corrective RAG、Adaptive RAG、Agentic RAG | 🎯 |
+| 03-advanced/04-evaluation-and-production.md | RAGAS 评估框架、指标详解、生产化关键点 | 🎯 |
+| 04-projects/mall-integration.md | AI 商城知识库 RAG 架构、商品问答、售后检索、客服增强 | 🎯 |
+| 04-projects/mini-blog/README.md | 迷你项目：构建个人知识库 RAG 系统 | 🎯 |
+| 05-interview/ | 面试四件套（速记/深挖/场景/代码） | 📝 |
+| resources.md | 推荐资源 | - |
+
+---
+
+## 学习建议
+
+- **初学者**：从 01-basics 开始，理解 RAG 核心理念，完成最小案例
+- **有经验者**：直接进入 02-core 掌握分块和检索策略，再进入 03-advanced 学习 Graph RAG 和幻觉控制
+- **面试冲刺**：优先掌握 RAG 流程、Embedding 模型对比、混合检索（RRF）、Reranker、幻觉控制
+- **动手实践**：每学完一个章节，在本地运行代码示例，最终完成迷你知识库项目
+
+---
+
+> 上一篇：[14-LangChain](../14-langchain/README.md) — LangChain 框架 · 链式调用 · 工具调用 · Agent
+
+---
+
+## 📖 导航
+
+| ← 上一篇 | 📚 目录 | 下一篇 → |
+|----------|---------|----------|
+| [← LangChain](../14-langchain/README.md) | [📚 总目录](../../README-learning.md) | [OpenAI →](../16-openai/README.md) |
+
+**相关技术栈：**
+- [14-LangChain](../14-langchain/README.md) — RAG 系统基于 LangChain 的文档加载、向量存储和链式调用
+- [09-Elasticsearch](../09-elasticsearch/README.md) — ES 可作为 RAG 系统的向量存储与 BM25 检索引擎
+
+---
+
+## 项目剖析深度参考
+
+本 learn 文档提供理论基础，以下 `docs/tech-stack-analysis/` 文档提供**真实项目中的落地代码**：
+
+| 本 learn 核心内容 | 对应项目剖析 | 重点看什么 |
+|------------------|------------|-----------|
+| 混合检索（向量+关键词） | [03-RAG-RETRIEVAL.md](../../../5-research/tech-stack-analysis/text2sql/03-RAG-RETRIEVAL.md) | `RAGRetrievalService` 混合检索 + 融合排序 |
+| Embedding + 向量存储 | [02-EMBEDDING-VECTOR.md](../../../5-research/tech-stack-analysis/text2sql/02-EMBEDDING-VECTOR.md) | Spring AI `EmbeddingModel` + `VectorStore` |
+| Prompt 工程 | [04-PROMPT-SCHEMA.md](../../../5-research/tech-stack-analysis/text2sql/04-PROMPT-SCHEMA.md) | M-Schema + Few-shot + 结构化输出 |
+| 向量检索 RedisVL | [06-VECTOR-STORE.md](../../../5-research/tech-stack-analysis/mall-ai-search/06-VECTOR-STORE.md) | Redis Stack HNSW + Embedding 模型 |
