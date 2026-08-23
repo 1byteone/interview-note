@@ -1,6 +1,6 @@
 # 📖 教程目录 — 从仓库导航到系统学习
 
-> **版本**: v1.0 | **更新**: 2026-08-23 | **教程总数**: 19 篇（覆盖 E01-E06 全六大生态）
+> **版本**: v1.1 | **更新**: 2026-08-23 | **教程总数**: 23 篇（覆盖 E01-E06 全六大生态）
 
 本目录是 [interview-note](../..) 仓库的教程中枢。与 [Guide 生态索引](../ecosystem-index.md) 的"知道有哪些仓库"不同，这里的教程解决"如何系统学习"的问题——每篇教程都是一篇完整的、可独立阅读的技术指南，覆盖从安装配置到生产部署的全链路。
 
@@ -42,8 +42,10 @@ Guide 生态索引（What）          Learn 技术栈（How 系统）
 | 2 | [Skills 开发实战](./e01-claude-code/02-skills-development.md) | 进阶 | SKILL.md、子代理、动态注入 | claude-code-ultimate-guide |
 | 3 | [MCP 集成与外部工具扩展](./e01-claude-code/03-mcp-integration.md) | 进阶 | MCP Server、工具协议、配置 | claude-code-ultimate-guide |
 | 4 | [Agent Teams 多 Agent 协作编排](./e01-claude-code/04-agent-teams.md) | 高级 | 多 Agent 编排、团队协作、任务协调 | claude-code-ultimate-guide |
+| 5 | [Hooks 自动化](./e01-claude-code/05-hooks-automation.md) | 高级 | 生命周期钩子、PreToolUse 守卫、自动化 | claude-code-ultimate-guide |
+| 6 | [Subagents 子代理与动态工作流](./e01-claude-code/06-subagents-and-workflows.md) | 高级 | 子代理隔离、.claude/agents、动态工作流 | claude-code-ultimate-guide |
 
-**学习路径**：① → ② → ③ → ④（顺序推荐，从入门到高级编排）
+**学习路径**：① → ② → ③ → ④（核心路径）｜ ⑤ → ⑥（进阶专题：确定性自动化与规模化委托）
 
 ---
 
@@ -112,8 +114,10 @@ Guide 生态索引（What）          Learn 技术栈（How 系统）
 | 1 | [Prompt Engineering 实战](./e06-general/01-prompt-engineering-guide.md) | 入门→进阶 | Zero-shot、Few-shot、CoT、ReAct、ToT、Context Engineering | Prompt-Engineering-Guide |
 | 2 | [AI Agent 设计模式](./e06-general/02-agent-design-patterns.md) | 进阶 | Reflection、Tool Use、Planning、Multi-agent、RAG、Memory、HITL | AgentGuide, ai-system-design-guide |
 | 3 | [生产级 AI Agent 系统设计](./e06-general/03-production-system-design.md) | 高级 | RAG 管线、推理优化、评估监控、成本、安全、扩展 | ai-system-design-guide, ai-agent-interview-guide |
+| 4 | [LangGraph 编排实战](./e06-general/04-langgraph-orchestration.md) | 进阶→高级 | StateGraph、多 Agent 架构、HITL、Checkpointing、LangSmith | AgentGuide |
+| 5 | [高级 RAG 实战](./e06-general/05-advanced-rag-systems.md) | 高级 | 混合检索、重排序、查询变换、Adaptive RAG、GraphRAG、评估 | ai-system-design-guide |
 
-**学习路径**：① → ② → ③（强烈推荐顺序，从基础理论到生产实战）
+**学习路径**：① → ② → ③（核心三篇）｜ ④（编排框架）与 ⑤（检索深度）为实战进阶，可与 ③ 并行
 
 ---
 
@@ -286,6 +290,8 @@ Week 2:
 | 开发自己的 Skill | [E01-02](./e01-claude-code/02-skills-development.md) |
 | 集成外部工具到 Agent | [E01-03](./e01-claude-code/03-mcp-integration.md) |
 | 多 Agent 协作编排 | [E01-04](./e01-claude-code/04-agent-teams.md) |
+| 在生命周期注入确定性逻辑 | [E01-05](./e01-claude-code/05-hooks-automation.md) |
+| 用子代理做规模化委托 | [E01-06](./e01-claude-code/06-subagents-and-workflows.md) |
 | 学习 Codex 的沙箱机制 | [E02-02](./e02-codex/02-agents-md-and-sandbox.md) |
 | 理解 Harness 工程范式 | [E03-01](./e03-dsh-harness/01-harness-engineering-principles.md) |
 | 开发 DSH 插件 | [E03-02](./e03-dsh-harness/02-dsh-plugin-development.md) |
@@ -299,6 +305,8 @@ Week 2:
 | 系统学习 Prompt Engineering | [E06-01](./e06-general/01-prompt-engineering-guide.md) |
 | 了解 Agent 的 7 种设计模式 | [E06-02](./e06-general/02-agent-design-patterns.md) |
 | 设计生产级 AI 系统 | [E06-03](./e06-general/03-production-system-design.md) |
+| 用 LangGraph 编排多 Agent | [E06-04](./e06-general/04-langgraph-orchestration.md) |
+| 构建生产级 RAG 管线 | [E06-05](./e06-general/05-advanced-rag-systems.md) |
 | 了解有哪些优质仓库 | [Guide 生态索引](../ecosystem-index.md) |
 | 找到技术栈学习路径 | [Guide-Learn 映射表](../guide-learn-mapping.md) |
 

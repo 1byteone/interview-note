@@ -59,16 +59,16 @@
 
 ### 分类目录
 
-新增 **[`tutorials/`](tutorials/README.md)** 深度教程目录（19 篇，覆盖 E01-E06 全六大生态），从仓库导航升级为可系统学习的教程内容体系：
+新增 **[`tutorials/`](tutorials/README.md)** 深度教程目录（23 篇，覆盖 E01-E06 全六大生态），从仓库导航升级为可系统学习的教程内容体系：
 
 | 生态 | 教程数 | 核心主题 |
 |------|--------|----------|
-| [E01 Claude Code](tutorials/e01-claude-code/) | 4 篇 | 安装基础 / Skills 开发 / MCP 集成 / Agent Teams |
+| [E01 Claude Code](tutorials/e01-claude-code/) | 6 篇 | 安装基础 / Skills 开发 / MCP 集成 / Agent Teams / Hooks 自动化 / Subagents |
 | [E02 Codex](tutorials/e02-codex/) | 3 篇 | 快速上手 / AGENTS.md+沙箱 / 高级工作流 |
 | [E03 DSH/Harness](tutorials/e03-dsh-harness/) | 3 篇 | Harness 原理 / 插件开发 / Cordis 运行时 |
 | [E04 Hermes/OpenClaw](tutorials/e04-hermes-openclaw/) | 3 篇 | 安装架构 / 技能记忆 / 零信任安全 |
 | [E05 MCP 协议](tutorials/e05-mcp/) | 3 篇 | 协议概念 / Server 开发 / Client 部署 |
-| [E06 通识与基础](tutorials/e06-general/) | 3 篇 | Prompt Engineering / 设计模式 / 生产系统 |
+| [E06 通识与基础](tutorials/e06-general/) | 5 篇 | Prompt Engineering / 设计模式 / 生产系统 / LangGraph 编排 / 高级 RAG |
 
 > 📖 教程目录详见 [`tutorials/README.md`](tutorials/README.md)
 
