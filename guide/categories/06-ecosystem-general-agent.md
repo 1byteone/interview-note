@@ -140,7 +140,7 @@ L1 理论基础
 
 ## 4. 生态内学习路径
 
-> 📖 配套教程：[E06 通识与基础教程系列](../tutorials/e06-general/)（5 篇，从 Prompt 到高级 RAG）
+> 📖 配套教程：[E06 通识与基础教程系列](../tutorials/e06-general/)（6 篇，从 Prompt 到 Agent 评估）
 
 ```
 ① Prompt-Engineering-Guide (理论基础，1 周)
@@ -162,6 +162,7 @@ L1 理论基础
 3. [生产级 AI Agent 系统设计](../tutorials/e06-general/03-production-system-design.md) — RAG/推理优化/评估监控
 4. [LangGraph 编排实战](../tutorials/e06-general/04-langgraph-orchestration.md) — 状态图与多 Agent 协作
 5. [高级 RAG 实战](../tutorials/e06-general/05-advanced-rag-systems.md) — 混合检索/重排序/Adaptive RAG
+6. [Agent 评估体系](../tutorials/e06-general/06-agent-evaluation.md) — 从 RAG 质量到生产级监控
 
 ---
 

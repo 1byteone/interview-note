@@ -1,6 +1,6 @@
 # 📖 教程目录 — 从仓库导航到系统学习
 
-> **版本**: v1.1 | **更新**: 2026-08-23 | **教程总数**: 23 篇（覆盖 E01-E06 全六大生态）
+> **版本**: v1.2 | **更新**: 2026-08-23 | **教程总数**: 28 篇（E01-E06 六大生态 + 跨生态对比）
 
 本目录是 [interview-note](../..) 仓库的教程中枢。与 [Guide 生态索引](../ecosystem-index.md) 的"知道有哪些仓库"不同，这里的教程解决"如何系统学习"的问题——每篇教程都是一篇完整的、可独立阅读的技术指南，覆盖从安装配置到生产部署的全链路。
 
@@ -58,8 +58,9 @@ Guide 生态索引（What）          Learn 技术栈（How 系统）
 | 1 | [快速入门与命令](./e02-codex/01-quickstart-and-commands.md) | 入门 | 安装、命令、配置 | CodexGuide |
 | 2 | [AGENTS.md 与沙箱](./e02-codex/02-agents-md-and-sandbox.md) | 进阶 | AGENTS.md、沙箱、权限 | CodexGuide |
 | 3 | [高级工作流](./e02-codex/03-advanced-workflows.md) | 高级 | 多步任务、自动化、CI/CD | CodexGuide |
+| 4 | [多 Agent 并行工作树](./e02-codex/04-multi-agent-worktrees.md) | 高级 | Git Worktrees、并行 Agent、冲突规避 | CodexGuide |
 
-**学习路径**：① → ② → ③（顺序推荐，从基础命令到生产工作流）
+**学习路径**：① → ② → ③（核心路径）｜ ④（进阶：大规模并行重构与迁移）
 
 ---
 
@@ -100,8 +101,9 @@ Guide 生态索引（What）          Learn 技术栈（How 系统）
 | 1 | [协议原理与核心概念](./e05-mcp/01-protocol-concepts.md) | 入门 | JSON-RPC、Resources/Prompts/Tools/Sampling、传输层 | MCP-Chinese-Getting-Started-Guide |
 | 2 | [Server 开发实战（Python + FastMCP）](./e05-mcp/02-server-development.md) | 进阶 | FastMCP、@tool、@resource、@prompt、Inspector 调试 | MCP-Chinese-Getting-Started-Guide |
 | 3 | [Client 集成与生产部署](./e05-mcp/03-client-integration.md) | 高级 | 客户端构建、Claude/Codex/LangChain 集成、Serverless 部署 | MCP-Chinese-Getting-Started-Guide |
+| 4 | [MCP 2.0 迁移指南](./e05-mcp/04-mcp2-migration-guide.md) | 高级 | 无状态核心、MRTR、Header 路由、CIMD 授权、Tasks 扩展 | MCP-Chinese-Getting-Started-Guide |
 
-**学习路径**：① → ② → ③（理解协议 → 开发服务 → 集成部署）
+**学习路径**：① → ② → ③（理解协议 → 开发服务 → 集成部署）｜ ④（MCP 2.0 迁移，现有用户必读）
 
 ---
 
@@ -116,8 +118,21 @@ Guide 生态索引（What）          Learn 技术栈（How 系统）
 | 3 | [生产级 AI Agent 系统设计](./e06-general/03-production-system-design.md) | 高级 | RAG 管线、推理优化、评估监控、成本、安全、扩展 | ai-system-design-guide, ai-agent-interview-guide |
 | 4 | [LangGraph 编排实战](./e06-general/04-langgraph-orchestration.md) | 进阶→高级 | StateGraph、多 Agent 架构、HITL、Checkpointing、LangSmith | AgentGuide |
 | 5 | [高级 RAG 实战](./e06-general/05-advanced-rag-systems.md) | 高级 | 混合检索、重排序、查询变换、Adaptive RAG、GraphRAG、评估 | ai-system-design-guide |
+| 6 | [Agent 评估体系](./e06-general/06-agent-evaluation.md) | 高级 | DeepEval、RAGAS、RAG 指标、Agent 指标、CI/CD 门禁、生产监控 | ai-system-design-guide |
 
-**学习路径**：① → ② → ③（核心三篇）｜ ④（编排框架）与 ⑤（检索深度）为实战进阶，可与 ③ 并行
+**学习路径**：① → ② → ③（核心三篇）｜ ④（编排框架）与 ⑤（检索深度）为实战进阶，可与 ③ 并行 ｜ ⑥（评估与监控）作为生产上线前的闭环
+
+---
+
+### 🌐 跨生态对比专题
+
+> 不限于单一生态，横向对比多个 Coding Agent 与协议，帮助选型与架构决策。
+
+| # | 教程 | 等级 | 关键词 | 关联生态 |
+|---|------|------|--------|----------|
+| 1 | [Coding Agent 横评](./cross-ecosystem/01-coding-agent-comparison.md) | 入门→进阶 | Claude Code vs Codex vs Gemini CLI、Harness 架构、选型决策、迁移 | E01 / E02 |
+
+**学习建议**：在完成 E01 与 E02 的入门教程后阅读，建立跨生态选型能力。
 
 ---
 
@@ -293,6 +308,7 @@ Week 2:
 | 在生命周期注入确定性逻辑 | [E01-05](./e01-claude-code/05-hooks-automation.md) |
 | 用子代理做规模化委托 | [E01-06](./e01-claude-code/06-subagents-and-workflows.md) |
 | 学习 Codex 的沙箱机制 | [E02-02](./e02-codex/02-agents-md-and-sandbox.md) |
+| 用 Codex 并行 Agent 做大规模迁移 | [E02-04](./e02-codex/04-multi-agent-worktrees.md) |
 | 理解 Harness 工程范式 | [E03-01](./e03-dsh-harness/01-harness-engineering-principles.md) |
 | 开发 DSH 插件 | [E03-02](./e03-dsh-harness/02-dsh-plugin-development.md) |
 | 深入 Cordis 运行时 | [E03-03](./e03-dsh-harness/03-cordis-runtime-deep-dive.md) |
@@ -302,11 +318,14 @@ Week 2:
 | 理解 MCP 协议 | [E05-01](./e05-mcp/01-protocol-concepts.md) |
 | 开发 MCP Server | [E05-02](./e05-mcp/02-server-development.md) |
 | 部署 MCP 到生产 | [E05-03](./e05-mcp/03-client-integration.md) |
+| 迁移到 MCP 2.0 无状态协议 | [E05-04](./e05-mcp/04-mcp2-migration-guide.md) |
 | 系统学习 Prompt Engineering | [E06-01](./e06-general/01-prompt-engineering-guide.md) |
 | 了解 Agent 的 7 种设计模式 | [E06-02](./e06-general/02-agent-design-patterns.md) |
 | 设计生产级 AI 系统 | [E06-03](./e06-general/03-production-system-design.md) |
 | 用 LangGraph 编排多 Agent | [E06-04](./e06-general/04-langgraph-orchestration.md) |
 | 构建生产级 RAG 管线 | [E06-05](./e06-general/05-advanced-rag-systems.md) |
+| 评估 Agent 质量与生产监控 | [E06-06](./e06-general/06-agent-evaluation.md) |
+| 横评 Claude Code/Codex/Gemini CLI 选型 | [跨生态-01](./cross-ecosystem/01-coding-agent-comparison.md) |
 | 了解有哪些优质仓库 | [Guide 生态索引](../ecosystem-index.md) |
 | 找到技术栈学习路径 | [Guide-Learn 映射表](../guide-learn-mapping.md) |
 

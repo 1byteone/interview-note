@@ -80,7 +80,7 @@ MCP 是连接所有生态的通用协议，E05 既是独立生态，也是其他
 
 ## 4. 生态内学习路径
 
-> 📖 配套教程：[E05 MCP 协议教程系列](../tutorials/e05-mcp/)（3 篇，从协议概念到生产部署）
+> 📖 配套教程：[E05 MCP 协议教程系列](../tutorials/e05-mcp/)（4 篇，从协议概念到 MCP 2.0 迁移）
 
 ```
 ① MCP 概念理解 (README 简介，15 分钟)
@@ -102,6 +102,7 @@ MCP 是连接所有生态的通用协议，E05 既是独立生态，也是其他
 1. [协议原理与核心概念](../tutorials/e05-mcp/01-protocol-concepts.md) — JSON-RPC 与五大核心概念
 2. [Server 开发实战（Python + FastMCP）](../tutorials/e05-mcp/02-server-development.md) — 工具/资源/提示开发
 3. [Client 集成与生产部署](../tutorials/e05-mcp/03-client-integration.md) — 客户端与 Serverless 部署
+4. [MCP 2.0 迁移指南](../tutorials/e05-mcp/04-mcp2-migration-guide.md) — 从有状态协议到无状态核心（现有用户必读）
 
 ---
 
