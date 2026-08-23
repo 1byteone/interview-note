@@ -367,6 +367,7 @@ public class StockDeductConsumer implements RocketMQListener<StockDeductMessage>
 改进方案（Canal 监听 binlog，适用于大规模）:
   MySQL 变更 → Canal 监听 binlog → RocketMQ 消息 → ES 服务消费写入
   优点：解耦，不侵入业务代码
+```
 
 ---
 
