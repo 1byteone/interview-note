@@ -24,6 +24,10 @@ Docker Compose ──docker compose up──▶ 同时启动多个 Container ─
 | Volume | 数据持久化 | 家具家电（不随房子拆而消失） |
 | Network | 容器间通信 | 房子之间的道路 |
 
+> 📌 **全篇总览**：下图从 Dockerfile → Image → Container 的基础链路，到 Compose 编排多容器、两种拉取镜像的方式，再到对比表与微服务全栈架构，是整篇教程的导航图，建议先看一遍再按章节深入。
+
+![Dockerfile vs Docker Compose 协同工作总览图](images/dockerfile-vs-compose.png)
+
 ---
 
 ## 二、Dockerfile：镜像构建的艺术
