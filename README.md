@@ -5,6 +5,54 @@
 
 ---
 
+## ⚡ 快速决策
+
+> **回答 3 个问题，找到最适合你的入口。**
+
+```
+Q1: 你现在需要什么？
+    │
+    ├── 🎯 刷面试题 ──────────────────────────→ 选 Q2
+    │
+    ├── 📚 系统学习 ──→ [学习路线图](2-learning/roadmap/)
+    │
+    ├── 🔍 查具体技术 ──→ [面试题速查表](#面试题速查)（按技术名搜索）
+    │
+    ├── 🤖 了解 AI Agent ──→ [生态教程](#ai-agent-生态)
+    │
+    ├── 🔬 看真实项目 ──→ [项目深度剖析](#项目深度剖析)
+    │
+    └── 💼 面试冲刺 ──→ [3 个月计划](4-interview/preparation-plan.md)
+
+Q2: 你面什么方向？
+    │
+    ├── ☕ Java 后端 ──→ [Java 核心面试题](1-knowledge/01-java/java-core/)
+    │                     [Spring 全家桶](1-knowledge/01-java/spring/)
+    │                     [Spring Cloud 微服务](1-knowledge/01-java/spring-cloud/)
+    │
+    ├── 🗄️ 中间件 ──→ [Redis](1-knowledge/02-infrastructure/middleware/redis/)
+    │                   [MySQL](1-knowledge/02-infrastructure/middleware/mysql/)
+    │                   [ES / Kafka](1-knowledge/02-infrastructure/middleware/)
+    │
+    ├── 🐳 DevOps ──→ [Docker / Nginx / CI-CD](1-knowledge/02-infrastructure/devops/)
+    │
+    └── 🤖 AI ─────→ [LLM / RAG / Agent](1-knowledge/03-ai/)
+
+Q3: 你的水平？
+    │
+    ├── 🌱 初级 (L1-L2) ──→ [快速入门教程](2-learning/stacks/01-backend-development/)
+    │                         [基础面试题](1-knowledge/01-java/java-core/)
+    │
+    ├── 🔧 中级 (L2-L3) ──→ [进阶教程](2-learning/stacks/03-spring-boot/)
+    │                         [项目剖析](5-research/tech-stack-analysis/mall-ai-search/)
+    │
+    └── 🏗️ 高级 (L3-L4) ──→ [架构设计](2-learning/stacks/12-infrastructure/)
+                               [分布式事务](1-knowledge/01-java/spring-cloud/seata/)
+                               [Agent 深度](3-ecosystem/tutorials/e06-general/02-agent-design-patterns.md)
+```
+
+---
+
 ## 🔍 我要找什么？
 
 > **按你的需求直接跳转，不需要理解目录结构。**
