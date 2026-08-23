@@ -209,4 +209,3 @@
 - [Elasticsearch 专题](elasticsearch/)
 - [RocketMQ 专题](../../01-java/spring-cloud/rocketmq/interview-questions.md)
 - [Kafka 专题](kafka/)
-- [Kibana 专题](kibana/)
