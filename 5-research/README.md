@@ -9,8 +9,9 @@
 | 子目录 | 说明 | 来源 |
 |--------|------|------|
 | [tech-stack-analysis/](tech-stack-analysis/) | 8 个项目深度剖析（38 篇系列） | 原 `docs/tech-stack-analysis/` |
-| [projects/](projects/) | 项目实战（微服务商城 / AI 搜索 / 养老 IoT 等） | 原 `projects/` |
 | [liyupi/](liyupi/) | 鱼皮系列深度分析（16 篇） | 原 `liyupi/` |
+
+> 💡 项目实战内容已移至 [`2-learning/projects/`](../2-learning/projects/)
 
 ## 项目分析列表
 
