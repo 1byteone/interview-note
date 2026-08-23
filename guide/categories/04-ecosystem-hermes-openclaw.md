@@ -120,6 +120,8 @@ Post-action（事后）
 
 ## 4. 生态内学习路径
 
+> 📖 配套教程：[E04 Hermes/OpenClaw 教程系列](../tutorials/e04-hermes-openclaw/)（3 篇，从安装部署到安全加固）
+
 ```
 ① awesome-hermes-agent (生态概览)
     ↓
@@ -131,6 +133,11 @@ Post-action（事后）
     ↓
 ⑤ 变现 → hermes-agent-guide 第 14 册 (九大变现路径)
 ```
+
+**教程推荐顺序**：
+1. [安装部署与架构解析](../tutorials/e04-hermes-openclaw/01-installation-and-architecture.md) — 三种安装方式与五层架构
+2. [技能系统与三层记忆详解](../tutorials/e04-hermes-openclaw/02-skills-and-memory-system.md) — 47 工具与记忆分层
+3. [Agent 零信任安全实践](../tutorials/e04-hermes-openclaw/03-security-practices.md) — 三层防御矩阵加固
 
 ---
 

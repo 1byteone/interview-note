@@ -102,6 +102,8 @@ DeepSeek Harness（DSH）是 DeepSeek 推出的 Agent 运行时框架，核心�
 
 ## 4. 生态内学习路径
 
+> 📖 配套教程：[E03 DSH/Harness 教程系列](../tutorials/e03-dsh-harness/)（3 篇，从 Harness 理论到 Cordis 运行时）
+
 ```
 ① awesome-harness-engineering (生态概览，30 分钟)
     ↓
@@ -113,6 +115,11 @@ DeepSeek Harness（DSH）是 DeepSeek 推出的 Agent 运行时框架，核心�
     ↓
 ⑤ 插件开发 → DSH 插件生态（外部）
 ```
+
+**教程推荐顺序**：
+1. [Harness 工程原理](../tutorials/e03-dsh-harness/01-harness-engineering-principles.md) — 理解智能体 = 大模型 + Harness 范式
+2. [DeepSeek Harness 插件开发入门](../tutorials/e03-dsh-harness/02-dsh-plugin-development.md) — DSH 架构与插件生命周期
+3. [Cordis 运行时机制深度解析](../tutorials/e03-dsh-harness/03-cordis-runtime-deep-dive.md) — 深入插件内核
 
 ---
 

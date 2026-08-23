@@ -100,6 +100,8 @@ Claude Code 是 Anthropic 推出的终端 AI 编程代理，目前是 Coding Age
 
 ## 4. 生态内学习路径
 
+> 📖 配套教程：[E01 Claude Code 教程系列](../tutorials/e01-claude-code/)（4 篇，从安装到 Agent Teams 编排）
+
 ```
 ① claudecode-guide (入门，30 分钟)
     ↓
@@ -109,6 +111,12 @@ Claude Code 是 Anthropic 推出的终端 AI 编程代理，目前是 Coding Age
     ↓
 ④ 安全深化 → E04 openclaw-security-practice-guide
 ```
+
+**教程推荐顺序**：
+1. [安装与基础使用](../tutorials/e01-claude-code/01-installation-and-basics.md) — 了解系统要求、安装配置、CLAUDE.md
+2. [Skills 开发实战](../tutorials/e01-claude-code/02-skills-development.md) — 掌握 SKILL.md 编写与子代理
+3. [MCP 集成与外部工具扩展](../tutorials/e01-claude-code/03-mcp-integration.md) — 集成外部工具到 Claude Code
+4. [Agent Teams 多 Agent 协作编排](../tutorials/e01-claude-code/04-agent-teams.md) — 高级多 Agent 编排
 
 ---
 

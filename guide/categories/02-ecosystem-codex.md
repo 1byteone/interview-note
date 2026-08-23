@@ -61,6 +61,8 @@ Codex 是 OpenAI 推出的 AI 编程代理，核心组件包括：
 
 ## 4. 生态内学习路径
 
+> 📖 配套教程：[E02 Codex 教程系列](../tutorials/e02-codex/)（3 篇，从快速上手到 CI/CD 集成）
+
 ```
 ① CodexGuide start/ (快速上手，30 分钟)
     ↓
@@ -70,6 +72,11 @@ Codex 是 OpenAI 推出的 AI 编程代理，核心组件包括：
     ↓
 ④ 与 Claude Code 对比 → E01 (EC 对比)
 ```
+
+**教程推荐顺序**：
+1. [快速入门与命令指南](../tutorials/e02-codex/01-quickstart-and-commands.md) — 安装配置与审批模式
+2. [AGENTS.md 配置与沙盒安全模型](../tutorials/e02-codex/02-agents-md-and-sandbox.md) — 项目指令与安全边界
+3. [高级工作流：MCP 集成与多 Agent 编排](../tutorials/e02-codex/03-advanced-workflows.md) — 生产级工作流
 
 ---
 

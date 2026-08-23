@@ -59,6 +59,19 @@
 
 ### 分类目录
 
+新增 **[`tutorials/`](tutorials/README.md)** 深度教程目录（19 篇，覆盖 E01-E06 全六大生态），从仓库导航升级为可系统学习的教程内容体系：
+
+| 生态 | 教程数 | 核心主题 |
+|------|--------|----------|
+| [E01 Claude Code](tutorials/e01-claude-code/) | 4 篇 | 安装基础 / Skills 开发 / MCP 集成 / Agent Teams |
+| [E02 Codex](tutorials/e02-codex/) | 3 篇 | 快速上手 / AGENTS.md+沙箱 / 高级工作流 |
+| [E03 DSH/Harness](tutorials/e03-dsh-harness/) | 3 篇 | Harness 原理 / 插件开发 / Cordis 运行时 |
+| [E04 Hermes/OpenClaw](tutorials/e04-hermes-openclaw/) | 3 篇 | 安装架构 / 技能记忆 / 零信任安全 |
+| [E05 MCP 协议](tutorials/e05-mcp/) | 3 篇 | 协议概念 / Server 开发 / Client 部署 |
+| [E06 通识与基础](tutorials/e06-general/) | 3 篇 | Prompt Engineering / 设计模式 / 生产系统 |
+
+> 📖 教程目录详见 [`tutorials/README.md`](tutorials/README.md)
+
 ```
 guide/
 ├── README.md                       # 本文件 — 生态总览
@@ -71,6 +84,14 @@ guide/
 │   ├── 04-ecosystem-hermes-openclaw.md    # E04 Hermes/OpenClaw
 │   ├── 05-ecosystem-mcp.md                # E05 MCP 协议
 │   └── 06-ecosystem-general-agent.md      # E06 通识与基础
+├── tutorials/                      # 📖 深度教程（新增！从仓库导航到系统学习）
+│   ├── README.md                   # 教程目录与学习路径导航
+│   ├── e01-claude-code/            # E01 Claude Code（4 篇）
+│   ├── e02-codex/                  # E02 Codex（3 篇）
+│   ├── e03-dsh-harness/            # E03 DSH/Harness（3 篇）
+│   ├── e04-hermes-openclaw/        # E04 Hermes/OpenClaw（3 篇）
+│   ├── e05-mcp/                    # E05 MCP 协议（3 篇）
+│   └── e06-general/                # E06 通识与基础（3 篇）
 ├── repositories/                   # 仓库详情（每库一个文件）
 ├── data/                           # 专业交付物
 │   ├── standards.md                # 收录标准与质量评估
