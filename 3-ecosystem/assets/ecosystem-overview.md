@@ -31,7 +31,7 @@ graph TB
 
     subgraph E04[E04 · Hermes/OpenClaw 生态]
         direction TB
-        D1[hermes-agent-guide<br/>⭐650 30万字指南]
+        D1[hermes-agent-guide<br/>⭐652 30万字指南]
         D2[openclaw-security-practice-guide<br/>⭐2.9k 零信任安全]
         D3[awesome-hermes-agent<br/>⭐5.4k 资源索引]
         D4[openclaw-guide (yupi)<br/>⭐186 中文文档]

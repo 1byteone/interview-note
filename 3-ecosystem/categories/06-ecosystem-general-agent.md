@@ -108,7 +108,7 @@ L1 理论基础
 
 **核心章节**：LLM 原理 → 模型选型 → 训练 → 推理 → RAG → Agentic → 记忆 → 框架 → MLOps → 安全 → 评估 → 多模态
 
-#### realpython/python-guide ⭐29,770
+#### realpython/python-guide ⭐29,775
 
 | 字段 | 值 |
 |------|-----|
@@ -119,9 +119,9 @@ L1 理论基础
 
 | 仓库 | Stars | 说明 |
 |------|-------|------|
-| heilcheng/awesome-agent-skills | 6,126 | Agent Skills 教程、指南和目录 |
-| libukai/awesome-agent-skills | 4,998 | Agent Skills 终极指南（中英双语） |
-| lingxling/awesome-skills-cn | 257 | 7000+ Skills 中文学习版 |
+| heilcheng/awesome-agent-skills | 6,132 | Agent Skills 教程、指南和目录 |
+| libukai/awesome-agent-skills | 5,002 | Agent Skills 终极指南（中英双语） |
+| lingxling/awesome-skills-cn | 259 | 7000+ Skills 中文学习版 |
 | by123456by/AI-Shell | 15 | 自然语言驱动的 Linux 命令行助手 |
 
 ---

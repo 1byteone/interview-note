@@ -66,7 +66,7 @@ Claude Code 是 Anthropic 推出的终端 AI 编程代理，目前是 Coding Age
 | 字段 | 值 |
 |------|-----|
 | **全名** | zebbern/claude-code-guide |
-| **Stars** | 4,585 |
+| **Stars** | 4,586 |
 | **定位** | 全功能单文件超级手册，社区维护 |
 | **内容体量** | 3,656 行单文件（约 30,000 词） |
 | **独特价值** | HTTPOnly 零依赖、Windows 路径修复、排错方案可直接复制 |

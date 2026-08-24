@@ -33,12 +33,12 @@
 
 | 生态 | 名称 | 核心定位 | 核心仓库 | Stars |
 |------|------|----------|----------|-------|
-| **E01** | 🤖 Claude Code 生态 | 最主流 Coding Agent | claude-code-ultimate-guide, claude-code-guide, claudecode-guide | 10,400 |
-| **E02** | 🐙 Codex 生态 | OpenAI Coding Agent | CodexGuide | 3,234 |
-| **E03** | ⚙️ DSH/Harness 生态 | 新一代 Agent 运行时 | harness_engineering_guide, deepeseek-harness-guide, awesome-harness-engineering | 4,019 |
-| **E04** | 🔗 Hermes/OpenClaw 生态 | 开源社区 Agent 框架 | hermes-agent-guide, openclaw-security-practice-guide, awesome-hermes-agent | 8,912 |
+| **E01** | 🤖 Claude Code 生态 | 最主流 Coding Agent | claude-code-ultimate-guide, claude-code-guide, claudecode-guide | 10,412 |
+| **E02** | 🐙 Codex 生态 | OpenAI Coding Agent | CodexGuide | 3,248 |
+| **E03** | ⚙️ DSH/Harness 生态 | 新一代 Agent 运行时 | harness_engineering_guide, deepeseek-harness-guide, awesome-harness-engineering | 4,125 |
+| **E04** | 🔗 Hermes/OpenClaw 生态 | 开源社区 Agent 框架 | hermes-agent-guide, openclaw-security-practice-guide, awesome-hermes-agent | 9,190 |
 | **E05** | 🌐 MCP 协议生态 | 跨平台工具调用协议 | MCP-Chinese-Getting-Started-Guide | 3,560 |
-| **E06** | 📚 通识与基础 | 跨生态通用知识 | AgentGuide, Prompt-Engineering-Guide, ai-system-design-guide 等 | 125,000+ |
+| **E06** | 📚 通识与基础 | 跨生态通用知识 | AgentGuide, Prompt-Engineering-Guide, ai-system-design-guide 等 | 156,441 |
 
 ---
 
@@ -190,7 +190,7 @@ guide/
 ---
 
 > **维护者**: @1byteone  
-> **收录日期**: 2026-08-22  
+> **收录日期**: 2026-08-24  
 > **收录仓库数**: 27  
 > **生态分类**: 6 大技术栈生态  
-> **总 Stars**: 186,650
+> **总 Stars**: 186,976
