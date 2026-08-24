@@ -155,6 +155,17 @@ Q3: 你的水平？
 
 ---
 
+### AI 编程工具实战指南 🆕
+
+> 12 章知识体系 + 17 个实操教程，覆盖 Claude Code / Codex / DeepSeek Harness / Hermes / Cursor 全部五大工具。
+
+| 内容 | 入口 | 说明 |
+|------|------|------|
+| **知识体系（12 章）** | [ai-coding-guide/](ai-coding-guide/) | 认知升级 / Claude Code / Codex / DSH / Hermes / Cursor / Context Engineering / MCP Skills / 企业案例 / Java 实战 / 安全治理 / 学习路线 |
+| **实操教程（17 个）** | [ai-coding-guide/tutorials/](ai-coding-guide/tutorials/) | 从零搭建 / CLAUDE.md 配置 / 遗留重构 / Full Auto / AGENTS.md Review / Workspace Agent / DSH 四模式 / 插件开发 / Hermes 记忆 Skill / 定时工作流 / Cursor Rules / 多文件重构 / MCP Server / 五工具协作 / 项目工程化 / 多仓库协作 / 生产排查 |
+
+---
+
 ### 面试准备
 
 | 内容 | 入口 |
@@ -189,6 +200,9 @@ interview-note/
 │   ├── tech-stack-analysis/ # 8 个项目深度剖析
 │   ├── projects/         # 项目实战
 │   └── liyupi/           # 鱼皮分析
+├── ai-coding-guide/      # 🤖 AI 编程工具实战指南（12 章 + 17 教程）🆕
+│   ├── 01-*.md ~ 12-*.md # 知识体系章节
+│   └── tutorials/        # 实操教程（T01-T17）
 ├── _assets/              # 🎨 共享资源
 ├── _scripts/             # 🔧 工具脚本
 └── docs/                 # 项目元文档
