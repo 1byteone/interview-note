@@ -21,9 +21,9 @@ import sys
 import time
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-GUIDE_DIR = os.path.dirname(BASE_DIR)  # 项目根目录
-JSON_PATH = os.path.join(GUIDE_DIR, 'guide', 'guide_repos.json')
-REPOS_DIR = os.path.join(GUIDE_DIR, 'guide', 'repositories')
+GUIDE_DIR = os.path.join(os.path.dirname(BASE_DIR), '3-ecosystem')  # 实际数据在 3-ecosystem/
+JSON_PATH = os.path.join(GUIDE_DIR, 'guide_repos.json')
+REPOS_DIR = os.path.join(GUIDE_DIR, 'repositories')
 RATE_LIMIT_SLEEP = 0.5  # 500ms between requests to avoid rate limiting
 
 
