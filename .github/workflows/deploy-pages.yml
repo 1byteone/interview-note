@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [master]
-    paths: ['learn/**']
+    paths: ['2-learning/**', 'ai-coding-guide/**', '3-ecosystem/**']
   workflow_dispatch:
 
 permissions:
@@ -28,17 +28,16 @@ jobs:
 
       - name: Build index page
         run: |
-          # Create a simple index.html that links to learn/README.md
           cat > index.html << 'EOF'
           <!DOCTYPE html>
           <html lang="zh-CN">
           <head>
             <meta charset="UTF-8">
-            <meta http-equiv="refresh" content="0;url=learn/README.html">
-            <title>16 技术栈教程体系</title>
+            <meta http-equiv="refresh" content="0;url=2-learning/">
+            <title>interview-note</title>
           </head>
           <body>
-            <p>正在跳转到 <a href="learn/README.html">16 技术栈教程体系</a>...</p>
+            <p>正在跳转到 <a href="2-learning/">2-learning</a>...</p>
           </body>
           </html>
           EOF

@@ -162,4 +162,4 @@ AI Agent 在制造业 Java 系统中的应用：
 
 ---
 
-[← 上一章: 08-MCP与Skills]( prev_name ) | [目录](README.md) | [下一章: 10-Java全流程实战( next_name )]( next_name )
+[← 上一章: 08-MCP与Skills](08-MCP与Skills.md) | [目录](README.md) | [下一章: 10-Java全流程实战(10-Java全流程实战.md)](10-Java全流程实战.md)

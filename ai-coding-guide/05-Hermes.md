@@ -175,4 +175,4 @@ hermes memory status  # 检查活跃状态
 
 ---
 
-[← 上一章: 04-DeepSeek-Harness]( prev_name ) | [目录](README.md) | [下一章: 06-Cursor( next_name )]( next_name )
+[← 上一章: 04-DeepSeek-Harness](04-DeepSeek-Harness.md) | [目录](README.md) | [下一章: 06-Cursor(06-Cursor.md)](06-Cursor.md)

@@ -101,4 +101,4 @@ Long-term Memory（永久，文档/AGENTS.md/知识库）
 
 ---
 
-[← 上一章: 06-Cursor]( prev_name ) | [目录](README.md) | [下一章: 08-MCP与Skills( next_name )]( next_name )
+[← 上一章: 06-Cursor](06-Cursor.md) | [目录](README.md) | [下一章: 08-MCP与Skills(08-MCP与Skills.md)](08-MCP与Skills.md)

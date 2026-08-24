@@ -118,4 +118,4 @@ codex --full-auto "
 
 ---
 
-[← 上一章: 02-Claude-Code]( prev_name ) | [目录](README.md) | [下一章: 04-DeepSeek-Harness( next_name )]( next_name )
+[← 上一章: 02-Claude-Code](02-Claude-Code.md) | [目录](README.md) | [下一章: 04-DeepSeek-Harness(04-DeepSeek-Harness.md)](04-DeepSeek-Harness.md)

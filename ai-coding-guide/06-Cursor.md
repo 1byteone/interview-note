@@ -122,4 +122,4 @@ Cursor Agent 通过 MCP 连接外部服务：
 
 ---
 
-[← 上一章: 05-Hermes]( prev_name ) | [目录](README.md) | [下一章: 07-Context-Engineering( next_name )]( next_name )
+[← 上一章: 05-Hermes](05-Hermes.md) | [目录](README.md) | [下一章: 07-Context-Engineering(07-Context-Engineering.md)](07-Context-Engineering.md)

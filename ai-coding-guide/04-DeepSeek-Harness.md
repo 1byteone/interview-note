@@ -137,4 +137,4 @@ Code Mode 的核心是通过 **Code Mode SDK** 将所有工具暴露为可编程
 
 ---
 
-[← 上一章: 03-Codex]( prev_name ) | [目录](README.md) | [下一章: 05-Hermes( next_name )]( next_name )
+[← 上一章: 03-Codex](03-Codex.md) | [目录](README.md) | [下一章: 05-Hermes(05-Hermes.md)](05-Hermes.md)
