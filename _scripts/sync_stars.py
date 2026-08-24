@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-guide/ Stars 同步脚本
-======================
-从 GitHub API 拉取 guide_repos.json 中所有仓库的最新 Stars 数据，
+3-ecosystem Stars 同步脚本
+==========================
+从 GitHub API 拉取 3-ecosystem/guide_repos.json 中所有仓库的最新 Stars 数据，
 更新 JSON 文件和仓库详情页的 Stars 显示。
 
 用法:
-  python3 sync_stars.py          # 同步所有仓库
+  python3 sync_stars.py            # 同步所有仓库
   python3 sync_stars.py --dry-run  # 预览变更，不实际写入
-  python3 sync_stars.py --repo owner/name  # 仅同步指定仓库
+  python3 sync_stars.py --repo=owner/name  # 仅同步指定仓库
 
 依赖: gh CLI (已登录)
 """

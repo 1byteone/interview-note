@@ -26,17 +26,17 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python3 scripts/sync_stars.py
+          python3 _scripts/sync_stars.py
 
       - name: Commit Changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add guide/guide_repos.json guide/repositories/*.md
+          git add 3-ecosystem/guide_repos.json 3-ecosystem/repositories/*.md 3-ecosystem/ecosystem-index.md 3-ecosystem/assets/ecosystem-*.svg 3-ecosystem/data/landscape.md
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore(guide): sync stars data
+            git commit -m "chore(3-ecosystem): sync stars data
 
             Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
             git push

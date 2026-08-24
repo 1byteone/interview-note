@@ -7,6 +7,9 @@
 | 脚本 | 说明 |
 |------|------|
 | `svg-to-png.py` | 将 SVG 架构图批量转换为 PNG 图片（支持中文渲染） |
+| `sync_stars.py` | 同步 3-ecosystem 仓库 Stars 数据（JSON + 详情页 + 索引） |
+| `check_links.py` | 检查文档中的链接是否有效 |
+| `validate.py` | 校验 3-ecosystem 数据一致性（JSON ↔ 详情页 ↔ 索引） |
 | `requirements-render.txt` | 渲染脚本的 Python 依赖 |
 
 ---
