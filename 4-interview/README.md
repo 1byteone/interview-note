@@ -9,7 +9,18 @@
 | 子目录/文件 | 说明 |
 |------------|------|
 | [preparation-plan.md](preparation-plan.md) | 3 个月系统面试计划（原根目录 `interview-preparation-plan.md`） |
+| [project-interview-guide.md](project-interview-guide.md) | 项目经历 & 实习经历 — 面试回答与说辞手册 |
+| [projects/](projects/) | 4 个项目的深度面试文档 + 项目速记卡（快速复习/面试要点/面试追问） |
 | [tools/](tools/) | 面试题生成器 + 模拟面试（原 `interview-tools/`） |
+
+### 项目深度面试文档
+
+| 项目 | 深度面试 | 速记卡 |
+|------|---------|--------|
+| 分布式微云商城 | [项目深度面试.md](projects/mall-micro-cloud/项目深度面试.md) | [项目速记卡.md](projects/mall-micro-cloud/项目速记卡.md) |
+| 灵犀智能写作 | [项目深度面试.md](projects/ai-passage-creator/项目深度面试.md) | [项目速记卡.md](projects/ai-passage-creator/项目速记卡.md) |
+| 农业知识库问答 | [项目深度面试.md](projects/agri-qa-assistant/项目深度面试.md) | [项目速记卡.md](projects/agri-qa-assistant/项目速记卡.md) |
+| 智颐养老护理系统 | [项目深度面试.md](projects/zznursing/项目深度面试.md) | [项目速记卡.md](projects/zznursing/项目速记卡.md) |
 
 ## 各技术栈面试题
 
