@@ -1,7 +1,7 @@
 # Java & AI 面试笔记 | 知识库
 
 > **从 Java 后端到 AI Agent 的全栈面试知识体系**
-> 1000+ 面试题 · 16 技术栈教程 · 28 篇生态深度教程 · 8 个项目深度剖析
+> 1000+ 面试题 · 17 技术栈教程 · 28 篇生态深度教程 · 8 个项目深度剖析
 
 ---
 
@@ -35,6 +35,8 @@ Q2: 你面什么方向？
     │                   [ES / Kafka](1-knowledge/02-infrastructure/middleware/)
     │
     ├── 🐳 DevOps ──→ [Docker / Nginx / CI-CD](1-knowledge/02-infrastructure/devops/)
+    │
+    └── 🐍 Python 后端 ──→ [Python 全栈教程](2-learning/stacks/17-python-backend/)（24 章 · P0→P3）
     │
     └── 🤖 AI ─────→ [LLM / RAG / Agent](1-knowledge/03-ai/)
 
@@ -112,6 +114,9 @@ Q3: 你的水平？
 | **LangChain** | [14-langchain/](2-learning/stacks/14-langchain/) | 5 | 1.5 周 |
 | **RAG** | [15-rag/](2-learning/stacks/15-rag/) | 5 | 1 周 |
 | **OpenAI API** | [16-openai/](2-learning/stacks/16-openai/) | 5 | 1 周 |
+| **Python 后端全栈** 🆕 | [17-python-backend/](2-learning/stacks/17-python-backend/) | 26 | 8-12 周 |
+
+> 📌 **Python 后端全栈教程**：完整的 24 章 + 2 附录体系，从 Python 基础到 AI Agent，覆盖 FastAPI / Pydantic / SQLAlchemy / PostgreSQL / Redis / asyncio / 测试 / Docker / 可观测性 / LLM / RAG / Agent / MCP 全链路。适合目标为 **Python AI 后端工程师** 的学习者。
 
 > 📌 **学习路线图**：不确定从哪开始？看 [roadmap/](2-learning/roadmap/)
 
@@ -171,9 +176,10 @@ interview-note/
 │   ├── 01-java/          # Java 核心 + Spring + Spring Cloud
 │   ├── 02-infrastructure/ # 中间件 + DevOps
 │   └── 03-ai/            # AI 技术栈
-├── 2-learning/           # 🎯 系统教程（16 技术栈 × 5 层）
+├── 2-learning/           # 🎯 系统教程（17 技术栈 × 5 层）
 │   ├── roadmap/          # 学习路线图
-│   └── stacks/           # 16 个技术栈教程
+│   └── stacks/           # 17 个技术栈教程
+│       └── 17-python-backend/  # 🐍 Python 后端全栈（24 章 + 2 附录）🆕
 ├── 3-ecosystem/          # 🗺️ 生态索引（AI Agent 六大生态）
 │   ├── tutorials/        # 28 篇深度教程
 │   ├── categories/       # 生态分类
@@ -195,7 +201,7 @@ interview-note/
 | 维度 | 数据 |
 |------|------|
 | 面试题 | 1000+ 道（L1-L4 四级难度） |
-| 技术栈教程 | 16 个（每栈 5 层：入门→核心→进阶→项目→面试） |
+| 技术栈教程 | 17 个（每栈 5 层：入门→核心→进阶→项目→面试） |
 | 生态深度教程 | 28 篇（覆盖 Claude Code / Codex / MCP / Harness 等） |
 | 项目深度剖析 | 8 个项目（38+ 篇系列文章） |
 | 收录仓库 | 27 个（总 Stars 186k+） |
