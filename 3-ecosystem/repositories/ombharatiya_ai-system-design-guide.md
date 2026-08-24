@@ -1,6 +1,6 @@
 # ombharatiya/ai-system-design-guide
 
-> ⭐ 2,704 | 🗣 N/A | [GitHub](https://github.com/ombharatiya/ai-system-design-guide) | 收录: 2026-08-22
+> ⭐ 2,729 | 🗣 N/A | [GitHub](https://github.com/ombharatiya/ai-system-design-guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 2,704 |
+| Stars | 2,729 |
 | Topics | agentic-ai, ai, llm, rag, system-design-interview 等 |
 | 生态 | E06 · 通识与基础 |
 

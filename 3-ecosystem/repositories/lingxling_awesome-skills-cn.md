@@ -1,6 +1,6 @@
 # lingxling/awesome-skills-cn
 
-> ⭐ 258 | 🗣 Python | [GitHub](https://github.com/lingxling/awesome-skills-cn) | 收录: 2026-08-22
+> ⭐ 259 | 🗣 Python | [GitHub](https://github.com/lingxling/awesome-skills-cn) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 258 |
+| Stars | 259 |
 | 语言 | Python |
 | Topics | agents, claude-skills, openclaw, skills, chinese |
 | 生态 | E06 · 通识与基础 |

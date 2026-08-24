@@ -24,8 +24,20 @@
 | T12 | [Cursor Agent 多文件重构](T12-Cursor-Agent多文件重构.md) | Cursor | Service 层拆分重构 | 25min |
 | T13 | [MCP Server Spring Boot 实现](T13-MCP-Server实战.md) | Spring Boot + 任意工具 | 自定义 MCP Server | 30min |
 | T14 | [五工具协作全流程](T14-五工具协作全流程.md) | 全部 | 一个需求用五个工具各做一段 | 60min |
+| T15 | [项目工程化 AI 编程完整实践](T15-项目工程化AI编程完整实践.md) | 全部 | 团队规范→开发→CI/CD 全链路 | 90min |
+| T16 | [多仓库跨服务 AI 协作](T16-多仓库跨服务AI协作.md) | Claude + Cursor + Codex | 跨仓库 FeignClient 变更 | 60min |
+| T17 | [AI 辅助生产问题排查与修复](T17-AI辅助生产问题排查与修复.md) | Claude Code + Cursor | 日志分析→根因定位→修复 | 45min |
 
 ---
+
+## 学习路径推荐
+
+```
+新手入门 → T01 → T04 → T11 → T14（2小时）
+团队规范 → T02 → T05 → T15（2小时）
+高级主题 → T03 → T08 → T13 → T17（3小时）
+自动化运维 → T06 → T10 → T16（1.5小时）
+```
 
 ## 每个教程的标准结构
 
