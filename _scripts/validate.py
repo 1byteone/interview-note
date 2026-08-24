@@ -21,7 +21,7 @@ import re
 import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-GUIDE_DIR = os.path.join(BASE_DIR, 'guide')
+GUIDE_DIR = os.path.join(BASE_DIR, '3-ecosystem')
 JSON_PATH = os.path.join(GUIDE_DIR, 'guide_repos.json')
 REPOS_DIR = os.path.join(GUIDE_DIR, 'repositories')
 CATS_DIR = os.path.join(GUIDE_DIR, 'categories')
@@ -97,34 +97,50 @@ def main():
 
     # 4. Check categories/ references
     print(f'[3] checking categories/ references...')
+    # Known non-repo patterns (ecosystem labels, tool names, tech stacks)
+    skip_patterns = {
+        'E01', 'E02', 'E03', 'E04', 'E05', 'E06',
+        'Codex', 'Gemini', 'TDD', 'Vibe', 'DSH', 'Hermes',
+        'OpenClaw', 'GPT', 'Claude', 'DeepSeek', 'Java', 'Go',
+        'Creativity', 'Evaluation',
+    }
+    # Valid repo names from JSON
+    json_names_set = json_names if 'json_names' in dir() else set()
+
     cat_files = [f for f in os.listdir(CATS_DIR) if f.endswith('.md')]
     for cf in cat_files:
         with open(os.path.join(CATS_DIR, cf), encoding='utf-8') as f:
             content = f.read()
         # Find all repo references - only match GitHub-style repo names
         refs = re.findall(r'[a-zA-Z0-9][\w.-]*/[a-zA-Z0-9][\w.-]*(?=[\]\)\s\n:;,])', content)
+        seen = set()
         for ref in refs:
-            # Skip non-repo patterns
-            if ref.startswith('E0') or ref.startswith('L') or ref.startswith('http'):
+            if ref in seen:
                 continue
-            if ref.startswith('http') or ref.startswith('www'):
+            seen.add(ref)
+            # Skip known non-repo patterns
+            parts = ref.split('/')
+            if any(p in skip_patterns for p in parts):
                 continue
-            # Skip slash-separated option lists and path patterns
-            if re.match(r'^(CLI|IDE|CI|CD|TDD|BDD|GSD|SDD|DDD|API|UI|UX|DB|SQL|HTTP|TCP|IP)\/', ref, re.IGNORECASE):
+            # Skip tutorial refs (e01-claude-code/xxx etc.)
+            if re.match(r'^e\d+-', ref):
                 continue
-            if re.match(r'^(Resources|Prompts|Tools|Sampling|Roots|Transports|Creativity|Evaluation|Python|Java|Go|C\+\+|C#)\/', ref, re.IGNORECASE):
+            # Skip any ref starting with e + digit
+            if ref.startswith('e0') and '/' in ref:
                 continue
-            if re.match(r'^(快速|变现|赚钱|分类|入门|深度|技术|技能|插件|DeepSeek|Claude|Hermes|OpenClaw|Cursor|Copilot|Windsurf|Codex|Gemini|GPT|DSH)\/', ref):
+            # Check against JSON
+            if ref in json_names_set:
                 continue
-            if ref.count('/') > 1:
-                continue
-            if ref not in json_names:
-                check(False, f'[WARN] {cf} 引用了未知仓库: {ref}', is_warning=True)
+            safe = ref.replace('/', '_')
+            detail_path = os.path.join(REPOS_DIR, f'{safe}.md')
+            check(os.path.exists(detail_path),
+                  f'[WARN] {cf} 引用未知仓库: {ref}', is_warning=True)
 
     # 5. Check README links
     print(f'[4] checking README links...')
     for readme_path in [os.path.join(GUIDE_DIR, 'README.md'),
-                        os.path.join(BASE_DIR, 'README.md')]:
+                        os.path.join(BASE_DIR, 'README.md'),
+                        os.path.join(BASE_DIR, 'ai-coding-guide', 'README.md')]:
         if not os.path.exists(readme_path):
             continue
         with open(readme_path, encoding='utf-8') as f:
@@ -133,11 +149,13 @@ def main():
         for text, link in links:
             if link.startswith('http'):
                 continue
+            if link.startswith('#'):
+                continue
             # Resolve relative to guide dir
             if readme_path.endswith('README.md') and os.path.dirname(readme_path) == GUIDE_DIR:
                 resolved = os.path.normpath(os.path.join(GUIDE_DIR, link))
             else:
-                resolved = os.path.normpath(os.path.join(BASE_DIR, link))
+                resolved = os.path.normpath(os.path.join(os.path.dirname(readme_path), link))
             if not os.path.exists(resolved):
                 # Check if it's a file without .md
                 if not os.path.exists(resolved + '.md') and not os.path.exists(resolved.replace('.md', '')):
@@ -152,10 +170,10 @@ def main():
 
     # 7. Sync script check
     print(f'[6] checking scripts...')
-    scripts_dir = os.path.join(BASE_DIR, 'scripts')
-    for s in ['sync_stars.py', 'add_repo.py']:
+    scripts_dir = os.path.join(BASE_DIR, '_scripts')
+    for s in ['sync_stars.py', 'add_repo.py', 'validate.py', 'check_links.py']:
         check(os.path.exists(os.path.join(scripts_dir, s)),
-              f'[WARN] 缺少脚本: scripts/{s}', is_warning=True)
+              f'[WARN] 缺少脚本: _scripts/{s}', is_warning=True)
 
     # Summary
     print('\n' + '=' * 60)
