@@ -249,7 +249,118 @@ flowchart LR
 - 在 `README.md` 或项目面试文档中嵌入图表时，优先直接写 `mermaid` 代码块；引用独立源文件时使用相对路径，并在上级索引中登记新增文件。
 - 每张图只表达一个主题，文件名可包含 `context`、`container`、`component`、`flow`、`sequence`、`er`、`state`、`class` 或 `gantt` 等语义后缀。
 
-### 10.6 提交前验证清单
+### 10.6 样式与主题规范
+
+#### 10.6.1 基础主题
+
+所有图表统一使用 `default` 主题作为起点，通过 `%%{ init: { ... } }%%` 前置指令覆盖配色和字体，禁止依赖 Mermaid 内置的 `dark` / `forest` / `neutral` 等完整主题切换，以保证跨平台渲染一致性。
+
+````markdown
+```mermaid
+%%{ init: { 'theme': 'default', 'themeVariables': { ... } } }%%
+flowchart LR
+    ...
+```
+````
+
+#### 10.6.2 字体与国际化
+
+- **英文回退链**：`Arial` → `Helvetica` → 系统无衬线字体。
+- **中文回退链**：`Microsoft YaHei`（微软雅黑）→ `PingFang SC` → `Noto Sans SC` → 系统无衬线字体。
+- 在 `themeVariables` 中设置 `fontFamily: 'Arial, Microsoft YaHei, Helvetica, PingFang SC, sans-serif'`。
+- 节点文字避免硬换行；若标签过长，优先缩减措辞或拆分节点，而非使用 `<br/>`。
+
+#### 10.6.3 语义化调色板
+
+使用以下固定色板，确保图表在亮色/暗色背景下均可辨识，同时满足色觉障碍可读性：
+
+| 语义 | `themeVariables` 键 | 色值 | 用途 |
+|------|---------------------|------|------|
+| 主色 | `primaryColor` | `#4A90D9` | 默认节点填充、主要流程 |
+| 边框 | `primaryBorderColor` | `#3A7BC8` | 节点描边 |
+| 文字 | `primaryTextColor` | `#1F2937` | 节点内文字 |
+| 强调色 | `secondaryColor` | `#F59E0B` | 异常分支、警告、重试路径 |
+| 辅助色 | `tertiaryColor` | `#10B981` | 成功终态、健康检查 |
+| 线条 | `lineColor` | `#6B7280` | 连线默认色 |
+| 背景 | `backgroundColor` | `#FFFFFF` | 图表画布背景 |
+| 聚合线 | `clusterBkg` | `#F3F4F6` | 子图 / 聚合背景 |
+| 聚合边框 | `clusterBorder` | `#D1D5DB` | 子图 / 聚合描边 |
+
+> **注意**：禁止使用纯红 `#FF0000` 或纯绿 `#00FF00` 作为节点填充——它们在色觉障碍读者和灰度打印中几乎不可辨。需要表达「错误」语义时，使用 `secondaryColor`（`#F59E0B`）配合文字标签 `❌` 或 `error`。
+
+#### 10.6.4 classDef 与节点样式约定
+
+使用 `classDef` 为语义类别定义可复用样式，而非在每个节点上内联 `style`：
+
+````
+```mermaid
+classDef service fill:#4A90D9,stroke:#3A7BC8,color:#FFFFFF,stroke-width:2px
+classDef database fill:#10B981,stroke:#059669,color:#FFFFFF,stroke-width:2px
+classDef queue fill:#F59E0B,stroke:#D97706,color:#1F2937,stroke-width:2px
+classDef gateway fill:#8B5CF6,stroke:#7C3AED,color:#FFFFFF,stroke-width:2px
+classDef external fill:#6B7280,stroke:#4B5563,color:#FFFFFF,stroke-width:2px,stroke-dasharray:5,5
+```
+````
+
+| classDef 名称 | 语义 | 典型用途 |
+|---------------|------|----------|
+| `service` | 业务服务 | Spring Boot 微服务、Agent 模块 |
+| `database` | 数据存储 | MySQL、Redis、ES、ChromaDB |
+| `queue` | 消息队列 | RocketMQ、Kafka |
+| `gateway` | 网关 / 路由 | Spring Cloud Gateway、Nginx |
+| `external` | 外部系统 | 第三方 API、LLM 服务（虚线边框） |
+
+在图表末尾统一应用样式：`class ServiceA,ServiceB service`。禁止在节点定义中混用 `style` 和 `classDef`。
+
+#### 10.6.5 连线语义与样式
+
+| 连线类型 | Mermaid 语法 | 视觉 | 语义 |
+|---------|-------------|------|------|
+| 主流程 | `-->` | 实线、`lineColor` 默认宽 | 正常业务调用链 |
+| 异步 / 事件 | `-.->` | 虚线、`secondaryColor` | 消息发送、事件发布、回调 |
+| 补偿 / 回滚 | `--x` 或 `-.->` + `secondaryColor` | 虚线、强调色 | Seata 事务回滚、Saga 补偿 |
+| 双向 | `<-->` | 实线双向 | 同步 RPC 双向通信 |
+| 粗线强调 | `==>` | 粗实线、`primaryColor` | 核心链路、关键数据流 |
+
+- 每条连线应附带简洁标签（如 `REST`、`MQ`、`gRPC`），让读者无需查看图例即可理解通信协议。
+- 连线标签文字不超过 8 个字符；更长的描述放在图下方注释中。
+
+#### 10.6.6 图表复杂度限制
+
+为保证可读性和 GitHub 渲染性能，每张图表应满足以下约束：
+
+| 约束 | 限制值 | 原因 |
+|------|--------|------|
+| 最大节点数 | 25 个 | 超过则拆分为多张子图 |
+| 最大连线数 | 30 条 | 过多连线降低可读性 |
+| 最大嵌套层级 | 2 层（`subgraph`） | 超过则使用 C4 分层图 |
+| 最大文字标签长度 | 30 字符 | 超过则缩减或使用缩写 + 图下注释 |
+| 单张图最大行数 | 80 行源码 | 超过则拆分 |
+
+超出限制时的拆分策略：
+
+1. **架构图** → 使用 C4 分层：`C4Context`（全局）→ `C4Container`（服务间）→ `C4Component`（模块内）。
+2. **流程图** → 按业务阶段拆分为 `flow-phase-1.mmd`、`flow-phase-2.mmd`。
+3. **时序图** → 按场景拆分：正常流程一张、异常补偿一张。
+4. **ER 图** → 按聚合根拆分，避免跨聚合直接连线。
+
+#### 10.6.7 无障碍与可访问性
+
+- **纯文本可理解**：图表在 GitHub `README.md` 中以 Markdown 源码形式呈现，确保纯文本审查时逻辑链完整，不依赖颜色、动画或渲染特效。
+- **节点标签自解释**：每个节点的文字标签应包含足够的上下文（如 `订单服务 (OrderService)` 而非仅 `OS`），使首次阅读者无需对照图例。
+- **颜色不作为唯一信息通道**：关键语义（正常/异常/补偿）必须同时通过连线样式（实线/虚线）或标签文字传达。
+- **避免闪烁和动画**：Mermaid `%%{ init: { 'sequence': { 'mirrorActors': false } } }%%` 等动画配置在面试文档中禁用。
+- **缩写需注释**：首次出现的缩写在图下方以 `> 缩写说明：...` 格式展开。
+
+#### 10.6.8 GitHub 兼容性注意事项
+
+- GitHub Mermaid 渲染版本可能滞后于最新 Mermaid API；避免使用发布晚于 Mermaid v10.6 的实验性语法（如 `architecture-beta`）。
+- `C4Context` / `C4Container` / `C4Component` 需在代码块首行声明 `C4Context` 等关键字，GitHub 已支持。
+- `%%` 注释在 GitHub 中正常渲染；`<!-- -->` HTML 注释在 Mermaid 块内不被支持。
+- GitHub 不支持 Mermaid `click` 交互语法——不要在 README 图表中使用 `click` 回调。
+- 若图表在 GitHub 上渲染失败，优先检查：引号嵌套、特殊字符转义、节点 ID 是否包含空格或中文标点。
+
+### 10.7 提交前验证清单
 
 - [ ] 图表类型与要表达的问题匹配，没有用一张图堆叠过多主题。
 - [ ] Mermaid 代码围栏写为 ` ```mermaid `，结束围栏完整，未混入 Markdown 语法错误。
@@ -260,8 +371,13 @@ flowchart LR
 - [ ] 独立 `.mmd` 文件已放入约定目录，文件名符合 `kebab-case`，相对链接可用。
 - [ ] 若存在 SVG/PNG/GIF 派生文件，已同步更新 Mermaid 源码并确认没有过期图片。
 - [ ] 新增图表已更新对应目录的索引或 README，且通过 Markdown、链接和仓库校验脚本。
+- [ ] 图表节点数 ≤ 25、连线数 ≤ 30、嵌套层级 ≤ 2；超限已拆分。
+- [ ] 所有 `classDef` 样式已统一定义，节点无内联 `style` 与 `classDef` 混用。
+- [ ] 连线标签 ≤ 8 字符，异步和补偿路径使用虚线样式。
+- [ ] 缩写和术语在图下方有注释，首次出现的节点标签包含完整业务含义。
+- [ ] 无 `click` 交互语法、无动画配置；纯文本审查时逻辑链完整。
 
-### 10.7 四个面试项目的推荐图表
+### 10.8 四个面试项目的推荐图表
 
 | 项目 | 推荐图表 | 推荐表达内容 |
 |------|----------|--------------|

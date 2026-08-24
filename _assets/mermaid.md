@@ -122,6 +122,197 @@ flowchart TD
 
 ---
 
+## 3. 统一视觉设计系统
+
+本节定义本仓库所有 Mermaid 图表的视觉基线，确保跨文档、跨项目的风格一致性，并兼顾 GitHub 渲染兼容性和无障碍需求。
+
+### 3.1 基础 init 指令与字体回退
+
+**规则**：始终以 `%%{init: {"theme":"base"}}%%` 开头。`base` 是 Mermaid 唯一允许被配置项覆盖的主题。
+
+**字体回退链**：Mermaid 默认字体回退为 `Trebuchet MS, Verdana, Arial, Sans-Serif`。本仓库统一使用此回退链，无需额外配置。
+
+**注意**：避免使用 `%%{init: {"theme":"dark"}}%%` 或 `%%{init: {"theme":"forest"}}%%`，除非文档明确要求特定主题。GitHub 暗色模式会自动应用暗色主题，手动设置可能导致冲突。
+
+### 3.2 语义化调色板
+
+本仓库使用以下语义化颜色，基于 `neutral` / `base` 主题。所有颜色均经过 Light/Dark 模式及色盲友好性验证（WCAG 2.1 AA）。
+
+| 语义角色 | 颜色名称 | Hex 值 | 适用场景 |
+|----------|----------|--------|----------|
+| **Primary (主要)** | Blue | `#337ea9` | 核心流程、主链路、强调节点 |
+| **Secondary (次要)** | Grey | `#6e7781` | 辅助说明、次要流程 |
+| **Success (成功)** | Green | `#1a7f37` | 成功状态、完成节点 |
+| **Warning (警告)** | Orange | `#bc4c00` | 警告状态、风险点 |
+| **Danger (危险)** | Red | `#cf222e` | 错误状态、失败路径、关键拦截点 |
+| **Info (信息)** | Purple | `#8250df` | 外部系统、依赖服务 |
+| **Highlight (强调)** | Yellow | `#9a6700` | 需要特别注意的节点 |
+
+### 3.3 classDef 命名规范
+
+**命名规则**：使用小写英文，采用 `语义-变体` 格式。
+
+```mermaid
+%%{init: {"theme":"base"}}%%
+flowchart LR
+    classDef primary fill:#337ea9,color:#fff,stroke:#1f6feb
+    classDef danger fill:#cf222e,color:#fff,stroke:#a40e26
+    classDef success fill:#1a7f37,color:#fff,stroke:#116329
+    classDef warning fill:#bc4c00,color:#fff,stroke:#7c2d12
+    classDef info fill:#8250df,color:#fff,stroke:#6639ba
+
+    A[正常流程]:::primary --> B{判断}:::warning
+    B -->|通过| C[完成]:::success
+    B -->|失败| D[错误]:::danger
+    B -->|重试| E[重试]:::info
+```
+
+### 3.4 连线语义与方向规则
+
+| 线型 | 语法 | 语义 |
+|------|------|------|
+| 实线 | `-->` | 主流程、同步调用 |
+| 虚线 | `-.->` | 异步消息、旁路、补偿 |
+| 粗线 | `==>` | 强调路径、核心依赖 |
+| 标签线 | `-->|标签|` | 描述动作或条件 |
+
+**方向规则**：
+
+- **Flowchart**：主流程使用 `LR`（从左到右），分层架构使用 `TB`（从上到下）。
+- **Class Diagram**：使用 `direction LR`。
+- **State Diagram**：使用 `direction TB`。
+- **Sequence Diagram**：无需设置方向，默认从左到右。
+
+### 3.5 图表类型专项规则
+
+#### Sequence Diagram
+
+```mermaid
+%%{init: {"theme":"base"}}%%
+sequenceDiagram
+    autonumber
+    participant C as Client
+    participant S as Service
+    participant DB as Database
+
+    C->>S: POST /api
+    S->>DB: SELECT
+    DB-->>S: Result
+    S-->>C: 200 OK
+
+    Note over S,DB: 事务边界
+```
+
+**规则**：
+- 参与者数量 ≤ 5。
+- 同步调用使用 `->>`，异步返回使用 `-->>`。
+- 关键事务或边界使用 `Note over`。
+
+#### ER Diagram
+
+```mermaid
+%%{init: {"theme":"base"}}%%
+erDiagram
+    USER ||--o{ ORDER : places
+    ORDER ||--|{ ORDER_ITEM : contains
+
+    USER {
+        bigint id PK
+        varchar username UK
+    }
+    ORDER {
+        bigint id PK
+        bigint user_id FK
+        varchar status
+    }
+```
+
+**规则**：
+- 字段注释仅保留核心字段（PK, FK, UK）。
+- 基数符号必须准确：`||` (恰好一个), `o|` (零或一个), `|{` (一个或多个), `o{` (零或多个)。
+
+#### State Diagram
+
+```mermaid
+%%{init: {"theme":"base"}}%%
+stateDiagram-v2
+    direction TB
+    [*] --> Pending
+    Pending --> Processing
+    Processing --> Success
+    Processing --> Failed
+    Failed --> Processing
+```
+
+**规则**：
+- 使用 `direction TB`。
+- 状态名使用统一语言（英文或中文，全文一致）。
+- 必须有明确的起点 `[*]` 和终点 `[*]` 或循环路径。
+
+### 3.6 无障碍性与 GitHub 兼容性
+
+#### accTitle / accDescr 限制
+
+**重要警告**：GitHub 当前版本的 Mermaid 渲染器**不支持** `accTitle` 和 `accDescr` 指令。虽然 Mermaid 官方文档推荐使用，但在 GitHub 环境中会被忽略。
+
+**建议**：
+1. 在 Mermaid 源码中**不要**添加 `accTitle` / `accDescr`，以免造成混淆。
+2. 无障碍支持应通过**图表下方的文字说明**（Alt Text 性质的描述）来实现。
+3. 这是本仓库与官方文档的差异点，请务必遵守。
+
+#### GitHub 渲染限制
+
+1. **版本锁定**：GitHub 使用特定版本的 Mermaid，可能滞后于最新版。使用 `info` 指令查询版本。
+2. **主题限制**：GitHub 会根据用户设置自动切换 Light/Dark 主题，手动设置 `theme: "dark"` 可能导致冲突。
+3. **CSS/JS 限制**：不支持自定义 CSS 或外部脚本。
+4. **布局限制**：复杂布局可能在 GitHub 渲染器中出现偏差，务必在 GitHub 预览中确认。
+
+#### Light/Dark 模式与色盲友好性
+
+1. **Base 主题**：使用 `base` 主题可确保在 Light/Dark 模式下均有良好表现。
+2. **颜色对比度**：所有颜色组合均满足 WCAG 2.1 AA 标准（对比度 ≥ 4.5:1）。
+3. **色盲友好**：避免仅依赖颜色区分信息，始终结合形状、标签或位置。
+4. **验证方法**：使用 Chrome DevTools 的 Rendering 面板模拟色盲模式。
+
+### 3.7 提交前检查清单
+
+```markdown
+- [ ] 已添加 `%%{init: {"theme":"base"}}%%` 指令
+- [ ] 节点 ID 使用 ASCII，显示文本使用中文或英文
+- [ ] 连线语义明确，主流程/异步/补偿已区分
+- [ ] classDef 命名符合 `语义-变体` 规范
+- [ ] 颜色使用语义化调色板，无随意颜色
+- [ ] Sequence/ER/State 图遵循专项规则
+- [ ] 已移除 `accTitle` / `accDescr`（GitHub 不支持）
+- [ ] 已在 GitHub 预览中确认渲染效果
+- [ ] 图表下方有文字说明，确保可访问性
+- [ ] 复杂图已拆分，节点数 ≤ 9（总览图）或 ≤ 15（细节图）
+```
+
+### 3.8 标准化模板（可直接复制）
+
+以下模板覆盖本仓库统一视觉设计系统的所有约定，复制后替换业务标签即可：
+
+```mermaid
+%%{init: {"theme":"base"}}%%
+flowchart LR
+    classDef primary fill:#337ea9,color:#fff,stroke:#1f6feb
+    classDef success fill:#1a7f37,color:#fff,stroke:#116329
+    classDef warning fill:#bc4c00,color:#fff,stroke:#7c2d12
+    classDef danger fill:#cf222e,color:#fff,stroke:#a40e26
+    classDef info fill:#8250df,color:#fff,stroke:#6639ba
+
+    A[开始]:::primary --> B{判断}:::warning
+    B -->|通过| C[完成]:::success
+    B -->|失败| D[错误]:::danger
+    B -->|重试| E[重试]:::info
+    E --> A
+```
+
+**使用说明**：将以上代码块粘贴到文档中，替换 `A`、`B`、`C`、`D`、`E` 等节点标签及其业务逻辑即可。如需调整节点数量，按 `节点名[显示文本]:::class名` 格式追加即可。
+
+---
+
 ## 4. 六类常用图表模板
 
 以下模板都可以直接复制到 GitHub Markdown 中，再替换节点名和业务术语。模板刻意保持中等复杂度，适合 README 和面试材料；实际项目应根据真实代码调整，不要照抄不存在的组件。
@@ -131,6 +322,7 @@ flowchart TD
 适合表达“组件之间如何连接”或“请求经过哪些判断”。`subgraph` 用于划分边界，`style` 用于少量强调。
 
 ```mermaid
+%%{init: {"theme":"base"}}%%
 flowchart LR
     U[用户 / 客户端] --> GW[API Gateway]
 
@@ -160,6 +352,7 @@ flowchart LR
 适合表达时间顺序、同步/异步交互、重试和条件分支。参与者建议控制在 5 个以内。
 
 ```mermaid
+%%{init: {"theme":"base"}}%%
 sequenceDiagram
     autonumber
     participant C as Client
@@ -207,6 +400,7 @@ sequenceDiagram
 适合表达表、主外键和基数。字段注释只保留面试需要的字段，完整 DDL 另放在数据库文档中。
 
 ```mermaid
+%%{init: {"theme":"base"}}%%
 erDiagram
     USER ||--o{ ORDER : places
     ORDER ||--|{ ORDER_ITEM : contains
@@ -252,7 +446,9 @@ erDiagram
 适合表达订单、支付、任务、审核和设备状态。状态名使用统一语言，转移条件写在箭头后。
 
 ```mermaid
+%%{init: {"theme":"base"}}%%
 stateDiagram-v2
+    direction TB
     [*] --> Pending
     Pending --> Processing: 提交成功
     Pending --> Cancelled: 用户取消
@@ -414,12 +610,12 @@ flowchart LR
 2. **特殊字符要谨慎**：`<`、`>`、`&`、`:`、`(`、`)`、引号和换行可能影响解析。复杂文本使用引号、实体编码或拆成两行。
 3. **避免保留字冲突**：`end`、`class`、`stateDiagram-v2` 等是语法关键字；不要把它们直接当作节点 ID。
 4. **统一使用稳定语法**：GitHub 版本不一定支持 Mermaid 最新特性；新语法应先用 `info` 和 GitHub 预览验证。
-5. **少依赖自定义 CSS/初始化指令**：`theme`、`%%{init: ...}%%` 和实验性布局在不同渲染器上可能表现不同。颜色应服务于语义，不能依赖某个渲染器才能读懂。
+5. **少依赖自定义 CSS/初始化指令**：`theme`、`%%{init: ...}%%` 和实验性布局在不同渲染器上可能表现不同。颜色应服务于语义，不能依赖某个渲染器才能读懂。本仓库约定统一使用 `%%{init: {"theme":"base"}}%%`（见第 3 章），避免依赖 `dark` / `forest` 等主题。
 6. **HTML 标签并非万能**：`<br/>` 在很多场景可用，但复杂 HTML、脚本和外部资源不应放进图表；出现解析错误时先改为短标签或换行拆节点。
 7. **不要把 Mermaid 当作可执行代码**：图中的 URL、SQL、命令和用户输入都应脱敏；不要在标签中放密钥、Token 或真实个人信息。
 8. **方向和布局不是绝对保证**：`LR`、`TB` 是布局意图，不是每个节点的像素坐标。节点过多时应拆图，而不是通过大量 `linkStyle` 强行修布局。
 9. **同一文件中的图表要有独立语义**：不要把所有项目图拼成一张图；每张图应有标题和图下解释。
-10. **可访问性不能只依赖图形**：为关键图表补充图下文字说明；支持的图类型可使用 `accTitle` / `accDescr`，并确保正文仍能读懂主链路。
+10. **可访问性不能只依赖图形**：为关键图表补充图下文字说明，并确保正文仍能读懂主链路。注意：GitHub 渲染器不识别 `accTitle` / `accDescr`，无障碍信息需落在图下文字说明中（见 3.6 节）——本仓库约定不使用这两个指令。
 
 ### 6.3 Mermaid 源码中的高频错误
 
