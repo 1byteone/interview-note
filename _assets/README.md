@@ -8,6 +8,7 @@
 
 | 子目录 | 说明 |
 |--------|------|
+| [mermaid.md](mermaid.md) | GitHub README 与技术面试文档的 Mermaid 图表使用指南 |
 | [examples/](examples/) | 示例项目（sample-java-project：Java + Spring Boot 样例） |
 
 ## 示例项目
@@ -21,4 +22,4 @@
 - `src/` — 源码
 - `sample-java-project-interview-questions.md` — 从该项目自动生成的面试题
 
-> 用途：配合 [`4-interview/tools/question-generator/`](../4-interview/tools/question-generator/) 使用
+> 用途：配合 [`4-interview/tools/question-generator/`](../4-interview/tools/question-generator/) 使用。
