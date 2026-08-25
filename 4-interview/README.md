@@ -15,12 +15,12 @@
 
 ### 项目深度面试文档
 
-| 项目 | 深度面试 | 速记卡 |
-|------|---------|--------|
-| 分布式微云商城 | [项目深度面试.md](projects/mall-micro-cloud/项目深度面试.md) | [项目速记卡.md](projects/mall-micro-cloud/项目速记卡.md) |
-| 灵犀智能写作 | [项目深度面试.md](projects/ai-passage-creator/项目深度面试.md) | [项目速记卡.md](projects/ai-passage-creator/项目速记卡.md) |
-| 农业知识库问答 | [项目深度面试.md](projects/agri-qa-assistant/项目深度面试.md) | [项目速记卡.md](projects/agri-qa-assistant/项目速记卡.md) |
-| 智颐养老护理系统 | [项目深度面试.md](projects/zznursing/项目深度面试.md) | [项目速记卡.md](projects/zznursing/项目速记卡.md) |
+| 项目 | 深度面试 | 速记卡 | 大厂面试官 QA |
+|------|---------|--------|--------------|
+| 分布式微云商城 | [项目深度面试.md](projects/mall-micro-cloud/项目深度面试.md) | [项目速记卡.md](projects/mall-micro-cloud/项目速记卡.md) | [大厂面试官QA.md](projects/mall-micro-cloud/大厂面试官QA.md) |
+| 灵犀智能写作 | [项目深度面试.md](projects/ai-passage-creator/项目深度面试.md) | [项目速记卡.md](projects/ai-passage-creator/项目速记卡.md) | [大厂面试官QA.md](projects/ai-passage-creator/大厂面试官QA.md) |
+| 农业知识库问答 | [项目深度面试.md](projects/agri-qa-assistant/项目深度面试.md) | [项目速记卡.md](projects/agri-qa-assistant/项目速记卡.md) | [大厂面试官QA.md](projects/agri-qa-assistant/大厂面试官QA.md) |
+| 智颐养老护理系统 | [项目深度面试.md](projects/zznursing/项目深度面试.md) | [项目速记卡.md](projects/zznursing/项目速记卡.md) | [大厂面试官QA.md](projects/zznursing/大厂面试官QA.md) |
 
 ## 各技术栈面试题
 
