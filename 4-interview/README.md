@@ -22,6 +22,9 @@
 | 农业知识库问答 | [项目深度面试.md](projects/agri-qa-assistant/项目深度面试.md) | [项目速记卡.md](projects/agri-qa-assistant/项目速记卡.md) | [大厂面试官QA.md](projects/agri-qa-assistant/大厂面试官QA.md) |
 | 智颐养老护理系统 | [项目深度面试.md](projects/zznursing/项目深度面试.md) | [项目速记卡.md](projects/zznursing/项目速记卡.md) | [大厂面试官QA.md](projects/zznursing/大厂面试官QA.md) |
 
+> 各项目递进追问补充：
+> [商城](projects/mall-micro-cloud/项目深度面试-递进追问补充.md) · [智能写作](projects/ai-passage-creator/项目深度面试-递进追问补充.md) · [农业问答](projects/agri-qa-assistant/项目深度面试-递进追问补充.md) · [养老护理](projects/zznursing/项目深度面试-递进追问补充.md)
+
 ## 各技术栈面试题
 
 面试题分布在 `1-knowledge/` 各技术栈目录下的 `README.md` 中：
