@@ -40,18 +40,18 @@
 |---:|---|---|---|
 | 00 | 本入口：学习动机、项目边界和路线 | `为什么要学AI.docx`、`第1章 概述.docx` | 当前页 |
 | 01 | [AI、LLM、Prompt 与 Agent 基础](01-ai-llm-prompt-agent-basics.md) | `几个重要概念.docx` | 已建立入口 |
-| 02 | [开发环境与 LangChain 生态](02-environment-and-langchain.md) | `三大组件.docx`、`第1章 概述.docx` | 待补充 |
-| 03 | [Agent 基础与工具调用](03-agent-fundamentals.md) | `第2章 构建智能体.docx` | 待补充 |
-| 04 | [Agent 高级特性](04-agent-advanced-features.md) | `第3章 智能体的高级特性.docx` | 待补充 |
-| 05 | [LangGraph 状态化工作流](05-langgraph-stateful-workflows.md) | `第 4 章 LangGraph 框架.docx` | 待补充 |
-| 06 | [农业文档摄入与分块](06-document-ingestion-and-chunking.md) | `第 5 章 检索增强生成.docx` | 待补充 |
-| 07 | [农业 Hybrid RAG](07-agri-hybrid-rag.md) | `第 5 章 检索增强生成.docx` | 待补充 |
-| 08 | [农业 GraphRAG](08-agri-graph-rag.md) | `第 4 章 LangGraph 框架.docx`、`第 5 章 检索增强生成.docx` | 待补充 |
-| 09 | [证据门控、安全与拒答](09-evidence-safety-and-refusal.md) | `第2章`、`第5章`、项目资料 | 待补充 |
-| 10 | [MCP Tools 与 Resources](10-mcp-tools-and-resources.md) | `第 6 章 模型上下文协议.docx` | 待补充 |
-| 11 | [FastAPI、SSE 与 Memory](11-fastapi-sse-and-memory.md) | `第2章`、`第3章`、`第 6 章` | 待补充 |
-| 12 | [RAG 评估与生产化](12-rag-evaluation-and-production.md) | `第5章`、项目资料 | 待补充 |
-| 13 | [面试与简历表达](13-interview-and-resume-mapping.md) | `AI 应用开发岗 标准简历.docx` | 待补充 |
+| 02 | [开发环境与 LangChain 生态](02-environment-and-langchain.md) | `三大组件.docx`、`第1章 概述.docx` | 已完成 |
+| 03 | [Agent 基础与工具调用](03-agent-fundamentals.md) | `第2章 构建智能体.docx` | 已完成 |
+| 04 | [Agent 高级特性](04-agent-advanced-features.md) | `第3章 智能体的高级特性.docx` | 已完成 |
+| 05 | [LangGraph 状态化工作流](05-langgraph-stateful-workflows.md) | `第 4 章 LangGraph 框架.docx` | 已完成 |
+| 06 | [农业文档摄入与分块](06-document-ingestion-and-chunking.md) | `第 5 章 检索增强生成.docx` | 已完成 |
+| 07 | [农业 Hybrid RAG](07-agri-hybrid-rag.md) | `第 5 章 检索增强生成.docx` | 已完成 |
+| 08 | [农业 GraphRAG](08-agri-graph-rag.md) | `第 4 章 LangGraph 框架.docx`、`第 5 章 检索增强生成.docx` | 已完成 |
+| 09 | [证据门控、安全与拒答](09-evidence-safety-and-refusal.md) | `第2章`、`第5章`、项目资料 | 已完成 |
+| 10 | [MCP Tools 与 Resources](10-mcp-tools-and-resources.md) | `第 6 章 模型上下文协议.docx` | 已完成 |
+| 11 | [FastAPI、SSE 与 Memory](11-fastapi-sse-and-memory.md) | `第2章`、`第3章`、`第 6 章` | 已完成 |
+| 12 | [RAG 评估与生产化](12-rag-evaluation-and-production.md) | `第5章`、项目资料 | 已完成 |
+| 13 | [面试与简历表达](13-interview-and-resume-mapping.md) | `AI 应用开发岗 标准简历.docx` | 已完成 |
 | 14 | [Ollama 与 Harness](14-ollama-and-harness.md) | `DeepSeek-Harness1.docx` | 待核验 |
 
 ## 农业项目边界
