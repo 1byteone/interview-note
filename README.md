@@ -83,6 +83,7 @@ Q3: 你的水平？
 | **Python** | [Python 基础](1-knowledge/03-ai/python/) | L1-L2 | 10+ |
 | **LLM** | [大语言模型](1-knowledge/03-ai/llm/) | L2-L4 | 20+ |
 | **RAG** | [检索增强生成](1-knowledge/03-ai/rag/) | L2-L4 | 15+ |
+| **AI 应用开发专项** | [Word 教材整合教程](2-learning/projects/tutorials/00-ai-application-learning-path/README.md) | 入门→生产 | 15 章 |
 | **AI Agent** | [Agent 原理](1-knowledge/03-ai/agent/) | L2-L4 | 20+ |
 | **Agentic AI** | [Agentic 系统](1-knowledge/03-ai/agentic/) | L3-L4 | 15+ |
 | **LangGraph** | [图编排](1-knowledge/03-ai/langgraph/) | L2-L3 | 10+ |

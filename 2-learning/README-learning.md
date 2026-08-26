@@ -28,6 +28,10 @@ Phase 1 基础组 → Phase 2 后端核心 → Phase 3 AI 核心 → Phase 4 基
 
 适合：想系统学习全栈的开发者
 
+### 🤖 AI 应用开发专项路线
+
+[AI_EXAM Word 教材整合教程](projects/tutorials/00-ai-application-learning-path/README.md)：将 AI_EXAM/docs 中的 Word 教材与 LangChain、Agent、LangGraph、RAG、MCP 和农业知识库项目串联起来。
+
 ---
 
 ## 📊 16 技术栈总览
