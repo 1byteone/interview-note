@@ -16,7 +16,7 @@ Spring Cloud 是微服务架构的完整解决方案，包括服务发现、配�
 
 2. **Spring Cloud 核心组件**
    - 问题：Spring Cloud 的核心组件有哪些？各自的作用是什么？
-   - 答案：Spring Cloud 核心组件包括：Nacos（服务注册与发现、配置中心）、Gateway（API 网关，统一入口）、OpenFeign（声明式 HTTP 客户端，服务间调用）、Sentinel（流量控制、熔断降级）、Seata（分布式事务）、Sleuth/Zipkin（链路追踪）、RocketMQ/Kafka（消息队列）。
+   - 答案：Spring Cloud 核心组件包括：Nacos（服务注册与发现、配置中心）、Gateway（API 网关，统一入口）、OpenFeign（声明式 HTTP 客户端，服务间调用）、Sentinel（流量控制、熔断降级）、Seata（分布式事务）、链路追踪（旧版 Sleuth/Zipkin，新版 Micrometer Tracing + Zipkin/SkyWalking）、RocketMQ/Kafka（消息队列）。
    - 解析：这些组件构成了微服务架构的基础设施层。Nacos 解决服务注册与配置管理问题；Gateway 作为统一入口，实现路由转发、鉴权、限流；OpenFeign 简化了服务间 HTTP 调用；Sentinel 提供流量控制和熔断降级保护系统稳定性；Seata 解决分布式事务一致性问题；链路追踪组件用于监控和排查分布式系统的调用链路。各组件通过 Spring Cloud Netflix 或 Spring Cloud Alibaba 生态整合。
 
 #### Nacos 基础
@@ -115,7 +115,7 @@ Spring Cloud 是微服务架构的完整解决方案，包括服务发现、配�
 19. **Sleuth 与 Zipkin**
     - 问题：Sleuth 和 Zipkin 的作用是什么？如何实现链路追踪？
     - 答案：Sleuth 是 Spring Cloud 的链路追踪组件，为每个请求生成 TraceId 和 SpanId，通过 MDC 注入日志。Zipkin 是分布式追踪系统，负责收集、存储和展示链路数据。集成方式：引入 `spring-cloud-starter-sleuth` 和 `zipkin` 依赖，配置 Zipkin Server 地址即可自动上报。
-    - 解析：Sleuth 的核心概念：TraceId（全局唯一，标识一个完整的请求链路）、SpanId（标识一次服务调用）、ParentSpanId（父级调用）。Sleuth 通过拦截器自动在 HTTP Header 中传递这些 ID，实现跨服务的链路关联。Zipkin 由 Collector（收集器）、Storage（存储，支持 MySQL/ES/Cassandra）、API（查询接口）、UI（Web 界面）组成。数据上报支持 HTTP（同步，可能影响性能）和 Kafka（异步，推荐生产使用）。注意：Spring Cloud Sleuth 从 3.x 开始已被 Micrometer Tracing 替代。
+    - 解析：Sleuth 的核心概念：TraceId（全局唯一，标识一个完整的请求链路）、SpanId（标识一次服务调用）、ParentSpanId（父级调用）。Sleuth 通过拦截器自动在 HTTP Header 中传递这些 ID，实现跨服务的链路关联。Zipkin 由 Collector（收集器）、Storage（存储，支持 MySQL/ES/Cassandra）、API（查询接口）、UI（Web 界面）组成。数据上报支持 HTTP（同步，可能影响性能）和 Kafka（异步，推荐生产使用）。注意：Spring Cloud Sleuth 在 3.x 已进入维护模式，官方推荐使用 Micrometer Tracing（引入 `io.micrometer:micrometer-tracing-bridge-brave` + Zipkin 或 OpenTelemetry桥接），Spring Cloud 2023.x 以后不再自动引入 Sleuth。
 
 20. **SkyWalking**
     - 问题：SkyWalking 是什么？它有哪些优势？
@@ -132,7 +132,7 @@ Spring Cloud 是微服务架构的完整解决方案，包括服务发现、配�
 
 22. **服务治理**
     - 问题：如何实现微服务的服务治理？包括限流、熔断、降级等。
-    - 答案：微服务治理通过以下机制实现：1）限流：Sentinel/QPS 限制，防止流量过载；2）熔断：Sentinel/Resilience4j，故障快速失败；3）降级：返回默认值或缓存数据；4）服务发现：Nacos/Consul，动态管理服务实例；5）负载均衡：LoadBalancer，合理分配流量；6）链路追踪：Sleuth/SkyWalking，监控调用链路。
+    - 答案：微服务治理通过以下机制实现：1）限流：Sentinel/QPS 限制，防止流量过载；2）熔断：Sentinel/Resilience4j，故障快速失败；3）降级：返回默认值或缓存数据；4）服务发现：Nacos/Consul，动态管理服务实例；5）负载均衡：LoadBalancer，合理分配流量；6）链路追踪：Micrometer Tracing/SkyWalking（旧项目可能仍用 Sleuth），监控调用链路。
     - 解析：服务治理的核心目标是保障系统稳定性。限流策略：QPS 限流（令牌桶/漏桶）、并发线程数限流、热点参数限流。熔断策略：慢调用比例熔断、异常比例熔断、异常数熔断，配合半开状态自动恢复。降级策略：返回默认值、读取缓存、简化逻辑（如关闭非核心功能）。服务治理还需配合：统一日志（ELK）、分布式追踪（SkyWalking）、健康检查（Nacos）、配置中心（Nacos Config）。生产环境建议使用 Sentinel + Nacos 实现动态规则推送，结合 Dashboard 实时监控。
 
 #### 高可用设计

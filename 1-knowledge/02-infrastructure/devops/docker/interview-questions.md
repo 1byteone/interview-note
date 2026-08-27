@@ -58,7 +58,7 @@ Docker 实战
 **答案**：
 ```dockerfile
 # 1. 选择合适的基础镜像
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:17-jre-alpine AS builder
 
 # 2. 设置工作目录
 WORKDIR /app
@@ -71,7 +71,7 @@ RUN mvn dependency:resolve
 COPY src ./src
 RUN mvn package -DskipTests
 
-# 5. 多阶段构建
+# 5. 多阶段构建（从 builder 阶段拷贝产物）
 FROM eclipse-temurin:17-jre-alpine
 COPY --from=builder /app/target/*.jar app.jar
 
@@ -82,6 +82,8 @@ USER appuser
 # 7. 启动命令
 ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
+
+> 说明：`AS builder` 必须写在源阶段之后，`COPY --from=builder` 才会引用该阶段产物；若省略别名，多阶段拷贝将无法解析目标。生产建议将依赖下载（`mvn dependency:go-offline`）与源码编译拆分，以便 Docker Layer Cache 复用。多阶段构建的技巧详见 [Docker 技术栈](../../../2-learning/stacks/10-docker/README.md)。
 
 ---
 
