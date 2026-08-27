@@ -3,6 +3,8 @@
 > 技术点：混合检索、向量召回、BM25、RRF 融合、Reranker、幻觉控制
 > 场景项目：CropWise（农业知识问答系统）
 
+> 📚 这是 [AI 应用开发专项教程](../00-ai-application-learning-path/README.md) 的配套专题。基础概念见 [农业 Hybrid RAG](../00-ai-application-learning-path/07-agri-hybrid-rag.md)，文档摄入见 [文档摄入与分块](../00-ai-application-learning-path/06-document-ingestion-and-chunking.md)。
+
 ---
 
 ## 一、基础篇：概念与价值

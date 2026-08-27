@@ -3,6 +3,8 @@
 > 技术点：知识图谱 Schema、Cypher 查询、GraphRAG、实体关系推理
 > 场景项目：CropWise（12 实体 + 16 关系农业知识图谱）
 
+> 📚 这是 [AI 应用开发专项教程](../00-ai-application-learning-path/README.md) 的配套专题。概念见 [农业 GraphRAG](../00-ai-application-learning-path/08-agri-graph-rag.md)。
+
 ---
 
 ## 一、基础篇：概念与价值

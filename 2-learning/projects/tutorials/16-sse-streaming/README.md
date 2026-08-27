@@ -3,6 +3,8 @@
 > 技术点：SSE 协议、StreamingResponse、前端 ReadableStream、毫秒级首字上屏
 > 场景项目：CropWise（Next.js 前端 + FastAPI 后端流式对话）
 
+> 📚 这是 [AI 应用开发专项教程](../00-ai-application-learning-path/README.md) 的配套专题。概念见 [FastAPI、SSE 与 Memory](../00-ai-application-learning-path/11-fastapi-sse-and-memory.md)。
+
 ---
 
 ## 一、基础篇：概念与价值

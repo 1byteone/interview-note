@@ -3,6 +3,8 @@
 > 技术点：Agent Loop、ReAct、工具调用、Multi-Agent、StateGraph
 > 场景项目：CropWise（6 工具农业问答 Agent）
 
+> 📚 这是 [AI 应用开发专项教程](../00-ai-application-learning-path/README.md) 的配套专题。概念见 [LangGraph 状态化工作流](../00-ai-application-learning-path/05-langgraph-stateful-workflows.md)、[Agent 基础](../00-ai-application-learning-path/03-agent-fundamentals.md)。
+
 ---
 
 ## 一、基础篇：概念与价值

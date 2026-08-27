@@ -88,5 +88,8 @@ PDF / DOCX / TXT
 - [现有 LangGraph 教程](../14-langgraph-agent/README.md)
 - [现有 GraphRAG 教程](../15-neo4j-graph/README.md)
 - [现有 SSE 教程](../16-sse-streaming/README.md)
+- [RAG 系统教程](../../../stacks/15-rag/README.md)
+- [LangChain 技术栈](../../../stacks/14-langchain/README.md)
+- [FastAPI 技术栈](../../../stacks/05-fastapi/README.md)
 
 > 版本提醒：LangChain、LangGraph、MCP、云模型和 Harness API 变化较快。教程中的代码必须与明确依赖版本一起验证。
