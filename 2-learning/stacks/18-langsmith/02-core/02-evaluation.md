@@ -16,6 +16,23 @@
 
 **评测的本质**：固定考卷（Dataset），换不同的考生（prompt 版本 / 模型 / 检索参数），看成绩单（Experiment）对比——**用数据代替感觉做决策**。
 
+```mermaid
+%%{ init: { 'theme': 'default', 'themeVariables': { 'primaryColor': '#4A90D9', 'primaryBorderColor': '#3A7BC8', 'primaryTextColor': '#1F2937', 'secondaryColor': '#F59E0B', 'tertiaryColor': '#10B981', 'lineColor': '#6B7280', 'backgroundColor': '#FFFFFF', 'fontFamily': 'Arial, Microsoft YaHei, Helvetica, PingFang SC, sans-serif' } } }%%
+flowchart LR
+    classDef service fill:#4A90D9,stroke:#3A7BC8,color:#FFFFFF,stroke-width:2px
+    classDef database fill:#10B981,stroke:#059669,color:#FFFFFF,stroke-width:2px
+
+    DS[(Dataset 考卷)] --> TG[目标函数（链/Agent）]
+    TG --> EV[评估器（规则/LLM/人工）]
+    EV --> EX[Experiment 成绩单]
+    EX --> CMP[对比迭代 换模型/prompt]
+
+    class DS database
+    class TG,EV,EX,CMP service
+```
+
+> 流程图：固定 Dataset，替换目标函数（模型 / prompt / 检索参数），经评估器打分产出 Experiment，横向对比决策。
+
 ---
 
 ## 二、Dataset 从哪来？（四种来源）

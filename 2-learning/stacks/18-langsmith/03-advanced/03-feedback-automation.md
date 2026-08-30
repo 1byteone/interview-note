@@ -73,19 +73,30 @@ Automation = **条件 + 动作** 的规则引擎，监听生产 trace 自动触�
 ## 四、完整闭环（生产 → 改进）
 
 ```mermaid
+%%{ init: { 'theme': 'default', 'themeVariables': { 'primaryColor': '#4A90D9', 'primaryBorderColor': '#3A7BC8', 'primaryTextColor': '#1F2937', 'secondaryColor': '#F59E0B', 'tertiaryColor': '#10B981', 'lineColor': '#6B7280', 'backgroundColor': '#FFFFFF', 'fontFamily': 'Arial, Microsoft YaHei, Helvetica, PingFang SC, sans-serif' } } }%%
 flowchart LR
+    classDef service fill:#4A90D9,stroke:#3A7BC8,color:#FFFFFF,stroke-width:2px
+    classDef database fill:#10B981,stroke:#059669,color:#FFFFFF,stroke-width:2px
+    classDef queue fill:#F59E0B,stroke:#D97706,color:#1F2937,stroke-width:2px
+
     A[生产 Trace] -->|Automation 筛选| B[Annotation Queue]
-    B -->|人工标注| C[Dataset 负样本]
+    B -->|人工标注| C[(Dataset 负样本)]
     C -->|定期 Experiment| D[评测对比]
     D -->|分数不达标| E[改进 prompt/模型/检索]
     E -->|上线新版本| F[生产监控回归]
-    F -->|再次筛选| B
+    F -.->|再次筛选| B
+
+    class A,B,E,F service
+    class C database
+    class D queue
 ```
 
 > 1. 生产跑出负反馈 → Automation 自动入队
 > 2. 人工确认坏例 → 沉淀进评测集
 > 3. 评测集驱动改进 → 上线 → 监控回归
 > 4. 循环往复——**评测集是"活"的，不是一次性考卷**
+>
+> > 缩写说明：Automation=自动化规则；Experiment=评测实验；Dataset=评测数据集。
 
 ---
 

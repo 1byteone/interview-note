@@ -111,6 +111,18 @@
 
 ---
 
+## 图表示例（Mermaid 源文件）
+
+本教程内嵌的 Mermaid 图表源文件统一存放于 [`_assets/diagrams/langsmith/`](../../../_assets/diagrams/langsmith/)（kebab-case 命名，渲染已验证）：
+
+| 图表 | 位置 | 主题 |
+|------|------|------|
+| `eval-flow-0.mmd` | 02-core/02-evaluation.md | Dataset→目标函数→评估器→Experiment 评测流程 |
+| `prompt-release-0.mmd` | 03-advanced/02-prompt-hub.md | Prompt 发布纪律（先评测→切 prod→回滚） |
+| `feedback-loop-0.mmd` | 03-advanced/03-feedback-automation.md | 生产反馈→标注→评测集→改进→回归飞轮 |
+
+---
+
 ## 参考资料
 
 - [LangSmith 官方文档](https://docs.langchain.com/langsmith)（Tracing / Evaluation / Prompt Hub）

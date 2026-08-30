@@ -64,15 +64,26 @@ prompt = hub.pull("your-org/mall-qa-system:prod")
 
 提示词变更必须走"评测前置"流程：
 
-```
-1. 在 Hub 创建新版本（dev tag）
-2. 用新版本在固定 Dataset 上跑 Experiment（对比 baseline 分数）
-3. 分数达标 → 把新版本 tag 为 prod
-4. 生产监控回归（Automation 盯分数/异常）
-5. 出问题一秒回滚到上一个 prod tag
+```mermaid
+%%{ init: { 'theme': 'default', 'themeVariables': { 'primaryColor': '#4A90D9', 'primaryBorderColor': '#3A7BC8', 'primaryTextColor': '#1F2937', 'secondaryColor': '#F59E0B', 'tertiaryColor': '#10B981', 'lineColor': '#6B7280', 'backgroundColor': '#FFFFFF', 'fontFamily': 'Arial, Microsoft YaHei, Helvetica, PingFang SC, sans-serif' } } }%%
+flowchart LR
+    classDef service fill:#4A90D9,stroke:#3A7BC8,color:#FFFFFF,stroke-width:2px
+    classDef database fill:#10B981,stroke:#059669,color:#FFFFFF,stroke-width:2px
+    classDef queue fill:#F59E0B,stroke:#D97706,color:#1F2937,stroke-width:2px
+
+    A[新建版本 dev tag] --> B[(固定 Dataset)]
+    B --> C[跑 Experiment 对比 baseline]
+    C -->|分数不达标| A
+    C -->|达标| D[切换 prod tag]
+    D --> E[生产监控回归]
+    E -->|异常| F[回滚旧 prod tag]
+
+    class A,C,D,E,F service
+    class B database
 ```
 
-**不是"改完直接上线"**——prompt 是上线前最容易改、也最容易改出问题的地方。
+> 发布纪律：**先评测 → 再切 prod → 监控回归 → 秒回滚**。不是"改完直接上线"——prompt 是上线前最容易改、也最容易改出问题的地方。
+> > 缩写说明：baseline=基准实验分数；tag=版本标签；Experiment=评测实验。
 
 ---
 

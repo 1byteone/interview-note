@@ -26,6 +26,8 @@
 > [商城](projects/mall-micro-cloud/项目深度面试-递进追问补充.md) · [智能写作](projects/ai-passage-creator/项目深度面试-递进追问补充.md) · [农业问答](projects/agri-qa-assistant/项目深度面试-递进追问补充.md) · [养老护理](projects/zznursing/项目深度面试-递进追问补充.md)
 
 > 商城面试 QA 精编版（93 题）：[微云商城面试QA精编版.md](projects/mall-micro-cloud/微云商城面试QA精编版.md) — 基于实训项目源码，6 域分章，含自我介绍 / Java 基础 / 数据库 / 中间件 / 项目实战 / 软技能
+>
+> 商城 AI 检索模块 LangChain/LangGraph/LangSmith 落地问答：[LangChain_LangSmith落地面试QA.md](projects/mall-micro-cloud/LangChain_LangSmith落地面试QA.md) — 11 题深挖 `create_agent` / 工具 / 结构化输出 / Checkpointer 记忆 / 防幻觉 / 评测演进，与三合一 QA 互链
 
 ## 各技术栈面试题
 
