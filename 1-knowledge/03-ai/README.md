@@ -177,6 +177,7 @@ AI 工程师是当前热门的技术方向，涵盖 Python、LLM、RAG、Agent�
 ### 在线资源
 - [LangChain 文档](https://python.langchain.com/)
 - [LangGraph 文档](https://langchain-ai.github.io/langgraph/)
+- [LangSmith 文档](https://docs.langchain.com/langsmith)
 - [Hugging Face 文档](https://huggingface.co/docs)
 
 ## 🔗 相关链接
@@ -187,4 +188,7 @@ AI 工程师是当前热门的技术方向，涵盖 Python、LLM、RAG、Agent�
 - [Agent 专题](agent/)
 - [Agentic 专题](agentic/)
 - [LangGraph 专题](langgraph/)
+- [LangSmith 专题](../../2-learning/stacks/18-langsmith/README.md)
 - [Harness 专题](harness/)
+
+> **AI 应用全家桶面试**：LangChain × LangGraph × LangSmith 三合一 QA（45+ 题）见根目录《[LangChain_LangGraph_LangSmith_面试QA_详解版](../../LangChain_LangGraph_LangSmith_面试QA_详解版.md)》与《[背诵版](../../LangChain_LangGraph_LangSmith_面试QA_背诵版.md)》。

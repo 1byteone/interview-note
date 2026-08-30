@@ -123,6 +123,9 @@
 **相关技术栈：**
 - [05-FastAPI](../05-fastapi/README.md) — FastAPI 暴露 LangChain 编排的 AI 服务为 REST API
 - [16-OpenAI](../16-openai/README.md) — LangChain 通过 OpenAI 模型实现对话、推理与工具调用
+- [18-LangSmith](../18-langsmith/README.md) — 追踪 LangChain/LangGraph 应用的执行、评测与 Prompt 管理（铁三角之"验证"）
+
+> **LangChain 全家桶**：LangChain（构建）→ LangGraph（编排）→ LangSmith（验证）。LangGraph 底层运行时见 03-advanced/03；LangSmith 教程见 18-langsmith。
 
 ---
 

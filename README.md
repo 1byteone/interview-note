@@ -1,7 +1,7 @@
 # Java & AI 面试笔记 | 知识库
 
 > **从 Java 后端到 AI Agent 的全栈面试知识体系**
-> 1000+ 面试题 · 17 技术栈教程 · 28 篇生态深度教程 · 8 个项目深度剖析
+> 1000+ 面试题 · 18 技术栈教程 · 28 篇生态深度教程 · 8 个项目深度剖析
 
 ---
 
@@ -182,6 +182,7 @@ Q3: 你的水平？
 |------|-------------------------------|-------------------|
 | 模板覆盖版 | [技术经理100问 详解版](AI应用开发岗_技术经理面试100问_QA_详解版.md) | [技术经理100问 背诵版](AI应用开发岗_技术经理面试100问_QA.md) |
 | 纯 AI 简历（STAR 优化版） | [纯AI简历100问 详解版](AI应用开发岗_纯AI简历_面试100问_QA详解版.md) | [纯AI简历100问 背诵版](AI应用开发岗_纯AI简历_面试100问_背诵版.md) |
+| **LangChain 核心面试题.docx** | [三合一详解版（LangChain 26 + LangGraph 16 + LangSmith 15）](LangChain_LangGraph_LangSmith_面试QA_详解版.md) | [三合一背诵版](LangChain_LangGraph_LangSmith_面试QA_背诵版.md) |
 
 ---
 
@@ -195,9 +196,9 @@ interview-note/
 │   ├── 01-java/          # Java 核心 + Spring + Spring Cloud
 │   ├── 02-infrastructure/ # 中间件 + DevOps
 │   └── 03-ai/            # AI 技术栈
-├── 2-learning/           # 🎯 系统教程（17 技术栈 × 5 层）
+├── 2-learning/           # 🎯 系统教程（18 技术栈 × 5 层）
 │   ├── roadmap/          # 学习路线图
-│   └── stacks/           # 17 个技术栈教程
+│   └── stacks/           # 18 个技术栈教程
 │       └── 17-python-backend/  # 🐍 Python 后端全栈（24 章 + 2 附录）🆕
 ├── 3-ecosystem/          # 🗺️ 生态索引（AI Agent 六大生态）
 │   ├── tutorials/        # 28 篇深度教程

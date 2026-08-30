@@ -1,4 +1,4 @@
-# 🚀 16 技术栈教程体系 — AI 智能商城贯穿实战
+# 🚀 18 技术栈教程体系 — AI 智能商城贯穿实战
 
 > 从入门到面试，项目驱动，STAR 法则，干中学
 
@@ -34,7 +34,7 @@ Phase 1 基础组 → Phase 2 后端核心 → Phase 3 AI 核心 → Phase 4 基
 
 ---
 
-## 📊 16 技术栈总览
+## 📊 18 技术栈总览
 
 | # | 技术栈 | 目录 | 核心内容 | 示例 |
 |---|--------|------|---------|------|
@@ -54,6 +54,8 @@ Phase 1 基础组 → Phase 2 后端核心 → Phase 3 AI 核心 → Phase 4 基
 | 14 | 🔗 LangChain | `14-langchain/` | LCEL · Agent · Tool · Memory | ✅ Python |
 | 15 | 📚 RAG | `15-rag/` | 混合检索 · Graph RAG · 评估 | ✅ Python |
 | 16 | 🤖 OpenAI | `16-openai/` | API · FC · 微调 · Batch | ✅ Python |
+| 17 | 🐍 Python 后端 | `17-python-backend/` | Python 全栈 · FastAPI · 部署 | ✅ Python |
+| 18 | 🛰️ LangSmith | `18-langsmith/` | 可观测 · 评测 · Prompt 管理 | ✅ Python |
 
 ---
 
@@ -99,6 +101,8 @@ learn/
 ├── 14-langchain/                     ← 🔗 Agent/LangGraph
 ├── 15-rag/                           ← 📚 混合检索/评估
 ├── 16-openai/                        ← 🤖 FC/微调/Batch
+├── 17-python-backend/                ← 🐍 Python 全栈
+├── 18-langsmith/                     ← 🛰️ 可观测/评测/Prompt
 └── projects/ai-mall/                 ← 🏪 贯穿项目
 ```
 
