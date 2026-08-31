@@ -12,6 +12,7 @@
 | [project-interview-guide.md](project-interview-guide.md) | 项目经历 & 实习经历 — 面试回答与说辞手册 |
 | [projects/](projects/) | 4 个项目的深度面试文档 + 项目速记卡（快速复习/面试要点/面试追问） |
 | [tools/](tools/) | 面试题生成器 + 模拟面试（原 `interview-tools/`） |
+| [jd-qa/](jd-qa/) | 招聘 JD × 简历 对齐的 50 题标准专业 QA（AI 应用开发方向） |
 
 ### 项目深度面试文档
 
