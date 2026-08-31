@@ -1,6 +1,6 @@
 # bcefghj/ai-agent-interview-guide
 
-> ⭐ 2,156 | 🗣 Python | [GitHub](https://github.com/bcefghj/ai-agent-interview-guide) | 收录: 2026-08-22
+> ⭐ 2,288 | 🗣 Python | [GitHub](https://github.com/bcefghj/ai-agent-interview-guide) | 收录: 2026-08-22
 
 ---
 
@@ -10,7 +10,7 @@
 |------|-----|
 | 全名 | bcefghj/ai-agent-interview-guide |
 | 描述 | AI Agent 面试全攻略：从零到Offer，包含200+面试题、企业级项目(Python/Java/Go)、简历模板、STAR面试稿、哆啦A梦漫画图解 |
-| Stars | 2,156 |
+| Stars | 2,288 |
 | 语言 | Python |
 | 最后更新 | - |
 | 生态 | E06 · 通识与基础 |

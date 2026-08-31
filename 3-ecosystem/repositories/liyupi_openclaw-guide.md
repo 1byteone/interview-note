@@ -1,6 +1,6 @@
 # liyupi/openclaw-guide
 
-> ⭐ 186 | 🗣 PowerShell | [GitHub](https://github.com/liyupi/openclaw-guide) | 收录: 2026-08-22
+> ⭐ 187 | 🗣 PowerShell | [GitHub](https://github.com/liyupi/openclaw-guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 186 |
+| Stars | 187 |
 | 语言 | PowerShell |
 | Topics | agents, ai, openclaw, claude, gpt, qwen |
 | 生态 | E04 · Hermes/OpenClaw 生态 |

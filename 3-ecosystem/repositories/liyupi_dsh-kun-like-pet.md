@@ -1,6 +1,6 @@
 # liyupi/dsh-kun-like-pet
 
-> ⭐ 85 | 🗣 JavaScript | [GitHub](https://github.com/liyupi/dsh-kun-like-pet) | 收录: 2026-08-22
+> ⭐ 86 | 🗣 JavaScript | [GitHub](https://github.com/liyupi/dsh-kun-like-pet) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 85 |
+| Stars | 86 |
 | 语言 | JavaScript |
 | Topics | cordis, deepseek-harness, desktop-pet, dsh, dsh-plugin, plugin |
 | 生态 | E03 · DSH/Harness 生态 |

@@ -1,6 +1,6 @@
 # 0xNyk/awesome-hermes-agent
 
-> ⭐ 5,427 | 🗣 N/A | [GitHub](https://github.com/0xNyk/awesome-hermes-agent) | 收录: 2026-08-22
+> ⭐ 5,510 | 🗣 N/A | [GitHub](https://github.com/0xNyk/awesome-hermes-agent) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 5,427 |
+| Stars | 5,510 |
 | Topics | agent-skills, ai-agents, hermes-agent, mcp, memory, nous-research |
 | 生态 | E04 · Hermes/OpenClaw 生态 |
 

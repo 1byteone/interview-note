@@ -1,6 +1,6 @@
 # heilcheng/awesome-agent-skills
 
-> ⭐ 6,132 | 🗣 TypeScript | [GitHub](https://github.com/heilcheng/awesome-agent-skills) | 收录: 2026-08-22
+> ⭐ 6,159 | 🗣 TypeScript | [GitHub](https://github.com/heilcheng/awesome-agent-skills) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 6,132 |
+| Stars | 6,159 |
 | 语言 | TypeScript |
 | Topics | agent-skills, ai-agents, claude, codex, mcp, openai |
 | 生态 | E06 · 通识与基础 |

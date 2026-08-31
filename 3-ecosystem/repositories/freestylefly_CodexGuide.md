@@ -1,6 +1,6 @@
 # freestylefly/CodexGuide
 
-> ⭐ 3,248 | 🗣 TypeScript | [GitHub](https://github.com/freestylefly/CodexGuide) | 收录: 2026-08-22
+> ⭐ 3,345 | 🗣 TypeScript | [GitHub](https://github.com/freestylefly/CodexGuide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 3,248 |
+| Stars | 3,345 |
 | 语言 | TypeScript |
 | Topics | 无 |
 | 生态 | E02 · Codex 生态 |

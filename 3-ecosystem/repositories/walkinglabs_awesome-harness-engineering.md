@@ -1,6 +1,6 @@
 # walkinglabs/awesome-harness-engineering
 
-> ⭐ 3,910 | 🗣 N/A | [GitHub](https://github.com/walkinglabs/awesome-harness-engineering) | 收录: 2026-08-22
+> ⭐ 3,964 | 🗣 N/A | [GitHub](https://github.com/walkinglabs/awesome-harness-engineering) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 3,910 |
+| Stars | 3,964 |
 | Topics | agentic-ai, ai-agents, harness, harness-engineering, harness-framework, llm |
 | 生态 | E03 · DSH/Harness 生态 |
 

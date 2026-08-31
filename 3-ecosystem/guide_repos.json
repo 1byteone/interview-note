@@ -3,7 +3,7 @@
     "full_name": "realpython/python-guide",
     "html_url": "https://github.com/realpython/python-guide",
     "description": "Python best practices guidebook, written for humans.",
-    "stargazers_count": 29775,
+    "stargazers_count": 29784,
     "language": "Batchfile",
     "topics": [
       "book",
@@ -20,7 +20,7 @@
     "full_name": "ombharatiya/ai-system-design-guide",
     "html_url": "https://github.com/ombharatiya/ai-system-design-guide",
     "description": "AI system design guide for engineers building production AI systems and evals.",
-    "stargazers_count": 2729,
+    "stargazers_count": 2946,
     "language": null,
     "topics": [
       "agentic-ai",
@@ -48,7 +48,7 @@
     "full_name": "liaokongVFX/MCP-Chinese-Getting-Started-Guide",
     "html_url": "https://github.com/liaokongVFX/MCP-Chinese-Getting-Started-Guide",
     "description": "Model Context Protocol(MCP) 编程极速入门",
-    "stargazers_count": 3560,
+    "stargazers_count": 3561,
     "language": null,
     "topics": [
       "ai",
@@ -79,7 +79,7 @@
     "full_name": "adongwanai/AgentGuide",
     "html_url": "https://github.com/adongwanai/AgentGuide",
     "description": "AI Agent开发指南 | LangGraph实战 | 高级RAG | 转行大模型",
-    "stargazers_count": 8683,
+    "stargazers_count": 8988,
     "language": "HTML",
     "topics": [
       "agenticrag",
@@ -113,7 +113,7 @@
     "full_name": "bcefghj/ai-agent-interview-guide",
     "html_url": "https://github.com/bcefghj/ai-agent-interview-guide",
     "description": "AI Agent 面试全攻略：从零到Offer",
-    "stargazers_count": 2156,
+    "stargazers_count": 2288,
     "language": "Python",
     "topics": [],
     "pushed_at": "",
@@ -132,7 +132,7 @@
     "full_name": "FlorianBruniaux/claude-code-ultimate-guide",
     "html_url": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide",
     "description": "The most comprehensive Claude Code guide",
-    "stargazers_count": 5792,
+    "stargazers_count": 5858,
     "language": "Python",
     "topics": [
       "agentic-coding",
@@ -160,7 +160,7 @@
     "full_name": "zebbern/claude-code-guide",
     "html_url": "https://github.com/zebbern/claude-code-guide",
     "description": "Claude Code Guide - Setup, Commands, workflows, agents, skills",
-    "stargazers_count": 4586,
+    "stargazers_count": 4595,
     "language": "Python",
     "topics": [
       "claude",
@@ -185,7 +185,7 @@
     "full_name": "dair-ai/Prompt-Engineering-Guide",
     "html_url": "https://github.com/dair-ai/Prompt-Engineering-Guide",
     "description": "Guides, papers, lessons for prompt engineering",
-    "stargazers_count": 77730,
+    "stargazers_count": 77919,
     "language": "MDX",
     "topics": [
       "prompt-engineering",
@@ -215,7 +215,7 @@
     "full_name": "yeasy/harness_engineering_guide",
     "html_url": "https://github.com/yeasy/harness_engineering_guide",
     "description": "智能体 = 大模型 + Harness",
-    "stargazers_count": 117,
+    "stargazers_count": 118,
     "language": "Python",
     "topics": [
       "agent",
@@ -245,7 +245,7 @@
     "full_name": "slowmist/openclaw-security-practice-guide",
     "html_url": "https://github.com/slowmist/openclaw-security-practice-guide",
     "description": "Agent-facing security practice guide",
-    "stargazers_count": 2857,
+    "stargazers_count": 2856,
     "language": "Shell",
     "topics": [],
     "pushed_at": "",
@@ -264,7 +264,7 @@
     "full_name": "jwangkun/hermes-agent-guide",
     "html_url": "https://github.com/jwangkun/hermes-agent-guide",
     "description": "Hermes Agent 中文指南",
-    "stargazers_count": 652,
+    "stargazers_count": 661,
     "language": "Python",
     "topics": [],
     "pushed_at": "",
@@ -285,7 +285,7 @@
     "full_name": "freestylefly/CodexGuide",
     "html_url": "https://github.com/freestylefly/CodexGuide",
     "description": "CodexGuide：面向全球的 Codex 实践指南",
-    "stargazers_count": 3248,
+    "stargazers_count": 3345,
     "language": "TypeScript",
     "topics": [],
     "pushed_at": "",
@@ -306,7 +306,7 @@
     "full_name": "mshadmanrahman/claudecode-guide",
     "html_url": "https://github.com/mshadmanrahman/claudecode-guide",
     "description": "The friendly guide to Claude Code",
-    "stargazers_count": 34,
+    "stargazers_count": 37,
     "language": "TypeScript",
     "topics": [
       "ai-agent",
@@ -331,7 +331,7 @@
     "full_name": "flaqai/deepeseek-harness-guide",
     "html_url": "https://github.com/flaqai/deepeseek-harness-guide",
     "description": "Guide for development with DeepSeek Harness",
-    "stargazers_count": 13,
+    "stargazers_count": 14,
     "language": null,
     "topics": [
       "deepseek",
@@ -355,7 +355,7 @@
     "full_name": "0xNyk/awesome-hermes-agent",
     "html_url": "https://github.com/0xNyk/awesome-hermes-agent",
     "description": "Independent directory of skills, plugins, memory providers for Hermes Agent",
-    "stargazers_count": 5427,
+    "stargazers_count": 5510,
     "language": null,
     "topics": [
       "agent-skills",
@@ -379,7 +379,7 @@
     "full_name": "Marcos-wu/ai-agent-daily-mentor",
     "html_url": "https://github.com/Marcos-wu/ai-agent-daily-mentor",
     "description": "一个规划学习agent应用开发的导师skills",
-    "stargazers_count": 133,
+    "stargazers_count": 135,
     "language": null,
     "topics": [],
     "pushed_at": "2026-06-10T11:06:09Z",
@@ -405,7 +405,7 @@
     "full_name": "didilili/ai-agents-from-zero",
     "html_url": "https://github.com/didilili/ai-agents-from-zero",
     "description": "2026 最系统的 AI Agent 速成指南",
-    "stargazers_count": 4010,
+    "stargazers_count": 4188,
     "language": "Python",
     "topics": [
       "agent",
@@ -434,7 +434,7 @@
     "full_name": "heilcheng/awesome-agent-skills",
     "html_url": "https://github.com/heilcheng/awesome-agent-skills",
     "description": "Tutorials, Guides and Agent Skills Directories",
-    "stargazers_count": 6132,
+    "stargazers_count": 6159,
     "language": "TypeScript",
     "topics": [
       "agent-skills",
@@ -464,7 +464,7 @@
     "full_name": "libukai/awesome-agent-skills",
     "html_url": "https://github.com/libukai/awesome-agent-skills",
     "description": "Agent Skills 终极指南：快速入门、资源推荐",
-    "stargazers_count": 5002,
+    "stargazers_count": 5028,
     "language": null,
     "topics": [
       "agent",
@@ -490,7 +490,7 @@
     "full_name": "lingxling/awesome-skills-cn",
     "html_url": "https://github.com/lingxling/awesome-skills-cn",
     "description": "热门Skills中文学习版+教程，7000+Skills",
-    "stargazers_count": 259,
+    "stargazers_count": 267,
     "language": "Python",
     "topics": [
       "claude-skills",
@@ -514,7 +514,7 @@
     "full_name": "walkinglabs/awesome-harness-engineering",
     "html_url": "https://github.com/walkinglabs/awesome-harness-engineering",
     "description": "Awesome tools & guides for harness engineering",
-    "stargazers_count": 3910,
+    "stargazers_count": 3964,
     "language": null,
     "topics": [
       "agentic",
@@ -537,7 +537,7 @@
     "full_name": "liyupi/openclaw-guide",
     "html_url": "https://github.com/liyupi/openclaw-guide",
     "description": "开源OpenClaw中文文档站，OpenClaw中文指南，安装部署、Agent架构、Skills配置等全方位文档",
-    "stargazers_count": 186,
+    "stargazers_count": 187,
     "language": "PowerShell",
     "topics": [
       "agents",
@@ -563,7 +563,7 @@
     "full_name": "liyupi/ai-guide",
     "html_url": "https://github.com/liyupi/ai-guide",
     "description": "程序员鱼皮的 AI 资源大全 + Vibe Coding 零基础教程，OpenClaw保姆级教程、AI知识百科",
-    "stargazers_count": 19083,
+    "stargazers_count": 19327,
     "language": "JavaScript",
     "topics": [
       "ai",
@@ -595,7 +595,7 @@
     "full_name": "liyupi/ai-code-helper",
     "html_url": "https://github.com/liyupi/ai-code-helper",
     "description": "基于 Spring Boot 3.5 + LangChain4j 的 AI 编程助手实战项目，覆盖 MCP / RAG / Tool Calling",
-    "stargazers_count": 734,
+    "stargazers_count": 735,
     "language": "Vue",
     "topics": [
       "ai",
@@ -622,7 +622,7 @@
     "full_name": "liyupi/github-claw",
     "html_url": "https://github.com/liyupi/github-claw",
     "description": "用 GitHub 打造 AI 智能体：长期记忆 + AI Agent 技能包 + GitHub Actions + Copilot",
-    "stargazers_count": 68,
+    "stargazers_count": 67,
     "language": "Python",
     "topics": [
       "agent",
@@ -646,7 +646,7 @@
     "full_name": "liyupi/dsh-kun-like-pet",
     "html_url": "https://github.com/liyupi/dsh-kun-like-pet",
     "description": "DeepSeek Harness 桌面宠物插件，随 Agent 工作状态切换 9 种动作",
-    "stargazers_count": 85,
+    "stargazers_count": 86,
     "language": "JavaScript",
     "topics": [
       "cordis",

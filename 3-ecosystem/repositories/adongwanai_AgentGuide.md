@@ -1,6 +1,6 @@
 # adongwanai/AgentGuide
 
-> ⭐ 8,683 | 🗣 HTML | [GitHub](https://github.com/adongwanai/AgentGuide) | 收录: 2026-08-22
+> ⭐ 8,988 | 🗣 HTML | [GitHub](https://github.com/adongwanai/AgentGuide) | 收录: 2026-08-22
 
 ---
 
@@ -10,7 +10,7 @@
 |------|-----|
 | 全名 | adongwanai/AgentGuide |
 | 描述 | AI Agent开发指南 \| LangGraph实战 \| 高级RAG \| 转行大模型 \| 大模型面试 \| 算法工程师 \| 面试题库 \| 强化学习 \| 数据合成 |
-| Stars | 8,683 |
+| Stars | 8,988 |
 | 语言 | HTML |
 | 最后更新 | 2026-08-04 |
 | Topics | agenticrag, ai-agent, crewai, graphrag, grpo, interview, job-hunting, langchain, llm, multi-agent, rag, sft, tutorial |
