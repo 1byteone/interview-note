@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>成果验收时序图 — 日/月计划与成果验收系统</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    background: #F8FAFC;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #1E293B;
+  }
+  .canvas {
+    width: 900px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
+    padding: 48px;
+  }
+  .title { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 6px; }
+  .subtitle { font-size: 13px; color: #64748B; margin-bottom: 32px; }
+
+  .simple-timeline { padding: 0 20px; }
+  .st-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .st-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .st-dot.blue { background: #3B82F6; }
+  .st-dot.green { background: #22C55E; }
+  .st-dot.amber { background: #F59E0B; }
+  .st-dot.purple { background: #8B5CF6; }
+  .st-dot.red { background: #EF4444; }
+  .st-content {
+    flex: 1;
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.5;
+  }
+  .st-content strong { color: #0F172A; }
+  .st-content .actor {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-right: 4px;
+  }
+  .actor-emp { background: #DBEAFE; color: #1D4ED8; }
+  .actor-sys { background: #D1FAE5; color: #065F46; }
+  .actor-ldr { background: #FEF3C7; color: #92400E; }
+
+  .section-sep {
+    border: none;
+    border-top: 1px dashed #CBD5E1;
+    margin: 16px 20px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94A3B8;
+    margin: 16px 20px 8px;
+  }
+
+  .evidence-chain {
+    margin: 12px 20px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .evidence-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 10px;
+  }
+  .evidence-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 11.5px;
+    color: #475569;
+  }
+  .evidence-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+  .ev-plan { background: #EFF6FF; color: #3B82F6; }
+  .ev-result { background: #F0FDF4; color: #22C55E; }
+  .ev-evidence { background: #FEF3C7; color: #F59E0B; }
+  .ev-eval { background: #F5F3FF; color: #8B5CF6; }
+
+  .alt-box {
+    border: 2px solid #E2E8F0;
+    border-radius: 8px;
+    margin: 12px 20px;
+    padding: 14px 16px;
+    position: relative;
+  }
+  .alt-label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: white;
+    padding: 0 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748B;
+  }
+  .alt-branch {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .alt-branch-col {
+    padding: 8px;
+    border-radius: 6px;
+  }
+  .alt-branch-col.pass { background: #F0FDF4; }
+  .alt-branch-col.supplement { background: #FFFBEB; }
+  .alt-branch-col.reject { background: #FEF2F2; }
+  .alt-branch-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .alt-branch-col.pass .alt-branch-label { color: #15803D; }
+  .alt-branch-col.supplement .alt-branch-label { color: #B45309; }
+  .alt-branch-col.reject .alt-branch-label { color: #DC2626; }
+  .alt-step {
+    font-size: 11px;
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .callout {
+    margin-top: 20px;
+    background: #FFFBEB;
+    border-left: 3px solid #F59E0B;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 12.5px;
+    color: #92400E;
+    line-height: 1.7;
+  }
+  .callout strong { color: #78350F; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title">成果验收 · 时序图</div>
+  <div class="subtitle">成果从提交到验收闭环的详细交互序列 — 聚焦证据链与决策分支</div>
+
+  <div class="section-label">Step 1 · 员工准备成果</div>
+  <div class="simple-timeline">
+    <div class="st-step">
+      <div class="st-dot blue"></div>
+      <div class="st-content">
+        <span class="actor actor-emp">员工</span>
+        <strong>确认执行完成</strong> — 日计划状态自动流转到「待提交成果」
+      </div>
+    </div>
+    <div class="st-step">
+      <div class="st-dot blue"></div>
+      <div class="st-content">
+        <span class="actor actor-emp">员工</span>
+        <strong>准备验收证据</strong> — 收集代码 PR、测试报告、压测数据、截图、文档链接
+      </div>
+    </div>
+  </div>
+
+  <div class="evidence-chain">
+    <div class="evidence-title">📎 证据链结构（以"支付回调异常监控优化"为例）</div>
+    <div class="evidence-item"><div class="evidence-icon ev-plan">P</div>计划目标：降低发现时间 + 建立可追踪告警</div>
+    <div class="evidence-item"><div class="evidence-icon ev-result">R</div>实际成果：新增 3 项指标 + P1/P2 告警 + 10 万次压测</div>
+    <div class="evidence-item"><div class="evidence-icon ev-evidence">E</div>验收证据：压测报告.pdf + 监控截图.png + PR #1842</div>
+    <div class="evidence-item"><div class="evidence-icon ev-eval">A</div>员工自评：失败率从 0.42% 降至 0.06%，建议纳入 SLO</div>
+  </div>
+
+  <div class="simple-timeline">
+    <div class="st-step">
+      <div class="st-dot purple"></div>
+      <div class="st-content">
+        <span class="actor actor-emp">员工</span>
+        <strong>提交成果</strong> — 关联计划 → 上传证据 → 撰写自评 → 提交验收
+      </div>
+    </div>
+    <div class="st-step">
+      <div class="st-dot green"></div>
+      <div class="st-content">
+        <span class="actor actor-sys">系统</span>
+        <strong>通知领导</strong> — 推送待验收提醒，显示关联的计划目标
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-sep">
+  <div class="section-label">Step 2 · 领导验收</div>
+
+  <div class="simple-timeline">
+    <div class="st-step">
+      <div class="st-dot amber"></div>
+      <div class="st-content">
+        <span class="actor actor-ldr">领导</span>
+        <strong>查看待验收成果</strong> — 打开验收详情页，看到完整证据链
+      </div>
+    </div>
+    <div class="st-step">
+      <div class="st-dot amber"></div>
+      <div class="st-content">
+        <span class="actor actor-ldr">领导</span>
+        <strong>逐项核对证据</strong> — 对照验收标准，查看 PR / 报告 / 截图 / 文档，评估交付质量
+      </div>
+    </div>
+    <div class="st-step">
+      <div class="st-dot purple"></div>
+      <div class="st-content">
+        <span class="actor actor-ldr">领导</span>
+        <strong>做出验收决策 —</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="alt-box">
+    <div class="alt-label">alt · 验收决策分支</div>
+    <div class="alt-branch">
+      <div class="alt-branch-col pass">
+        <div class="alt-branch-label">验收通过</div>
+        <div class="alt-step">
+          填写质量评分（1-5 星）<br>
+          填写主管评语<br>
+          状态：待验收 → 验收通过<br>
+          成果关联的计划标记「已闭环」<br>
+          系统通知员工"成果已通过"
+        </div>
+      </div>
+      <div class="alt-branch-col supplement">
+        <div class="alt-branch-label">退回补充</div>
+        <div class="alt-step">
+          填写退回原因（必填）<br>
+          说明需要补充什么<br>
+          状态：待验收 → 退回补充<br>
+          员工补充后重新提交<br>
+          <em>循环直至通过或驳回</em>
+        </div>
+      </div>
+      <div class="alt-branch-col reject">
+        <div class="alt-branch-label">退回驳回</div>
+        <div class="alt-step">
+          填写驳回原因（必填）<br>
+          说明目标未达成的具体原因<br>
+          状态：待验收 → 退回驳回（终态）<br>
+          员工需重新制定计划<br>
+          <em>在绩效统计中单独记录</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-sep">
+  <div class="section-label">Step 3 · 闭环</div>
+
+  <div class="simple-timeline">
+    <div class="st-step">
+      <div class="st-dot green"></div>
+      <div class="st-content">
+        <span class="actor actor-sys">系统</span>
+        <strong>更新统计指标</strong> — 重新计算：完成率、按期交付率、返工率、验收通过率
+      </div>
+    </div>
+    <div class="st-step">
+      <div class="st-dot green"></div>
+      <div class="st-content">
+        <span class="actor actor-sys">系统</span>
+        <strong>生成操作日志</strong> — 记录：who / when / what / before / after，支撑审计和绩效
+      </div>
+    </div>
+    <div class="st-step">
+      <div class="st-dot blue"></div>
+      <div class="st-content">
+        <span class="actor actor-emp">员工</span>
+        <strong>查看验收结果</strong> — 查看评分、评语、退回原因（如有），形成个人工作档案
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>设计要点：</strong>成果验收的核心不是"通过/不通过"的二元判断，而是证据链的核对过程。"退回补充"和"退回驳回"是两种不同的退回——前者是"证据不够"，后者是"目标未达成"，两者在绩效统计中权重不同。领导验收时看到的不是一句"已完成"，而是完整的证据链：计划目标 → 实际成果 → 证据附件 → 员工自评。这让验收从主观判断变成客观验证。
+  </div>
+</div>
+</body>
+</html>

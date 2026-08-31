@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>系统总体架构 — 日/月计划与成果验收系统</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    background: #F8FAFC;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #1E293B;
+  }
+  .canvas {
+    width: 1100px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
+    padding: 48px;
+  }
+  .title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: #64748B;
+    margin-bottom: 36px;
+  }
+  .layer {
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .layer-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .layer-label .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .l-presentation { background: #EFF6FF; }
+  .l-presentation .layer-label { color: #1D4ED8; }
+  .l-presentation .dot { background: #3B82F6; }
+  .l-bff { background: #F0FDF4; }
+  .l-bff .layer-label { color: #15803D; }
+  .l-bff .dot { background: #22C55E; }
+  .l-service { background: #FFFBEB; }
+  .l-service .layer-label { color: #B45309; }
+  .l-service .dot { background: #F59E0B; }
+  .l-infra { background: #F5F3FF; }
+  .l-infra .layer-label { color: #6D28D9; }
+  .l-infra .dot { background: #8B5CF6; }
+  .modules {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .module {
+    background: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 120px;
+  }
+  .module .icon {
+    font-size: 16px;
+  }
+  .arrow-row {
+    display: flex;
+    justify-content: center;
+    margin: 4px 0;
+  }
+  .arrow-row svg {
+    width: 24px;
+    height: 20px;
+  }
+  .callout {
+    margin-top: 28px;
+    background: #F1F5F9;
+    border-left: 3px solid #3B82F6;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 12.5px;
+    color: #475569;
+    line-height: 1.7;
+  }
+  .callout strong { color: #1E293B; }
+  .key-point {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .kp-card {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .kp-card .kp-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .kp-card .kp-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0F172A;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title">系统总体架构 · C4 容器视图</div>
+  <div class="subtitle">日/月计划与成果验收系统 — 展示前后端分层与核心服务模块</div>
+
+  <!-- Presentation Layer -->
+  <div class="layer l-presentation">
+    <div class="layer-label"><span class="dot"></span>前端展示层 · Presentation</div>
+    <div class="modules">
+      <div class="module"><span class="icon">👤</span>员工工作台</div>
+      <div class="module"><span class="icon">👔</span>领导工作台</div>
+      <div class="module"><span class="icon">⚙️</span>管理后台</div>
+      <div class="module"><span class="icon">📊</span>数据看板</div>
+    </div>
+  </div>
+
+  <div class="arrow-row"><svg viewBox="0 0 24 20"><path d="M12 0 L12 14 M6 10 L12 16 L18 10" fill="none" stroke="#94A3B8" stroke-width="1.5"/></svg></div>
+
+  <!-- BFF Layer -->
+  <div class="layer l-bff">
+    <div class="layer-label"><span class="dot"></span>统一接入层 · BFF</div>
+    <div class="modules">
+      <div class="module"><span class="icon">📋</span>计划 API</div>
+      <div class="module"><span class="icon">📎</span>成果 API</div>
+      <div class="module"><span class="icon">✅</span>审批 API</div>
+      <div class="module"><span class="icon">🔔</span>通知 API</div>
+      <div class="module"><span class="icon">📈</span>统计 API</div>
+    </div>
+  </div>
+
+  <div class="arrow-row"><svg viewBox="0 0 24 20"><path d="M12 0 L12 14 M6 10 L12 16 L18 10" fill="none" stroke="#94A3B8" stroke-width="1.5"/></svg></div>
+
+  <!-- Service Layer -->
+  <div class="layer l-service">
+    <div class="layer-label"><span class="dot"></span>业务服务层 · Domain Services</div>
+    <div class="modules">
+      <div class="module"><span class="icon">👤</span>用户服务</div>
+      <div class="module"><span class="icon">📅</span>计划服务</div>
+      <div class="module"><span class="icon">📝</span>成果服务</div>
+      <div class="module"><span class="icon">🔄</span>审批引擎</div>
+      <div class="module"><span class="icon">🔔</span>通知服务</div>
+      <div class="module"><span class="icon">📊</span>统计分析</div>
+    </div>
+  </div>
+
+  <div class="arrow-row"><svg viewBox="0 0 24 20"><path d="M12 0 L12 14 M6 10 L12 16 L18 10" fill="none" stroke="#94A3B8" stroke-width="1.5"/></svg></div>
+
+  <!-- Infrastructure Layer -->
+  <div class="layer l-infra">
+    <div class="layer-label"><span class="dot"></span>基础设施层 · Infrastructure</div>
+    <div class="modules">
+      <div class="module"><span class="icon">🗄️</span>MySQL</div>
+      <div class="module"><span class="icon">⚡</span>Redis</div>
+      <div class="module"><span class="icon">📁</span>文件存储 OSS</div>
+      <div class="module"><span class="icon">📨</span>消息队列</div>
+      <div class="module"><span class="icon">🔐</span>认证鉴权</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>设计决策：</strong>审批引擎独立于计划服务和成果服务。计划审批和成果验收的流程不同，但审批动作（提交 / 通过 / 退回 / 评论 / 历史记录）是相同的通用能力。抽成独立模块后，未来新增"需求评审""技术方案评审"等场景时无需重复开发。
+  </div>
+
+  <div class="key-point">
+    <div class="kp-card">
+      <div class="kp-title">架构选型</div>
+      <div class="kp-value">单体 + 模块化（50人团队够用）</div>
+    </div>
+    <div class="kp-card">
+      <div class="kp-title">演进方向</div>
+      <div class="kp-value">计划服务 + 审批引擎优先拆出</div>
+    </div>
+    <div class="kp-card">
+      <div class="kp-title">核心差异化</div>
+      <div class="kp-value">两台独立状态机 + 证据链验收</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>计划审批时序图 — 日/月计划与成果验收系统</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    background: #F8FAFC;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #1E293B;
+  }
+  .canvas {
+    width: 900px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
+    padding: 48px;
+  }
+  .title { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 6px; }
+  .subtitle { font-size: 13px; color: #64748B; margin-bottom: 32px; }
+
+  .actors {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+    padding: 0 20px;
+  }
+  .actor-box {
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .actor-employee { background: #EFF6FF; color: #1D4ED8; }
+  .actor-system { background: #F0FDF4; color: #15803D; }
+  .actor-leader { background: #FEF3C7; color: #B45309; }
+  .actor-db { background: #F5F3FF; color: #6D28D9; }
+
+  .timeline {
+    position: relative;
+    padding: 20px 0;
+  }
+  .lifeline {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #E2E8F0;
+  }
+  .lifeline:nth-child(1) { left: 90px; }
+  .lifeline:nth-child(2) { left: 310px; }
+  .lifeline:nth-child(3) { left: 530px; }
+  .lifeline:nth-child(4) { left: 750px; }
+
+  .seq-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    padding: 0 10px;
+    min-height: 32px;
+    position: relative;
+  }
+  .seq-arrow {
+    position: absolute;
+    height: 2px;
+    top: 50%;
+  }
+  .seq-arrow::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: -4px;
+    border: 4px solid transparent;
+    border-left-color: inherit;
+  }
+  .seq-arrow.reverse::after {
+    right: auto;
+    left: -1px;
+    border-left-color: transparent;
+    border-right-color: inherit;
+  }
+  .seq-label {
+    position: absolute;
+    font-size: 11px;
+    color: #475569;
+    white-space: nowrap;
+    background: white;
+    padding: 0 4px;
+  }
+  .seq-msg {
+    display: flex;
+    align-items: center;
+    min-height: 36px;
+    position: relative;
+  }
+  .msg-line {
+    height: 2px;
+    flex-shrink: 0;
+  }
+  .msg-line.solid { background: #3B82F6; }
+  .msg-line.dashed {
+    background: none;
+    border-top: 2px dashed #94A3B8;
+    height: 0;
+  }
+  .msg-label {
+    font-size: 11px;
+    color: #334155;
+    padding: 0 8px;
+    white-space: nowrap;
+    background: white;
+    flex-shrink: 0;
+  }
+  .msg-label strong { color: #0F172A; }
+
+  .note-box {
+    position: absolute;
+    background: #FEFCE8;
+    border: 1px solid #FDE68A;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 10px;
+    color: #92400E;
+    max-width: 160px;
+    line-height: 1.4;
+    z-index: 2;
+  }
+  .alt-box {
+    border: 2px solid #E2E8F0;
+    border-radius: 8px;
+    margin: 12px 30px;
+    padding: 12px 16px;
+    position: relative;
+  }
+  .alt-label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: white;
+    padding: 0 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748B;
+  }
+  .alt-branch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .alt-branch-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .alt-step {
+    font-size: 11px;
+    color: #475569;
+    line-height: 1.6;
+    padding-left: 8px;
+    border-left: 2px solid #E2E8F0;
+  }
+
+  .section-sep {
+    border: none;
+    border-top: 1px dashed #CBD5E1;
+    margin: 16px 30px;
+  }
+
+  .simple-timeline {
+    padding: 0 20px;
+  }
+  .st-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .st-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .st-dot.blue { background: #3B82F6; }
+  .st-dot.green { background: #22C55E; }
+  .st-dot.amber { background: #F59E0B; }
+  .st-dot.purple { background: #8B5CF6; }
+  .st-line {
+    width: 2px;
+    background: #E2E8F0;
+    margin-left: 4px;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .st-content {
+    flex: 1;
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.5;
+  }
+  .st-content strong { color: #0F172A; }
+  .st-content .actor {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-right: 4px;
+  }
+  .actor-emp { background: #DBEAFE; color: #1D4ED8; }
+  .actor-sys { background: #D1FAE5; color: #065F46; }
+  .actor-ldr { background: #FEF3C7; color: #92400E; }
+
+  .callout {
+    margin-top: 20px;
+    background: #F1F5F9;
+    border-left: 3px solid #3B82F6;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 12.5px;
+    color: #475569;
+    line-height: 1.7;
+  }
+  .callout strong { color: #1E293B; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title">计划审批 · 时序图</div>
+  <div class="subtitle">月计划从提交到审批完成的详细交互序列</div>
+
+  <div class="simple-timeline">
+    <div class="st-step">
+      <div class="st-dot blue"></div>
+      <div class="st-content">
+        <span class="actor actor-emp">员工</span>
+        <strong>创建月计划</strong> — 填写目标、关键成果、验收标准、预计工时
+      </div>
+    </div>
+    <div class="st-step">
+      <div class="st-dot blue"></div>
+      <div class="st-content">
+        <span class="actor actor-emp">员工</span>
+        <strong>拆解日计划</strong> — 将月目标拆解为 15-22 个日计划，每个含预计工时和预期交付物
+      </div>
+    </div>
+    <div class="st-step">
+      <div class="st-dot green"></div>
+      <div class="st-content">
+        <span class="actor actor-sys">系统</span>
+        <strong>校验提交条件</strong> — 检查：日计划总工时 ≤ 8h/天 | 无空 DoD | 有验收标准
+      </div>
+    </div>
+    <div class="st-step">
+      <div class="st-dot blue"></div>
+      <div class="st-content">
+        <span class="actor actor-emp">员工</span>
+        <strong>提交审批</strong> — 月计划状态：草稿 → 待审批
+      </div>
+    </div>
+    <div class="st-step">
+      <div class="st-dot green"></div>
+      <div class="st-content">
+        <span class="actor actor-sys">系统</span>
+        <strong>通知领导</strong> — 推送待审批提醒到领导工作台
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-sep">
+
+  <div class="simple-timeline">
+    <div class="st-step">
+      <div class="st-dot amber"></div>
+      <div class="st-content">
+        <span class="actor actor-ldr">领导</span>
+        <strong>查看待审批计划</strong> — 审阅内容：目标对齐度、工时合理性、DoD 明确度
+      </div>
+    </div>
+    <div class="st-step">
+      <div class="st-dot purple"></div>
+      <div class="st-content">
+        <span class="actor actor-ldr">领导</span>
+        <strong>决策分支 —</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="alt-box">
+    <div class="alt-label">alt</div>
+    <div class="alt-branch">
+      <div>
+        <div class="alt-branch-label">[通过]</div>
+        <div class="alt-step">
+          领导填写审批意见<br>
+          状态：待审批 → 审批通过<br>
+          系统通知员工"计划已通过"<br>
+          日计划状态同步进入「执行中」
+        </div>
+      </div>
+      <div>
+        <div class="alt-branch-label">[退回修改]</div>
+        <div class="alt-step">
+          领导填写退回原因（必填）<br>
+          状态：待审批 → 退回修改<br>
+          系统通知员工"计划被退回"<br>
+          员工修改后重新提交 → 待审批<br>
+          <em>记录退回历史（第 N 次退回）</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-sep">
+
+  <div class="simple-timeline">
+    <div class="st-step">
+      <div class="st-dot green"></div>
+      <div class="st-content">
+        <span class="actor actor-sys">系统</span>
+        <strong>建立计划基线</strong> — 审批通过后锁定版本，后续修改走变更流程
+      </div>
+    </div>
+    <div class="st-step">
+      <div class="st-dot green"></div>
+      <div class="st-content">
+        <span class="actor actor-sys">系统</span>
+        <strong>生成操作日志</strong> — 记录：谁、什么时候、对什么计划、做了什么操作、之前状态、之后状态
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>设计要点：</strong>计划审批不是"点同意"。领导审的是方向对不对（目标对齐度）、计划切不切实际（工时合理性）、交付标不明确（DoD 完整度）。退回必须带原因——空退回既不专业也无法指导改进。审批通过后建立基线版本，这是后续计算"计划偏差率"的前提。
+  </div>
+</div>
+</body>
+</html>

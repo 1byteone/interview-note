@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>领导工作台流程 — 日/月计划与成果验收系统</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    background: #F8FAFC;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #1E293B;
+  }
+  .canvas {
+    width: 1000px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
+    padding: 48px;
+  }
+  .title { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 6px; }
+  .subtitle { font-size: 13px; color: #64748B; margin-bottom: 36px; }
+
+  .dual-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .col {
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .col-approval { background: #FEF3C7; }
+  .col-verify { background: #DBEAFE; }
+  .col-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .col-approval .col-title { color: #92400E; }
+  .col-verify .col-title { color: #1E40AF; }
+
+  .step {
+    background: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #334155;
+  }
+  .step-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .col-approval .step-num { background: #D97706; }
+  .col-verify .step-num { background: #2563EB; }
+  .step strong { color: #0F172A; }
+  .step .desc { color: #64748B; font-size: 12px; }
+
+  .decision-box {
+    background: #FFFFFF;
+    border: 2px dashed #D1D5DB;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #475569;
+  }
+  .decision-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .col-approval .decision-icon { background: #FEF3C7; }
+  .col-verify .decision-icon { background: #DBEAFE; }
+
+  .divider {
+    border: none;
+    border-top: 1px dashed #CBD5E1;
+    margin: 20px 0;
+  }
+
+  .bottom-section {
+    background: #F0FDF4;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .bottom-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #15803D;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .metric-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .metric-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .metric-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0F172A;
+  }
+  .metric-value.green { color: #16A34A; }
+  .metric-value.amber { color: #D97706; }
+  .metric-value.red { color: #DC2626; }
+  .metric-sub {
+    font-size: 10px;
+    color: #94A3B8;
+    margin-top: 2px;
+  }
+
+  .callout {
+    margin-top: 16px;
+    background: #F1F5F9;
+    border-left: 3px solid #6366F1;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 12.5px;
+    color: #475569;
+    line-height: 1.7;
+  }
+  .callout strong { color: #1E293B; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title">领导工作台 · 业务流程</div>
+  <div class="subtitle">从审批计划到验收成果的完整领导决策路径 — 聚焦"我需要处理什么"</div>
+
+  <div class="dual-column">
+    <!-- 左：计划审批 -->
+    <div class="col col-approval">
+      <div class="col-title">📋 计划审批</div>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div><strong>查看待审批计划</strong><br><span class="desc">按优先级和提交时间排序，聚焦今日新增</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div><strong>审阅计划内容</strong><br><span class="desc">核对：目标是否对齐团队方向？工时分配是否合理？DoD 是否明确？</span></div>
+      </div>
+      <div class="decision-box">
+        <div class="decision-icon">⚖️</div>
+        <div><strong>决策</strong>：通过 / 调整优先级 / 退回修改<br>
+        <span class="desc">退回时必须填写原因，不能空退</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div><strong>执行审批动作</strong><br><span class="desc">系统记录审批意见和变更历史</span></div>
+      </div>
+    </div>
+
+    <!-- 右：成果验收 -->
+    <div class="col col-verify">
+      <div class="col-title">✅ 成果验收</div>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div><strong>查看待验收成果</strong><br><span class="desc">按提交时间排序，显示关联的计划目标</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div><strong>逐项核对证据</strong><br><span class="desc">对照验收标准，查看 PR / 报告 / 截图 / 文档</span></div>
+      </div>
+      <div class="decision-box">
+        <div class="decision-icon">⚖️</div>
+        <div><strong>决策</strong>：验收通过 / 退回补充 / 退回驳回<br>
+        <span class="desc">通过 = 闭环 | 补充 = 证据不够 | 驳回 = 目标未达成</span></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div><strong>填写验收评价</strong><br><span class="desc">质量评分 + 主管评语，作为绩效数据支撑</span></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="bottom-section">
+    <div class="bottom-title">📊 团队全局看板</div>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">待审批</div>
+        <div class="metric-value amber">4</div>
+        <div class="metric-sub">本月累计审批 23 次</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">待验收</div>
+        <div class="metric-value amber">3</div>
+        <div class="metric-sub">最早待验收：8/28 提交</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">团队完成率</div>
+        <div class="metric-value green">73%</div>
+        <div class="metric-sub">环比 +5%</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">按期交付率</div>
+        <div class="metric-value green">82%</div>
+        <div class="metric-sub">目标 ≥ 80%</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">延期事项</div>
+        <div class="metric-value red">3</div>
+        <div class="metric-sub">张三 / 王五 / 赵宇</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">返工率</div>
+        <div class="metric-value amber">12%</div>
+        <div class="metric-sub">退回补充 3 次 / 总提交 25</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>核心设计理念：</strong>领导打开系统看到的不是"所有数据"，而是"我需要处理什么"。待审批和待验收分为两个独立视图——审批关注方向对不对，验收关注质量够不够。延期预警和返工率提供管理洞察，而不是让人翻报表。看板每个数字都能下钻到具体员工和具体任务。
+  </div>
+</div>
+</body>
+</html>

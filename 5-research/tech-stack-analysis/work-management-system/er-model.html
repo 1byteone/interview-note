@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>数据模型 ER 图 — 日/月计划与成果验收系统</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    background: #F8FAFC;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #1E293B;
+  }
+  .canvas {
+    width: 1100px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
+    padding: 48px;
+  }
+  .title { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 6px; }
+  .subtitle { font-size: 13px; color: #64748B; margin-bottom: 32px; }
+  .er-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .entity {
+    border-radius: 10px;
+    border: 2px solid;
+    overflow: hidden;
+  }
+  .entity-header {
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .entity-body { padding: 8px 14px; background: #FFFFFF; }
+  .field {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 0;
+    font-size: 10.5px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .field-key {
+    font-size: 8px;
+    font-weight: 700;
+    padding: 1px 3px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .pk { background: #DBEAFE; color: #1D4ED8; }
+  .fk { background: #FEF3C7; color: #B45309; }
+  .field-name { color: #334155; font-weight: 500; }
+  .field-type { color: #94A3B8; font-size: 9px; margin-left: auto; }
+
+  .entity.user { border-color: #3B82F6; }
+  .entity.user .entity-header { background: #EFF6FF; color: #1D4ED8; }
+  .entity.plan { border-color: #22C55E; }
+  .entity.plan .entity-header { background: #F0FDF4; color: #15803D; }
+  .entity.daily { border-color: #8B5CF6; }
+  .entity.daily .entity-header { background: #F5F3FF; color: #6D28D9; }
+  .entity.result { border-color: #F59E0B; }
+  .entity.result .entity-header { background: #FEF3C7; color: #B45309; }
+  .entity.approval { border-color: #EC4899; }
+  .entity.approval .entity-header { background: #FDF2F8; color: #BE185D; }
+  .entity.evidence { border-color: #06B6D4; }
+  .entity.evidence .entity-header { background: #ECFEFF; color: #0E7490; }
+  .entity.log { border-color: #6B7280; }
+  .entity.log .entity-header { background: #F3F4F6; color: #374151; }
+  .entity.evaluation { border-color: #A855F7; }
+  .entity.evaluation .entity-header { background: #FAF5FF; color: #7C3AED; }
+
+  .relation-section {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+  .relation-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 10px;
+  }
+  .relation-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 11px;
+    color: #475569;
+  }
+  .rel-entity {
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+  }
+  .rel-arrow { color: #94A3B8; font-size: 13px; }
+  .rel-desc { color: #64748B; }
+
+  .callout {
+    margin-top: 16px;
+    background: #F1F5F9;
+    border-left: 3px solid #6366F1;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.7;
+  }
+  .callout strong { color: #1E293B; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title">数据模型 · ER 图</div>
+  <div class="subtitle">核心实体及其关系 — 以「计划 → 成果 → 验收」为主线组织数据边界</div>
+
+  <div class="er-grid">
+    <!-- Row 1 -->
+    <div class="entity user">
+      <div class="entity-header">👤 User 用户</div>
+      <div class="entity-body">
+        <div class="field"><span class="field-key pk">PK</span><span class="field-name">id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-key fk">FK</span><span class="field-name">org_id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-key fk">FK</span><span class="field-name">dept_id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-name">name</span><span class="field-type">VARCHAR</span></div>
+        <div class="field"><span class="field-name">role</span><span class="field-type">ENUM</span></div>
+        <div class="field"><span class="field-name">email</span><span class="field-type">VARCHAR</span></div>
+      </div>
+    </div>
+
+    <div class="entity plan">
+      <div class="entity-header">📅 MonthlyPlan</div>
+      <div class="entity-body">
+        <div class="field"><span class="field-key pk">PK</span><span class="field-name">id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-key fk">FK</span><span class="field-name">user_id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-name">year_month</span><span class="field-type">VARCHAR</span></div>
+        <div class="field"><span class="field-name">title</span><span class="field-type">VARCHAR</span></div>
+        <div class="field"><span class="field-name">objective</span><span class="field-type">TEXT</span></div>
+        <div class="field"><span class="field-name">status</span><span class="field-type">ENUM</span></div>
+        <div class="field"><span class="field-name">baseline_ver</span><span class="field-type">INT</span></div>
+        <div class="field"><span class="field-name">deviation_rate</span><span class="field-type">DECIMAL</span></div>
+      </div>
+    </div>
+
+    <div class="entity daily">
+      <div class="entity-header">📆 DailyPlan</div>
+      <div class="entity-body">
+        <div class="field"><span class="field-key pk">PK</span><span class="field-name">id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-key fk">FK</span><span class="field-name">monthly_id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-name">plan_date</span><span class="field-type">DATE</span></div>
+        <div class="field"><span class="field-name">title</span><span class="field-type">VARCHAR</span></div>
+        <div class="field"><span class="field-name">estimated_hrs</span><span class="field-type">DECIMAL</span></div>
+        <div class="field"><span class="field-name">priority</span><span class="field-type">ENUM</span></div>
+        <div class="field"><span class="field-name">dod</span><span class="field-type">TEXT</span></div>
+        <div class="field"><span class="field-name">status</span><span class="field-type">ENUM</span></div>
+        <div class="field"><span class="field-name">is_retroactive</span><span class="field-type">BOOL</span></div>
+      </div>
+    </div>
+
+    <div class="entity result">
+      <div class="entity-header">📝 Result 成果</div>
+      <div class="entity-body">
+        <div class="field"><span class="field-key pk">PK</span><span class="field-name">id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-key fk">FK</span><span class="field-name">daily_id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-key fk">FK</span><span class="field-name">monthly_id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-name">actual_result</span><span class="field-type">TEXT</span></div>
+        <div class="field"><span class="field-name">completion_rate</span><span class="field-type">DECIMAL</span></div>
+        <div class="field"><span class="field-name">status</span><span class="field-type">ENUM</span></div>
+        <div class="field"><span class="field-name">submitted_at</span><span class="field-type">DATETIME</span></div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="entity approval">
+      <div class="entity-header">✅ ApprovalRecord</div>
+      <div class="entity-body">
+        <div class="field"><span class="field-key pk">PK</span><span class="field-name">id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-key fk">FK</span><span class="field-name">target_type</span><span class="field-type">ENUM</span></div>
+        <div class="field"><span class="field-key fk">FK</span><span class="field-name">target_id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-key fk">FK</span><span class="field-name">approver_id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-name">action</span><span class="field-type">ENUM</span></div>
+        <div class="field"><span class="field-name">comment</span><span class="field-type">TEXT</span></div>
+        <div class="field"><span class="field-name">actioned_at</span><span class="field-type">DATETIME</span></div>
+      </div>
+    </div>
+
+    <div class="entity evidence">
+      <div class="entity-header">📎 Evidence 附件</div>
+      <div class="entity-body">
+        <div class="field"><span class="field-key pk">PK</span><span class="field-name">id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-key fk">FK</span><span class="field-name">result_id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-name">file_name</span><span class="field-type">VARCHAR</span></div>
+        <div class="field"><span class="field-name">file_url</span><span class="field-type">VARCHAR</span></div>
+        <div class="field"><span class="field-name">file_type</span><span class="field-type">ENUM</span></div>
+        <div class="field"><span class="field-name">file_size</span><span class="field-type">BIGINT</span></div>
+      </div>
+    </div>
+
+    <div class="entity evaluation">
+      <div class="entity-header">💬 SelfEvaluation</div>
+      <div class="entity-body">
+        <div class="field"><span class="field-key pk">PK</span><span class="field-name">id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-key fk">FK</span><span class="field-name">result_id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-name">completion_desc</span><span class="field-type">TEXT</span></div>
+        <div class="field"><span class="field-name">suggestions</span><span class="field-type">TEXT</span></div>
+        <div class="field"><span class="field-name">created_at</span><span class="field-type">DATETIME</span></div>
+      </div>
+    </div>
+
+    <div class="entity log">
+      <div class="entity-header">📋 OperationLog</div>
+      <div class="entity-body">
+        <div class="field"><span class="field-key pk">PK</span><span class="field-name">id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-key fk">FK</span><span class="field-name">user_id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-name">action</span><span class="field-type">VARCHAR</span></div>
+        <div class="field"><span class="field-name">target_type</span><span class="field-type">VARCHAR</span></div>
+        <div class="field"><span class="field-key fk">FK</span><span class="field-name">target_id</span><span class="field-type">BIGINT</span></div>
+        <div class="field"><span class="field-name">before_status</span><span class="field-type">VARCHAR</span></div>
+        <div class="field"><span class="field-name">after_status</span><span class="field-type">VARCHAR</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Relationships -->
+  <div class="relation-section">
+    <div class="relation-title">🔗 实体关系说明</div>
+    <div class="relation-row">
+      <span class="rel-entity" style="background:#EFF6FF;color:#1D4ED8;">User</span>
+      <span class="rel-arrow">1 ──→ N</span>
+      <span class="rel-entity" style="background:#F0FDF4;color:#15803D;">MonthlyPlan</span>
+      <span class="rel-desc">一个用户（员工）按月制定多个月计划</span>
+    </div>
+    <div class="relation-row">
+      <span class="rel-entity" style="background:#F0FDF4;color:#15803D;">MonthlyPlan</span>
+      <span class="rel-arrow">1 ──→ N</span>
+      <span class="rel-entity" style="background:#F5F3FF;color:#6D28D9;">DailyPlan</span>
+      <span class="rel-desc">一个月计划拆解为 15-22 个日计划</span>
+    </div>
+    <div class="relation-row">
+      <span class="rel-entity" style="background:#F5F3FF;color:#6D28D9;">DailyPlan</span>
+      <span class="rel-arrow">1 ──→ N</span>
+      <span class="rel-entity" style="background:#FEF3C7;color:#B45309;">Result</span>
+      <span class="rel-desc">一个日计划可分阶段提交多次成果（长周期任务）</span>
+    </div>
+    <div class="relation-row">
+      <span class="rel-entity" style="background:#FEF3C7;color:#B45309;">Result</span>
+      <span class="rel-arrow">N ──→ 1</span>
+      <span class="rel-entity" style="background:#F0FDF4;color:#15803D;">MonthlyPlan</span>
+      <span class="rel-desc">成果同时关联月计划（支持跨日计划的产出）</span>
+    </div>
+    <div class="relation-row">
+      <span class="rel-entity" style="background:#FEF3C7;color:#B45309;">Result</span>
+      <span class="rel-arrow">1 ──→ N</span>
+      <span class="rel-entity" style="background:#ECFEFF;color:#0E7490;">Evidence</span>
+      <span class="rel-desc">一个成果携带多个证据附件（PR/报告/截图/文档）</span>
+    </div>
+    <div class="relation-row">
+      <span class="rel-entity" style="background:#FEF3C7;color:#B45309;">Result</span>
+      <span class="rel-arrow">1 ──→ 1</span>
+      <span class="rel-entity" style="background:#FAF5FF;color:#7C3AED;">SelfEvaluation</span>
+      <span class="rel-desc">每个成果附带一份员工自评</span>
+    </div>
+    <div class="relation-row">
+      <span class="rel-entity" style="background:#FDF2F8;color:#BE185D;">ApprovalRecord</span>
+      <span class="rel-arrow">多态关联</span>
+      <span class="rel-entity" style="background:#F0FDF4;color:#15803D;">MonthlyPlan</span>
+      <span class="rel-desc">通过 target_type + target_id 关联计划审批或成果验收</span>
+    </div>
+    <div class="relation-row">
+      <span class="rel-entity" style="background:#F3F4F6;color:#374151;">OperationLog</span>
+      <span class="rel-arrow">多态关联</span>
+      <span class="rel-entity" style="background:#F0FDF4;color:#15803D;">任意实体</span>
+      <span class="rel-desc">记录所有业务操作的完整审计轨迹</span>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>设计要点：</strong>ApprovalRecord 采用多态关联（target_type + target_id），统一处理计划审批和成果验收两种审批场景，避免为每种审批单独建表。OperationLog 同样采用多态关联，记录所有业务操作的 who / when / what / before / after，为后续审计、绩效统计和问题追责提供完整的数据基础。is_retroactive 字段标记"事后补录"的计划，用于统计补录率——这个数字本身就是一个管理质量指标。
+  </div>
+</div>
+</body>
+</html>

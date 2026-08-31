@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>计划状态机 — 日/月计划与成果验收系统</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    background: #F8FAFC;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #1E293B;
+  }
+  .canvas {
+    width: 1000px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
+    padding: 48px;
+  }
+  .title { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 6px; }
+  .subtitle { font-size: 13px; color: #64748B; margin-bottom: 32px; }
+
+  .state-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0 10px;
+  }
+  .state-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 0;
+  }
+  .state-node {
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+    position: relative;
+    border: 2px solid;
+  }
+  .state-draft { background: #F1F5F9; border-color: #CBD5E1; color: #475569; }
+  .state-pending { background: #FEF3C7; border-color: #F59E0B; color: #92400E; }
+  .state-approved { background: #D1FAE5; border-color: #22C55E; color: #065F46; }
+  .state-executing { background: #DBEAFE; border-color: #3B82F6; color: #1E40AF; }
+  .state-submit { background: #F5F3FF; border-color: #8B5CF6; color: #5B21B6; }
+  .state-rejected { background: #FEF2F2; border-color: #EF4444; color: #991B1B; }
+  .state-closed { background: #F0FDF4; border-color: #16A34A; color: #166534; }
+
+  .arrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    position: relative;
+  }
+  .arrow-label {
+    font-size: 10px;
+    color: #64748B;
+    background: white;
+    padding: 0 6px;
+    position: absolute;
+    z-index: 1;
+  }
+  .arrow-svg {
+    width: 100%;
+    height: 40px;
+  }
+
+  .flow-h {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: 8px 0;
+  }
+  .flow-h .arrow-label {
+    writing-mode: horizontal-tb;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 2px solid #E2E8F0;
+    margin: 28px 0;
+  }
+  .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .state-flow-v {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .v-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 36px;
+    justify-content: center;
+  }
+  .v-arrow .line {
+    width: 2px;
+    height: 16px;
+    background: #94A3B8;
+  }
+  .v-arrow .head {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #94A3B8;
+  }
+  .v-arrow-label {
+    font-size: 10px;
+    color: #64748B;
+    margin: 2px 0;
+  }
+
+  .h-flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 16px 0;
+  }
+  .h-arrow {
+    display: flex;
+    align-items: center;
+    width: 60px;
+    justify-content: center;
+  }
+  .h-arrow .line {
+    height: 2px;
+    width: 36px;
+    background: #94A3B8;
+  }
+  .h-arrow .head {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid #94A3B8;
+  }
+  .h-arrow-label {
+    font-size: 10px;
+    color: #64748B;
+    position: absolute;
+    top: -14px;
+    white-space: nowrap;
+  }
+
+  .loop-box {
+    border: 2px dashed #F59E0B;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 12px 40px;
+    position: relative;
+    background: #FFFBEB;
+  }
+  .loop-label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: #FFFBEB;
+    padding: 0 6px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #B45309;
+  }
+
+  .state-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .state-card {
+    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid;
+  }
+  .state-card-title {
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .state-card-desc {
+    font-size: 11px;
+    color: #64748B;
+    line-height: 1.5;
+  }
+
+  .callout {
+    margin-top: 24px;
+    background: #F1F5F9;
+    border-left: 3px solid #6366F1;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 12.5px;
+    color: #475569;
+    line-height: 1.7;
+  }
+  .callout strong { color: #1E293B; }
+
+  /* Visual state machine using CSS grid */
+  .sm-visual {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0 60px;
+  }
+  .sm-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+  .sm-node {
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    border: 2px solid;
+    white-space: nowrap;
+  }
+  .sm-arrow-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 32px;
+  }
+  .sm-arrow-down .line { width: 2px; flex: 1; background: #94A3B8; }
+  .sm-arrow-down .head {
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #94A3B8;
+  }
+  .sm-arrow-down .label {
+    font-size: 9px;
+    color: #64748B;
+    white-space: nowrap;
+  }
+  .sm-arrow-right {
+    display: flex;
+    align-items: center;
+    width: 50px;
+  }
+  .sm-arrow-right .line { height: 2px; flex: 1; background: #94A3B8; }
+  .sm-arrow-right .head {
+    width: 0; height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 5px solid #94A3B8;
+  }
+  .sm-arrow-right .label {
+    font-size: 9px;
+    color: #64748B;
+    white-space: nowrap;
+    position: absolute;
+    top: -12px;
+  }
+  .sm-loop-back {
+    position: absolute;
+    font-size: 9px;
+    color: #B45309;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title">计划状态机</div>
+  <div class="subtitle">月计划与日计划的完整状态流转 — 两台独立状态机，各有边界</div>
+
+  <!-- 月计划状态机 -->
+  <div class="section-title">📅 月计划审批状态机</div>
+
+  <div class="sm-visual">
+    <!-- Row 1: Draft -> Pending -> Approved -->
+    <div class="sm-row">
+      <div class="sm-node" style="background:#F1F5F9;border-color:#CBD5E1;color:#475569;">草稿</div>
+      <div class="sm-arrow-right" style="position:relative;">
+        <div class="line"></div>
+        <div class="head"></div>
+        <span class="label" style="position:absolute;top:-14px;left:8px;">提交审批</span>
+      </div>
+      <div class="sm-node" style="background:#FEF3C7;border-color:#F59E0B;color:#92400E;">待审批</div>
+      <div class="sm-arrow-right" style="position:relative;">
+        <div class="line"></div>
+        <div class="head"></div>
+        <span class="label" style="position:absolute;top:-14px;left:8px;">通过</span>
+      </div>
+      <div class="sm-node" style="background:#D1FAE5;border-color:#22C55E;color:#065F46;">审批通过</div>
+      <div class="sm-arrow-right" style="position:relative;">
+        <div class="line"></div>
+        <div class="head"></div>
+        <span class="label" style="position:absolute;top:-14px;left:8px;">开始执行</span>
+      </div>
+      <div class="sm-node" style="background:#DBEAFE;border-color:#3B82F6;color:#1E40AF;">执行中</div>
+      <div class="sm-arrow-right" style="position:relative;">
+        <div class="line"></div>
+        <div class="head"></div>
+        <span class="label" style="position:absolute;top:-14px;left:2px;">提交成果</span>
+      </div>
+      <div class="sm-node" style="background:#F5F3FF;border-color:#8B5CF6;color:#5B21B6;">待提交成果</div>
+    </div>
+
+    <!-- Loop back arrow for rejection -->
+    <div style="display:flex;justify-content:center;margin:8px 0;">
+      <div style="position:relative;width:600px;height:40px;">
+        <svg width="600" height="40" style="position:absolute;top:0;left:0;">
+          <!-- Curved arrow from 待审批 back to itself via 退回修改 -->
+          <path d="M 180 8 C 180 -10, 130 -10, 130 8" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <polygon points="133,5 128,8 133,11" fill="#F59E0B"/>
+        </svg>
+        <div style="position:absolute;top:-2px;left:100px;font-size:9px;color:#B45309;white-space:nowrap;">退回修改 → 再次提交</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="state-grid" style="grid-template-columns: repeat(5,1fr);margin-top:12px;">
+    <div class="state-card" style="background:#F1F5F9;border-color:#CBD5E1;">
+      <div class="state-card-title" style="color:#475569;">草稿</div>
+      <div class="state-card-desc">员工可自由编辑，不触发通知</div>
+    </div>
+    <div class="state-card" style="background:#FEF3C7;border-color:#F59E0B;">
+      <div class="state-card-title" style="color:#92400E;">待审批</div>
+      <div class="state-card-desc">等待领导决策，可退回修改</div>
+    </div>
+    <div class="state-card" style="background:#D1FAE5;border-color:#22C55E;">
+      <div class="state-card-title" style="color:#065F46;">审批通过</div>
+      <div class="state-card-desc">建立基线，后续修改走变更流程</div>
+    </div>
+    <div class="state-card" style="background:#DBEAFE;border-color:#3B82F6;">
+      <div class="state-card-title" style="color:#1E40AF;">执行中</div>
+      <div class="state-card-desc">员工按计划推进工作</div>
+    </div>
+    <div class="state-card" style="background:#F5F3FF;border-color:#8B5CF6;">
+      <div class="state-card-title" style="color:#5B21B6;">待提交成果</div>
+      <div class="state-card-desc">执行完成，等待成果验收</div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- 日计划状态机 -->
+  <div class="section-title">📆 日计划执行状态机</div>
+
+  <div class="sm-visual">
+    <div class="sm-row">
+      <div class="sm-node" style="background:#F1F5F9;border-color:#CBD5E1;color:#475569;">未开始</div>
+      <div class="sm-arrow-right" style="position:relative;">
+        <div class="line"></div>
+        <div class="head"></div>
+        <span class="label" style="position:absolute;top:-14px;left:4px;">开始执行</span>
+      </div>
+      <div class="sm-node" style="background:#DBEAFE;border-color:#3B82F6;color:#1E40AF;">执行中</div>
+      <div class="sm-arrow-right" style="position:relative;">
+        <div class="line"></div>
+        <div class="head"></div>
+        <span class="label" style="position:absolute;top:-14px;left:4px;">标记完成</span>
+      </div>
+      <div class="sm-node" style="background:#F5F3FF;border-color:#8B5CF6;color:#5B21B6;">待提交成果</div>
+      <div class="sm-arrow-right" style="position:relative;">
+        <div class="line"></div>
+        <div class="head"></div>
+        <span class="label" style="position:absolute;top:-14px;left:2px;">成果验收通过</span>
+      </div>
+      <div class="sm-node" style="background:#F0FDF4;border-color:#16A34A;color:#166534;">已闭环</div>
+    </div>
+
+    <div style="display:flex;justify-content:center;margin:8px 0;">
+      <div style="position:relative;width:500px;height:32px;">
+        <svg width="500" height="32" style="position:absolute;top:0;left:0;">
+          <path d="M 310 6 C 310 -10, 250 -10, 250 6" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <polygon points="253,3 248,6 253,9" fill="#EF4444"/>
+        </svg>
+        <div style="position:absolute;top:-2px;left:240px;font-size:9px;color:#DC2626;white-space:nowrap;">退回补充 → 重新提交</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>两台状态机的关键区别：</strong>月计划状态机管的是「审批流」——领导决定方向对不对；日计划状态机管的是「执行流」——员工证明事情做没做。两者通过「月计划审批通过 → 日计划自动进入执行中」和「日计划待提交成果 → 月计划进度更新」两个触发点连接，但状态机本身是独立运行的。这保证了"审批"和"执行"的职责边界清晰，不会互相干扰。
+  </div>
+</div>
+</body>
+</html>

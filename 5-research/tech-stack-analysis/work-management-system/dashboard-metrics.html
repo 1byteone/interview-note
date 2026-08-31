@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>管理看板设计 — 日/月计划与成果验收系统</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    background: #F8FAFC;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #1E293B;
+  }
+  .canvas {
+    width: 1100px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
+    padding: 48px;
+  }
+  .title { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 6px; }
+  .subtitle { font-size: 13px; color: #64748B; margin-bottom: 32px; }
+
+  .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Dashboard mockup */
+  .dashboard {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .dash-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0F172A;
+  }
+  .dash-subtitle {
+    font-size: 12px;
+    color: #64748B;
+  }
+
+  /* KPI Cards */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .kpi-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+  .kpi-card.green::before { background: #22C55E; }
+  .kpi-card.amber::before { background: #F59E0B; }
+  .kpi-card.red::before { background: #EF4444; }
+  .kpi-card.blue::before { background: #3B82F6; }
+  .kpi-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .kpi-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0F172A;
+    line-height: 1;
+  }
+  .kpi-value.green { color: #16A34A; }
+  .kpi-value.amber { color: #D97706; }
+  .kpi-value.red { color: #DC2626; }
+  .kpi-sub {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-top: 4px;
+  }
+  .kpi-trend {
+    font-size: 10px;
+    font-weight: 600;
+    margin-top: 4px;
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+  .trend-up { background: #D1FAE5; color: #15803D; }
+  .trend-down { background: #FEE2E2; color: #DC2626; }
+
+  /* Table */
+  .table-section {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .table-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid #E2E8F0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .table-filter {
+    font-size: 10px;
+    color: #64748B;
+    background: #F1F5F9;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th {
+    text-align: left;
+    padding: 8px 16px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #E2E8F0;
+    background: #F8FAFC;
+  }
+  td {
+    padding: 10px 16px;
+    font-size: 12px;
+    color: #334155;
+    border-bottom: 1px solid #F1F5F9;
+  }
+  tr:last-child td { border-bottom: none; }
+  .status-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .badge-pending { background: #FEF3C7; color: #92400E; }
+  .badge-review { background: #DBEAFE; color: #1E40AF; }
+  .badge-pass { background: #D1FAE5; color: #15803D; }
+  .badge-reject { background: #FEE2E2; color: #991B1B; }
+  .badge-supplement { background: #FEF3C7; color: #B45309; }
+
+  /* Bar chart mockup */
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 120px;
+    padding: 0 20px;
+    margin: 16px 0;
+  }
+  .bar-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .bar {
+    width: 100%;
+    max-width: 60px;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+  }
+  .bar-label {
+    font-size: 10px;
+    color: #64748B;
+    text-align: center;
+  }
+  .bar-value {
+    font-size: 10px;
+    font-weight: 600;
+    color: #334155;
+    text-align: center;
+  }
+
+  /* Drill-down */
+  .drilldown {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+  .drilldown-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .drilldown-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 11px;
+    color: #475569;
+  }
+  .drill-name { width: 60px; font-weight: 500; color: #334155; }
+  .drill-bar-bg {
+    flex: 1;
+    height: 16px;
+    background: #E2E8F0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .drill-bar {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 6px;
+    font-size: 9px;
+    font-weight: 600;
+    color: white;
+  }
+  .drill-detail {
+    font-size: 10px;
+    color: #94A3B8;
+    width: 100px;
+    text-align: right;
+  }
+
+  .callout {
+    margin-top: 16px;
+    background: #F1F5F9;
+    border-left: 3px solid #3B82F6;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.7;
+  }
+  .callout strong { color: #1E293B; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title">管理看板 · 指标设计</div>
+  <div class="subtitle">员工/领导看板指标定义与数据来源 — 每个数字都能下钻到具体人和事</div>
+
+  <!-- 员工看板 -->
+  <div class="section-title" style="color:#1D4ED8;">👤 员工看板原型</div>
+  <div class="dashboard">
+    <div class="dash-header">
+      <div>
+        <div class="dash-title">我的工作台</div>
+        <div class="dash-subtitle">2026 年 8 月 · 今日：8/31 周日</div>
+      </div>
+      <div class="dash-subtitle">最近登录：今天 09:12</div>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi-card green">
+        <div class="kpi-label">本月计划完成率</div>
+        <div class="kpi-value green">78%</div>
+        <div class="kpi-sub">14/18 已验收通过</div>
+        <div class="kpi-trend trend-up">+5% vs 上月</div>
+      </div>
+      <div class="kpi-card amber">
+        <div class="kpi-label">今日待办</div>
+        <div class="kpi-value amber">3</div>
+        <div class="kpi-sub">预计工时 10h（超限预警）</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">待提交成果</div>
+        <div class="kpi-value">2</div>
+        <div class="kpi-sub">最早待提交：8/29 的任务</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">本月验收通过率</div>
+        <div class="kpi-value green">93%</div>
+        <div class="kpi-sub">14/15 一次通过</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="table-section">
+        <div class="table-header">
+          <span>今日计划</span>
+          <span class="table-filter">按优先级排序</span>
+        </div>
+        <table>
+          <thead>
+            <tr><th>时间</th><th>任务</th><th>工时</th><th>状态</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>09:00</td><td>支付回调异常监控开发</td><td>6h</td><td><span class="status-badge badge-review">执行中</span></td></tr>
+            <tr><td>14:00</td><td>压测报告撰写</td><td>3h</td><td><span class="status-badge badge-pending">未开始</span></td></tr>
+            <tr><td>16:00</td><td>PR #1842 Code Review</td><td>1h</td><td><span class="status-badge badge-pending">未开始</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-section">
+        <div class="table-header">
+          <span>领导退回意见</span>
+          <span class="table-filter">需处理</span>
+        </div>
+        <table>
+          <thead>
+            <tr><th>任务</th><th>退回原因</th><th>状态</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>库存服务压测报告</td><td style="max-width:200px;">请补充压测数据来源说明</td><td><span class="status-badge badge-supplement">待补充</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 领导看板 -->
+  <div class="section-title" style="color:#B45309;">👔 领导看板原型</div>
+  <div class="dashboard" style="border-color:#FEF3C7;">
+    <div class="dash-header">
+      <div>
+        <div class="dash-title">团队管理看板</div>
+        <div class="dash-subtitle">研发一组 · 2026 年 8 月</div>
+      </div>
+      <div class="dash-subtitle">团队人数：6 人</div>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi-card green">
+        <div class="kpi-label">团队月完成率</div>
+        <div class="kpi-value green">73%</div>
+        <div class="kpi-sub">目标 ≥ 80%</div>
+        <div class="kpi-trend trend-up">+5% vs 上月</div>
+      </div>
+      <div class="kpi-card amber">
+        <div class="kpi-label">待审批计划</div>
+        <div class="kpi-value amber">4</div>
+        <div class="kpi-sub">最早待审批：8/29 提交</div>
+      </div>
+      <div class="kpi-card amber">
+        <div class="kpi-label">待验收成果</div>
+        <div class="kpi-value amber">3</div>
+        <div class="kpi-sub">逾期 1 天：1 项</div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-label">延期事项</div>
+        <div class="kpi-value red">3</div>
+        <div class="kpi-sub">张三 / 王五 / 赵宇</div>
+      </div>
+    </div>
+
+    <div class="kpi-row" style="grid-template-columns: repeat(3,1fr);">
+      <div class="kpi-card blue">
+        <div class="kpi-label">按期交付率</div>
+        <div class="kpi-value">82%</div>
+        <div class="kpi-sub">按时提交成果的计划占比</div>
+      </div>
+      <div class="kpi-card amber">
+        <div class="kpi-label">返工率</div>
+        <div class="kpi-value amber">12%</div>
+        <div class="kpi-sub">退回补充 3 次 / 总提交 25</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">驳回率</div>
+        <div class="kpi-value">4%</div>
+        <div class="kpi-sub">退回驳回 1 次 / 总提交 25</div>
+      </div>
+    </div>
+
+    <!-- Drill-down visualization -->
+    <div class="drilldown">
+      <div class="drilldown-title">📊 团队完成率分布（可下钻）</div>
+      <div class="drilldown-row">
+        <span class="drill-name">李明</span>
+        <div class="drill-bar-bg"><div class="drill-bar" style="width:100%;background:#22C55E;">100%</div></div>
+        <span class="drill-detail">5/5 全部通过</span>
+      </div>
+      <div class="drilldown-row">
+        <span class="drill-name">陈晨</span>
+        <div class="drill-bar-bg"><div class="drill-bar" style="width:80%;background:#3B82F6;">80%</div></div>
+        <span class="drill-detail">4/5 1项延期</span>
+      </div>
+      <div class="drilldown-row">
+        <span class="drill-name">赵宇</span>
+        <div class="drill-bar-bg"><div class="drill-bar" style="width:60%;background:#F59E0B;">60%</div></div>
+        <span class="drill-detail">3/5 2项退回</span>
+      </div>
+      <div class="drilldown-row">
+        <span class="drill-name">周敏</span>
+        <div class="drill-bar-bg"><div class="drill-bar" style="width:40%;background:#EF4444;">40%</div></div>
+        <span class="drill-detail">2/5 3项未提交</span>
+      </div>
+      <div class="drilldown-row">
+        <span class="drill-name">张三</span>
+        <div class="drill-bar-bg"><div class="drill-bar" style="width:75%;background:#3B82F6;">75%</div></div>
+        <span class="drill-detail">3/4 1项延期5天</span>
+      </div>
+      <div class="drilldown-row">
+        <span class="drill-name">王五</span>
+        <div class="drill-bar-bg"><div class="drill-bar" style="width:50%;background:#F59E0B;">50%</div></div>
+        <span class="drill-detail">2/4 2项无进展</span>
+      </div>
+    </div>
+
+    <!-- Pending actions -->
+    <div class="table-section">
+      <div class="table-header">
+        <span>待我处理</span>
+        <span class="table-filter">按提交时间排序</span>
+      </div>
+      <table>
+        <thead>
+          <tr><th>员工</th><th>事项</th><th>类型</th><th>提交时间</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>陈晨</td><td>订单中心幂等改造</td><td>计划审批</td><td>8/30</td><td><span class="status-badge badge-pending">待审批</span></td></tr>
+          <tr><td>李明</td><td>支付回调异常监控优化</td><td>成果验收</td><td>8/29</td><td><span class="status-badge badge-review">待验收</span></td></tr>
+          <tr><td>赵宇</td><td>库存服务压测与报告</td><td>成果验收</td><td>8/28</td><td><span class="status-badge badge-supplement">需补充</span></td></tr>
+          <tr><td>周敏</td><td>8月客户问题闭环</td><td>成果验收</td><td>8/27</td><td><span class="status-badge badge-reject">退回中</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>看板的核心设计原则：</strong>每个数字都能下钻。领导看到"团队完成率 73%"时，下一步是点进去看谁拖了后腿，而不是翻所有人的计划。看板解决的不是"看数据"的问题，而是"该找谁谈话"的问题。员工看板解决的不是"记流水账"的问题，而是"今天该干什么"的问题。延期预警和返工率是管理抓手，不是装饰指标。
+  </div>
+</div>
+</body>
+</html>

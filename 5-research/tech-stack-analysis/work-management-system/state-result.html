@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>成果状态机 — 日/月计划与成果验收系统</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    background: #F8FAFC;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #1E293B;
+  }
+  .canvas {
+    width: 1000px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
+    padding: 48px;
+  }
+  .title { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 6px; }
+  .subtitle { font-size: 13px; color: #64748B; margin-bottom: 32px; }
+
+  .sm-visual {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0 40px;
+  }
+  .sm-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+  .sm-node {
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    border: 2px solid;
+    white-space: nowrap;
+  }
+  .sm-arrow-right {
+    display: flex;
+    align-items: center;
+    width: 50px;
+    justify-content: center;
+    position: relative;
+  }
+  .sm-arrow-right .line { height: 2px; flex: 1; background: #94A3B8; }
+  .sm-arrow-right .head {
+    width: 0; height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 5px solid #94A3B8;
+  }
+  .sm-label {
+    font-size: 9px;
+    color: #64748B;
+    position: absolute;
+    top: -14px;
+    white-space: nowrap;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 2px solid #E2E8F0;
+    margin: 28px 0;
+  }
+  .section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .state-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .state-card {
+    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid;
+  }
+  .state-card-title {
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .state-card-desc {
+    font-size: 11px;
+    color: #64748B;
+    line-height: 1.5;
+  }
+
+  .decision-box {
+    border: 2px dashed #E2E8F0;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 16px 40px;
+    position: relative;
+    background: #F8FAFC;
+  }
+  .decision-label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: #F8FAFC;
+    padding: 0 6px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #64748B;
+  }
+  .decision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .decision-col {
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+  }
+  .decision-col.pass { background: #D1FAE5; }
+  .decision-col.supplement { background: #FEF3C7; }
+  .decision-col.reject { background: #FEE2E2; }
+  .decision-col-title {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .decision-col.pass .decision-col-title { color: #15803D; }
+  .decision-col.supplement .decision-col-title { color: #B45309; }
+  .decision-col.reject .decision-col-title { color: #DC2626; }
+  .decision-col-desc {
+    font-size: 10px;
+    color: #475569;
+    line-height: 1.5;
+  }
+
+  .loop-note {
+    text-align: center;
+    font-size: 10px;
+    color: #B45309;
+    margin: 8px 0;
+    font-style: italic;
+  }
+
+  .callout {
+    margin-top: 24px;
+    background: #FFFBEB;
+    border-left: 3px solid #F59E0B;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 12.5px;
+    color: #92400E;
+    line-height: 1.7;
+  }
+  .callout strong { color: #78350F; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title">成果验收状态机</div>
+  <div class="subtitle">成果从创建到验收闭环的完整状态流转 — 三种退回路径，各有不同含义</div>
+
+  <!-- 成果状态机主流程 -->
+  <div class="sm-visual">
+    <div class="sm-row">
+      <div class="sm-node" style="background:#F1F5F9;border-color:#CBD5E1;color:#475569;">待提交</div>
+      <div class="sm-arrow-right">
+        <div class="line"></div>
+        <div class="head"></div>
+        <span class="sm-label">提交成果</span>
+      </div>
+      <div class="sm-node" style="background:#FEF3C7;border-color:#F59E0B;color:#92400E;">待验收</div>
+      <div class="sm-arrow-right">
+        <div class="line"></div>
+        <div class="head"></div>
+        <span class="sm-label">验收通过</span>
+      </div>
+      <div class="sm-node" style="background:#D1FAE5;border-color:#22C55E;color:#065F46;">验收通过</div>
+      <div class="sm-arrow-right">
+        <div class="line"></div>
+        <div class="head"></div>
+        <span class="sm-label">闭环</span>
+      </div>
+      <div class="sm-node" style="background:#F0FDF4;border-color:#16A34A;color:#166534;">已闭环 ✓</div>
+    </div>
+  </div>
+
+  <div class="loop-note">↑ 退回补充 / 退回驳回 从「待验收」分支 ↓</div>
+
+  <!-- 决策分支 -->
+  <div class="decision-box">
+    <div class="decision-label">alt · 领导验收决策</div>
+    <div class="decision-grid">
+      <div class="decision-col pass">
+        <div class="decision-col-title">验收通过</div>
+        <div class="decision-col-desc">
+          证据充分、质量达标<br>
+          → 状态：待验收 → 验收通过<br>
+          → 计划标记「已闭环」<br>
+          → 记录评分 + 评语
+        </div>
+      </div>
+      <div class="decision-col supplement">
+        <div class="decision-col-title">退回补充</div>
+        <div class="decision-col-desc">
+          方向对但证据不够<br>
+          → 状态：待验收 → 退回补充<br>
+          → 员工补充材料后重新提交<br>
+          → 循环直至通过或驳回
+        </div>
+      </div>
+      <div class="decision-col reject">
+        <div class="decision-col-title">退回驳回</div>
+        <div class="decision-col-desc">
+          目标未达成 / 质量不达标<br>
+          → 状态：待验收 → 退回驳回<br>
+          → 终态，需重新制定计划<br>
+          → 绩效统计单独标记
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- 状态说明 -->
+  <div class="section-title">📋 各状态含义</div>
+  <div class="state-grid">
+    <div class="state-card" style="background:#F1F5F9;border-color:#CBD5E1;">
+      <div class="state-card-title" style="color:#475569;">待提交</div>
+      <div class="state-card-desc">执行已完成，等待员工准备证据并提交</div>
+    </div>
+    <div class="state-card" style="background:#FEF3C7;border-color:#F59E0B;">
+      <div class="state-card-title" style="color:#92400E;">待验收</div>
+      <div class="state-card-desc">已提交成果，等待领导逐项核对证据</div>
+    </div>
+    <div class="state-card" style="background:#D1FAE5;border-color:#22C55E;">
+      <div class="state-card-title" style="color:#065F46;">验收通过</div>
+      <div class="state-card-desc">证据充分、质量达标，成果获得认可</div>
+    </div>
+    <div class="state-card" style="background:#FEF3C7;border-color:#F59E0B;">
+      <div class="state-card-title" style="color:#92400E;">退回补充</div>
+      <div class="state-card-desc">方向对但证据不够，需补充材料后重新提交</div>
+    </div>
+    <div class="state-card" style="background:#FEE2E2;border-color:#EF4444;">
+      <div class="state-card-title" style="color:#991B1B;">退回驳回</div>
+      <div class="state-card-desc">目标未达成，终态，需重新制定计划</div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="section-title">🔗 成果与计划的关联规则</div>
+  <div style="padding:0 20px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:12px 14px;">
+        <div style="font-size:11px;font-weight:600;color:#334155;margin-bottom:4px;">一对多：一个计划 → 多次提交成果</div>
+        <div style="font-size:11px;color:#64748B;line-height:1.5;">长周期任务可分阶段提交成果，如第 1 周提交代码，第 2 周提交压测报告</div>
+      </div>
+      <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:12px 14px;">
+        <div style="font-size:11px;font-weight:600;color:#334155;margin-bottom:4px;">多对一：多个计划 → 一个成果</div>
+        <div style="font-size:11px;color:#64748B;line-height:1.5;">跨任务产出可关联多个计划，如一次会议产出同时覆盖 3 个日计划</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>设计要点：</strong>"退回补充"和"退回驳回"是两种性质完全不同的退回。退回补充 = "证据不够，补充后可过"，在绩效统计中权重较低；退回驳回 = "目标未达成，需重来"，在绩效统计中权重较高。区分这两种退回，是为了后续做更精准的绩效分析——返工率（退回补充占比）反映的是交付质量，驳回率（退回驳回占比）反映的是目标设定的合理性。
+  </div>
+</div>
+</body>
+</html>
