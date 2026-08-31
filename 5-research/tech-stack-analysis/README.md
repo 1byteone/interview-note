@@ -10,6 +10,7 @@
 | [ai-passage-creator](./ai-passage-creator/) | AI多Agent图文创作平台 | ~10 项 | https://github.com/1byteone/ai-passage-creator-demo |
 | [mewpaw-code](./mewpaw-code/) | Java CLI编码Agent | ~6 项 | https://github.com/1byteone/mewpaw-code |
 | [zznursing](./zznursing/) | 养老机构物联网平台 | ~8 项 | https://github.com/1byteone/zznursing |
+| [work-management-system](./work-management-system/) | 目标管理与成果验收系统原型 | 业务设计 + AI 应用架构 | — |
 | [cross-cutting](./cross-cutting/) | 跨项目主题（对比与模式） | — | — |
 
 ## 二、目录结构导航
@@ -34,10 +35,13 @@ docs/tech-stack-analysis/
 │   └── code-examples/
 │       ├── iot-device/              # IoT 设备接入示例
 │       └── qianfan-integration/     # 千帆大模型集成示例
-└── cross-cutting/                   # 跨项目主题
-    ├── java-ai-framework-comparison/  # Java AI 框架对比
-    ├── enterprise-architecture-patterns/ # 企业架构模式
-    └── star-highlights/             # 综合 STAR 亮点
+├── work-management-system/           # 目标管理与成果验收系统原型
+│   ├── design-doc.md                  # 业务建模、规则与面试表达
+│   ├── prototype-overview.html        # AI 应用开发工程师版综合原型图
+│   ├── prototype-overview.svg         # AI 应用架构图矢量交付
+│   ├── prototype-composite.svg        # 九张原型聚合图矢量交付
+│   └── *.html / *.png                 # 架构、流程、时序、状态、ER 与看板细节图
+└── cross-cutting/                     # 跨项目主题
 ```
 
 - 每个项目目录下包含：主 README（技术栈总览）、每项技术栈的独立分析文档、以及 `code-examples/` 下的真实代码片段（标注了所在仓库的源文件路径）。
