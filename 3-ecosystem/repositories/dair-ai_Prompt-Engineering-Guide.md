@@ -1,6 +1,6 @@
 # dair-ai/Prompt-Engineering-Guide
 
-> ⭐ 77,919 | 🗣 MDX | [GitHub](https://github.com/dair-ai/Prompt-Engineering-Guide) | 收录: 2026-08-22
+> ⭐ 78,070 | 🗣 MDX | [GitHub](https://github.com/dair-ai/Prompt-Engineering-Guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 77,919 |
+| Stars | 78,070 |
 | 语言 | MDX |
 | Topics | agent, agents, ai-agents, chatgpt, deep-learning, generative-ai, llms, prompt-engineering, rag |
 | 生态 | E06 · 通识与基础 |
