@@ -1,6 +1,6 @@
 # Marcos-wu/ai-agent-daily-mentor
 
-> ⭐ 137 | 🗣 N/A | [GitHub](https://github.com/Marcos-wu/ai-agent-daily-mentor) | 收录: 2026-08-22
+> ⭐ 139 | 🗣 N/A | [GitHub](https://github.com/Marcos-wu/ai-agent-daily-mentor) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 137 |
+| Stars | 139 |
 | Topics | 无 |
 | 生态 | E06 · 通识与基础 |
 

@@ -1,6 +1,6 @@
 # liaokongVFX/MCP-Chinese-Getting-Started-Guide
 
-> ⭐ 3,564 | 🗣 N/A | [GitHub](https://github.com/liaokongVFX/MCP-Chinese-Getting-Started-Guide) | 收录: 2026-08-22
+> ⭐ 3,571 | 🗣 N/A | [GitHub](https://github.com/liaokongVFX/MCP-Chinese-Getting-Started-Guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 3,564 |
+| Stars | 3,571 |
 | Topics | ai, deepseek, mcp, mcp-server, modelcontextprotocol |
 | 生态 | E05 · MCP 协议生态 |
 

@@ -1,6 +1,6 @@
 # didilili/ai-agents-from-zero
 
-> ⭐ 4,411 | 🗣 Python | [GitHub](https://github.com/didilili/ai-agents-from-zero) | 收录: 2026-08-22
+> ⭐ 4,606 | 🗣 Python | [GitHub](https://github.com/didilili/ai-agents-from-zero) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 4,411 |
+| Stars | 4,606 |
 | 语言 | Python |
 | Topics | agent, ai-agent, langchain, langgraph, mcp, rag, tutorial |
 | 生态 | E06 · 通识与基础 |

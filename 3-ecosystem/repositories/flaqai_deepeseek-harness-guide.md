@@ -1,6 +1,6 @@
 # flaqai/deepeseek-harness-guide
 
-> ⭐ 14 | 🗣 N/A | [GitHub](https://github.com/flaqai/deepeseek-harness-guide) | 收录: 2026-08-22
+> ⭐ 13 | 🗣 N/A | [GitHub](https://github.com/flaqai/deepeseek-harness-guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 14 |
+| Stars | 13 |
 | Topics | deepseek, dsh, harness, plugin |
 | 生态 | E03 · DSH/Harness 生态 |
 

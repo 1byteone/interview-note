@@ -1,6 +1,6 @@
 # zebbern/claude-code-guide
 
-> ⭐ 4,605 | 🗣 Python | [GitHub](https://github.com/zebbern/claude-code-guide) | 收录: 2026-08-22
+> ⭐ 4,622 | 🗣 Python | [GitHub](https://github.com/zebbern/claude-code-guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 4,605 |
+| Stars | 4,622 |
 | 语言 | Python |
 | Topics | claude, claude-code, claude-code-guide, mcp, skills |
 | 生态 | E01 · Claude Code 生态 |
