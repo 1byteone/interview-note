@@ -1,6 +1,6 @@
 # FlorianBruniaux/claude-code-ultimate-guide
 
-> ⭐ 5,965 | 🗣 Python | [GitHub](https://github.com/FlorianBruniaux/claude-code-ultimate-guide) | 收录: 2026-08-22
+> ⭐ 6,009 | 🗣 Python | [GitHub](https://github.com/FlorianBruniaux/claude-code-ultimate-guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 5,965 |
+| Stars | 6,009 |
 | 语言 | Python |
 | Topics | agentic-coding, ai-coding, anthropic, claude, claude-code, mcp-servers, prompt-engineering, vibe-coding |
 | 生态 | E01 · Claude Code 生态 |
