@@ -1,6 +1,6 @@
 # liyupi/github-claw
 
-> ⭐ 67 | 🗣 Python | [GitHub](https://github.com/liyupi/github-claw) | 收录: 2026-08-22
+> ⭐ 68 | 🗣 Python | [GitHub](https://github.com/liyupi/github-claw) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 67 |
+| Stars | 68 |
 | 语言 | Python |
 | Topics | agent, agent-skills, ai-agent, hermes-agent, openclaw, python |
 | 生态 | E04 · Hermes/OpenClaw 生态 |
