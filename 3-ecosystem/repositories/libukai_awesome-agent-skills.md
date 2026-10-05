@@ -1,6 +1,6 @@
 # libukai/awesome-agent-skills
 
-> ⭐ 5,133 | 🗣 N/A | [GitHub](https://github.com/libukai/awesome-agent-skills) | 收录: 2026-08-22
+> ⭐ 5,147 | 🗣 N/A | [GitHub](https://github.com/libukai/awesome-agent-skills) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 5,133 |
+| Stars | 5,147 |
 | Topics | agent, awesome-list, claudecode, openclaw, skills |
 | 生态 | E06 · 通识与基础 |
 

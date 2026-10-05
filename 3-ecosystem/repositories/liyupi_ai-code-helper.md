@@ -1,6 +1,6 @@
 # liyupi/ai-code-helper
 
-> ⭐ 749 | 🗣 Vue | [GitHub](https://github.com/liyupi/ai-code-helper) | 收录: 2026-08-22
+> ⭐ 754 | 🗣 Vue | [GitHub](https://github.com/liyupi/ai-code-helper) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 749 |
+| Stars | 754 |
 | 语言 | Vue |
 | Topics | ai, java, langchain4j, mcp, rag, spring-ai, springboot, tool-calling |
 | 生态 | E06 · 通识与基础 |

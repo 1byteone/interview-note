@@ -1,6 +1,6 @@
 # mshadmanrahman/claudecode-guide
 
-> ⭐ 41 | 🗣 TypeScript | [GitHub](https://github.com/mshadmanrahman/claudecode-guide) | 收录: 2026-08-22
+> ⭐ 42 | 🗣 TypeScript | [GitHub](https://github.com/mshadmanrahman/claudecode-guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 41 |
+| Stars | 42 |
 | Topics | ai-agent, claude, claude-code, guide, tutorial |
 | 生态 | E01 · Claude Code 生态 |
 

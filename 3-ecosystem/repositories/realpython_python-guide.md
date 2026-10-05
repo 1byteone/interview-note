@@ -1,6 +1,6 @@
 # realpython/python-guide
 
-> ⭐ 29,833 | 🗣 Batchfile | [GitHub](https://github.com/realpython/python-guide) | 收录: 2026-08-22
+> ⭐ 29,834 | 🗣 Batchfile | [GitHub](https://github.com/realpython/python-guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 29,833 |
+| Stars | 29,834 |
 | 语言 | Batchfile |
 | Topics | book, guide, python |
 | 生态 | E06 · 通识与基础 |

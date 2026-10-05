@@ -1,6 +1,6 @@
 # yeasy/harness_engineering_guide
 
-> ⭐ 128 | 🗣 Python | [GitHub](https://github.com/yeasy/harness_engineering_guide) | 收录: 2026-08-22
+> ⭐ 129 | 🗣 Python | [GitHub](https://github.com/yeasy/harness_engineering_guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 128 |
+| Stars | 129 |
 | 语言 | Python |
 | Topics | agent, book, guide, harness, harness-engineering, llm |
 | 生态 | E03 · DSH/Harness 生态 |

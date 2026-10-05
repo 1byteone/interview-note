@@ -1,6 +1,6 @@
 # slowmist/openclaw-security-practice-guide
 
-> ⭐ 2,854 | 🗣 Shell | [GitHub](https://github.com/slowmist/openclaw-security-practice-guide) | 收录: 2026-08-22
+> ⭐ 2,853 | 🗣 Shell | [GitHub](https://github.com/slowmist/openclaw-security-practice-guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 2,854 |
+| Stars | 2,853 |
 | 语言 | Shell |
 | Topics | 无 |
 | 生态 | E04 · Hermes/OpenClaw 生态 |
