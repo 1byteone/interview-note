@@ -1,6 +1,6 @@
 # liyupi/ai-guide
 
-> ⭐ 20,675 | 🗣 JavaScript | [GitHub](https://github.com/liyupi/ai-guide) | 收录: 2026-08-22
+> ⭐ 21,015 | 🗣 JavaScript | [GitHub](https://github.com/liyupi/ai-guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 20,675 |
+| Stars | 21,015 |
 | 语言 | JavaScript |
 | Topics | ai, llm, mcp, rag, vibe-coding, openclaw, deepseek, claude |
 | 生态 | E06 · 通识与基础 |
