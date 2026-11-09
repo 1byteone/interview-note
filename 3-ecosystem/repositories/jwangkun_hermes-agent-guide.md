@@ -1,6 +1,6 @@
 # jwangkun/hermes-agent-guide
 
-> ⭐ 747 | 🗣 Python | [GitHub](https://github.com/jwangkun/hermes-agent-guide) | 收录: 2026-08-22
+> ⭐ 783 | 🗣 Python | [GitHub](https://github.com/jwangkun/hermes-agent-guide) | 收录: 2026-08-22
 
 ---
 
@@ -8,7 +8,7 @@
 
 | 字段 | 值 |
 |------|-----|
-| Stars | 747 |
+| Stars | 783 |
 | 语言 | Python |
 | Topics | 无 |
 | 生态 | E04 · Hermes/OpenClaw 生态 |
